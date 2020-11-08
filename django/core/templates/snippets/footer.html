@@ -1,0 +1,27 @@
+{% load static %}
+
+<footer class="container-fluid">
+    <!-- Content -->
+    <div id="footer-content" class="container">
+
+        <div id="footer-content-logos">
+            <img src="{% static 'images/logos/ox.jpg' %}" alt="University of Oxford">
+        </div>
+        <p>
+            LINGUINDIC is a research project led by Dr John Lowe at the <a href="https://www.ox.ac.uk">University of Oxford</a>.
+        </p>
+        <p>
+            The LINGUINDIC project has received funding from the <a href="https://erc.europa.eu/">European Research Council (ERC)</a> under the European Union’s Horizon 2020 research and innovation programme <a href="https://cordis.europa.eu/project/id/851990">(Grant agreement no. 851190)</a>
+        </p>
+        <p>
+            <a href="https://www.ox.ac.uk/privacy-policy" target="_blank">Privacy</a> |
+            <a href="https://www.ox.ac.uk/legal" target="_blank">Legal</a> |
+            <a href="{% url 'cookies' %}">Cookies</a> |
+            <a href="{% url 'accessibility' %}">Accessibility</a>
+        </p>	
+        <p>
+            © University of Oxford {% now "Y" %}
+        </p>
+
+    </div>
+</footer>
