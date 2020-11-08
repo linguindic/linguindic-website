@@ -25,5 +25,4 @@ jobs:
       run: |
         cd django
         mv core/local_settings.test.py core/local_settings.py
-        coverage run manage.py test
-        coverage report
+        python manage.py test
