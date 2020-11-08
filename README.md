@@ -21,7 +21,7 @@ To run this project, you're required to have the following software installed on
 
 - Python 3 (for specific Python 3 version please see the [Django documentation](https://www.djangoproject.com/)
 - pip
-- virtualenv (optional, but recommended)
+- virtualenv (optional but recommended)
 
 
 ## Installation
