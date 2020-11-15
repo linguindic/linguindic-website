@@ -231,7 +231,7 @@ class Reference(models.Model):
             return self.url
         else:
             return "(Unnamed reference)"
-    
+
     class Meta:
         db_table = "{}_main_reference".format(apps.app_name)
 
@@ -304,7 +304,7 @@ class Author(models.Model):
             return self.alternative_name
         else:
             return "(Unnamed author)"
-    
+
     class Meta:
         db_table = "{}_main_author".format(apps.app_name)
 
@@ -328,7 +328,7 @@ class LinguisticField(models.Model):
 
     def __str__(self):
         return self.name
-    
+
     class Meta:
         db_table = "{}_main_linguisticfield".format(apps.app_name)
 
@@ -362,7 +362,7 @@ class LinguisticNotion(models.Model):
 
     def __str__(self):
         return self.name
-    
+
     class Meta:
         db_table = "{}_main_linguisticnotion".format(apps.app_name)
 
