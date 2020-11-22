@@ -9,6 +9,7 @@ TEMPLATE_DIR = os.path.join(BASE_DIR, 'core/templates')
 # Application definition
 
 INSTALLED_APPS = [
+    # Default Django
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -16,6 +17,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
+    # 3rd Party
+    'rest_framework',
+    # Custom
     'general',
     'researchdata'
 ]

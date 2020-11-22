@@ -1,0 +1,20 @@
+{% extends "rest_framework/base.html" %}
+{% load static %}
+
+{# Provide a custom CSS theme #}
+{% block bootstrap_theme %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap-themes/bootstrap.theme.min.css' %}" type="text/css">
+{% endblock %}
+
+{# Provide a custom header name #}
+{% block branding %}
+    <h2 style="font-weight: bold; font-size: 1.7em; margin-top: 0.6em;">LINGUINDIC API</h2>
+{% endblock %}
+
+{# Provide a custom header theme #}
+{% block bootstrap_navbar_variant %}{% endblock %}
+
+{# Provide a custom document title #}
+{% block title %}
+    LINGUINDIC API
+{% endblock %}
