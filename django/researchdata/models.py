@@ -207,8 +207,8 @@ class Reference(models.Model):
     url = models.TextField(blank=True, null=True)
     last_accessed_date = models.CharField(max_length=255, blank=True, null=True)
     # Foreign key fields
-    reference_type_id = models.ForeignKey(SlReferenceType, on_delete=models.SET_NULL, blank=True, null=True)
-    reference_publisher_id = models.ForeignKey(SlReferencePublisher, on_delete=models.SET_NULL, blank=True, null=True)
+    reference_type = models.ForeignKey(SlReferenceType, on_delete=models.SET_NULL, blank=True, null=True)
+    reference_publisher = models.ForeignKey(SlReferencePublisher, on_delete=models.SET_NULL, blank=True, null=True)
     # Admin fields
     admin_notes = models.TextField(blank=True, null=True)
     admin_published = models.BooleanField(default=True)
@@ -375,6 +375,8 @@ class M2MLinguisticNotionsRelationship(models.Model):
     """
     linguistic_notion_1 = models.ForeignKey(LinguisticNotion, related_name="linguistic_notion_1", on_delete=models.CASCADE)
     linguistic_notion_2 = models.ForeignKey(LinguisticNotion, related_name="linguistic_notion_2", on_delete=models.CASCADE)
+    # Foreign key fields
+    linguistic_notions_relationship_type = models.ForeignKey(SlLinguisticNotionsRelationshipType, on_delete=models.PROTECT)
 
     class Meta:
         db_table = "{}_m2m_linguisticnotions".format(apps.app_name)
