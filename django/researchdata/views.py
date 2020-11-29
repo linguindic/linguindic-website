@@ -331,5 +331,5 @@ class M2MLinguisticNotionsRelationshipRetrieveAPIView(RetrieveAPIView):
     """
     Return a specific M2MLinguisticNotionsRelationship
     """
-    queryset = models.LinguistM2MLinguisticNotionsRelationshipicNotion.objects.all()
+    queryset = models.M2MLinguisticNotionsRelationship.objects.all()
     serializer_class = serializers.M2MLinguisticNotionsRelationshipSerializer
