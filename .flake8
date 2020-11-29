@@ -5,4 +5,4 @@ exclude =
 	__pycache__,
 	venv,
 	resources/private
-max-line-length = 129
+max-line-length = 199
