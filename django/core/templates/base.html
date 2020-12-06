@@ -5,32 +5,157 @@
 <html lang="en">
 
     <head>
-        <!-- Head content -->
-        {% include 'snippets/base-head.html' %}
+    
+        <title>LINGUINDIC</title>
+
+        <!--Meta-->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="LINGUINDIC research project website">
+        <meta name="keywords" content="linguindic, india, linguistics, research, john lowe, humanities, art, oxford, university, university of oxford, oriental institute">
+        <meta name="author" content="University of Oxford">
+
+        <!-- Fonts -->
+        <link href="https://fonts.googleapis.com/css2?family=Alata&family=Roboto:wght@100;300;400;700;900&display=swap" rel="stylesheet">
+
+        <!-- CSS -->
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" 
+            href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" 
+            integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" 
+            crossorigin="anonymous">
+
+        <!-- Custom -->
+        <link rel="stylesheet" type="text/css" href="{% static 'css/custom.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/custom_small.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/custom_large.css' %}">
+
+        <!--Set the favicon-->
+        <link rel="icon" type="image/png" href="{% static 'images/favicon.png' %}">
+
     </head>
 
     <body>
+        
+        <!-- jQuery (has to load at start of page, as some templates that extend from this base template include jQuery in them) -->
+        <script
+			  src="https://code.jquery.com/jquery-3.5.1.min.js"
+			  integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+			  crossorigin="anonymous"></script>
+
+        <!-- Navigation bar -->
+        <nav class="navbar fixed-top navbar-expand-lg">
+            <!-- Logo -->
+            <a class="navbar-brand" href="{% url 'welcome' %}">LINGUINDIC</a>
+            <!-- Nav toggle button (for small screens) -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </button>
+            <!-- Nav list -->
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav ml-auto">
+                    <!-- Welcome -->
+                    <li class="nav-item">
+                        <a class="nav-link{% if request.path == "/" %} active{% endif %}" href="{% url 'welcome' %}">Welcome</a>
+                    </li>
+                    <!-- Project -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle{% if "/project/" in request.path %} active{% endif %}" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Project
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="{% url 'project-about' %}">About</a>
+                            <a class="dropdown-item" href="{% url 'project-team' %}">Team</a>
+                            <a class="dropdown-item" href="{% url 'project-funding' %}">Funding</a>
+                            <a class="dropdown-item" href="{% url 'project-events' %}">Events</a>
+                            <a class="dropdown-item" href="{% url 'project-outputs' %}">Research Outputs</a>
+                        </div>
+                    </li>
+                    <!-- Browse -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle{% if "/browse/" in request.path %} active{% endif %}" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Browse
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="{% url 'browse-linguisticnotions-list' %}">Linguistic Notions</a>
+                            <a class="dropdown-item" href="{% url 'browse-linguisticfields-list' %}">Linguistic Fields</a>
+                            <a class="dropdown-item" href="{% url 'browse-texts-list' %}">Texts</a>
+                            <a class="dropdown-item" href="{% url 'browse-author-list' %}">Authors</a>
+                            <a class="dropdown-item" href="{% url 'browse-references-list' %}">References</a>
+                        </div>
+                    </li>
+                    <!-- Compare -->
+                    <li class="nav-item">
+                        <a class="nav-link{% if "/compare/" in request.path %} active{% endif %}" href="{% url 'compare-linguisticnotions' %}">Compare</a>
+                    </li>
+                    <!-- Visualise -->
+                    <li class="nav-item">
+                        <a class="nav-link{% if "/visualise/" in request.path %} active{% endif %}" href="{% url 'visualise' %}">Visualise</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
 
         <!-- Main -->
-        <main>
-
-            <div id="main-nav">
-                {% include 'snippets/nav.html' %}
-                {% include 'snippets/nav-toggle.html' %}
-            </div>
-
+        <main id="main">
             <div id="main-content">
                 {% block main %}
                 {% endblock %}
             </div>
-
         </main>
 
         <!-- Footer -->
-        {% include 'snippets/footer.html' %}
+        <footer class="container-fluid">
+            <!-- Content -->
+            <div id="footer-content" class="container">
+
+                <div id="footer-content-logos">
+                    <img src="{% static 'images/logos/oxford.png' %}" alt="University of Oxford logo">
+                    <img src="{% static 'images/logos/orinst.png' %}" alt="Oriental Institute logo">
+                    <img src="{% static 'images/logos/erc.png' %}" alt="European Research Council logo">
+                </div>
+
+                <div id="footer-content-text">
+                    <p>
+                        This website has been developed as part of the LINGUINDIC research project, which is led by <a href="https://www.orinst.ox.ac.uk/people/john-j-lowe">Dr John Lowe</a> at the <a href="https://www.orinst.ox.ac.uk/">Oriental Institute</a>, <a href="https://www.ox.ac.uk/">University of Oxford</a>.
+                    </p>
+                    <p>
+                        The LINGUINDIC project has received funding from the <a href="https://erc.europa.eu/">European Research Council (ERC)</a>
+                        <br>
+                        under the European Union’s Horizon 2020 research and innovation programme <a href="https://cordis.europa.eu/project/id/851990">(Grant agreement no. 851190)</a>
+                    </p>
+                    <p>
+                        If you'd like to discuss the LINGUINDIC project or this website with us, you can email us at <a href="mailto:linguindic@orinst.ox.ac.uk?subject=LINGUINDIC website">linguindic@orinst.ox.ac.uk</a>
+                    </p>
+                    <p>
+                        <a href="https://www.ox.ac.uk/privacy-policy" target="_blank">Privacy</a> |
+                        <a href="https://www.ox.ac.uk/legal" target="_blank">Legal</a> |
+                        <a href="{% url 'cookies' %}">Cookies</a> |
+                        <a href="{% url 'accessibility' %}">Accessibility</a> |
+                        <a href="{% url 'api' %}">API</a>
+                    </p>
+                    <p>
+                        © University of Oxford {% now "Y" %}
+                    </p>
+                </div>
+
+            </div>
+        </footer>
 
         <!-- JavaScript -->
-        {% include 'snippets/base-js.html' %}
+
+        <!-- 3rd party JavaScript -->
+        <!-- Bootstrap JS -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+        <!-- Custom JavaScript -->
+        <script src="{% static 'js/main.js' %}"></script>
+        <!-- Cookies popup message -->
+        <script src="{% static 'js/cookiesmsg.js' %}"></script>
 
     </body>
 

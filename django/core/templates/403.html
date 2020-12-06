@@ -1,13 +1,11 @@
-{% extends "base-error.html" %}
+{% extends "base.html" %}
 {% load static %}
 
-{% block error %}
+{% block main %}
     
     <div class="container">
 
-        <div class="errorpage-title">
-            You don't have permission to access this content
-        </div>
+        <h2>You don't have permission to access this content</h2>
 
         {% include "snippets/error-content.html" %}
 

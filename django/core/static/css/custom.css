@@ -1,119 +1,201 @@
 
 /* ---------- General ---------- */
 
-body,
-html {
-    margin: 0;
-    height: 100%;
-    font-family: 'Roboto', sans-serif;
-    color: black;
-}
-
 body {
-    font-size: 1.2em;
-    line-height: 1.5em;
-}
-
-hr {
-    border: 0;
-    clear: both;
-    display: block;
-    width: 96%;
-    background-color: #CCC;
-    height: 1px;
-}
-
-h2 {
-    padding: 2.3em 0 0.4em 0;
-    font-weight: bold;
-    font-size: 1.7em;
-    text-transform: uppercase;
-}
-
-.form-inline .form-control {
-    margin-right: 1rem;
-    margin-bottom: 1rem;
+    font-family: 'Roboto', sans-serif;
+    color: #643d25;
+    margin: 0;
+    font-weight: 300;
 }
 
 a {
-    color: #0072ed;
+    color: #5f3305;
+    font-weight: 500;
 }
+
+a:hover {
+    color: #705a41;
+}
+
+h2 {
+    padding-top: 2em;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #5f3305;
+    font-weight: 500;
+    text-align: center;
+    font-size: 1.7em;
+    margin-bottom: 2.5em;
+}
+
 
 /* ---------- Navigation ---------- */
 
-h1 {
-    font-weight: bold;
-    font-size: 1.3em;
-    text-transform: uppercase;
-}
-
-h1 a,
-h1 a:hover {
-    color: white;
-    text-decoration: none;
-}
-
 nav {
-    font-size: 1.3em;
-    background: black;
-    color: white;
-}
-
-nav ul {
-    padding: 0;
-}
-
-nav ul li {
-    list-style-type: none;
+    background: white;
     text-transform: uppercase;
+    vertical-align: middle;
+    color: #8d715f;
 }
 
-nav ul li a {
-    text-decoration: none;
-    color: white;
+.navbar-brand {
+    font-family: 'Alata', sans-serif;
+    display: inline-block;
+    font-size: 1.6em;
+    letter-spacing: 0.2em;
+    font-weight: 300;
+    color: #b28b01;
 }
+
+.navbar-nav {
+    letter-spacing: 0.15em;
+}
+
+.nav-link {
+    font-weight: 300;
+    font-size: 1.1em;
+}
+
+.dropdown-item {
+    font-weight: 300;
+    font-size: 1em;
+}
+
+.dropdown-item:active {
+    background: #EEE;
+}
+
+.nav-link.active {
+    font-weight: 500;
+}
+
+nav a:hover,
+.dropdown-item:hover,
+.nav-link.active {
+    color: #b28b01;
+}
+
+/* ---------- Main ---------- */
+
+main {
+    margin-top: 4em;
+    padding-bottom: 4em;
+    background: #eedac3;
+}
+
+main p,
+main ul,
+main ol {
+    font-size: 1.2em;
+    line-height: 2em;
+    letter-spacing: 0.05em;
+    font-weight: 300;
+}
+
+main a {
+    text-decoration: underline;
+}
+
+/* ---------- Welcome ---------- */
+
+#welcome-banner {
+    width: 100%;
+    padding-top: 10vh;
+    height: calc(100vh - 4em);
+    background: url('../images/welcome/banner-bg.jpg'); /* https://unsplash.com/photos/qun1Pdo6wIM */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+#welcome-banner-tagline {
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 300;
+    letter-spacing: 0.2em;
+    font-size: 1.5em;
+    line-height: 2.5em;
+    color: #815f4c;
+}
+
+#welcome-banner-tagline strong {
+    color: #b28b01;
+}
+
+#welcome-banner-proceed {
+    font-size: 3em;
+	position: absolute;
+	bottom: 0.8em;
+    left: calc(50% - 40px);
+    border-radius: 100%;
+    width: 80px;
+    height: 80px;
+	text-align: center;
+	background-color: rgba(255,255,255,0.5);
+	color: white;
+	padding-top: 5px;
+    cursor: pointer;
+    line-height: 80px;
+}
+
+#welcome-banner-proceed:hover {
+    background-color: rgba(255,255,255,1);
+    color: #b28b01;
+}
+
+
+/* ---------- Project ---------- */
+
+.project-banner {
+    width: 100%;
+}
+
+#project-banner-about {
+    background: url('../images/project/banner-bg/about.jpg');
+}
+
+#project-banner-team {
+    background: url('../images/project/banner-bg/team.jpg');
+}
+
+#project-banner-funding {
+    background: url('../images/project/banner-bg/funding.jpg');
+}
+
+#project-banner-events {
+    background: url('../images/project/banner-bg/events.jpg');
+}
+
+#project-banner-outputs {
+    background: url('../images/project/banner-bg/outputs.jpg');
+}
+
+
+
+#project-banner-about,
+#project-banner-team,
+#project-banner-funding,
+#project-banner-events,
+#project-banner-outputs {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
 
 /* ---------- Footer ---------- */
 
 footer {
-    border-top: 1px solid #E4E4E4;
-    margin-top: 2em;
-    padding: 2em 0 5em 0;
+    padding: 5em 0;
     text-align: center;
-    background: #FFF;
-    color: #202020;
-    font-size: 0.8em;
-}
-
-footer a {
-    color: black;
-    font-weight: bold;
-}
-
-footer a:hover {
-    color: black;
-    opacity: 0.75;
-    text-decoration: none;
+    color: #8d715f;
 }
 
 #footer-content-text {
     margin-top: 2em;
 }
 
-#footer-content img {
-    width: 20em;
-    max-width: 100%;
-    margin: 0;
-    display: inline-block;
-}
-
 /* ---------- Error Pages ---------- */
-
-.errorpage-title {
-    font-size: 3.3em;
-    font-weight: bold;
-    margin: 0.5em 0 1em 0;
-}
 
 .errorpage-path {
     font-weight: bold;

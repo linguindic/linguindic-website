@@ -1,13 +1,11 @@
-{% extends "base-error.html" %}
+{% extends "base.html" %}
 {% load static %}
 
-{% block error %}
+{% block main %}
     
     <div class="container">
 
-        <div class="errorpage-title">
-            Sorry, there's been an error
-        </div>
+        <h2>Sorry, there's been an error</h2>
 
         {% include "snippets/error-content.html" %}
 
