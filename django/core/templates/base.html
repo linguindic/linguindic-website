@@ -52,7 +52,7 @@
             <!-- Logo -->
             <a class="navbar-brand" href="{% url 'welcome' %}">LINGUINDIC</a>
             <!-- Nav toggle button (for small screens) -->
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false">
+            <button class="navbar-toggler" type="button" title="navbartoggle" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false">
                 <i class="fas fa-bars"></i>
             </button>
             <!-- Nav list -->
@@ -64,10 +64,10 @@
                     </li>
                     <!-- Project -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle{% if "/project/" in request.path %} active{% endif %}" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle{% if "/project/" in request.path %} active{% endif %}" href="#" id="navbarDropdownMenuLinkProject" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Project
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLinkProject">
                             <a class="dropdown-item" href="{% url 'project-about' %}">About</a>
                             <a class="dropdown-item" href="{% url 'project-team' %}">Team</a>
                             <a class="dropdown-item" href="{% url 'project-funding' %}">Funding</a>
@@ -77,10 +77,10 @@
                     </li>
                     <!-- Browse -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle{% if "/browse/" in request.path %} active{% endif %}" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle{% if "/browse/" in request.path %} active{% endif %}" href="#" id="navbarDropdownMenuLinkBrowse" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Browse
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLinkBrowse">
                             <a class="dropdown-item" href="{% url 'browse-linguisticnotions-list' %}">Linguistic Notions</a>
                             <a class="dropdown-item" href="{% url 'browse-linguisticfields-list' %}">Linguistic Fields</a>
                             <a class="dropdown-item" href="{% url 'browse-texts-list' %}">Texts</a>
