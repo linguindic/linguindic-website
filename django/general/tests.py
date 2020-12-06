@@ -92,7 +92,6 @@ class TestProjectOutputsView(TestCase):
         self.assertContains(response, 'Outputs')
 
 
-
 class TestCookiesView(TestCase):
     """
     Test Cookies View
