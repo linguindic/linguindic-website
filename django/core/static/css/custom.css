@@ -70,8 +70,7 @@ nav {
 }
 
 nav a:hover,
-.dropdown-item:hover,
-.nav-link.active {
+.dropdown-item:hover {
     color: #937200;
 }
 
