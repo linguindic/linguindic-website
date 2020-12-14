@@ -1,0 +1,195 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block main %}
+    <div class="container">
+
+
+        <!-- List Title -->
+        <h2>{% block list_title %}{% endblock %}</h2>
+
+
+        <!-- List Options -->
+
+        <div class="list-options">
+            
+            <!-- Form element has no action attribute, so that it submits to the same page -->
+            <form method="GET" class="form-group" id="list-options-search-form">
+                <!-- Search -->
+                <div class="list-options-search row">
+                    <div class="col-12">
+                        <div class="input-group">
+                            <!-- Search textbox -->
+                            <input type="text" class="form-control" name="search" title="search" id="list-options-search-input" placeholder="Search">
+                            <script>
+                                var search = new URL(window.location.href).searchParams.get("search");
+                                if(search) document.getElementById('list-options-search-input').value = search;
+                            </script>
+                            <!-- Search button -->
+                            <div class="input-group-append">
+                                <button type="submit" value="Search" class="btn btn-primary" title="search-btn" id="list-options-search-button">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+
+            <!-- Advanced options -->
+            <div class="list-options-advanced">
+                <div id="list-options-advanced-show"><strong><i class="fas fa-sliders-h"></i> Advanced options</strong></div>
+                <!-- Advanced options pop up -->
+                <div id="list-options-advanced-popup">
+                    <div id="list-options-advanced-popup-content">
+                        <div id="list-options-advanced-popup-content-close"><i class="fas fa-times"></i></div>
+                        <div id="list-options-advanced-popup-content-title">Advanced Options</div>
+
+                        <!-- Form element has no action attribute, so that it submits to the same page -->
+                        <form method="GET" class="form-group" id="list-options-advanced-popup-content-form">
+
+                            <!-- Search -->
+                            <div id="list-options-advanced-popup-content-search">
+                                <div class="list-options-advanced-popup-content-subtitle">Search</div>
+                                <!-- Search By --> 
+                                <label for="list-options-advanced-popup-content-filter-searchby">Search by</label>
+                                <select id="list-options-advanced-popup-content-filter-searchby" name="filter-searchby">
+                                    {% block list_options_advanced_searchby %}{% endblock %}
+                                </select>
+                                <!-- Search Criteria -->
+                                <label for="list-options-advanced-popup-content-filter-search">Search</label>
+                                <input type="text" id="list-options-advanced-popup-content-filter-search" name="filter-search">
+                                
+                            </div>
+                        
+                            <!-- Order -->
+                            <div id="list-options-advanced-popup-content-order">
+                                <div class="list-options-advanced-popup-content-subtitle">Order</div>
+                                <!-- Order by -->
+                                <label for="list-options-advanced-popup-content-order-by">Order by:</label>
+                                <select id="list-options-advanced-popup-content-order-by" name="order-by">
+                                    {% block list_options_advanced_order_by %}{% endblock %}
+                                </select>
+                                <!-- Order direction -->
+                                <label for="list-options-advanced-popup-content-order-direction">Order direction:</label>
+                                <select id="list-options-advanced-popup-content-order-direction" name="order-direction">
+                                    <option value="">Ascending (A-Z, 0-9)</option>
+                                    <option value="-">Descending (Z-A, 9-0)</option>
+                                </select>
+                            </div>
+
+                            <!-- Filter -->
+                            {% block list_options_advanced_filters %}{% endblock %}
+
+                            <!-- Submit -->
+                            <input type="submit" value="Apply Options" id="list-options-advanced-popup-content-form-submit"> 
+
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+
+        <!-- List Content -->
+        <div class="list-content">
+            {% for object in object_list %}
+                                
+                <a href="{% block list_item_link %}{% endblock %}" class="list-content-item">
+                    <div class="list-content-item-title">{{ object.name }}</div>
+                    <div class="list-content-item-description">{{ object.description | slice:"250" }}</div>
+                </a>
+                                
+            {% endfor %}
+        </div>
+
+
+        <!-- List Pagination -->
+        <!-- If there's multiple pages, then show Paginator -->
+        {% if page_obj.paginator.num_pages > 1 %}
+
+            <div class="list-pagination row align-items-center">
+
+                <div class="col-xs-12 col-sm-4">
+
+                    <!-- If there's a previous page -->
+                    {% if page_obj.has_previous %}
+                        <!-- First Page -->
+                        <div class="list-pagination-action">
+                            <a class="list-pagination-action-button list-pagination-left fas fa-angle-double-left" 
+                                href="?page=1{% include 'researchdata/snippets/list-pagination-urlqueries.html' %}"><span class="hidden">First</span></a>
+                            <div class="list-pagination-action-label">First</div>
+                        </div>
+                        <!-- Previous Page -->
+                        <div class="list-pagination-action">
+                            <a class="list-pagination-action-button list-pagination-left fas fa-angle-left" 
+                                href="?page={{ page_obj.previous_page_number }}{% include 'researchdata/snippets/list-pagination-urlqueries.html' %}"><span class="hidden">Previous</span></a>
+                            <div class="list-pagination-action-label">Previous</div>
+                        </div>
+                    {% endif %}
+
+                    <!-- If there's NOT a previous page -->
+                    {% if page_obj.has_previous == False %}
+                        <!-- First Page -->
+                        <div class="list-pagination-action-disabled">
+                            <div class="list-pagination-action-button list-pagination-left fas fa-angle-double-left"></div>
+                            <div class="list-pagination-action-label">First</div>
+                        </div>
+                        <!-- Previous Page -->
+                        <div class="list-pagination-action-disabled">
+                            <div class="list-pagination-action-button list-pagination-left fas fa-angle-left"></div>
+                            <div class="list-pagination-action-label">Previous</div>
+                        </div>
+                    {% endif %}
+
+                </div>
+
+                <div class="col-xs-12 col-sm-4">
+                    <!-- Current page info -->
+                    <span class="list-pagination-current">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+                </div>
+
+                <div class="col-xs-12 col-sm-4">
+
+                    <!-- If there's a next page -->
+                    {% if page_obj.has_next %}
+                        <!-- Next Page -->
+                        <div class="list-pagination-action">
+                            <a class="list-pagination-action-button list-pagination-right fas fa-angle-right" 
+                                href="?page={{ page_obj.next_page_number }}{% include 'researchdata/snippets/list-pagination-urlqueries.html' %}"><span class="hidden">Next</span></a>
+                            <div class="list-pagination-action-label">Next</div>
+                        </div>
+                        <!-- Last Page -->
+                        <div class="list-pagination-action">
+                            <a class="list-pagination-action-button list-pagination-right fas fa-angle-double-right" 
+                                href="?page={{ page_obj.paginator.num_pages }}{% include 'researchdata/snippets/list-pagination-urlqueries.html' %}"><span class="hidden">Last</span></a>
+                            <div class="list-pagination-action-label">Last</div>
+                        </div>
+                    {% endif %}
+
+                    <!-- If there's NOT a next page -->
+                    {% if page_obj.has_next == False %}
+                        <!-- Next Page -->
+                        <div class="list-pagination-action-disabled">
+                            <div class="list-pagination-action-button list-pagination-right fas fa-angle-right"></div>
+                            <div class="list-pagination-action-label">Next</div>
+                        </div>
+
+                        <!-- Last Page -->
+                        <div class="list-pagination-action-disabled">
+                            <div class="list-pagination-action-button list-pagination-right fas fa-angle-double-right"></div>
+                            <div class="list-pagination-action-label">Last</div>
+                        </div>
+                    {% endif %}
+
+                </div>
+
+            </div>
+
+        {% endif %}
+        
+    </div>
+{% endblock %}

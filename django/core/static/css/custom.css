@@ -45,6 +45,7 @@ nav {
     letter-spacing: 0.2em;
     font-weight: 300;
     color: #b28b01;
+    padding-left: 0.5em;
 }
 
 .navbar-nav {
@@ -169,8 +170,6 @@ main a {
     background: url('../images/project/banner-bg/outputs.jpg');
 }
 
-
-
 #project-banner-about,
 #project-banner-team,
 #project-banner-funding,
@@ -180,6 +179,212 @@ main a {
     background-size: cover;
     background-position: center;
 }
+
+
+/* ---------- Browse ---------- */
+
+/* ---------- Browse: List ---------- */
+
+/* List options */
+.list-options {
+    padding: 1rem 0 3rem 0;
+}
+
+.list-options-search {
+    margin-bottom: 1em;
+}
+
+#list-options-search-input {
+    background: rgba(255, 255, 255, 0.5);
+    border: 0;
+}
+
+#list-options-search-input:hover,
+#list-options-search-input:focus {
+    background: white;
+    box-shadow: none;
+}
+
+#list-options-search-input:focus {
+    color: #b28b01;
+}
+
+#list-options-search-button {
+    background: #5f3305;
+    border: 0;
+}
+
+#list-options-search-button:hover {
+    background: #b28b01;
+}
+
+#list-options-advanced-show {
+    text-align: right;
+}
+
+#list-options-advanced-show strong:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+#list-options-advanced-popup {
+    background: rgba(0, 0, 0, 0.9);
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 10000;
+    display: none;
+}
+
+#list-options-advanced-popup-content {
+    background: white;
+    margin: 4em auto;
+    width: 30em;
+    max-width: 90%;
+    max-height: calc( 100vh - 8em);
+    border-radius: 1em;
+    padding: 1.5em 2em;
+    overflow-y: scroll;
+}
+
+#list-options-advanced-popup-content-close {
+    text-align: right;
+    font-size: 1.5em;
+    padding: 0.2em;
+    cursor: pointer;
+    color: #AAA;
+}
+
+#list-options-advanced-popup-content-title {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 1.3em;
+    color: #b28b01;
+    font-weight: bold;
+}
+
+.list-options-advanced-popup-content-subtitle {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-top: 2em;
+    color: #b28b01;
+    text-transform: uppercase;
+}
+
+#list-options-advanced-popup-content label {
+    margin: 1em 0 0.3em 0;
+    display: block;
+    font-size: 0.9em;
+}
+
+#list-options-advanced-popup-content input,
+#list-options-advanced-popup-content select {
+    width: 100%;
+}
+
+#list-options-advanced-popup-content-form-submit {
+    margin: 3em auto 1em auto;
+    padding: 0.7em 0;
+    font-size: 1.1em;
+    text-transform: uppercase;
+    background: #b28b01;
+    color: white;
+    border: none;
+    border-radius: 0.5em;
+}
+
+#list-options-advanced-popup-content-form-submit:hover {
+    background: #937200;
+}
+
+/* List content */
+.list-content-item {
+    vertical-align: top;
+    background: rgba(255,255,255,0.5);
+    border-radius: 0.5em;
+    padding: 1.5em;
+    cursor: pointer;
+    text-decoration: none;
+}
+.list-content-item:hover {
+    background: rgba(255,255,255,1);
+    text-decoration: none;
+    color: #b28b01;
+}
+
+.list-content-item-title {
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+.list-content-item-description {
+    font-size: 0.9em;
+    padding-top: 1em;
+}
+
+/* Pagination */
+.list-pagination {
+    text-align: center;
+    margin: 5em auto 2em auto;
+}
+
+.list-pagination a {
+    color: #5f3305;
+    text-decoration: none;
+}
+
+.list-pagination-action,
+.list-pagination-action-disabled {
+    display: inline-block;
+    margin: 1em;
+}
+
+.list-pagination-action-disabled {
+    visibility: hidden;
+}
+
+.list-pagination-action-button {
+    font-size: 2em;
+    width: 2em;
+    height: 1.4em;
+    padding: 0.2em 0.2em 0.2em 0.2em;
+    border-radius: 0.2em;
+}
+
+.list-pagination-right {
+    /* Right icons didn't centre properly with even padding */
+    padding: 0.2em 0.2em 0.2em 0.3em;
+}
+
+.list-pagination-action .list-pagination-action-button {
+    background: rgba(255, 255, 255, 0.5)
+}
+
+.list-pagination-action .list-pagination-action-button:hover {
+    text-decoration: none;
+    background: white;
+    color: #b28b01;
+}
+
+.list-pagination-action-label {
+    font-size: 0.7em;
+    padding-top: 0.3em;
+}
+
+.list-pagination-current {
+    font-size: 1em;
+    display: inline-block;
+    font-weight: 500;
+}
+
+.hidden {
+    display: none;
+}
+
+/* ---------- Browse: Detail ---------- */
+
 
 
 /* ---------- Footer ---------- */
@@ -192,6 +397,11 @@ footer {
 
 #footer-content-text {
     margin-top: 2em;
+}
+
+footer a:hover {
+    color: #b28b01;
+    opacity: 1;
 }
 
 /* ---------- Error Pages ---------- */

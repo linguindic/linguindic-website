@@ -1,8 +1,12 @@
-{% extends "base.html" %}
+{% extends "researchdata/browse-list-base.html" %}
 {% load static %}
 
-{% block main %}
+{% block list_title %}Author{% endblock %}
+
+{% block list_itemlink %}{% url 'browse-authors-detail' object.id %}{% endblock %}
+
+{% block list_content %}
     <div class="container">
-        <h2>List</h2>
+        Author content block
     </div>
 {% endblock %}

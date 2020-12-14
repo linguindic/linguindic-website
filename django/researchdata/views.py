@@ -81,8 +81,18 @@ class BrowseLinguisticNotionListView(ListView):
     Class-based view to show the linguistic notion list template
     """
     template_name = 'researchdata/browse-linguisticnotion-list.html'
-    model = models.LinguisticNotion
-    paginate_by = 30
+    queryset = models.LinguisticNotion.objects.filter(admin_published=True)
+    paginate_by = 1
+
+    def get_context_data(self, **kwargs):
+        # Get current context
+        context = super(BrowseLinguisticNotionListView, self).get_context_data(**kwargs)
+        # Add data for related models
+        context['authors'] = models.Author.objects.filter(admin_published=True)
+        context['linguisticfields'] = models.LinguisticField.objects.filter(admin_published=True)
+        context['references'] = models.Reference.objects.filter(admin_published=True)
+        context['texts'] = models.Text.objects.filter(admin_published=True)
+        return context
 
 
 class BrowseLinguisticNotionDetailView(DetailView):

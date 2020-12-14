@@ -32,6 +32,19 @@
     .project-banner {
         height: 13em;
     }
+
+
+
+    /* ---------- Browse ---------- */
+
+    /* ---------- Browse: List ---------- */
+
+    /* List content */
+    .list-content-item {
+        margin: 1em 0em;
+        display: block;
+        width: 100%;
+    }
     
     /* ---------- Footer ---------- */
 

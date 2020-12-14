@@ -1,0 +1,14 @@
+{% comment %} 
+
+This file works out if the GET request includes certain key value pairs and, if so, returns them to be included in the url string as parameters.
+
+Each list will have some unique parameters that other lists don't. All parameters can be put in this single file, as conditional statements
+are used that will simply skip ones that aren't suitable.
+
+{% endcomment %}
+
+{% comment %} Search {% endcomment %}
+{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}
+{% comment %} Order {% endcomment %}
+{% if request.GET.orderby %}&orderby={{ request.GET.orderby }}{% endif %}
+{% if request.GET.orderdirection %}&orderdirection={{ request.GET.orderdirection }}{% endif %}

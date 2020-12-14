@@ -21,6 +21,18 @@
     .project-banner {
         height: 35em;
     }
+
+    /* ---------- Browse ---------- */
+
+    /* ---------- Browse: List ---------- */
+
+    /* List content */
+    .list-content-item {
+        margin: 1em;
+        display: inline-block;
+        width: calc(33% - 2em);
+        min-height: 10em;
+    }
     
     /* ---------- Footer ---------- */
 

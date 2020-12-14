@@ -26,4 +26,17 @@ $(document).ready(function() {
         $('html,body').animate({ scrollTop: $('#welcome-content').offset().top - 50 }, 800); 
     });
 
+    // Show advanced options on list page
+    $('#list-options-advanced-show').find('strong').on('click', function(){
+        $('#list-options-advanced-popup').fadeIn(100);
+    });
+    // Hide advanced options on list page
+    $('#list-options-advanced-popup-content-close, #list-options-advanced-popup').on('click', function(){
+        $('#list-options-advanced-popup').fadeOut(200);
+    });
+    // Prevent it from closing when clicking popup content
+    $('#list-options-advanced-popup-content').click(function(e) { 
+        e.stopPropagation();
+    });
+
 });

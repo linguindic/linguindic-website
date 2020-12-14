@@ -16,8 +16,8 @@ urlpatterns = [
     path('browse/texts/<pk>/', views.BrowseTextDetailView.as_view(), name='browse-texts-detail'),
 
     # Browse: Author
-    path('browse/author/', views.BrowseAuthorListView.as_view(), name='browse-author-list'),
-    path('browse/author/<pk>/', views.BrowseAuthorDetailView.as_view(), name='browse-author-detail'),
+    path('browse/authors/', views.BrowseAuthorListView.as_view(), name='browse-authors-list'),
+    path('browse/authors/<pk>/', views.BrowseAuthorDetailView.as_view(), name='browse-authors-detail'),
 
     # Browse: Linguistic Fields
     path('browse/linguisticfields/', views.BrowseLinguisticFieldListView.as_view(), name='browse-linguisticfields-list'),
