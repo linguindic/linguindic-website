@@ -53,34 +53,34 @@
                             <div id="list-options-advanced-popup-content-search">
                                 <div class="list-options-advanced-popup-content-subtitle">Search</div>
                                 <!-- Search By --> 
-                                <label for="list-options-advanced-popup-content-filter-searchby">Search by</label>
-                                <select id="list-options-advanced-popup-content-filter-searchby" name="filter-searchby">
+                                <label for="list-options-advanced-popup-content-search-by">Search by</label>
+                                <select id="list-options-advanced-popup-content-search-by" name="advanced_search_by">
                                     {% block list_options_advanced_searchby %}{% endblock %}
                                 </select>
                                 <!-- Search Criteria -->
-                                <label for="list-options-advanced-popup-content-filter-search">Search</label>
-                                <input type="text" id="list-options-advanced-popup-content-filter-search" name="filter-search">
-                                
+                                <label for="list-options-advanced-popup-content-search-criteria">Search</label>
+                                <input type="text" id="list-options-advanced-popup-content-search-criteria" name="advanced_search_criteria">
                             </div>
-                        
+
+                            <!-- Filter -->
+                            <!-- Each list page that inherits this base file will specify its own unique filters -->
+                            {% block list_options_advanced_filters %}{% endblock %}
+
                             <!-- Order -->
                             <div id="list-options-advanced-popup-content-order">
                                 <div class="list-options-advanced-popup-content-subtitle">Order</div>
                                 <!-- Order by -->
                                 <label for="list-options-advanced-popup-content-order-by">Order by:</label>
-                                <select id="list-options-advanced-popup-content-order-by" name="order-by">
+                                <select id="list-options-advanced-popup-content-order-by" name="advanced_order_by">
                                     {% block list_options_advanced_order_by %}{% endblock %}
                                 </select>
                                 <!-- Order direction -->
                                 <label for="list-options-advanced-popup-content-order-direction">Order direction:</label>
-                                <select id="list-options-advanced-popup-content-order-direction" name="order-direction">
+                                <select id="list-options-advanced-popup-content-order-direction" name="advanced_order_direction">
                                     <option value="">Ascending (A-Z, 0-9)</option>
                                     <option value="-">Descending (Z-A, 9-0)</option>
                                 </select>
                             </div>
-
-                            <!-- Filter -->
-                            {% block list_options_advanced_filters %}{% endblock %}
 
                             <!-- Submit -->
                             <input type="submit" value="Apply Options" id="list-options-advanced-popup-content-form-submit"> 
