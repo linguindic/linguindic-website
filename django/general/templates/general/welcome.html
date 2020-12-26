@@ -21,4 +21,16 @@
         </p>
     </div>
 
+    {% comment %} JavaScript/jQuery for this page {% endcomment %}
+    <script>
+        $(document).ready(function() {
+
+            // Scroll down to main welcome section when clicking on the proceed button in the welcome banner
+            $('#welcome-banner-proceed').on('click', function(){
+                $('html,body').animate({ scrollTop: $('#welcome-content').offset().top - 50 }, 800); 
+            });
+
+        });
+    </script>
+
 {% endblock %}

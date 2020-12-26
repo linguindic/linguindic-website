@@ -81,6 +81,7 @@ main {
     margin-top: 4em;
     padding-bottom: 4em;
     background: #eedac3;
+    min-height: calc(100vh - 4em);
 }
 
 main p,
@@ -218,16 +219,24 @@ main a {
     background: #b28b01;
 }
 
-#list-options-advanced-show {
+#list-options-links {
     text-align: right;
 }
 
-#list-options-advanced-show strong:hover {
+#list-options-links span {
+    display: inline-block;
+}
+
+#list-options-links span:hover {
     cursor: pointer;
     text-decoration: underline;
 }
 
-#list-options-advanced-popup {
+#list-options-links-advanced {
+    padding-right: 2em;
+}
+
+#list-options-advanced {
     background: rgba(0, 0, 0, 0.9);
     position: fixed;
     left: 0;
@@ -238,7 +247,7 @@ main a {
     display: none;
 }
 
-#list-options-advanced-popup-content {
+#list-options-advanced-content {
     background: white;
     margin: 4em auto;
     width: 30em;
@@ -249,7 +258,7 @@ main a {
     overflow-y: scroll;
 }
 
-#list-options-advanced-popup-content-close {
+#list-options-advanced-content-close {
     text-align: right;
     font-size: 1.5em;
     padding: 0.2em;
@@ -257,7 +266,7 @@ main a {
     color: #AAA;
 }
 
-#list-options-advanced-popup-content-title {
+#list-options-advanced-content-title {
     text-align: center;
     text-transform: uppercase;
     font-size: 1.3em;
@@ -265,7 +274,7 @@ main a {
     font-weight: bold;
 }
 
-.list-options-advanced-popup-content-subtitle {
+.list-options-advanced-content-subtitle {
     font-size: 1.2em;
     font-weight: bold;
     margin-top: 2em;
@@ -273,18 +282,18 @@ main a {
     text-transform: uppercase;
 }
 
-#list-options-advanced-popup-content label {
+#list-options-advanced-content label {
     margin: 1em 0 0.3em 0;
     display: block;
     font-size: 0.9em;
 }
 
-#list-options-advanced-popup-content input,
-#list-options-advanced-popup-content select {
+#list-options-advanced-content input,
+#list-options-advanced-content select {
     width: 100%;
 }
 
-#list-options-advanced-popup-content-form-submit {
+#list-options-advanced-content-form-submit {
     margin: 3em auto 1em auto;
     padding: 0.7em 0;
     font-size: 1.1em;
@@ -295,7 +304,7 @@ main a {
     border-radius: 0.5em;
 }
 
-#list-options-advanced-popup-content-form-submit:hover {
+#list-options-advanced-content-form-submit:hover {
     background: #937200;
 }
 
@@ -319,10 +328,27 @@ main a {
     font-size: 1.5em;
 }
 
-.list-content-item-description {
+.list-content-item-details {
     font-size: 0.9em;
     padding-top: 1em;
 }
+
+#list-content-empty {
+    text-align: center;
+}
+
+#list-content-empty-title {
+    font-weight: bold;
+    font-size: 1.5em;
+    margin: 1em auto;
+}
+
+#list-content-empty-details strong {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+
 
 /* Pagination */
 .list-pagination {

@@ -1,0 +1,36 @@
+{% extends "researchdata/browse-list-base.html" %}
+{% load static %}
+
+<!-- Title -->
+{% block list_title %}Linguistic Fields{% endblock %}
+
+<!-- Link to detail -->
+{% block list_item_link %}{% url 'browse-linguisticfields-detail' object.id %}{% endblock %}
+
+{% block list_options_advanced_searchby %}
+    <!-- Search By --> 
+    {% include 'researchdata/snippets/select-default.html' %}
+    <option value="name">Name</option>
+    <option value="description">Description</option>
+{% endblock %}
+
+<!-- Order By -->
+{% block list_options_advanced_order_by %}
+    <option value="name">Name</option>
+    <option value="description">Description</option>
+{% endblock %}
+
+
+<!-- Filters -->
+{% block list_options_advanced_filters %}
+
+    <!-- Linguistic Notion -->
+    <label for="list-options-advanced-content-filter-linguisticnotion">Linguistic Notion</label>
+    <select id="list-options-advanced-content-filter-linguisticnotion" name="advanced_filter_linguisticnotion">
+        {% include 'researchdata/snippets/select-default.html' %}
+        {% for linguisticnotion in linguisticnotions %}
+            <option value="{{ linguisticnotion.id }}">{{ linguisticnotion }}</option>
+        {% endfor %}
+    </select>
+
+{% endblock %}

@@ -27,45 +27,40 @@
 <!-- Filters -->
 {% block list_options_advanced_filters %}
 
-    <div id="list-options-advanced-popup-content-filter">
-        <div class="list-options-advanced-popup-content-subtitle">Filter</div>
+    <!-- Author -->
+    <label for="list-options-advanced-content-filter-author">Author</label>
+    <select id="list-options-advanced-content-filter-author" name="advanced_filter_author">
+        {% include 'researchdata/snippets/select-default.html' %}
+        {% for author in authors %}
+            <option value="{{ author.id }}">{{ author }}</option>
+        {% endfor %}
+    </select>
 
-        <!-- Author -->
-        <label for="list-options-advanced-popup-content-filter-author">Author</label>
-        <select id="list-options-advanced-popup-content-filter-author" name="advanced_filter_author">
-            {% include 'researchdata/snippets/select-default.html' %}
-            {% for author in authors %}
-                <option value="{{ author.id }}">{{ author }}</option>
-            {% endfor %}
-        </select>
+    <!-- Linguistic Field -->
+    <label for="list-options-advanced-content-filter-linguisticfield">Linguistic Field</label>
+    <select id="list-options-advanced-content-filter-linguisticfield" name="advanced_filter_linguisticfield">
+        {% include 'researchdata/snippets/select-default.html' %}
+        {% for linguisticfield in linguisticfields %}
+            <option value="{{ linguisticfield.id }}">{{ linguisticfield }}</option>
+        {% endfor %}
+    </select>
 
-        <!-- Linguistic Field -->
-        <label for="list-options-advanced-popup-content-filter-linguisticfield">Linguistic Field</label>
-        <select id="list-options-advanced-popup-content-filter-linguisticfield" name="advanced_filter_linguisticfield">
-            {% include 'researchdata/snippets/select-default.html' %}
-            {% for linguisticfield in linguisticfields %}
-                <option value="{{ linguisticfield.id }}">{{ linguisticfield }}</option>
-            {% endfor %}
-        </select>
+    <!-- Reference -->
+    <label for="list-options-advanced-content-filter-reference">Reference</label>
+    <select id="list-options-advanced-content-filter-reference" name="advanced_filter_reference">
+        {% include 'researchdata/snippets/select-default.html' %}
+        {% for reference in references %}
+            <option value="{{ reference.id }}">{{ reference }}</option>
+        {% endfor %}
+    </select>
 
-        <!-- Reference -->
-        <label for="list-options-advanced-popup-content-filter-reference">Reference</label>
-        <select id="list-options-advanced-popup-content-filter-reference" name="advanced_filter_reference">
-            {% include 'researchdata/snippets/select-default.html' %}
-            {% for reference in references %}
-                <option value="{{ reference.id }}">{{ reference }}</option>
-            {% endfor %}
-        </select>
-
-        <!-- Text -->
-        <label for="list-options-advanced-popup-content-filter-text">Text</label>
-        <select id="list-options-advanced-popup-content-filter-text" name="advanced_filter_text">
-            {% include 'researchdata/snippets/select-default.html' %}
-            {% for text in texts %}
-                <option value="{{ text.id }}">{{ text }}</option>
-            {% endfor %}
-        </select>
-    
-    </div>
+    <!-- Text -->
+    <label for="list-options-advanced-content-filter-text">Text</label>
+    <select id="list-options-advanced-content-filter-text" name="advanced_filter_text">
+        {% include 'researchdata/snippets/select-default.html' %}
+        {% for text in texts %}
+            <option value="{{ text.id }}">{{ text }}</option>
+        {% endfor %}
+    </select>
 
 {% endblock %}

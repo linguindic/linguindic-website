@@ -21,10 +21,6 @@
                         <div class="input-group">
                             <!-- Search textbox -->
                             <input type="text" class="form-control" name="search" title="search" id="list-options-search-input" placeholder="Search">
-                            <script>
-                                var search = new URL(window.location.href).searchParams.get("search");
-                                if(search) document.getElementById('list-options-search-input').value = search;
-                            </script>
                             <!-- Search button -->
                             <div class="input-group-append">
                                 <button type="submit" value="Search" class="btn btn-primary" title="search-btn" id="list-options-search-button">
@@ -36,54 +32,60 @@
                 </div>
             </form>
 
+            <!-- Links -->
+            <div id="list-options-links">
+                <span id="list-options-links-advanced"><i class="fas fa-sliders-h"></i> Advanced options</span>
+                <span id="list-options-links-reset" class="reset-form"><i class="fas fa-redo"></i> Reset</span>
+            </div>
 
             <!-- Advanced options -->
             <div class="list-options-advanced">
-                <div id="list-options-advanced-show"><strong><i class="fas fa-sliders-h"></i> Advanced options</strong></div>
-                <!-- Advanced options pop up -->
-                <div id="list-options-advanced-popup">
-                    <div id="list-options-advanced-popup-content">
-                        <div id="list-options-advanced-popup-content-close"><i class="fas fa-times"></i></div>
-                        <div id="list-options-advanced-popup-content-title">Advanced Options</div>
+                <div id="list-options-advanced">
+                    <div id="list-options-advanced-content">
+                        <div id="list-options-advanced-content-close"><i class="fas fa-times"></i></div>
+                        <div id="list-options-advanced-content-title">Advanced Options</div>
 
                         <!-- Form element has no action attribute, so that it submits to the same page -->
-                        <form method="GET" class="form-group" id="list-options-advanced-popup-content-form">
+                        <form method="GET" class="form-group" id="list-options-advanced-content-form">
 
                             <!-- Search -->
-                            <div id="list-options-advanced-popup-content-search">
-                                <div class="list-options-advanced-popup-content-subtitle">Search</div>
+                            <div id="list-options-advanced-content-search">
+                                <div class="list-options-advanced-content-subtitle">Search</div>
                                 <!-- Search By --> 
-                                <label for="list-options-advanced-popup-content-search-by">Search by</label>
-                                <select id="list-options-advanced-popup-content-search-by" name="advanced_search_by">
+                                <label for="list-options-advanced-content-search-by">Search by</label>
+                                <select id="list-options-advanced-content-search-by" name="advanced_search_by">
                                     {% block list_options_advanced_searchby %}{% endblock %}
                                 </select>
                                 <!-- Search Criteria -->
-                                <label for="list-options-advanced-popup-content-search-criteria">Search</label>
-                                <input type="text" id="list-options-advanced-popup-content-search-criteria" name="advanced_search_criteria">
+                                <label for="list-options-advanced-content-search-criteria">Search</label>
+                                <input type="text" id="list-options-advanced-content-search-criteria" name="advanced_search_criteria">
                             </div>
 
                             <!-- Filter -->
-                            <!-- Each list page that inherits this base file will specify its own unique filters -->
-                            {% block list_options_advanced_filters %}{% endblock %}
+                            <div id="list-options-advanced-content-filter">
+                                <div class="list-options-advanced-content-subtitle">Filter</div>
+                                <!-- Each list page that inherits this base file will specify its own unique filters -->
+                                {% block list_options_advanced_filters %}{% endblock %}
+                            </div>
 
                             <!-- Order -->
-                            <div id="list-options-advanced-popup-content-order">
-                                <div class="list-options-advanced-popup-content-subtitle">Order</div>
+                            <div id="list-options-advanced-content-order">
+                                <div class="list-options-advanced-content-subtitle">Order</div>
                                 <!-- Order by -->
-                                <label for="list-options-advanced-popup-content-order-by">Order by:</label>
-                                <select id="list-options-advanced-popup-content-order-by" name="advanced_order_by">
+                                <label for="list-options-advanced-content-order-by">Order by:</label>
+                                <select id="list-options-advanced-content-order-by" name="advanced_order_by">
                                     {% block list_options_advanced_order_by %}{% endblock %}
                                 </select>
                                 <!-- Order direction -->
-                                <label for="list-options-advanced-popup-content-order-direction">Order direction:</label>
-                                <select id="list-options-advanced-popup-content-order-direction" name="advanced_order_direction">
+                                <label for="list-options-advanced-content-order-direction">Order direction:</label>
+                                <select id="list-options-advanced-content-order-direction" name="advanced_order_direction">
                                     <option value="">Ascending (A-Z, 0-9)</option>
                                     <option value="-">Descending (Z-A, 9-0)</option>
                                 </select>
                             </div>
 
                             <!-- Submit -->
-                            <input type="submit" value="Apply Options" id="list-options-advanced-popup-content-form-submit"> 
+                            <input type="submit" value="Apply Options" id="list-options-advanced-content-form-submit"> 
 
                         </form>
 
@@ -92,17 +94,27 @@
             </div>
         </div>
 
-        
 
         <!-- List Content -->
         <div class="list-content">
             {% for object in object_list %}
                                 
                 <a href="{% block list_item_link %}{% endblock %}" class="list-content-item">
-                    <div class="list-content-item-title">{{ object.name }}</div>
-                    <div class="list-content-item-description">{{ object.description | slice:"250" }}</div>
+                    <div class="list-content-item-title">{{ object }}</div>
+                    <div class="list-content-item-details">{{ object.details | slice:"250" }}</div>
                 </a>
-                                
+            
+            {% empty %} 
+
+                <div id="list-content-empty">
+                    <div id="list-content-empty-title">
+                        No records found.
+                    </div>
+                    <div id="list-content-empty-details">
+                        Try expanding your search criteria or <strong class="reset-form">resetting the search</strong> to view all items.
+                    </div>
+                </div>
+
             {% endfor %}
         </div>
 
@@ -192,4 +204,57 @@
         {% endif %}
         
     </div>
+
+    {% comment %} JavaScript/jQuery for this page {% endcomment %}
+    <script>
+        $(document).ready(function() {
+
+            // Show advanced options
+            $('#list-options-links-advanced').on('click', function(){
+                $('#list-options-advanced').fadeIn(100);
+            });
+            // Hide advanced options
+            $('#list-options-advanced-content-close, #list-options-advanced').on('click', function(){
+                $('#list-options-advanced').fadeOut(200);
+            });
+            // Prevent it from closing when clicking popup content
+            $('#list-options-advanced-content').click(function(e) { 
+                e.stopPropagation();
+            });
+
+            // Reset form
+            $('.reset-form').on('click', function(){
+                // Go to the current URL but without any parameters (remove everything after ? in url)
+                window.location.replace(window.location.href.split('?')[0]);
+            });
+
+            // Fill form values from URL parameters
+            function setFormItemValueFromUrlParameter(formItemID, urlParameter) {
+                var value = new URL(window.location.href).searchParams.get(urlParameter);
+                if(value) document.getElementById(formItemID).value = value;
+            }
+            // Apply above function to all form fields:
+            // Search (simple)
+            setFormItemValueFromUrlParameter("list-options-search-input", "search");
+            // Advanced:
+            // Search
+            setFormItemValueFromUrlParameter("list-options-advanced-content-search-by", "advanced_search_by");
+            setFormItemValueFromUrlParameter("list-options-advanced-content-search-criteria", "advanced_search_criteria");
+            // Filter
+            setFormItemValueFromUrlParameter("list-options-advanced-content-filter-linguisticfield", "advanced_filter_linguisticfield");
+            setFormItemValueFromUrlParameter("list-options-advanced-content-filter-linguisticnotion", "advanced_filter_linguisticnotion");
+            setFormItemValueFromUrlParameter("list-options-advanced-content-filter-author", "advanced_filter_author");
+            setFormItemValueFromUrlParameter("list-options-advanced-content-filter-reference", "advanced_filter_reference");
+            setFormItemValueFromUrlParameter("list-options-advanced-content-filter-text", "advanced_filter_text");
+            setFormItemValueFromUrlParameter("list-options-advanced-content-filter-sllinguistictradition", "advanced_filter_sllinguistictradition");
+            setFormItemValueFromUrlParameter("list-options-advanced-content-filter-sltextgroup", "advanced_filter_sltextgroup");
+            setFormItemValueFromUrlParameter("list-options-advanced-content-filter-sltexttype", "advanced_filter_sltexttype");
+            sltexttype
+            // Order
+            setFormItemValueFromUrlParameter("list-options-advanced-content-order-by", "advanced_order_by");
+            setFormItemValueFromUrlParameter("list-options-advanced-content-order-direction", "advanced_order_direction");
+
+        });
+    </script>
+
 {% endblock %}

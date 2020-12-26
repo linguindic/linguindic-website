@@ -1,12 +1,14 @@
 from django.urls import path
-from .views import api
-from .views import browseauthor
-from .views import browselinguisticfield
-from .views import browselinguisticnotion
-from .views import browsereference
-from .views import browsetext
-from .views import compare
-from .views import visualise
+from .views import (
+    api,
+    browseauthor,
+    browselinguisticfield,
+    browselinguisticnotion,
+    browsereference,
+    browsetext,
+    compare,
+    visualise
+)
 
 urlpatterns = [
 

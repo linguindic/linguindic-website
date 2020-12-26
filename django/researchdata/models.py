@@ -209,6 +209,8 @@ class Reference(models.Model):
     # Foreign key fields
     reference_type = models.ForeignKey(SlReferenceType, on_delete=models.SET_NULL, blank=True, null=True)
     reference_publisher = models.ForeignKey(SlReferencePublisher, on_delete=models.SET_NULL, blank=True, null=True)
+    # Many to many relationship fields
+    # (relationships specified in other models: Text, Author, LinguisticNotion. See 'related_name' value in each.)
     # Admin fields
     admin_notes = models.TextField(blank=True, null=True)
     admin_published = models.BooleanField(default=True)
@@ -231,6 +233,10 @@ class Reference(models.Model):
             return self.url
         else:
             return "(Unnamed reference)"
+    
+    @property
+    def details(self):
+        return "Details"
 
     class Meta:
         db_table = "{}_main_reference".format(apps.app_name)
@@ -247,7 +253,9 @@ class Text(models.Model):
     text_group = models.ForeignKey(SlTextGroup, on_delete=models.SET_NULL, blank=True, null=True)
     text_type = models.ForeignKey(SlTextType, on_delete=models.SET_NULL, blank=True, null=True)
     # Many to many relationship fields
-    reference = models.ManyToManyField(Reference, blank=True, db_table="{}_m2m_text_reference".format(apps.app_name))
+    # (relationships specified in other models: Author, LinguisticNotion. See 'related_name' value in each.)
+    related_name = 'text'
+    reference = models.ManyToManyField(Reference, related_name=related_name, blank=True, db_table="{}_m2m_text_reference".format(apps.app_name))
     # Admin fields
     admin_notes = models.TextField(blank=True, null=True)
     admin_published = models.BooleanField(default=True)
@@ -261,6 +269,10 @@ class Text(models.Model):
 
     def __str__(self):
         return self.name
+    
+    @property
+    def details(self):
+        return "Details"
 
     class Meta:
         db_table = "{}_main_text".format(apps.app_name)
@@ -280,8 +292,10 @@ class Author(models.Model):
     # Foreign key fields
     linguistic_tradition = models.ForeignKey(SlLinguisticTradition, on_delete=models.SET_NULL, blank=True, null=True)
     # Many to many relationship fields
-    text = models.ManyToManyField(Text, blank=True, db_table="{}_m2m_author_text".format(apps.app_name))
-    reference = models.ManyToManyField(Reference, blank=True, db_table="{}_m2m_author_reference".format(apps.app_name))
+    # (relationships specified in other models: LinguisticNotion. See 'related_name' value in each.)
+    related_name = 'author'
+    text = models.ManyToManyField(Text, related_name=related_name, blank=True, db_table="{}_m2m_author_text".format(apps.app_name))
+    reference = models.ManyToManyField(Reference, related_name=related_name, blank=True, db_table="{}_m2m_author_reference".format(apps.app_name))
     # Admin fields
     admin_notes = models.TextField(blank=True, null=True)
     admin_published = models.BooleanField(default=True)
@@ -304,6 +318,10 @@ class Author(models.Model):
             return self.alternative_name
         else:
             return "(Unnamed author)"
+    
+    @property
+    def details(self):
+        return "Details"
 
     class Meta:
         db_table = "{}_main_author".format(apps.app_name)
@@ -315,6 +333,8 @@ class LinguisticField(models.Model):
     """
     name = models.CharField(max_length=100)
     description = models.TextField(blank=True, null=True)
+    # Many to many relationship fields
+    # (relationships specified in other models: LinguisticNotion. See 'related_name' value in each.)
     # Admin fields
     admin_notes = models.TextField(blank=True, null=True)
     admin_published = models.BooleanField(default=True)
@@ -328,6 +348,10 @@ class LinguisticField(models.Model):
 
     def __str__(self):
         return self.name
+    
+    @property
+    def details(self):
+        return "Details"
 
     class Meta:
         db_table = "{}_main_linguisticfield".format(apps.app_name)
@@ -336,18 +360,19 @@ class LinguisticField(models.Model):
 class LinguisticNotion(models.Model):
     """
     The main data being collected.
-    A series of linguistic ideas/notions/concepts from different traditions that can be mapped to one another.
+    A series of linguistic ideas/notions/concepts from different traditions that can be mapped to one another
     """
     name = models.CharField(max_length=100)
     description = models.TextField(blank=True, null=True)
     example = models.TextField(blank=True, null=True)
     star_count = models.IntegerField(default=0)
     # Many to many relationship fields
-    author = models.ManyToManyField(Author, blank=True, db_table="{}_m2m_author_linguisticnotion".format(apps.app_name))
-    linguisticfield = models.ManyToManyField(LinguisticField, blank=True,
+    related_name = 'linguistic_notion'
+    author = models.ManyToManyField(Author, related_name=related_name, blank=True, db_table="{}_m2m_author_linguisticnotion".format(apps.app_name))
+    linguisticfield = models.ManyToManyField(LinguisticField, related_name=related_name, blank=True,
                                              db_table="{}_m2m_linguisticfield_linguisticnotion".format(apps.app_name))
-    reference = models.ManyToManyField(Reference, blank=True, db_table="{}_m2m_linguisticnotion_reference".format(apps.app_name))
-    text = models.ManyToManyField(Text, blank=True, db_table="{}_m2m_linguisticnotion_text".format(apps.app_name))
+    reference = models.ManyToManyField(Reference, related_name=related_name, blank=True, db_table="{}_m2m_linguisticnotion_reference".format(apps.app_name))
+    text = models.ManyToManyField(Text, related_name=related_name, blank=True, db_table="{}_m2m_linguisticnotion_text".format(apps.app_name))
     linguistic_notion = models.ManyToManyField("self", through="M2MLinguisticNotionsRelationship")
     # Admin fields
     admin_notes = models.TextField(blank=True, null=True)
@@ -362,6 +387,13 @@ class LinguisticNotion(models.Model):
 
     def __str__(self):
         return self.name
+    
+    @property
+    def details(self):
+        if self.description:
+            return self.description
+        elif self.example:
+            return "E.g. {}".format(self.description)
 
     class Meta:
         db_table = "{}_main_linguisticnotion".format(apps.app_name)
