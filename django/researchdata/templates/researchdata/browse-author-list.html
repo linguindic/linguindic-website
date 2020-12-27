@@ -8,8 +8,7 @@
 {% block list_item_link %}{% url 'browse-authors-detail' object.id %}{% endblock %}
 
 {% block list_options_advanced_searchby %}
-    <!-- Search By --> 
-    {% include 'researchdata/snippets/select-default.html' %}
+    <!-- Search By -->
     <option value="first_name">First Name</option>
     <option value="last_name">Last Name</option>
     <option value="alternative_name">Alternative Name</option>
@@ -29,7 +28,6 @@
     <option value="date_of_birth">Date of Birth</option>
     <option value="date_of_death">Date of Death</option>
 {% endblock %}
-
 
 <!-- Filters -->
 {% block list_options_advanced_filters %}

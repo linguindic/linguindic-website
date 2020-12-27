@@ -8,8 +8,7 @@
 {% block list_item_link %}{% url 'browse-linguisticnotions-detail' object.id %}{% endblock %}
 
 {% block list_options_advanced_searchby %}
-    <!-- Search By --> 
-    {% include 'researchdata/snippets/select-default.html' %}
+    <!-- Search By -->
     <option value="name">Name</option>
     <option value="description">Description</option>
     <option value="example">Example</option>
@@ -22,7 +21,6 @@
     <option value="example">Example</option>
     <option value="star_count">Popularity</option>
 {% endblock %}
-
 
 <!-- Filters -->
 {% block list_options_advanced_filters %}

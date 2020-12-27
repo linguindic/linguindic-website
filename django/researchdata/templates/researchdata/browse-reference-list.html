@@ -1,8 +1,96 @@
-{% extends "base.html" %}
+{% extends "researchdata/browse-list-base.html" %}
 {% load static %}
 
-{% block main %}
-    <div class="container">
-        <h2>List</h2>
-    </div>
+<!-- Title -->
+{% block list_title %}References{% endblock %}
+
+<!-- Link to detail -->
+{% block list_item_link %}{% url 'browse-authors-detail' object.id %}{% endblock %}
+
+{% block list_options_advanced_searchby %}
+    <!-- Search By -->
+    <option value="title">Title</option>
+    <option value="subtitle">Subtitle</option>
+    <option value="editors">Editors</option>
+    <option value="school">School</option>
+    <option value="edition">Edition</option>
+    <option value="book_title">Book Title</option>
+    <option value="journal_title">Journal Title</option>
+    <option value="volume">Volume</option>
+    <option value="number">Number</option>
+    <option value="location">Location</option>
+    <option value="year">Year</option>
+    <option value="page_start">Page (Start)</option>
+    <option value="page_end">Page (End)</option>
+    <option value="url">URL</option>
+    <option value="last_accessed_date">Last Accessed Date</option>
+{% endblock %}
+
+<!-- Order By -->
+{% block list_options_advanced_order_by %}
+    <option value="title">Title</option>
+    <option value="subtitle">Subtitle</option>
+    <option value="editors">Editors</option>
+    <option value="school">School</option>
+    <option value="edition">Edition</option>
+    <option value="book_title">Book Title</option>
+    <option value="journal_title">Journal Title</option>
+    <option value="volume">Volume</option>
+    <option value="number">Number</option>
+    <option value="location">Location</option>
+    <option value="year">Year</option>
+    <option value="page_start">Page (Start)</option>
+    <option value="page_end">Page (End)</option>
+    <option value="url">URL</option>
+    <option value="last_accessed_date">Last Accessed Date</option>
+{% endblock %}
+
+<!-- Filters -->
+{% block list_options_advanced_filters %}
+
+    <!-- SL Reference Type -->
+    <label for="list-options-advanced-content-filter-slreferencetype">Reference Type</label>
+    <select id="list-options-advanced-content-filter-slreferencetype" name="advanced_filter_slreferencetype">
+        {% include 'researchdata/snippets/select-default.html' %}
+        {% for slreferencetype in slreferencetypes %}
+            <option value="{{ slreferencetype.id }}">{{ slreferencetype }}</option>
+        {% endfor %}
+    </select>
+
+    <!-- SL Reference Publisher -->
+    <label for="list-options-advanced-content-filter-slreferencepublisher">Publisher</label>
+    <select id="list-options-advanced-content-filter-slreferencepublisher" name="advanced_filter_slreferencepublisher">
+        {% include 'researchdata/snippets/select-default.html' %}
+        {% for slreferencepublisher in slreferencepublishers %}
+            <option value="{{ slreferencepublisher.id }}">{{ slreferencepublisher }}</option>
+        {% endfor %}
+    </select>
+
+    <!-- Author -->
+    <label for="list-options-advanced-content-filter-author">Author</label>
+    <select id="list-options-advanced-content-filter-author" name="advanced_filter_author">
+        {% include 'researchdata/snippets/select-default.html' %}
+        {% for author in authors %}
+            <option value="{{ author.id }}">{{ author }}</option>
+        {% endfor %}
+    </select>
+
+    <!-- Linguistic Notion -->
+    <label for="list-options-advanced-content-filter-linguisticnotion">Linguistic Notion</label>
+    <select id="list-options-advanced-content-filter-linguisticnotion" name="advanced_filter_linguisticnotion">
+        {% include 'researchdata/snippets/select-default.html' %}
+        {% for linguisticnotion in linguisticnotions %}
+            <option value="{{ linguisticnotion.id }}">{{ linguisticnotion }}</option>
+        {% endfor %}
+    </select>
+
+    <!-- Text -->
+    <label for="list-options-advanced-content-filter-text">Text</label>
+    <select id="list-options-advanced-content-filter-text" name="advanced_filter_text">
+        {% include 'researchdata/snippets/select-default.html' %}
+        {% for text in texts %}
+            <option value="{{ text.id }}">{{ text }}</option>
+        {% endfor %}
+    </select>
+
 {% endblock %}

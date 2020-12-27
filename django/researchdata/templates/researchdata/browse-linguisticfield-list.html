@@ -8,8 +8,7 @@
 {% block list_item_link %}{% url 'browse-linguisticfields-detail' object.id %}{% endblock %}
 
 {% block list_options_advanced_searchby %}
-    <!-- Search By --> 
-    {% include 'researchdata/snippets/select-default.html' %}
+    <!-- Search By -->
     <option value="name">Name</option>
     <option value="description">Description</option>
 {% endblock %}
@@ -19,7 +18,6 @@
     <option value="name">Name</option>
     <option value="description">Description</option>
 {% endblock %}
-
 
 <!-- Filters -->
 {% block list_options_advanced_filters %}

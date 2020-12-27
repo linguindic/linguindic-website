@@ -8,8 +8,7 @@
 {% block list_item_link %}{% url 'browse-texts-detail' object.id %}{% endblock %}
 
 {% block list_options_advanced_searchby %}
-    <!-- Search By --> 
-    {% include 'researchdata/snippets/select-default.html' %}
+    <!-- Search By -->
     <option value="name">Name</option>
     <option value="description">Description</option>
     <option value="approximate_date_of_creation">Approximate date of creation</option>
@@ -21,7 +20,6 @@
     <option value="description">Description</option>
     <option value="approximate_date_of_creation">Approximate date of creation</option>
 {% endblock %}
-
 
 <!-- Filters -->
 {% block list_options_advanced_filters %}

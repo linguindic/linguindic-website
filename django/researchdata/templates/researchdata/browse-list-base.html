@@ -54,6 +54,7 @@
                                 <!-- Search By --> 
                                 <label for="list-options-advanced-content-search-by">Search by</label>
                                 <select id="list-options-advanced-content-search-by" name="advanced_search_by">
+                                    {% include 'researchdata/snippets/select-default.html' %}
                                     {% block list_options_advanced_searchby %}{% endblock %}
                                 </select>
                                 <!-- Search Criteria -->
