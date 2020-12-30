@@ -2,7 +2,24 @@
 {% load static %}
 
 {% block main %}
-    <div class="container">
-        <h2>Detail</h2>
+    <div class="container" id="browse-detail">
+        
+        <h2>{{ object }}</h2>
+        <p>
+            {{ object.details }}
+        </p>
+
+        {% if object.example %}
+            <h3>Example</h3>
+            <p>{{ object.example }}</p>
+        {% endif %}
+
+        <!-- Many to Many relationships -->
+        {% include "researchdata/snippets/detail-manytomanyitem-author.html" %}
+        {% include "researchdata/snippets/detail-manytomanyitem-linguisticfield.html" %}
+        {% include "researchdata/snippets/detail-manytomanyitem-linguisticnotion.html" %}
+        {% include "researchdata/snippets/detail-manytomanyitem-reference.html" %}
+        {% include "researchdata/snippets/detail-manytomanyitem-text.html" %}
+
     </div>
 {% endblock %}

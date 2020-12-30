@@ -51,10 +51,6 @@ urlpatterns = [
 
     # Select List
 
-    # SlLinguisticNotionsRelationshipType
-    path('api/sllinguisticnotionsrelationshiptypes/', api.SlLinguisticNotionsRelationshipTypeListAPIView.as_view(), name='api-sllinguisticnotionsrelationshiptypes-list'),
-    path('api/sllinguisticnotionsrelationshiptypes/<pk>/', api.SlLinguisticNotionsRelationshipTypeRetrieveAPIView.as_view(), name='api-sllinguisticnotionsrelationshiptypes-retrieve'),
-
     # SlLinguisticTraditionGroup
     path('api/sllinguistictraditiongroups/', api.SlLinguisticTraditionGroupListAPIView.as_view(), name='api-sllinguistictraditiongroups-list'),
     path('api/sllinguistictraditiongroups/<pk>/', api.SlLinguisticTraditionGroupRetrieveAPIView.as_view(), name='api-sllinguistictraditiongroups-retrieve'),
@@ -99,12 +95,6 @@ urlpatterns = [
 
     # Linguistic Notions
     path('api/linguisticnotions/', api.LinguisticNotionListAPIView.as_view(), name='api-linguisticnotions-list'),
-    path('api/linguisticnotions/<pk>/', api.LinguisticNotionRetrieveAPIView.as_view(), name='api-linguisticnotions-retrieve'),
-
-    # Many to Many models
-
-    # M2MLinguisticNotionsRelationship
-    path('api/m2mlinguisticnotionsrelationship/', api.M2MLinguisticNotionsRelationshipListAPIView.as_view(), name='api-m2mlinguisticnotionsrelationship-list'),
-    path('api/m2mlinguisticnotionsrelationship/<pk>/', api.M2MLinguisticNotionsRelationshipRetrieveAPIView.as_view(), name='api-m2mlinguisticnotionsrelationship-retrieve'),
+    path('api/linguisticnotions/<pk>/', api.LinguisticNotionRetrieveAPIView.as_view(), name='api-linguisticnotions-retrieve')
 
 ]

@@ -86,25 +86,13 @@ class LinguisticNotionAdminView(GenericAdminView):
     """
     Set the Linguistic Notion section of the Django admin
     """
-    list_display = ('name', 'description', 'example', 'star_count', 'admin_published', 'meta_created_datetime')
+    list_display = ('name', 'description', 'example', 'admin_published', 'meta_created_datetime')
     search_fields = ('name', 'description', 'example', 'admin_notes')
-
-
-# Many to Many models
-
-
-class M2MLinguisticNotionsRelationshipAdminView(admin.ModelAdmin):
-    """
-    Set the M2M Linguistic Notions Relationship section of the Django admin
-    """
-    list_display = ('id', 'linguistic_notion_1', 'linguistic_notion_2', 'linguistic_notions_relationship_type')
-    list_filter = ('linguistic_notion_1', 'linguistic_notion_2', 'linguistic_notions_relationship_type')
 
 
 # Register models and their respective admin view
 
 # Select List models
-admin.site.register(models.SlLinguisticNotionsRelationshipType, GenericAdminView)
 admin.site.register(models.SlLinguisticTraditionGroup, GenericAdminView)
 admin.site.register(models.SlLinguisticTradition, GenericAdminView)
 admin.site.register(models.SlReferencePublisher, GenericAdminView)
@@ -118,6 +106,3 @@ admin.site.register(models.Text, TextAdminView)
 admin.site.register(models.Author, AuthorAdminView)
 admin.site.register(models.LinguisticField, GenericAdminView)  # Note - uses GenericAdminView
 admin.site.register(models.LinguisticNotion, LinguisticNotionAdminView)
-
-# Many To Many models
-admin.site.register(models.M2MLinguisticNotionsRelationship, M2MLinguisticNotionsRelationshipAdminView)

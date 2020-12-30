@@ -78,7 +78,7 @@ class BrowseLinguisticNotionListView(ListView):
         # Linguistic Field
         linguisticfield = self.request.GET.get('advanced_filter_linguisticfield', '')
         if linguisticfield != '':
-            queryset = queryset.filter(linguisticfield__in=[linguisticfield])
+            queryset = queryset.filter(linguistic_field__in=[linguisticfield])
 
         # Reference
         reference = self.request.GET.get('advanced_filter_reference', '')

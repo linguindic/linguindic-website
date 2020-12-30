@@ -13,22 +13,6 @@ class APITemplateView(TemplateView):
 # Select List models
 
 
-class SlLinguisticNotionsRelationshipTypeListAPIView(ListAPIView):
-    """
-    Return list of all SlLinguisticNotionsRelationshipType
-    """
-    queryset = models.SlLinguisticNotionsRelationshipType.objects.all()
-    serializer_class = serializers.SlLinguisticNotionsRelationshipTypeSerializer
-
-
-class SlLinguisticNotionsRelationshipTypeRetrieveAPIView(RetrieveAPIView):
-    """
-    Return a specific SlLinguisticNotionsRelationshipType
-    """
-    queryset = models.SlLinguisticNotionsRelationshipType.objects.all()
-    serializer_class = serializers.SlLinguisticNotionsRelationshipTypeSerializer
-
-
 class SlLinguisticTraditionGroupListAPIView(ListAPIView):
     """
     Return list of all SlLinguisticTraditionGroup
@@ -206,21 +190,3 @@ class LinguisticNotionRetrieveAPIView(RetrieveAPIView):
     """
     queryset = models.LinguisticNotion.objects.all()
     serializer_class = serializers.LinguisticNotionSerializer
-
-
-# Many to Many models
-
-class M2MLinguisticNotionsRelationshipListAPIView(ListAPIView):
-    """
-    Return list of all M2MLinguisticNotionsRelationship
-    """
-    queryset = models.M2MLinguisticNotionsRelationship.objects.all()
-    serializer_class = serializers.M2MLinguisticNotionsRelationshipSerializer
-
-
-class M2MLinguisticNotionsRelationshipRetrieveAPIView(RetrieveAPIView):
-    """
-    Return a specific M2MLinguisticNotionsRelationship
-    """
-    queryset = models.M2MLinguisticNotionsRelationship.objects.all()
-    serializer_class = serializers.M2MLinguisticNotionsRelationshipSerializer

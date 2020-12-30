@@ -1,0 +1,13 @@
+{% if dataset %}
+    <h3>{{ label }}</h3>
+    <ul>
+        {% for item in dataset %}
+            <li>
+                <a href="{% url itemurl item.id %}">
+                    <span class="browse-detail-manytomanyitem-title">{{ item }}</span>
+                    <span class="browse-detail-manytomanyitem-details">{{ item.details }}</span>
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}

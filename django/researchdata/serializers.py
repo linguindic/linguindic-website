@@ -4,12 +4,6 @@ from . import models
 
 # Select List models
 
-class SlLinguisticNotionsRelationshipTypeSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = models.SlLinguisticNotionsRelationshipType
-        fields = '__all__'
-
 
 class SlLinguisticTraditionGroupSerializer(serializers.ModelSerializer):
 
@@ -87,13 +81,4 @@ class LinguisticNotionSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.LinguisticNotion
-        fields = '__all__'
-
-
-# Many to Many models
-
-class M2MLinguisticNotionsRelationshipSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = models.M2MLinguisticNotionsRelationship
         fields = '__all__'

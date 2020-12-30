@@ -6,31 +6,6 @@ from . import apps
 # Select List models
 
 
-class SlLinguisticNotionsRelationshipType(models.Model):
-    """
-    Select List table: the types of relationships between 2 linguistic notions
-    """
-    name = models.CharField(max_length=150)
-    description = models.TextField(blank=True, null=True)
-
-    # Admin fields
-    admin_notes = models.TextField(blank=True, null=True)
-    admin_published = models.BooleanField(default=True)
-    # Metadata fields
-    meta_created_by = models.ForeignKey(User, related_name='sllinguisticnotionsrelationshiptype_created_by',
-                                        on_delete=models.PROTECT, blank=True, null=True)
-    meta_created_datetime = models.DateTimeField(auto_now_add=True, verbose_name='Created')
-    meta_lastupdated_by = models.ForeignKey(User, related_name='sllinguisticnotionsrelationshiptype_lastupdated_by',
-                                            on_delete=models.PROTECT, blank=True, null=True)
-    meta_lastupdated_datetime = models.DateTimeField(auto_now=True, verbose_name='Last Updated')
-
-    def __str__(self):
-        return self.name
-
-    class Meta:
-        db_table = "{}_sl_linguisticnotionsrelationshiptype".format(apps.app_name)
-
-
 class SlLinguisticTraditionGroup(models.Model):
     """
     Select List table: a group of linguistic traditions (as defined in SlLinguisticTradition model)
@@ -365,15 +340,14 @@ class LinguisticNotion(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField(blank=True, null=True)
     example = models.TextField(blank=True, null=True)
-    star_count = models.IntegerField(default=0)
     # Many to many relationship fields
     related_name = 'linguistic_notion'
     author = models.ManyToManyField(Author, related_name=related_name, blank=True, db_table="{}_m2m_author_linguisticnotion".format(apps.app_name))
-    linguisticfield = models.ManyToManyField(LinguisticField, related_name=related_name, blank=True,
+    linguistic_field = models.ManyToManyField(LinguisticField, related_name=related_name, blank=True,
                                              db_table="{}_m2m_linguisticfield_linguisticnotion".format(apps.app_name))
     reference = models.ManyToManyField(Reference, related_name=related_name, blank=True, db_table="{}_m2m_linguisticnotion_reference".format(apps.app_name))
     text = models.ManyToManyField(Text, related_name=related_name, blank=True, db_table="{}_m2m_linguisticnotion_text".format(apps.app_name))
-    linguistic_notion = models.ManyToManyField("self", through="M2MLinguisticNotionsRelationship")
+    linguistic_notion = models.ManyToManyField("self", related_name=related_name, blank=True, db_table="{}_m2m_linguisticnotions".format(apps.app_name))
     # Admin fields
     admin_notes = models.TextField(blank=True, null=True)
     admin_published = models.BooleanField(default=True)
@@ -397,18 +371,3 @@ class LinguisticNotion(models.Model):
 
     class Meta:
         db_table = "{}_main_linguisticnotion".format(apps.app_name)
-
-
-# Many to Many tables
-
-class M2MLinguisticNotionsRelationship(models.Model):
-    """
-    Many to many relationship between 2 linguistic notions (LinguisticNotion model with itself)
-    """
-    linguistic_notion_1 = models.ForeignKey(LinguisticNotion, related_name="linguistic_notion_1", on_delete=models.CASCADE)
-    linguistic_notion_2 = models.ForeignKey(LinguisticNotion, related_name="linguistic_notion_2", on_delete=models.CASCADE)
-    # Foreign key fields
-    linguistic_notions_relationship_type = models.ForeignKey(SlLinguisticNotionsRelationshipType, on_delete=models.PROTECT)
-
-    class Meta:
-        db_table = "{}_m2m_linguisticnotions".format(apps.app_name)
