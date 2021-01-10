@@ -3,7 +3,7 @@
     /* ---------- Navigation ---------- */
 
     .nav-link {
-        margin-left: 2em;
+        margin-left: 1.5em;
     }
 
 
@@ -26,12 +26,26 @@
 
     /* ---------- Browse: List ---------- */
 
-    /* List content */
     .list-content-item {
         margin: 1em;
         display: inline-block;
         width: calc(33% - 2em);
-        min-height: 10em;
+        min-height: 15.7em;
+    }
+
+    /* ---------- Browse: Detail ---------- */
+
+    .browse-detail-dataitem-label {
+        display: inline-block;
+        width: 10em;
+        vertical-align: top;
+        margin: 0;
+    }
+    
+    .browse-detail-dataitem-value {
+        display: inline-block;
+        width: calc(100% - 10.5em);
+        vertical-align: top;
     }
     
     /* ---------- Footer ---------- */

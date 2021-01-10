@@ -4,15 +4,13 @@
 {% block main %}
     <div class="container" id="browse-detail">
         
-        <h2>{{ object }}</h2>
-        <p>
-            {{ object.details }}
-        </p>
+        <!-- Header (e.g. title and details) -->
+        {% include "researchdata/snippets/detail-header.html" %}
 
-        {% if object.example %}
-            <h3>Example</h3>
-            <p>{{ object.example }}</p>
-        {% endif %}
+        <!-- Data items -->
+        {% include "researchdata/snippets/detail-dataitem.html" with dataitem=object.name label='Name' %}
+        {% include "researchdata/snippets/detail-dataitem.html" with dataitem=object.description label='Description' %}
+        {% include "researchdata/snippets/detail-dataitem.html" with dataitem=object.example label='Example' %}
 
         <!-- Many to Many relationships -->
         {% include "researchdata/snippets/detail-manytomanyitem-author.html" %}

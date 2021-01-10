@@ -2,7 +2,18 @@
 {% load static %}
 
 {% block main %}
-    <div class="container">
-        <h2>Detail</h2>
+    <div class="container" id="browse-detail">
+        
+        <!-- Header (e.g. title and details) -->
+        {% include "researchdata/snippets/detail-header.html" %}
+
+        <!-- Data items -->
+        {% include "researchdata/snippets/detail-dataitem.html" with dataitem=object.name label='Name' %}
+
+        <!-- Many to Many relationships -->
+        {% include "researchdata/snippets/detail-manytomanyitem-linguisticnotion.html" %}
+        {% include "researchdata/snippets/detail-manytomanyitem-author.html" %}
+        {% include "researchdata/snippets/detail-manytomanyitem-reference.html" %}
+
     </div>
 {% endblock %}

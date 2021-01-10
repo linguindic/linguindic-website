@@ -358,8 +358,6 @@ main a {
     cursor: pointer;
 }
 
-
-
 /* Pagination */
 .list-pagination {
     text-align: center;
@@ -421,6 +419,65 @@ main a {
 
 /* ---------- Browse: Detail ---------- */
 
+.browse-detail-header-details {
+    font-size: 1.1em;
+    text-align: center;
+    display: block;
+}
+
+.browse-detail-dataitem {
+    border-bottom: 1px solid #5f3305;
+    padding: 1em 0.5em;
+    font-size: 1em;
+}
+
+.browse-detail-dataitem:first-of-type {
+    border-top: 1px solid #5f3305;
+    margin-top: 3em;
+}
+.browse-detail-dataitem:last-of-type {
+    margin-bottom: 1em;
+}
+
+.browse-detail-dataitem-label {
+    font-weight: bold;
+}
+
+.browse-detail-relateddatalist {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.browse-detail-relateddatalist a {
+    text-decoration: none;
+}
+
+.browse-detail-relateddatalist-item {
+    vertical-align: top;
+    background: rgba(255,255,255,0.5);
+    border-radius: 0.5em;
+    padding: 1em;
+    cursor: pointer;
+    text-decoration: none;
+    margin-bottom: 1.1em;
+}
+
+.browse-detail-relateddatalist-item:hover {
+    background: rgba(255,255,255,1);
+    text-decoration: none;
+    color: #b28b01;
+}
+
+.browse-detail-relateddatalist-item-title {
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.browse-detail-relateddatalist-item-details {
+    font-size: 0.8em;
+    padding-top: 0.4em;
+    line-height: 1.5em;
+}
 
 
 /* ---------- Footer ---------- */

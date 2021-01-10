@@ -1,13 +1,17 @@
 {% if dataset %}
     <h3>{{ label }}</h3>
-    <ul>
+    <ul class="browse-detail-relateddatalist">
         {% for item in dataset %}
-            <li>
-                <a href="{% url itemurl item.id %}">
-                    <span class="browse-detail-manytomanyitem-title">{{ item }}</span>
-                    <span class="browse-detail-manytomanyitem-details">{{ item.details }}</span>
-                </a>
-            </li>
+
+            <a href="{% url itemurl item.id %}">
+                <li class="browse-detail-relateddatalist-item">
+                
+                    <div class="browse-detail-relateddatalist-item-title">{{ item }}</div>
+    
+                    <div class="browse-detail-relateddatalist-item-details">{{ item.details }}</div>
+                </li>
+            </a>
+            
         {% endfor %}
     </ul>
 {% endif %}
