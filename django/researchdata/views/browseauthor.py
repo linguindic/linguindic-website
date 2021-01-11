@@ -88,7 +88,7 @@ class BrowseAuthorListView(ListView):
         if sllinguistictradition != '':
             queryset = queryset.filter(linguistic_tradition=sllinguistictradition)
 
-        # Many to Many relationships to filter on:
+        # Many to Many relationships to filter on:
 
         # Linguistic Notions
         linguisticnotion = self.request.GET.get('advanced_filter_linguisticnotion', '')

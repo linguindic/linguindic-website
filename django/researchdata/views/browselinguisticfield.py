@@ -20,7 +20,6 @@ class BrowseLinguisticFieldListView(ListView):
     model = models.LinguisticField
     paginate_by = 30
 
-
     def get_queryset(self):
         """
         This view returns either all objects or, if provided, will restrict the returned data based on 'search', 'filter', and 'order' criteria
@@ -65,7 +64,7 @@ class BrowseLinguisticFieldListView(ListView):
 
         # Select List relationships to filter on: (none)
 
-        # Many to Many relationships to filter on:
+        # Many to Many relationships to filter on:
 
         # Linguistic Notions
         linguisticnotion = self.request.GET.get('advanced_filter_linguisticnotion', '')
@@ -95,4 +94,3 @@ class BrowseLinguisticFieldListView(ListView):
         # Add data for related models
         context['linguisticnotions'] = models.LinguisticNotion.objects.filter(admin_published=True)
         return context
-

@@ -208,7 +208,7 @@ class Reference(models.Model):
             return self.url
         else:
             return "(Unnamed reference)"
-    
+
     @property
     def details(self):
         if self.reference_type:
@@ -249,7 +249,7 @@ class Text(models.Model):
 
     def __str__(self):
         return self.name
-    
+
     @property
     def details(self):
         if self.description:
@@ -263,7 +263,6 @@ class Text(models.Model):
             return "A piece of {} text".format(self.text_type)
         else:
             return "A piece of text"
-
 
     class Meta:
         db_table = "{}_main_text".format(apps.app_name)
@@ -309,12 +308,12 @@ class Author(models.Model):
             return self.alternative_name
         else:
             return "(Unnamed author)"
-    
+
     @property
     def details(self):
         details = "An author"
         if self.location_most_active:
-            details += " from {}".format(self.location_most_active) 
+            details += " from {}".format(self.location_most_active)
         if self.date_of_birth:
             details += ". Born {}".format(self.date_of_birth)
         if self.date_of_death:
@@ -346,7 +345,7 @@ class LinguisticField(models.Model):
 
     def __str__(self):
         return self.name
-    
+
     @property
     def details(self):
         if self.description:
@@ -373,7 +372,7 @@ class LinguisticNotion(models.Model):
     related_name = 'linguistic_notion'
     author = models.ManyToManyField(Author, related_name=related_name, blank=True, db_table="{}_m2m_author_linguisticnotion".format(apps.app_name))
     linguistic_field = models.ManyToManyField(LinguisticField, related_name=related_name, blank=True,
-                                             db_table="{}_m2m_linguisticfield_linguisticnotion".format(apps.app_name))
+                                              db_table="{}_m2m_linguisticfield_linguisticnotion".format(apps.app_name))
     reference = models.ManyToManyField(Reference, related_name=related_name, blank=True, db_table="{}_m2m_linguisticnotion_reference".format(apps.app_name))
     text = models.ManyToManyField(Text, related_name=related_name, blank=True, db_table="{}_m2m_linguisticnotion_text".format(apps.app_name))
     linguistic_notion = models.ManyToManyField("self", related_name=related_name, blank=True, db_table="{}_m2m_linguisticnotions".format(apps.app_name))
@@ -390,7 +389,7 @@ class LinguisticNotion(models.Model):
 
     def __str__(self):
         return self.name
-    
+
     @property
     def details(self):
         if self.description:

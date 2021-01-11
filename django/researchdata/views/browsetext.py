@@ -11,6 +11,7 @@ class BrowseTextDetailView(DetailView):
     template_name = 'researchdata/browse-text-detail.html'
     model = models.Text
 
+
 class BrowseTextListView(ListView):
     """
     Class-based view to show the text list template
@@ -71,13 +72,13 @@ class BrowseTextListView(ListView):
         sltextgroup = self.request.GET.get('advanced_filter_sltextgroup', '')
         if sltextgroup != '':
             queryset = queryset.filter(text_group=sltextgroup)
-        
+
         # SL Text Type
         sltexttype = self.request.GET.get('advanced_filter_sltexttype', '')
         if sltexttype != '':
             queryset = queryset.filter(text_type=sltexttype)
 
-        # Many to Many relationships to filter on:
+        # Many to Many relationships to filter on:
 
         # Author
         author = self.request.GET.get('advanced_filter_author', '')

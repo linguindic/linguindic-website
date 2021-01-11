@@ -68,7 +68,7 @@ class BrowseLinguisticNotionListView(ListView):
 
         # Select List relationships to filter on: (none)
 
-        # Many to Many relationships to filter on:
+        # Many to Many relationships to filter on:
 
         # Author
         author = self.request.GET.get('advanced_filter_author', '')

@@ -126,7 +126,7 @@ class BrowseReferenceListView(ListView):
         if slreferencepublisher != '':
             queryset = queryset.filter(reference_publisher=slreferencepublisher)
 
-        # Many to Many relationships to filter on:
+        # Many to Many relationships to filter on:
 
         # Author
         author = self.request.GET.get('advanced_filter_author', '')
