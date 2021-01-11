@@ -30,7 +30,7 @@
         margin: 1em;
         display: inline-block;
         width: calc(33% - 2em);
-        min-height: 15.7em;
+        min-height: 10em;
     }
 
     /* ---------- Browse: Detail ---------- */
@@ -56,5 +56,4 @@
         display: inline-block;
     }
 
-    
 }

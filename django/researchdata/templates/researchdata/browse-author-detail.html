@@ -9,6 +9,13 @@
 
         <!-- Data items -->
         {% include "researchdata/snippets/detail-dataitem.html" with dataitem=object.first_name label='First Name' %}
+        {% include "researchdata/snippets/detail-dataitem.html" with dataitem=object.last_name label='Last Name' %}
+        {% include "researchdata/snippets/detail-dataitem.html" with dataitem=object.alternative_name label='Alternative Name' %}
+        {% include "researchdata/snippets/detail-dataitem.html" with dataitem=object.description label='Description' %}
+        {% include "researchdata/snippets/detail-dataitem.html" with dataitem=object.location_most_active label='Location' %}
+        {% include "researchdata/snippets/detail-dataitem.html" with dataitem=object.date_of_birth label='Date of Birth' %}
+        {% include "researchdata/snippets/detail-dataitem.html" with dataitem=object.date_of_death label='Date of Death' %}
+        {% include "researchdata/snippets/detail-dataitem.html" with dataitem=object.linguistic_tradition label='Linguistic Tradition' %}
 
         <!-- Many to Many relationships -->
         {% include "researchdata/snippets/detail-manytomanyitem-linguisticnotion.html" %}

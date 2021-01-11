@@ -211,7 +211,12 @@ class Reference(models.Model):
     
     @property
     def details(self):
-        return "Details"
+        if self.reference_type:
+            return "A {} reference".format(self.reference_type)
+        elif self.title:
+            return "A reference for {}".format(self.title)
+        else:
+            return "A reference"
 
     class Meta:
         db_table = "{}_main_reference".format(apps.app_name)
@@ -247,7 +252,18 @@ class Text(models.Model):
     
     @property
     def details(self):
-        return "Details"
+        if self.description:
+            if len(self.description) > 150:
+                return "{}...".format(str(self.description)[0:147])
+            else:
+                return self.description
+        elif self.text_group:
+            return "A piece of text from {}".format(self.text_group)
+        elif self.text_type:
+            return "A piece of {} text".format(self.text_type)
+        else:
+            return "A piece of text"
+
 
     class Meta:
         db_table = "{}_main_text".format(apps.app_name)
@@ -296,7 +312,14 @@ class Author(models.Model):
     
     @property
     def details(self):
-        return "Details"
+        details = "An author"
+        if self.location_most_active:
+            details += " from {}".format(self.location_most_active) 
+        if self.date_of_birth:
+            details += ". Born {}".format(self.date_of_birth)
+        if self.date_of_death:
+            details += ". Died {}".format(self.date_of_death)
+        return details
 
     class Meta:
         db_table = "{}_main_author".format(apps.app_name)
@@ -326,7 +349,13 @@ class LinguisticField(models.Model):
     
     @property
     def details(self):
-        return "Details"
+        if self.description:
+            if len(self.description) > 150:
+                return "{}...".format(str(self.description)[0:147])
+            else:
+                return self.description
+        else:
+            return "An area of linguistics"
 
     class Meta:
         db_table = "{}_main_linguisticfield".format(apps.app_name)
@@ -365,9 +394,14 @@ class LinguisticNotion(models.Model):
     @property
     def details(self):
         if self.description:
-            return self.description
+            if len(self.description) > 150:
+                return "{}...".format(str(self.description)[0:147])
+            else:
+                return self.description
         elif self.example:
             return "E.g. {}".format(self.description)
+        else:
+            return "A linguistic notion"
 
     class Meta:
         db_table = "{}_main_linguisticnotion".format(apps.app_name)

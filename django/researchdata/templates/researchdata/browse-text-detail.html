@@ -9,6 +9,10 @@
 
         <!-- Data items -->
         {% include "researchdata/snippets/detail-dataitem.html" with dataitem=object.name label='Name' %}
+        {% include "researchdata/snippets/detail-dataitem.html" with dataitem=object.description label='Description' %}
+        {% include "researchdata/snippets/detail-dataitem.html" with dataitem=object.approximate_date_of_creation label='Approximate Date of Creation' %}
+        {% include "researchdata/snippets/detail-dataitem.html" with dataitem=object.text_group label='Text Group' %}
+        {% include "researchdata/snippets/detail-dataitem.html" with dataitem=object.text_type label='Text Type' %}
 
         <!-- Many to Many relationships -->
         {% include "researchdata/snippets/detail-manytomanyitem-linguisticnotion.html" %}
