@@ -6,10 +6,10 @@
             <a href="{% url itemurl item.id %}">
                 <li class="browse-detail-relateddatalist-item">
                     <div class="browse-detail-relateddatalist-item-title">
-                        {{ item }}
+                        {{ item | striptags }}
                     </div>
                     <div class="browse-detail-relateddatalist-item-details">
-                        {{ item.details }}
+                        {{ item.details | striptags }}
                     </div>
                 </li>
             </a>
