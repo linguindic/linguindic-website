@@ -17,75 +17,75 @@ class TestWelcomeView(TestCase):
         self.assertContains(response, 'Welcome')
 
 
-class TestProjectAboutView(TestCase):
+class TestAboutProjectView(TestCase):
     """
-    Test Project: About View
+    Test About: Project View
     """
-    def test_project_about_get(self):
+    def test_about_project_get(self):
         """
         Test the project: about page is returned
         """
-        url = reverse('project-about')
+        url = reverse('about-project')
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, 'LINGUINDIC')
-        self.assertContains(response, 'About')
+        self.assertContains(response, 'Project')
 
 
-class TestProjectTeamView(TestCase):
+class TestAboutTeamView(TestCase):
     """
-    Test Project: Team View
+    Test About: Team View
     """
-    def test_project_team_get(self):
+    def test_about_team_get(self):
         """
         Test the project: team page is returned
         """
-        url = reverse('project-team')
+        url = reverse('about-team')
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, 'LINGUINDIC')
-        self.assertContains(response, 'Team')
+        self.assertContains(response, 'John Lowe')
 
 
-class TestProjectFundingView(TestCase):
+class TestAboutFundingView(TestCase):
     """
-    Test Project: Funding View
+    Test About: Funding View
     """
-    def test_project_funding_get(self):
+    def test_about_funding_get(self):
         """
         Test the project: funding page is returned
         """
-        url = reverse('project-funding')
+        url = reverse('about-funding')
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, 'LINGUINDIC')
         self.assertContains(response, 'Funding')
 
 
-class TestProjectEventsView(TestCase):
+class TestAboutEventsView(TestCase):
     """
-    Test Project: Events View
+    Test About: Events View
     """
-    def test_project_events_get(self):
+    def test_about_events_get(self):
         """
         Test the project: events page is returned
         """
-        url = reverse('project-events')
+        url = reverse('about-events')
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, 'LINGUINDIC')
         self.assertContains(response, 'Events')
 
 
-class TestProjectOutputsView(TestCase):
+class TestAboutOutputsView(TestCase):
     """
-    Test Project: Outputs View
+    Test About: Outputs View
     """
-    def test_project_outputs_get(self):
+    def test_about_outputs_get(self):
         """
         Test the project: outputs page is returned
         """
-        url = reverse('project-outputs')
+        url = reverse('about-outputs')
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, 'LINGUINDIC')

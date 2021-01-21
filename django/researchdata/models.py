@@ -196,7 +196,7 @@ class Reference(models.Model):
     meta_lastupdated_by = models.ForeignKey(User, related_name='reference_lastupdated_by',
                                             on_delete=models.PROTECT, blank=True, null=True)
     meta_lastupdated_datetime = models.DateTimeField(auto_now=True, verbose_name='Last Updated')
-    
+
     @property
     def dynamic_title(self):
         if self.title:
@@ -218,7 +218,7 @@ class Reference(models.Model):
             return "A reference for {}".format(self.title)
         else:
             return "A reference"
-    
+
     def __str__(self):
         return self.dynamic_title
 
@@ -250,7 +250,7 @@ class Text(models.Model):
     meta_lastupdated_by = models.ForeignKey(User, related_name='text_lastupdated_by',
                                             on_delete=models.PROTECT, blank=True, null=True)
     meta_lastupdated_datetime = models.DateTimeField(auto_now=True, verbose_name='Last Updated')
-    
+
     @property
     def dynamic_title(self):
         return self.name
@@ -263,7 +263,7 @@ class Text(models.Model):
             return "A piece of {} text".format(self.text_type)
         else:
             return "A piece of text"
-    
+
     def __str__(self):
         return self.dynamic_title
 
@@ -323,7 +323,7 @@ class Author(models.Model):
         if self.date_of_death:
             subtitle += ". Died {}".format(self.date_of_death)
         return subtitle
-    
+
     def __str__(self):
         return self.dynamic_title
 
@@ -357,7 +357,7 @@ class LinguisticField(models.Model):
     @property
     def dynamic_subtitle(self):
         return "A linguistic field"
-    
+
     def __str__(self):
         return self.dynamic_title
 
@@ -399,7 +399,7 @@ class LinguisticNotion(models.Model):
     @property
     def dynamic_subtitle(self):
         return "A linguistic notion"
-    
+
     def __str__(self):
         return self.dynamic_title
 
