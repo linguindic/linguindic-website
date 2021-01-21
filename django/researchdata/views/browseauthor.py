@@ -112,12 +112,12 @@ class BrowseAuthorListView(ListView):
         # Order
         #
 
-        order = self.request.GET.get('advanced_order_direction', '') + self.request.GET.get('advanced_order_by', 'id')
+        order = self.request.GET.get('advanced_order_direction', '') + self.request.GET.get('advanced_order_by', 'first_name')  # Default order is by 'first_name'
         # If starts with a '-' then it means order descending
         if order[0] == '-':
-            queryset = queryset.order_by(Lower(order[1:]).desc())
+            queryset = queryset.order_by(Lower(order[1:]).desc(), Lower('last_name').desc(), Lower('alternative_name').desc(), Lower('id').desc())
         else:
-            queryset = queryset.order_by(Lower(order))
+            queryset = queryset.order_by(Lower(order), Lower('last_name'), Lower('alternative_name'), Lower('id'))
 
         #
         # Return data

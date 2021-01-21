@@ -44,17 +44,6 @@
         display: block;
         width: 100%;
     }
-
-    /* ---------- Browse: Detail ---------- */
-
-    .browse-detail-dataitem-label {
-        display: block;
-        margin: 0.2em 0 0.5em 0;
-    }
-    
-    .browse-detail-dataitem-value {
-        display: block;
-    }
     
     /* ---------- Footer ---------- */
 

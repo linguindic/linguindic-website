@@ -7,5 +7,13 @@
         <!-- Header (e.g. title and details) -->
         {% include "researchdata/snippets/detail-header.html" %}
 
+        <!-- Data items -->
+        <h3>Details</h3>
+        {% include "researchdata/snippets/detail-dataitem.html" with dataitem=object.name label='Name' %}
+        {% include "researchdata/snippets/detail-dataitem.html" with dataitem=object.description label='Description' %}
+
+        <!-- Many to Many relationships -->
+        {% include "researchdata/snippets/detail-manytomanyitem-linguisticnotion.html" %}
+
     </div>
 {% endblock %}

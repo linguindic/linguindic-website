@@ -427,28 +427,31 @@ main a {
 
 /* ---------- Browse: Detail ---------- */
 
-.browse-detail-header-details {
+.browse-detail-header-dates {
+    font-size: 0.8em;
+    float: left;
+    margin-top: 1em;
+}
+
+.browse-detail-header-subtitle {
     font-size: 1.1em;
     text-align: center;
     display: block;
 }
 
 .browse-detail-dataitem {
-    border-bottom: 1px solid #5f3305;
-    padding: 1em 0.5em;
-    font-size: 1em;
-}
-
-.browse-detail-dataitem:first-of-type {
-    border-top: 1px solid #5f3305;
-    margin-top: 3em;
-}
-.browse-detail-dataitem:last-of-type {
-    margin-bottom: 1em;
+    padding: 0.7em 0;
+    font-size: 1.1em;
 }
 
 .browse-detail-dataitem-label {
     font-weight: bold;
+    display: block;
+    margin-bottom: 0.3em;
+}
+
+.browse-detail-dataitem-value {
+    display: block;
 }
 
 .browse-detail-relateddatalist {
@@ -464,10 +467,10 @@ main a {
     vertical-align: top;
     background: rgba(255,255,255,0.5);
     border-radius: 0.5em;
-    padding: 1em;
+    padding: 0.6em 1em;
     cursor: pointer;
     text-decoration: none;
-    margin-bottom: 1.1em;
+    margin-bottom: 1em;
 }
 
 .browse-detail-relateddatalist-item:hover {
@@ -478,13 +481,13 @@ main a {
 
 .browse-detail-relateddatalist-item-title {
     font-weight: bold;
-    font-size: 1.1em;
+    font-size: 1em;
 }
 
 .browse-detail-relateddatalist-item-details {
     font-size: 0.8em;
-    padding-top: 0.4em;
-    line-height: 1.5em;
+    padding: 0.2em 0;
+    line-height: 1.3em;
     letter-spacing: 0;
 }
 

@@ -150,12 +150,12 @@ class BrowseReferenceListView(ListView):
         # Order
         #
 
-        order = self.request.GET.get('advanced_order_direction', '') + self.request.GET.get('advanced_order_by', 'id')
+        order = self.request.GET.get('advanced_order_direction', '') + self.request.GET.get('advanced_order_by', 'title')  # Default order is by 'title'
         # If starts with a '-' then it means order descending
         if order[0] == '-':
-            queryset = queryset.order_by(Lower(order[1:]).desc())
+            queryset = queryset.order_by(Lower(order[1:]).desc(), Lower('book_title').desc(), Lower('journal_title').desc(), Lower('url').desc(),  Lower('id').desc())
         else:
-            queryset = queryset.order_by(Lower(order))
+            queryset = queryset.order_by(Lower(order), Lower('book_title'), Lower('journal_title'), Lower('url'), Lower('id'))
 
         #
         # Return data

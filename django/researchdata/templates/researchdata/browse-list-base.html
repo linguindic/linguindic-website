@@ -101,8 +101,8 @@
             {% for object in object_list %}
                                 
                 <a href="{% block list_item_link %}{% endblock %}" class="list-content-item">
-                    <div class="list-content-item-title">{{ object | striptags }}</div>
-                    <div class="list-content-item-details">{{ object.details | striptags | slice:"250" }}</div>
+                    <div class="list-content-item-title">{{ object.dynamic_title | striptags }}</div>
+                    <div class="list-content-item-details">{{ object.dynamic_subtitle | striptags | slice:"250" }}</div>
                 </a>
             
             {% empty %} 

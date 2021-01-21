@@ -75,7 +75,7 @@ class BrowseLinguisticFieldListView(ListView):
         # Order
         #
 
-        order = self.request.GET.get('advanced_order_direction', '') + self.request.GET.get('advanced_order_by', 'id')
+        order = self.request.GET.get('advanced_order_direction', '') + self.request.GET.get('advanced_order_by', 'name')  # Default order is by 'name'
         # If starts with a '-' then it means order descending
         if order[0] == '-':
             queryset = queryset.order_by(Lower(order[1:]).desc())

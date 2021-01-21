@@ -196,8 +196,9 @@ class Reference(models.Model):
     meta_lastupdated_by = models.ForeignKey(User, related_name='reference_lastupdated_by',
                                             on_delete=models.PROTECT, blank=True, null=True)
     meta_lastupdated_datetime = models.DateTimeField(auto_now=True, verbose_name='Last Updated')
-
-    def __str__(self):
+    
+    @property
+    def dynamic_title(self):
         if self.title:
             return self.title
         elif self.book_title:
@@ -210,13 +211,16 @@ class Reference(models.Model):
             return "(Unnamed reference)"
 
     @property
-    def details(self):
+    def dynamic_subtitle(self):
         if self.reference_type:
-            return "A {} reference".format(self.reference_type)
+            return "A {} reference".format(str(self.reference_type).lower())
         elif self.title:
             return "A reference for {}".format(self.title)
         else:
             return "A reference"
+    
+    def __str__(self):
+        return self.dynamic_title
 
     class Meta:
         db_table = "{}_main_reference".format(apps.app_name)
@@ -246,27 +250,22 @@ class Text(models.Model):
     meta_lastupdated_by = models.ForeignKey(User, related_name='text_lastupdated_by',
                                             on_delete=models.PROTECT, blank=True, null=True)
     meta_lastupdated_datetime = models.DateTimeField(auto_now=True, verbose_name='Last Updated')
-
-    def __str__(self):
-        return self.name
     
     @property
-    def title(self):
+    def dynamic_title(self):
         return self.name
 
     @property
-    def details(self):
-        if self.description:
-            if len(self.description) > 150:
-                return "{}...".format(str(self.description)[0:147])
-            else:
-                return self.description
-        elif self.text_group:
+    def dynamic_subtitle(self):
+        if self.text_group:
             return "A piece of text from {}".format(self.text_group)
         elif self.text_type:
             return "A piece of {} text".format(self.text_type)
         else:
             return "A piece of text"
+    
+    def __str__(self):
+        return self.dynamic_title
 
     class Meta:
         db_table = "{}_main_text".format(apps.app_name)
@@ -281,8 +280,8 @@ class Author(models.Model):
     alternative_name = models.CharField(max_length=100, blank=True, null=True)
     description = models.TextField(blank=True, null=True)
     location_most_active = models.CharField(max_length=100, blank=True, null=True)
-    date_of_birth = models.DateField(blank=True, null=True)
-    date_of_death = models.DateField(blank=True, null=True)
+    date_of_birth = models.CharField(max_length=50, blank=True, null=True)
+    date_of_death = models.CharField(max_length=50, blank=True, null=True)
     # Foreign key fields
     linguistic_tradition = models.ForeignKey(SlLinguisticTradition, on_delete=models.SET_NULL, blank=True, null=True)
     # Many to many relationship fields
@@ -301,7 +300,8 @@ class Author(models.Model):
                                             on_delete=models.PROTECT, blank=True, null=True)
     meta_lastupdated_datetime = models.DateTimeField(auto_now=True, verbose_name='Last Updated')
 
-    def __str__(self):
+    @property
+    def dynamic_title(self):
         if self.first_name and self.last_name:
             return "{} {}".format(self.first_name, self.last_name)
         elif self.first_name:
@@ -314,15 +314,18 @@ class Author(models.Model):
             return "(Unnamed author)"
 
     @property
-    def details(self):
-        details = "An author"
+    def dynamic_subtitle(self):
+        subtitle = "An author"
         if self.location_most_active:
-            details += " from {}".format(self.location_most_active)
+            subtitle += " from {}".format(self.location_most_active)
         if self.date_of_birth:
-            details += ". Born {}".format(self.date_of_birth)
+            subtitle += ". Born {}".format(self.date_of_birth)
         if self.date_of_death:
-            details += ". Died {}".format(self.date_of_death)
-        return details
+            subtitle += ". Died {}".format(self.date_of_death)
+        return subtitle
+    
+    def __str__(self):
+        return self.dynamic_title
 
     class Meta:
         db_table = "{}_main_author".format(apps.app_name)
@@ -347,18 +350,16 @@ class LinguisticField(models.Model):
                                             on_delete=models.PROTECT, blank=True, null=True)
     meta_lastupdated_datetime = models.DateTimeField(auto_now=True, verbose_name='Last Updated')
 
-    def __str__(self):
+    @property
+    def dynamic_title(self):
         return self.name
 
     @property
-    def details(self):
-        if self.description:
-            if len(self.description) > 150:
-                return "{}...".format(str(self.description)[0:147])
-            else:
-                return self.description
-        else:
-            return "An area of linguistics"
+    def dynamic_subtitle(self):
+        return "A linguistic field"
+    
+    def __str__(self):
+        return self.dynamic_title
 
     class Meta:
         db_table = "{}_main_linguisticfield".format(apps.app_name)
@@ -391,20 +392,16 @@ class LinguisticNotion(models.Model):
                                             on_delete=models.PROTECT, blank=True, null=True)
     meta_lastupdated_datetime = models.DateTimeField(auto_now=True, verbose_name='Last Updated')
 
-    def __str__(self):
+    @property
+    def dynamic_title(self):
         return self.name
 
     @property
-    def details(self):
-        if self.description:
-            if len(self.description) > 150:
-                return "{}...".format(str(self.description)[0:147])
-            else:
-                return self.description
-        elif self.example:
-            return "E.g. {}".format(self.description)
-        else:
-            return "A linguistic notion"
+    def dynamic_subtitle(self):
+        return "A linguistic notion"
+    
+    def __str__(self):
+        return self.dynamic_title
 
     class Meta:
         db_table = "{}_main_linguisticnotion".format(apps.app_name)
