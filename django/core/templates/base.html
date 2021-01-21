@@ -62,17 +62,17 @@
                     <li class="nav-item">
                         <a class="nav-link{% if request.path == "/" %} active{% endif %}" href="{% url 'welcome' %}">Welcome</a>
                     </li>
-                    <!-- Project -->
+                    <!-- About -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle{% if "/project/" in request.path %} active{% endif %}" href="#" id="navbarDropdownMenuLinkProject" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Project
+                        <a class="nav-link dropdown-toggle{% if "/about/" in request.path %} active{% endif %}" href="#" id="navbarDropdownMenuLinkAbout" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        About
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLinkProject">
-                            <a class="dropdown-item" href="{% url 'project-about' %}">About</a>
-                            <a class="dropdown-item" href="{% url 'project-team' %}">Team</a>
-                            <a class="dropdown-item" href="{% url 'project-funding' %}">Funding</a>
-                            <a class="dropdown-item" href="{% url 'project-events' %}">Events</a>
-                            <a class="dropdown-item" href="{% url 'project-outputs' %}">Research Outputs</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLinkAbout">
+                            <a class="dropdown-item" href="{% url 'about-project' %}">Project</a>
+                            <a class="dropdown-item" href="{% url 'about-team' %}">Team</a>
+                            <a class="dropdown-item" href="{% url 'about-funding' %}">Funding</a>
+                            <a class="dropdown-item" href="{% url 'about-events' %}">Events</a>
+                            <a class="dropdown-item" href="{% url 'about-outputs' %}">Research Outputs</a>
                         </div>
                     </li>
                     <!-- Browse -->
@@ -126,7 +126,7 @@
                     <p>
                         The LINGUINDIC project has received funding from the <a href="https://erc.europa.eu/">European Research Council (ERC)</a>
                         <br>
-                        under the European Union’s Horizon 2020 research and innovation programme <a href="https://cordis.europa.eu/project/id/851990">(Grant agreement no. 851190)</a>
+                        under the European Union’s Horizon 2020 research and innovation programme <a href="https://cordis.europa.eu/project/id/851990">(Grant agreement no. 851990)</a>
                     </p>
                     <p>
                         If you'd like to discuss the LINGUINDIC project or this website with us, you can email us at <a href="mailto:linguindic@orinst.ox.ac.uk?subject=LINGUINDIC website">linguindic@orinst.ox.ac.uk</a>

@@ -249,6 +249,10 @@ class Text(models.Model):
 
     def __str__(self):
         return self.name
+    
+    @property
+    def title(self):
+        return self.name
 
     @property
     def details(self):

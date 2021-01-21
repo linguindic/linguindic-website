@@ -3,11 +3,11 @@ from . import views
 
 urlpatterns = [
     path('', views.WelcomeTemplateView.as_view(), name='welcome'),
-    path('project/about/', views.ProjectAboutTemplateView.as_view(), name='project-about'),
-    path('project/team/', views.ProjectTeamTemplateView.as_view(), name='project-team'),
-    path('project/funding/', views.ProjectFundingTemplateView.as_view(), name='project-funding'),
-    path('project/events/', views.ProjectEventsTemplateView.as_view(), name='project-events'),
-    path('project/outputs/', views.ProjectOutputsTemplateView.as_view(), name='project-outputs'),
+    path('about/project/', views.AboutProjectTemplateView.as_view(), name='about-project'),
+    path('about/team/', views.AboutTeamTemplateView.as_view(), name='about-team'),
+    path('about/funding/', views.AboutFundingTemplateView.as_view(), name='about-funding'),
+    path('about/events/', views.AboutEventsTemplateView.as_view(), name='about-events'),
+    path('about/outputs/', views.AboutOutputsTemplateView.as_view(), name='about-outputs'),
     path('cookies/', views.CookiesTemplateView.as_view(), name='cookies'),
     path('accessibility/', views.AccessibilityTemplateView.as_view(), name='accessibility'),
 ]

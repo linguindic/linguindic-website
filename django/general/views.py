@@ -8,39 +8,39 @@ class WelcomeTemplateView(TemplateView):
     template_name = 'general/welcome.html'
 
 
-class ProjectAboutTemplateView(TemplateView):
+class AboutProjectTemplateView(TemplateView):
     """
-    Class-based view to show the project about template
+    Class-based view to show the project template
     """
-    template_name = 'general/project-about.html'
+    template_name = 'general/about-project.html'
 
 
-class ProjectTeamTemplateView(TemplateView):
+class AboutTeamTemplateView(TemplateView):
     """
-    Class-based view to show the project team template
+    Class-based view to show the team template
     """
-    template_name = 'general/project-team.html'
+    template_name = 'general/about-team.html'
 
 
-class ProjectFundingTemplateView(TemplateView):
+class AboutFundingTemplateView(TemplateView):
     """
-    Class-based view to show the project funding template
+    Class-based view to show the funding template
     """
-    template_name = 'general/project-funding.html'
+    template_name = 'general/about-funding.html'
 
 
-class ProjectEventsTemplateView(TemplateView):
+class AboutEventsTemplateView(TemplateView):
     """
-    Class-based view to show the project events template
+    Class-based view to show the events template
     """
-    template_name = 'general/project-events.html'
+    template_name = 'general/about-events.html'
 
 
-class ProjectOutputsTemplateView(TemplateView):
+class AboutOutputsTemplateView(TemplateView):
     """
-    Class-based view to show the project outputs template
+    Class-based view to show the outputs template
     """
-    template_name = 'general/project-outputs.html'
+    template_name = 'general/about-outputs.html'
 
 
 class CookiesTemplateView(TemplateView):
