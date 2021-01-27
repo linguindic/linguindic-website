@@ -19,7 +19,8 @@
     /* ---------- About ---------- */
 
     .about-banner {
-        height: 30em;
+        height: 35em;
+        max-height: 60vh;
     }
 
     /* ---------- Browse ---------- */

@@ -108,7 +108,7 @@ main ul,
 main ol {
     font-size: 1.2em;
     line-height: 2em;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.04em;
     font-weight: 300;
 }
 
@@ -452,6 +452,16 @@ main a {
 
 .browse-detail-dataitem-value {
     display: block;
+}
+
+.browse-detail-dataitem-value,
+.browse-detail-dataitem-value p,
+.browse-detail-dataitem-value ul,
+.browse-detail-dataitem-value ol {
+    font-size: 1.1rem;
+    line-height: 1.7rem;
+    letter-spacing: 0.04rem;
+    font-weight: 300;
 }
 
 .browse-detail-relateddatalist {
