@@ -282,8 +282,6 @@ class Author(models.Model):
     location_most_active = models.CharField(max_length=100, blank=True, null=True)
     date_of_birth = models.CharField(max_length=50, blank=True, null=True)
     date_of_death = models.CharField(max_length=50, blank=True, null=True)
-    # date_of_birth = models.DateField(blank=True, null=True)
-    # date_of_death = models.DateField(blank=True, null=True)
     # Foreign key fields
     linguistic_tradition = models.ForeignKey(SlLinguisticTradition, on_delete=models.SET_NULL, blank=True, null=True)
     # Many to many relationship fields
