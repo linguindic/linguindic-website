@@ -5,20 +5,20 @@ from .. import models
 from . import common
 
 
-class BrowseTextDetailView(DetailView):
+class BrowseLinguisticTraditionDetailView(DetailView):
     """
-    Class-based view to show the text detail template
+    Class-based view to show the linguistic tradition detail template
     """
-    template_name = 'researchdata/browse-text-detail.html'
-    model = models.Text
+    template_name = 'researchdata/browse-linguistictradition-detail.html'
+    model = models.LinguisticTradition
 
 
-class BrowseTextListView(ListView):
+class BrowseLinguisticTraditionListView(ListView):
     """
-    Class-based view to show the text list template
+    Class-based view to show the linguistic tradition list template
     """
-    template_name = 'researchdata/browse-text-list.html'
-    model = models.Text
+    template_name = 'researchdata/browse-linguistictradition-list.html'
+    model = models.LinguisticTradition
     paginate_by = 30
 
     def get_queryset(self):
@@ -46,8 +46,7 @@ class BrowseTextListView(ListView):
             queryset = queryset.filter(
                 Q(id__contains=search_val) |
                 Q(name__contains=search_val) |
-                Q(description__contains=search_val) |
-                Q(approximate_date_of_creation__contains=search_val)
+                Q(description__contains=search_val)
             )
 
         # If advanced search by (e.g. search by a specific field) is provided and advanced search criteria is also provided, then perform advanced search on specific fields
@@ -59,26 +58,19 @@ class BrowseTextListView(ListView):
             # Search only by description
             elif advanced_search_by == 'description':
                 queryset = queryset.filter(Q(description__contains=advanced_search_criteria))
-            # Search only by approximate date of creation
-            elif advanced_search_by == 'approximate_date_of_creation':
-                queryset = queryset.filter(Q(approximate_date_of_creation__contains=advanced_search_criteria))
 
         #
         # Filter
         #
 
         # SL filters
-        # SL Text Group
-        sltextgroup = self.request.GET.get('advanced_filter_sltextgroup', '')
-        if sltextgroup != '':
-            queryset = queryset.filter(text_group=sltextgroup)
-        # SL Text Type
-        sltexttype = self.request.GET.get('advanced_filter_sltexttype', '')
-        if sltexttype != '':
-            queryset = queryset.filter(text_type=sltexttype)
+        # SL Linguistic Tradition Group
+        sllinguistictraditiongroup = self.request.GET.get('advanced_filter_sllinguistictraditiongroup', '')
+        if sllinguistictraditiongroup != '':
+            queryset = queryset.filter(reference_type=sllinguistictraditiongroup)
 
         # M2M filters
-        common.filter_queryset_by_m2m(self.request.GET, queryset, 'text')
+        common.filter_queryset_by_m2m(self.request.GET, queryset, 'linguistictradition')
 
         # Admin published filter
         queryset = queryset.filter(admin_published=True)
@@ -97,11 +89,9 @@ class BrowseTextListView(ListView):
 
     def get_context_data(self, **kwargs):
         # Get current view's context
-        context = super(BrowseTextListView, self).get_context_data(**kwargs)
+        context = super(BrowseLinguisticTraditionListView, self).get_context_data(**kwargs)
         # Add data for related models
-        context = common.add_main_models_to_context(context, 'text')
-        context['sltextgroups'] = models.SlTextGroup.objects.filter(admin_published=True)
-        context['sltexttypes'] = models.SlTextType.objects.filter(admin_published=True)
+        context = common.add_main_models_to_context(context, 'linguistictradition')
+        context['sllinguistictraditiongroups'] = models.SlLinguisticTraditionGroup.objects.filter(admin_published=True)
         # Return context
         return context
-       

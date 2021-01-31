@@ -75,7 +75,7 @@
                                 <!-- Order by -->
                                 <label for="list-options-advanced-content-order-by">Order by:</label>
                                 <select id="list-options-advanced-content-order-by" name="advanced_order_by">
-                                    {% block list_options_advanced_order_by %}{% endblock %}
+                                    {% block list_options_advanced_orderby %}{% endblock %}
                                 </select>
                                 <!-- Order direction -->
                                 <label for="list-options-advanced-content-order-direction">Order direction:</label>
@@ -242,15 +242,15 @@
             setFormItemValueFromUrlParameter("list-options-advanced-content-search-by", "advanced_search_by");
             setFormItemValueFromUrlParameter("list-options-advanced-content-search-criteria", "advanced_search_criteria");
             // Filter
+            setFormItemValueFromUrlParameter("list-options-advanced-content-filter-author", "advanced_filter_author");
             setFormItemValueFromUrlParameter("list-options-advanced-content-filter-linguisticfield", "advanced_filter_linguisticfield");
             setFormItemValueFromUrlParameter("list-options-advanced-content-filter-linguisticnotion", "advanced_filter_linguisticnotion");
-            setFormItemValueFromUrlParameter("list-options-advanced-content-filter-author", "advanced_filter_author");
+            setFormItemValueFromUrlParameter("list-options-advanced-content-filter-linguistictradition", "advanced_filter_linguistictradition");
             setFormItemValueFromUrlParameter("list-options-advanced-content-filter-reference", "advanced_filter_reference");
+            setFormItemValueFromUrlParameter("list-options-advanced-content-filter-sanskritword", "advanced_filter_sanskritword");
             setFormItemValueFromUrlParameter("list-options-advanced-content-filter-text", "advanced_filter_text");
-            setFormItemValueFromUrlParameter("list-options-advanced-content-filter-sllinguistictradition", "advanced_filter_sllinguistictradition");
             setFormItemValueFromUrlParameter("list-options-advanced-content-filter-sltextgroup", "advanced_filter_sltextgroup");
             setFormItemValueFromUrlParameter("list-options-advanced-content-filter-sltexttype", "advanced_filter_sltexttype");
-            sltexttype
             // Order
             setFormItemValueFromUrlParameter("list-options-advanced-content-order-by", "advanced_order_by");
             setFormItemValueFromUrlParameter("list-options-advanced-content-order-direction", "advanced_order_direction");

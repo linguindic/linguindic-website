@@ -16,9 +16,12 @@
         {% include "researchdata/snippets/detail-dataitem.html" with dataitem=object.text_type label='Text Type' %}
 
         <!-- Many to Many relationships -->
-        {% include "researchdata/snippets/detail-manytomanyitem-linguisticnotion.html" %}
         {% include "researchdata/snippets/detail-manytomanyitem-author.html" %}
+        {% include "researchdata/snippets/detail-manytomanyitem-linguisticfield.html" %}
+        {% include "researchdata/snippets/detail-manytomanyitem-linguisticnotion.html" %}
+        {% include "researchdata/snippets/detail-manytomanyitem-linguistictradition.html" %}
         {% include "researchdata/snippets/detail-manytomanyitem-reference.html" %}
+        {% include "researchdata/snippets/detail-manytomanyitem-sanskritword.html" %}
 
     </div>
 {% endblock %}

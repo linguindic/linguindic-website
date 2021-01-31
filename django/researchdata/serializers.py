@@ -12,13 +12,6 @@ class SlLinguisticTraditionGroupSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class SlLinguisticTraditionSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = models.SlLinguisticTradition
-        fields = '__all__'
-
-
 class SlReferencePublisherSerializer(serializers.ModelSerializer):
 
     class Meta:
@@ -49,19 +42,6 @@ class SlTextTypeSerializer(serializers.ModelSerializer):
 
 # Main models
 
-class ReferenceSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = models.Reference
-        fields = '__all__'
-
-
-class TextSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = models.Text
-        fields = '__all__'
-
 
 class AuthorSerializer(serializers.ModelSerializer):
 
@@ -81,4 +61,32 @@ class LinguisticNotionSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.LinguisticNotion
+        fields = '__all__'
+
+
+class LinguisticTraditionSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = models.LinguisticTradition
+        fields = '__all__'
+
+
+class ReferenceSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = models.Reference
+        fields = '__all__'
+
+
+class SanskritWordSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = models.SanskritWord
+        fields = '__all__'
+
+
+class TextSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = models.Text
         fields = '__all__'

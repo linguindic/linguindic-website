@@ -9,20 +9,14 @@
 
         <!-- Data items -->
         <h3>Details</h3>
-        {% include "researchdata/snippets/detail-dataitem.html" with dataitem=object.first_name label='First Name' %}
-        {% include "researchdata/snippets/detail-dataitem.html" with dataitem=object.last_name label='Last Name' %}
-        {% include "researchdata/snippets/detail-dataitem.html" with dataitem=object.alternative_name label='Alternative Name' %}
+        {% include "researchdata/snippets/detail-dataitem.html" with dataitem=object.name label='Name' %}
         {% include "researchdata/snippets/detail-dataitem.html" with dataitem=object.description label='Description' %}
-        {% include "researchdata/snippets/detail-dataitem.html" with dataitem=object.location_most_active label='Location' %}
-        {% include "researchdata/snippets/detail-dataitem.html" with dataitem=object.date_of_birth label='Date of Birth' %}
-        {% include "researchdata/snippets/detail-dataitem.html" with dataitem=object.date_of_death label='Date of Death' %}
-        {% include "researchdata/snippets/detail-dataitem.html" with dataitem=object.linguistic_tradition label='Linguistic Tradition' %}
+        {% include "researchdata/snippets/detail-dataitem.html" with dataitem=object.linguistic_tradition_group label='Linguistic Tradition Group' %}
 
         <!-- Many to Many relationships -->
         {% include "researchdata/snippets/detail-manytomanyitem-author.html" %}
         {% include "researchdata/snippets/detail-manytomanyitem-linguisticfield.html" %}
         {% include "researchdata/snippets/detail-manytomanyitem-linguisticnotion.html" %}
-        {% include "researchdata/snippets/detail-manytomanyitem-linguistictradition.html" %}
         {% include "researchdata/snippets/detail-manytomanyitem-reference.html" %}
         {% include "researchdata/snippets/detail-manytomanyitem-sanskritword.html" %}
         {% include "researchdata/snippets/detail-manytomanyitem-text.html" %}

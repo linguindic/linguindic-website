@@ -7,28 +7,17 @@
 <!-- Link to detail -->
 {% block list_item_link %}{% url 'browse-linguisticfields-detail' object.id %}{% endblock %}
 
+<!-- Search By -->
 {% block list_options_advanced_searchby %}
-    <!-- Search By -->
-    <option value="name">Name</option>
-    <option value="description">Description</option>
+    {% include "researchdata/snippets/list-options-advanced-fields-linguisticfield.html" %}
 {% endblock %}
 
 <!-- Order By -->
-{% block list_options_advanced_order_by %}
-    <option value="name">Name</option>
-    <option value="description">Description</option>
+{% block list_options_advanced_orderby %}
+    {% include "researchdata/snippets/list-options-advanced-fields-linguisticfield.html" %}
 {% endblock %}
 
 <!-- Filters -->
 {% block list_options_advanced_filters %}
-
-    <!-- Linguistic Notion -->
-    <label for="list-options-advanced-content-filter-linguisticnotion">Linguistic Notion</label>
-    <select id="list-options-advanced-content-filter-linguisticnotion" name="advanced_filter_linguisticnotion">
-        {% include 'researchdata/snippets/select-default.html' %}
-        {% for linguisticnotion in linguisticnotions %}
-            <option value="{{ linguisticnotion.id }}">{{ linguisticnotion }}</option>
-        {% endfor %}
-    </select>
-
+    {% include "researchdata/snippets/list-options-advanced-filter-mainmodels.html" with exclude='linguisticfield' %}
 {% endblock %}

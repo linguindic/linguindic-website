@@ -28,8 +28,11 @@
         {% include "researchdata/snippets/detail-dataitem.html" with dataitem=object.reference_publisher label='Publisher' %}
 
         <!-- Many to Many relationships -->
-        {% include "researchdata/snippets/detail-manytomanyitem-linguisticnotion.html" %}
         {% include "researchdata/snippets/detail-manytomanyitem-author.html" %}
+        {% include "researchdata/snippets/detail-manytomanyitem-linguisticfield.html" %}
+        {% include "researchdata/snippets/detail-manytomanyitem-linguisticnotion.html" %}
+        {% include "researchdata/snippets/detail-manytomanyitem-linguistictradition.html" %}
+        {% include "researchdata/snippets/detail-manytomanyitem-sanskritword.html" %}
         {% include "researchdata/snippets/detail-manytomanyitem-text.html" %}
 
     </div>

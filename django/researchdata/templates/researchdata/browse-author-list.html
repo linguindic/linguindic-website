@@ -7,65 +7,17 @@
 <!-- Link to detail -->
 {% block list_item_link %}{% url 'browse-authors-detail' object.id %}{% endblock %}
 
+<!-- Search By -->
 {% block list_options_advanced_searchby %}
-    <!-- Search By -->
-    <option value="first_name">First Name</option>
-    <option value="last_name">Last Name</option>
-    <option value="alternative_name">Alternative Name</option>
-    <option value="description">Description</option>
-    <option value="location_most_active">Location Most Active</option>
-    <option value="date_of_birth">Date of Birth</option>
-    <option value="date_of_death">Date of Death</option>
+    {% include "researchdata/snippets/list-options-advanced-fields-author.html" %}
 {% endblock %}
 
 <!-- Order By -->
-{% block list_options_advanced_order_by %}
-    <option value="first_name">First Name</option>
-    <option value="last_name">Last Name</option>
-    <option value="alternative_name">Alternative Name</option>
-    <option value="description">Description</option>
-    <option value="location_most_active">Location Most Active</option>
-    <option value="date_of_birth">Date of Birth</option>
-    <option value="date_of_death">Date of Death</option>
+{% block list_options_advanced_orderby %}
+    {% include "researchdata/snippets/list-options-advanced-fields-author.html" %}
 {% endblock %}
 
 <!-- Filters -->
 {% block list_options_advanced_filters %}
-
-    <!-- SL Linguistic Tradition -->
-    <label for="list-options-advanced-content-filter-sllinguistictradition">Linguistic Tradition</label>
-    <select id="list-options-advanced-content-filter-sllinguistictradition" name="advanced_filter_sllinguistictradition">
-        {% include 'researchdata/snippets/select-default.html' %}
-        {% for sllinguistictradition in sllinguistictraditions %}
-            <option value="{{ sllinguistictradition.id }}">{{ sllinguistictradition }}</option>
-        {% endfor %}
-    </select>
-
-    <!-- Linguistic Notion -->
-    <label for="list-options-advanced-content-filter-linguisticnotion">Linguistic Notion</label>
-    <select id="list-options-advanced-content-filter-linguisticnotion" name="advanced_filter_linguisticnotion">
-        {% include 'researchdata/snippets/select-default.html' %}
-        {% for linguisticnotion in linguisticnotions %}
-            <option value="{{ linguisticnotion.id }}">{{ linguisticnotion }}</option>
-        {% endfor %}
-    </select>
-
-    <!-- Reference -->
-    <label for="list-options-advanced-content-filter-reference">Reference</label>
-    <select id="list-options-advanced-content-filter-reference" name="advanced_filter_reference">
-        {% include 'researchdata/snippets/select-default.html' %}
-        {% for reference in references %}
-            <option value="{{ reference.id }}">{{ reference }}</option>
-        {% endfor %}
-    </select>
-
-    <!-- Text -->
-    <label for="list-options-advanced-content-filter-text">Text</label>
-    <select id="list-options-advanced-content-filter-text" name="advanced_filter_text">
-        {% include 'researchdata/snippets/select-default.html' %}
-        {% for text in texts %}
-            <option value="{{ text.id }}">{{ text }}</option>
-        {% endfor %}
-    </select>
-
+    {% include "researchdata/snippets/list-options-advanced-filter-mainmodels.html" with exclude='none' %}
 {% endblock %}

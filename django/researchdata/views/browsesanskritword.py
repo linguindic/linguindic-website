@@ -5,20 +5,20 @@ from .. import models
 from . import common
 
 
-class BrowseTextDetailView(DetailView):
+class BrowseSanskritWordDetailView(DetailView):
     """
-    Class-based view to show the text detail template
+    Class-based view to show the sanskrit word detail template
     """
-    template_name = 'researchdata/browse-text-detail.html'
-    model = models.Text
+    template_name = 'researchdata/browse-sanskritword-detail.html'
+    model = models.SanskritWord
 
 
-class BrowseTextListView(ListView):
+class BrowseSanskritWordListView(ListView):
     """
-    Class-based view to show the text list template
+    Class-based view to show the sanskrit word list template
     """
-    template_name = 'researchdata/browse-text-list.html'
-    model = models.Text
+    template_name = 'researchdata/browse-sanskritword-list.html'
+    model = models.SanskritWord
     paginate_by = 30
 
     def get_queryset(self):
@@ -46,8 +46,7 @@ class BrowseTextListView(ListView):
             queryset = queryset.filter(
                 Q(id__contains=search_val) |
                 Q(name__contains=search_val) |
-                Q(description__contains=search_val) |
-                Q(approximate_date_of_creation__contains=search_val)
+                Q(description__contains=search_val)
             )
 
         # If advanced search by (e.g. search by a specific field) is provided and advanced search criteria is also provided, then perform advanced search on specific fields
@@ -59,26 +58,16 @@ class BrowseTextListView(ListView):
             # Search only by description
             elif advanced_search_by == 'description':
                 queryset = queryset.filter(Q(description__contains=advanced_search_criteria))
-            # Search only by approximate date of creation
-            elif advanced_search_by == 'approximate_date_of_creation':
-                queryset = queryset.filter(Q(approximate_date_of_creation__contains=advanced_search_criteria))
 
         #
         # Filter
         #
 
         # SL filters
-        # SL Text Group
-        sltextgroup = self.request.GET.get('advanced_filter_sltextgroup', '')
-        if sltextgroup != '':
-            queryset = queryset.filter(text_group=sltextgroup)
-        # SL Text Type
-        sltexttype = self.request.GET.get('advanced_filter_sltexttype', '')
-        if sltexttype != '':
-            queryset = queryset.filter(text_type=sltexttype)
+        # (none)
 
         # M2M filters
-        common.filter_queryset_by_m2m(self.request.GET, queryset, 'text')
+        common.filter_queryset_by_m2m(self.request.GET, queryset, 'sanskritword')
 
         # Admin published filter
         queryset = queryset.filter(admin_published=True)
@@ -97,11 +86,8 @@ class BrowseTextListView(ListView):
 
     def get_context_data(self, **kwargs):
         # Get current view's context
-        context = super(BrowseTextListView, self).get_context_data(**kwargs)
+        context = super(BrowseSanskritWordListView, self).get_context_data(**kwargs)
         # Add data for related models
-        context = common.add_main_models_to_context(context, 'text')
-        context['sltextgroups'] = models.SlTextGroup.objects.filter(admin_published=True)
-        context['sltexttypes'] = models.SlTextType.objects.filter(admin_published=True)
+        context = common.add_main_models_to_context(context, 'sanskritword')
         # Return context
         return context
-       

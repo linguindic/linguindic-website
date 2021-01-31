@@ -2,6 +2,7 @@ from django.views.generic import (DetailView, ListView)
 from django.db.models import Q
 from django.db.models.functions import Lower
 from .. import models
+from . import common
 
 
 class BrowseLinguisticNotionDetailView(DetailView):
@@ -45,8 +46,7 @@ class BrowseLinguisticNotionListView(ListView):
             queryset = queryset.filter(
                 Q(id__contains=search_val) |
                 Q(name__contains=search_val) |
-                Q(description__contains=search_val) |
-                Q(example__contains=search_val)
+                Q(description__contains=search_val)
             )
 
         # If advanced search by (e.g. search by a specific field) is provided and advanced search criteria is also provided, then perform advanced search on specific fields
@@ -58,51 +58,25 @@ class BrowseLinguisticNotionListView(ListView):
             # Search only by description
             elif advanced_search_by == 'description':
                 queryset = queryset.filter(Q(description__contains=advanced_search_criteria))
-            # Search only by example
-            elif advanced_search_by == 'example':
-                queryset = queryset.filter(Q(example__contains=advanced_search_criteria))
 
         #
         # Filter
         #
 
-        # Select List relationships to filter on: (none)
+        # SL filters
+        # (none)
 
-        # Many to Many relationships to filter on:
+        # M2M filters
+        common.filter_queryset_by_m2m(self.request.GET, queryset, 'none')
 
-        # Author
-        author = self.request.GET.get('advanced_filter_author', '')
-        if author != '':
-            queryset = queryset.filter(author__in=[author])
-
-        # Linguistic Field
-        linguisticfield = self.request.GET.get('advanced_filter_linguisticfield', '')
-        if linguisticfield != '':
-            queryset = queryset.filter(linguistic_field__in=[linguisticfield])
-
-        # Reference
-        reference = self.request.GET.get('advanced_filter_reference', '')
-        if reference != '':
-            queryset = queryset.filter(reference__in=[reference])
-
-        # Text
-        text = self.request.GET.get('advanced_filter_text', '')
-        if text != '':
-            queryset = queryset.filter(text__in=[text])
-
-        # Only show results that admin approves as published
+        # Admin published filter
         queryset = queryset.filter(admin_published=True)
 
         #
         # Order
         #
 
-        order = self.request.GET.get('advanced_order_direction', '') + self.request.GET.get('advanced_order_by', 'name')  # Default order is by 'name'
-        # If starts with a '-' then it means order descending
-        if order[0] == '-':
-            queryset = queryset.order_by(Lower(order[1:]).desc())
-        else:
-            queryset = queryset.order_by(Lower(order))
+        common.order_queryset(self.request.GET, queryset, 'name')
 
         #
         # Return data
@@ -111,11 +85,9 @@ class BrowseLinguisticNotionListView(ListView):
         return queryset
 
     def get_context_data(self, **kwargs):
-        # Get current context
+        # Get current view's context
         context = super(BrowseLinguisticNotionListView, self).get_context_data(**kwargs)
         # Add data for related models
-        context['authors'] = models.Author.objects.filter(admin_published=True)
-        context['linguisticfields'] = models.LinguisticField.objects.filter(admin_published=True)
-        context['references'] = models.Reference.objects.filter(admin_published=True)
-        context['texts'] = models.Text.objects.filter(admin_published=True)
+        context = common.add_main_models_to_context(context, 'linguisticnotion')
+        # Return context
         return context

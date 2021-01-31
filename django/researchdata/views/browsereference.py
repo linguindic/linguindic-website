@@ -2,6 +2,7 @@ from django.views.generic import (DetailView, ListView)
 from django.db.models import Q
 from django.db.models.functions import Lower
 from .. import models
+from . import common
 
 
 class BrowseReferenceDetailView(DetailView):
@@ -114,48 +115,27 @@ class BrowseReferenceListView(ListView):
         # Filter
         #
 
-        # Select List relationships to filter on:
-
+        # SL filters
         # SL Reference Type
         slreferencetype = self.request.GET.get('advanced_filter_slreferencetype', '')
         if slreferencetype != '':
             queryset = queryset.filter(reference_type=slreferencetype)
-
         # SL Reference Publisher
         slreferencepublisher = self.request.GET.get('advanced_filter_slreferencepublisher', '')
         if slreferencepublisher != '':
             queryset = queryset.filter(reference_publisher=slreferencepublisher)
 
-        # Many to Many relationships to filter on:
+        # M2M filters
+        common.filter_queryset_by_m2m(self.request.GET, queryset, 'linguisticfield')
 
-        # Author
-        author = self.request.GET.get('advanced_filter_author', '')
-        if author != '':
-            queryset = queryset.filter(author__in=[author])
-
-        # Linguistic Notions
-        linguisticnotion = self.request.GET.get('advanced_filter_linguisticnotion', '')
-        if linguisticnotion != '':
-            queryset = queryset.filter(linguistic_notion__in=[linguisticnotion])
-
-        # Text
-        text = self.request.GET.get('advanced_filter_text', '')
-        if text != '':
-            queryset = queryset.filter(text__in=[text])
-
-        # Only show results that admin approves as published
+        # Admin published filter
         queryset = queryset.filter(admin_published=True)
 
         #
         # Order
         #
 
-        order = self.request.GET.get('advanced_order_direction', '') + self.request.GET.get('advanced_order_by', 'title')  # Default order is by 'title'
-        # If starts with a '-' then it means order descending
-        if order[0] == '-':
-            queryset = queryset.order_by(Lower(order[1:]).desc(), Lower('book_title').desc(), Lower('journal_title').desc(), Lower('url').desc(),  Lower('id').desc())
-        else:
-            queryset = queryset.order_by(Lower(order), Lower('book_title'), Lower('journal_title'), Lower('url'), Lower('id'))
+        common.order_queryset(self.request.GET, queryset, 'title')
 
         #
         # Return data
@@ -164,12 +144,11 @@ class BrowseReferenceListView(ListView):
         return queryset
 
     def get_context_data(self, **kwargs):
-        # Get current context
+        # Get current view's context
         context = super(BrowseReferenceListView, self).get_context_data(**kwargs)
         # Add data for related models
+        context = common.add_main_models_to_context(context, 'linguisticfield')
         context['slreferencetypes'] = models.SlReferenceType.objects.filter(admin_published=True)
         context['slreferencepublishers'] = models.SlReferencePublisher.objects.filter(admin_published=True)
-        context['authors'] = models.Author.objects.filter(admin_published=True)
-        context['linguisticnotions'] = models.LinguisticNotion.objects.filter(admin_published=True)
-        context['texts'] = models.Text.objects.filter(admin_published=True)
+        # Return context
         return context

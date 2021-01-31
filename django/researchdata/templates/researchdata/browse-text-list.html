@@ -7,66 +7,26 @@
 <!-- Link to detail -->
 {% block list_item_link %}{% url 'browse-texts-detail' object.id %}{% endblock %}
 
+<!-- Search By -->
 {% block list_options_advanced_searchby %}
-    <!-- Search By -->
-    <option value="name">Name</option>
-    <option value="description">Description</option>
-    <option value="approximate_date_of_creation">Approximate date of creation</option>
+    {% include "researchdata/snippets/list-options-advanced-fields-text.html" %}
 {% endblock %}
 
 <!-- Order By -->
-{% block list_options_advanced_order_by %}
-    <option value="name">Name</option>
-    <option value="description">Description</option>
-    <option value="approximate_date_of_creation">Approximate date of creation</option>
+{% block list_options_advanced_orderby %}
+    {% include "researchdata/snippets/list-options-advanced-fields-text.html" %}
 {% endblock %}
 
 <!-- Filters -->
 {% block list_options_advanced_filters %}
 
-    <!-- SL Text Group -->
-    <label for="list-options-advanced-content-filter-sltextgroup">Text Group</label>
-    <select id="list-options-advanced-content-filter-sltextgroup" name="advanced_filter_sltextgroup">
-        {% include 'researchdata/snippets/select-default.html' %}
-        {% for sltextgroup in sltextgroups %}
-            <option value="{{ sltextgroup.id }}">{{ sltextgroup }}</option>
-        {% endfor %}
-    </select>
+    <!-- SlTextGroup -->
+    {% include "researchdata/snippets/list-options-advanced-filter.html" with dataset=sltextgroups label='Text Group' id='sltextgroup' %}
 
-    <!-- SL Text Type -->
-    <label for="list-options-advanced-content-filter-sltexttype">Text Type</label>
-    <select id="list-options-advanced-content-filter-sltexttype" name="advanced_filter_sltexttype">
-        {% include 'researchdata/snippets/select-default.html' %}
-        {% for sltexttype in sltexttypes %}
-            <option value="{{ sltexttype.id }}">{{ sltexttype }}</option>
-        {% endfor %}
-    </select>
+    <!-- SlTextType -->
+    {% include "researchdata/snippets/list-options-advanced-filter.html" with dataset=sltexttypes label='Text Type' id='sltexttype' %}
 
-    <!-- Author -->
-    <label for="list-options-advanced-content-filter-author">Author</label>
-    <select id="list-options-advanced-content-filter-author" name="advanced_filter_author">
-        {% include 'researchdata/snippets/select-default.html' %}
-        {% for author in authors %}
-            <option value="{{ author.id }}">{{ author }}</option>
-        {% endfor %}
-    </select>
-
-    <!-- Linguistic Notion -->
-    <label for="list-options-advanced-content-filter-linguisticnotion">Linguistic Notion</label>
-    <select id="list-options-advanced-content-filter-linguisticnotion" name="advanced_filter_linguisticnotion">
-        {% include 'researchdata/snippets/select-default.html' %}
-        {% for linguisticnotion in linguisticnotions %}
-            <option value="{{ linguisticnotion.id }}">{{ linguisticnotion }}</option>
-        {% endfor %}
-    </select>
-
-    <!-- Reference -->
-    <label for="list-options-advanced-content-filter-reference">Reference</label>
-    <select id="list-options-advanced-content-filter-reference" name="advanced_filter_reference">
-        {% include 'researchdata/snippets/select-default.html' %}
-        {% for reference in references %}
-            <option value="{{ reference.id }}">{{ reference }}</option>
-        {% endfor %}
-    </select>
+    <!-- Main models -->
+    {% include "researchdata/snippets/list-options-advanced-filter-mainmodels.html" with exclude='text' %}
 
 {% endblock %}

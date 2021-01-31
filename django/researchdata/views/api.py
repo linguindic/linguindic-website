@@ -29,22 +29,6 @@ class SlLinguisticTraditionGroupRetrieveAPIView(RetrieveAPIView):
     serializer_class = serializers.SlLinguisticTraditionGroupSerializer
 
 
-class SlLinguisticTraditionListAPIView(ListAPIView):
-    """
-    Return list of all SlLinguisticTradition
-    """
-    queryset = models.SlLinguisticTradition.objects.all()
-    serializer_class = serializers.SlLinguisticTraditionSerializer
-
-
-class SlLinguisticTraditionRetrieveAPIView(RetrieveAPIView):
-    """
-    Return a specific SlLinguisticTradition
-    """
-    queryset = models.SlLinguisticTradition.objects.all()
-    serializer_class = serializers.SlLinguisticTraditionSerializer
-
-
 class SlReferencePublisherListAPIView(ListAPIView):
     """
     Return list of all SlReferencePublisher
@@ -112,38 +96,6 @@ class SlTextTypeRetrieveAPIView(RetrieveAPIView):
 # Main models
 
 
-class ReferenceListAPIView(ListAPIView):
-    """
-    Return list of all Reference
-    """
-    queryset = models.Reference.objects.all()
-    serializer_class = serializers.ReferenceSerializer
-
-
-class ReferenceRetrieveAPIView(RetrieveAPIView):
-    """
-    Return a specific Reference
-    """
-    queryset = models.Reference.objects.all()
-    serializer_class = serializers.ReferenceSerializer
-
-
-class TextListAPIView(ListAPIView):
-    """
-    Return list of all Text
-    """
-    queryset = models.Text.objects.all()
-    serializer_class = serializers.TextSerializer
-
-
-class TextRetrieveAPIView(RetrieveAPIView):
-    """
-    Return a specific Text
-    """
-    queryset = models.Text.objects.all()
-    serializer_class = serializers.TextSerializer
-
-
 class AuthorListAPIView(ListAPIView):
     """
     Return list of all Author
@@ -190,3 +142,67 @@ class LinguisticNotionRetrieveAPIView(RetrieveAPIView):
     """
     queryset = models.LinguisticNotion.objects.all()
     serializer_class = serializers.LinguisticNotionSerializer
+
+
+class LinguisticTraditionListAPIView(ListAPIView):
+    """
+    Return list of all LinguisticTradition
+    """
+    queryset = models.LinguisticTradition.objects.all()
+    serializer_class = serializers.LinguisticTraditionSerializer
+
+
+class LinguisticTraditionRetrieveAPIView(RetrieveAPIView):
+    """
+    Return a specific LinguisticTradition
+    """
+    queryset = models.LinguisticTradition.objects.all()
+    serializer_class = serializers.LinguisticTraditionSerializer
+
+
+class ReferenceListAPIView(ListAPIView):
+    """
+    Return list of all Reference
+    """
+    queryset = models.Reference.objects.all()
+    serializer_class = serializers.ReferenceSerializer
+
+
+class ReferenceRetrieveAPIView(RetrieveAPIView):
+    """
+    Return a specific Reference
+    """
+    queryset = models.Reference.objects.all()
+    serializer_class = serializers.ReferenceSerializer
+
+
+class SanskritWordListAPIView(ListAPIView):
+    """
+    Return list of all SanskritWord
+    """
+    queryset = models.SanskritWord.objects.all()
+    serializer_class = serializers.SanskritWordSerializer
+
+
+class SanskritWordRetrieveAPIView(RetrieveAPIView):
+    """
+    Return a specific SanskritWord
+    """
+    queryset = models.SanskritWord.objects.all()
+    serializer_class = serializers.SanskritWordSerializer
+
+
+class TextListAPIView(ListAPIView):
+    """
+    Return list of all Text
+    """
+    queryset = models.Text.objects.all()
+    serializer_class = serializers.TextSerializer
+
+
+class TextRetrieveAPIView(RetrieveAPIView):
+    """
+    Return a specific Text
+    """
+    queryset = models.Text.objects.all()
+    serializer_class = serializers.TextSerializer
