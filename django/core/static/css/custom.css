@@ -200,6 +200,12 @@ main a {
 }
 
 
+.about-team-member-role {
+    text-align: center;
+    margin: -1.3em auto 1.8em auto;
+}
+
+
 /* ---------- Browse ---------- */
 
 /* ---------- Browse: List ---------- */
