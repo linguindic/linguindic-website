@@ -82,7 +82,7 @@ urlpatterns = [
     path('api/sltexttypes/<pk>/', api.SlTextTypeRetrieveAPIView.as_view(), name='api-sltexttypes-retrieve'),
 
     # Main models
-    
+
     # Authors
     path('api/authors/', api.AuthorListAPIView.as_view(), name='api-authors-list'),
     path('api/authors/<pk>/', api.AuthorRetrieveAPIView.as_view(), name='api-authors-retrieve'),

@@ -1,6 +1,5 @@
 from django.views.generic import (DetailView, ListView)
 from django.db.models import Q
-from django.db.models.functions import Lower
 from .. import models
 from . import common
 

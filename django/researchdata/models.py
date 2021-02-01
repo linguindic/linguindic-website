@@ -281,7 +281,7 @@ class LinguisticTradition(models.Model):
     linguistic_field = models.ManyToManyField("LinguisticField", related_name=related_name, blank=True,
                                               db_table="{}_m2m_linguisticfield_linguistictradition".format(apps.app_name))
     linguistic_notion = models.ManyToManyField("LinguisticNotion", related_name=related_name, blank=True,
-                                              db_table="{}_m2m_linguisticnotion_linguistictradition".format(apps.app_name))
+                                               db_table="{}_m2m_linguisticnotion_linguistictradition".format(apps.app_name))
     # Admin fields
     admin_notes = models.TextField(blank=True, null=True)
     admin_published = models.BooleanField(default=True)
@@ -328,9 +328,9 @@ class Reference(models.Model):
     linguistic_field = models.ManyToManyField("LinguisticField", related_name=related_name, blank=True,
                                               db_table="{}_m2m_linguisticfield_reference".format(apps.app_name))
     linguistic_notion = models.ManyToManyField("LinguisticNotion", related_name=related_name, blank=True,
-                                              db_table="{}_m2m_linguisticnotion_reference".format(apps.app_name))
+                                               db_table="{}_m2m_linguisticnotion_reference".format(apps.app_name))
     linguistic_tradition = models.ManyToManyField("LinguisticTradition", related_name=related_name, blank=True,
-                                              db_table="{}_m2m_linguistictradition_reference".format(apps.app_name))
+                                                  db_table="{}_m2m_linguistictradition_reference".format(apps.app_name))
     # Admin fields
     admin_notes = models.TextField(blank=True, null=True)
     admin_published = models.BooleanField(default=True)
@@ -383,9 +383,9 @@ class SanskritWord(models.Model):
     linguistic_field = models.ManyToManyField("LinguisticField", related_name=related_name, blank=True,
                                               db_table="{}_m2m_linguisticfield_sanskritword".format(apps.app_name))
     linguistic_notion = models.ManyToManyField("LinguisticNotion", related_name=related_name, blank=True,
-                                              db_table="{}_m2m_linguisticnotion_sanskritword".format(apps.app_name))
+                                               db_table="{}_m2m_linguisticnotion_sanskritword".format(apps.app_name))
     linguistic_tradition = models.ManyToManyField("LinguisticTradition", related_name=related_name, blank=True,
-                                              db_table="{}_m2m_linguistictradition_sanskritword".format(apps.app_name))
+                                                  db_table="{}_m2m_linguistictradition_sanskritword".format(apps.app_name))
     reference = models.ManyToManyField("Reference", related_name=related_name, blank=True, db_table="{}_m2m_reference_sanskritword".format(apps.app_name))
     # Admin fields
     admin_notes = models.TextField(blank=True, null=True)
@@ -429,9 +429,9 @@ class Text(models.Model):
     linguistic_field = models.ManyToManyField("LinguisticField", related_name=related_name, blank=True,
                                               db_table="{}_m2m_linguisticfield_text".format(apps.app_name))
     linguistic_notion = models.ManyToManyField("LinguisticNotion", related_name=related_name, blank=True,
-                                              db_table="{}_m2m_linguisticnotion_text".format(apps.app_name))
+                                               db_table="{}_m2m_linguisticnotion_text".format(apps.app_name))
     linguistic_tradition = models.ManyToManyField("LinguisticTradition", related_name=related_name, blank=True,
-                                              db_table="{}_m2m_linguistictradition_text".format(apps.app_name))
+                                                  db_table="{}_m2m_linguistictradition_text".format(apps.app_name))
     reference = models.ManyToManyField("Reference", related_name=related_name, blank=True, db_table="{}_m2m_reference_text".format(apps.app_name))
     sanskrit_word = models.ManyToManyField("SanskritWord", related_name=related_name, blank=True, db_table="{}_m2m_sanskritword_text".format(apps.app_name))
     # Admin fields

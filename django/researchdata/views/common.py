@@ -1,3 +1,4 @@
+from django.db.models.functions import Lower
 from .. import models
 
 
@@ -27,10 +28,10 @@ def filter_queryset_by_m2m(request, queryset, exclude):
             linguisticnotion = request.get('advanced_filter_linguisticnotion', '')
             if linguisticnotion != '':
                 queryset = queryset.filter(linguistic_notion__in=[linguisticnotion])
-            
+
         if exclude != 'linguistictradition':
-            sanskritword = request.get('advanced_filter_linguistictradition', '')
-            if sanskritword != '':
+            linguistictradition = request.get('advanced_filter_linguistictradition', '')
+            if linguistictradition != '':
                 queryset = queryset.filter(linguistic_tradition__in=[linguistictradition])
 
         if exclude != 'reference':
@@ -47,10 +48,10 @@ def filter_queryset_by_m2m(request, queryset, exclude):
             text = request.get('advanced_filter_text', '')
             if text != '':
                 queryset = queryset.filter(text__in=[text])
-        
+
         # Only show results that admin approves as published
         queryset = queryset.filter(admin_published=True)
-        
+
         return queryset
 
 
@@ -78,7 +79,7 @@ def order_queryset(request, queryset, order_by_default):
             queryset = queryset.order_by(Lower(order[1:]).desc())
         else:
             queryset = queryset.order_by(Lower(order))
-        
+
         return queryset
 
 
@@ -95,23 +96,23 @@ def add_main_models_to_context(context, exclude):
 
         if exclude != 'author':
             context['authors'] = models.Author.objects.filter(admin_published=True)
-        
+
         if exclude != 'linguisticfield':
             context['linguisticfields'] = models.LinguisticField.objects.filter(admin_published=True)
-        
+
         if exclude != 'linguisticnotion':
             context['linguisticnotions'] = models.LinguisticNotion.objects.filter(admin_published=True)
-        
+
         if exclude != 'linguistictradition':
             context['linguistictraditions'] = models.LinguisticTradition.objects.filter(admin_published=True)
-        
+
         if exclude != 'reference':
             context['references'] = models.Reference.objects.filter(admin_published=True)
-        
+
         if exclude != 'sanskritword':
             context['sanskritwords'] = models.SanskritWord.objects.filter(admin_published=True)
-        
+
         if exclude != 'text':
             context['texts'] = models.Text.objects.filter(admin_published=True)
-        
+
         return context

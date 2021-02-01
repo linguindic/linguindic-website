@@ -1,6 +1,5 @@
 from django.views.generic import (DetailView, ListView)
 from django.db.models import Q
-from django.db.models.functions import Lower
 from .. import models
 from . import common
 
@@ -104,4 +103,3 @@ class BrowseTextListView(ListView):
         context['sltexttypes'] = models.SlTextType.objects.filter(admin_published=True)
         # Return context
         return context
-       
