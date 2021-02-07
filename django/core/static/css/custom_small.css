@@ -17,8 +17,18 @@
         font-size: 1.7em;
     }
 
+    /* ---------- Main ---------- */
+
+    main {
+        margin-top: 3.39em;
+        min-height: calc(100vh - 3.39em);
+    }
 
     /* ---------- Welcome ---------- */
+
+    #welcome-banner {
+        height: calc(100vh - 3.39em);
+    }
 
     #welcome-banner-tagline {
         width: 90%;

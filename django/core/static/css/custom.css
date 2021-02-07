@@ -6,6 +6,7 @@ body {
     color: #643d25;
     margin: 0;
     font-weight: 300;
+    background: #FFF;
 }
 
 a {
@@ -15,6 +16,13 @@ a {
 
 a:hover {
     color: #705a41;
+}
+
+h1 {
+    font-size: 1em;
+    margin: 0;
+    padding: 0;
+    line-height: 1em;;
 }
 
 h2 {
@@ -64,7 +72,6 @@ nav {
     letter-spacing: 0.2em;
     font-weight: 300;
     color: #b28b01;
-    padding-left: 0.5em;
 }
 
 .navbar-nav {
@@ -97,10 +104,8 @@ nav a:hover,
 /* ---------- Main ---------- */
 
 main {
-    margin-top: 4em;
     padding-bottom: 4em;
     background: #eedac3;
-    min-height: calc(100vh - 4em);
 }
 
 main p,
@@ -113,7 +118,7 @@ main ol {
 }
 
 main a {
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 /* ---------- Welcome ---------- */
@@ -121,11 +126,11 @@ main a {
 #welcome-banner {
     width: 100%;
     padding-top: 10vh;
-    height: calc(100vh - 4em);
-    background: url('../images/welcome/banner-bg.jpg'); /* https://unsplash.com/photos/qun1Pdo6wIM */
+    background-image: url('../images/welcome/banner-bg.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    background-color: black;
 }
 
 #welcome-banner-tagline {
