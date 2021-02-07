@@ -1,0 +1,29 @@
+{% extends "researchdata/browse-list-base.html" %}
+{% load static %}
+
+<!-- Title -->
+{% block list_title %}Text Passages{% endblock %}
+
+<!-- Link to detail -->
+{% block list_item_link %}{% url 'browse-textpassages-detail' object.id %}{% endblock %}
+
+<!-- Search By -->
+{% block list_options_advanced_searchby %}
+    {% include "researchdata/snippets/list-options-advanced-fields-textpassage.html" %}
+{% endblock %}
+
+<!-- Order By -->
+{% block list_options_advanced_orderby %}
+    {% include "researchdata/snippets/list-options-advanced-fields-textpassage.html" %}
+{% endblock %}
+
+<!-- Filters -->
+{% block list_options_advanced_filters %}
+
+    <!-- SlTextType -->
+    {% include "researchdata/snippets/list-options-advanced-filter.html" with dataset=sltexttypes label='Text Type' id='sltexttype' %}
+
+    <!-- Main models -->
+    {% include "researchdata/snippets/list-options-advanced-filter-mainmodels.html" with exclude='textpassage' %}
+
+{% endblock %}

@@ -9,7 +9,7 @@ urlpatterns = [
     path('', include('general.urls')),
 
     # Research Data app's urls
-    path('database/', include('researchdata.urls')),
+    path('data/', include('researchdata.urls')),
 
     # Include Django admin urls
     path('dashboard/', admin.site.urls),

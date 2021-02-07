@@ -8,6 +8,7 @@ from .views import (
     browsereference,
     browsesanskritword,
     browsetext,
+    browsetextpassage,
     compare,
     visualise
 )
@@ -45,6 +46,10 @@ urlpatterns = [
     # Browse: Texts
     path('browse/texts/', browsetext.BrowseTextListView.as_view(), name='browse-texts-list'),
     path('browse/texts/<pk>/', browsetext.BrowseTextDetailView.as_view(), name='browse-texts-detail'),
+
+    # Browse: Text Passages
+    path('browse/textpassages/', browsetextpassage.BrowseTextPassageListView.as_view(), name='browse-textpassages-list'),
+    path('browse/textpassages/<pk>/', browsetextpassage.BrowseTextPassageDetailView.as_view(), name='browse-textpassages-detail'),
 
     # Compare
     path('compare/linguisticnotions/', compare.CompareLinguisticNotionsTemplateView.as_view(), name='compare-linguisticnotions'),

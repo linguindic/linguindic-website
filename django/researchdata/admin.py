@@ -95,6 +95,18 @@ class TextAdminView(GenericAdminView):
     actions = (publish, unpublish)
 
 
+class TextPassageAdminView(GenericAdminView):
+    """
+    Set the Text section of the Django admin
+    """
+    list_display = ('id', 'name', 'description', 'text', 'text_type',
+                    'admin_published', 'meta_created_datetime')
+    list_filter = ('text_type', 'admin_published', 'meta_created_by')
+    search_fields = ('name', 'description', 'admin_notes')
+    ordering = ('-id',)
+    actions = (publish, unpublish)
+
+
 # Register models and their respective admin view
 
 # Select List models
@@ -112,3 +124,4 @@ admin.site.register(models.LinguisticTradition, LinguisticTraditionAdminView)
 admin.site.register(models.Reference, ReferenceAdminView)
 admin.site.register(models.SanskritWord, GenericAdminView)  # Note - uses GenericAdminView
 admin.site.register(models.Text, TextAdminView)
+admin.site.register(models.TextPassage, TextPassageAdminView)

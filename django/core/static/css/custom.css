@@ -106,7 +106,7 @@ main {
 main p,
 main ul,
 main ol {
-    font-size: 1.2em;
+    font-size: 1.2rem;
     line-height: 2em;
     letter-spacing: 0.04em;
     font-weight: 300;
@@ -273,11 +273,11 @@ main a {
 
 #list-options-advanced-content {
     background: white;
-    margin: 4em auto;
+    margin: 2em auto;
     width: 30em;
     max-width: 90%;
-    max-height: calc( 100vh - 8em);
-    border-radius: 1em;
+    max-height: calc( 100vh - 4em);
+    border-radius: 0.8em;
     padding: 1.5em 2em;
     overflow-y: scroll;
 }
@@ -307,7 +307,7 @@ main a {
 }
 
 #list-options-advanced-content label {
-    margin: 1em 0 0.3em 0;
+    margin: 1.5em 0 0.2em 0;
     display: block;
     font-size: 0.9em;
 }

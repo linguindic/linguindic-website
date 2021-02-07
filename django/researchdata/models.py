@@ -128,7 +128,8 @@ class SlTextType(models.Model):
 
 # Main models
 
-# All main models have many to many (m2m) relationships with each other.
+# Most main models have many to many (m2m) relationships with each other.
+# (There may be a few exceptions, e.g. Text and TextPassage share a one-to-many relationship, as TextPassage is a subset of Text)
 # As m2m relationships are just defined in 1 of the 2 related models (e.g. the relationship isn't defined in both)
 # the 2nd model (in alphabetical order) is the one that contains the relationship.
 # E.g. author_text is stored in Text model, not Author.
@@ -297,7 +298,7 @@ class LinguisticTradition(models.Model):
         return self.name
 
     class Meta:
-        db_table = "{}_sl_linguistictradition".format(apps.app_name)
+        db_table = "{}_main_linguistictradition".format(apps.app_name)
 
 
 class Reference(models.Model):
@@ -416,6 +417,9 @@ class SanskritWord(models.Model):
 class Text(models.Model):
     """
     Pieces of text, primarily from ancient Indian tradition, e.g. books, manuscripts
+
+    This has a one-to-many relationship with TextPassage model,
+    rather than many-to-many like most other main tables have with one another
     """
     name = models.CharField(max_length=100)
     description = models.TextField(blank=True, null=True)
@@ -452,14 +456,69 @@ class Text(models.Model):
     @property
     def dynamic_subtitle(self):
         if self.text_group:
-            return "A piece of text from {}".format(self.text_group)
+            return "A text from {}".format(self.text_group)
         elif self.text_type:
-            return "A piece of {} text".format(self.text_type)
+            return "A text of type: {}".format(self.text_type)
         else:
-            return "A piece of text"
+            return "A text"
 
     def __str__(self):
         return self.dynamic_title
 
     class Meta:
         db_table = "{}_main_text".format(apps.app_name)
+
+
+class TextPassage(models.Model):
+    """
+    Specific passages of texts
+
+    This has a one-to-many relationship with Text model,
+    rather than many-to-many like most other main tables have with one another
+    """
+    name = models.CharField(max_length=100)
+    description = models.TextField(blank=True, null=True)
+    # Foreign key fields
+    text = models.ForeignKey(Text, on_delete=models.PROTECT)
+    text_type = models.ForeignKey(SlTextType, on_delete=models.SET_NULL, blank=True, null=True)
+    # Many to many relationship fields
+    related_name = "text_passage"
+    author = models.ManyToManyField("Author", related_name=related_name, blank=True, db_table="{}_m2m_author_textpassage".format(apps.app_name))
+    linguistic_field = models.ManyToManyField("LinguisticField", related_name=related_name, blank=True,
+                                              db_table="{}_m2m_linguisticfield_textpassage".format(apps.app_name))
+    linguistic_notion = models.ManyToManyField("LinguisticNotion", related_name=related_name, blank=True,
+                                               db_table="{}_m2m_linguisticnotion_textpassage".format(apps.app_name))
+    linguistic_tradition = models.ManyToManyField("LinguisticTradition", related_name=related_name, blank=True,
+                                                  db_table="{}_m2m_linguistictradition_textpassage".format(apps.app_name))
+    reference = models.ManyToManyField("Reference", related_name=related_name, blank=True, db_table="{}_m2m_reference_textpassage".format(apps.app_name))
+    sanskrit_word = models.ManyToManyField("SanskritWord", related_name=related_name, blank=True, db_table="{}_m2m_sanskritword_textpassage".format(apps.app_name))
+    # no m2m relationship with Text as this is a one-to-many relationship, so a FK field called 'text' above in this model
+    # Admin fields
+    admin_notes = models.TextField(blank=True, null=True)
+    admin_published = models.BooleanField(default=True)
+    # Metadata fields
+    meta_created_by = models.ForeignKey(User, related_name="textpassage_created_by",
+                                        on_delete=models.PROTECT, blank=True, null=True)
+    meta_created_datetime = models.DateTimeField(auto_now_add=True, verbose_name="Created")
+    meta_lastupdated_by = models.ForeignKey(User, related_name="textpassage_lastupdated_by",
+                                            on_delete=models.PROTECT, blank=True, null=True)
+    meta_lastupdated_datetime = models.DateTimeField(auto_now=True, verbose_name="Last Updated")
+
+    @property
+    def dynamic_title(self):
+        return self.name
+
+    @property
+    def dynamic_subtitle(self):
+        if self.text:
+            return "A passage of text from {}".format(self.text)
+        elif self.text_type:
+            return "A passage of {} text".format(self.text_type)
+        else:
+            return "A passage of text"
+
+    def __str__(self):
+        return self.dynamic_title
+
+    class Meta:
+        db_table = "{}_main_textpassage".format(apps.app_name)

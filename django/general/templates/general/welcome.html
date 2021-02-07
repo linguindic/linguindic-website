@@ -24,9 +24,19 @@
         </p>
         <ul>
             <li>Reading detailed information about the <a href="{% url 'about-project' %}">project</a>, our <a href="{% url 'about-team' %}">team</a>, related <a href="{% url 'about-events' %}">events</a>, and more</li>
-            <li>Browsing our database of <a href="{% url 'browse-linguisticnotions-list' %}">linguistic notions</a>, <a href="{% url 'browse-linguisticfields-list' %}">linguistic fields</a>, <a href="{% url 'browse-authors-list' %}">authors</a>, <a href="{% url 'browse-texts-list' %}">texts</a>, and <a href="{% url 'browse-references-list' %}">references</a></li>
+            <li>Browsing our database of:
+                <ul>
+                    <li><a href="{% url 'browse-linguisticnotions-list' %}">linguistic notions</a></li>
+                    <li><a href="{% url 'browse-linguisticfields-list' %}">linguistic fields</a></li>
+                    <li><a href="{% url 'browse-linguistictraditions-list' %}">linguistic traditions</a></li>
+                    <li><a href="{% url 'browse-authors-list' %}">authors</a></li>
+                    <li><a href="{% url 'browse-texts-list' %}">texts</a></li>
+                    <li><a href="{% url 'browse-textpassages-list' %}">text passages</a></li>
+                    <li><a href="{% url 'browse-references-list' %}">references</a></li>
+                </ul>
+            </li>
             <li><a href="{% url 'compare-linguisticnotions' %}">Comparing</a> two linguistic notions from our database</li>
-            <li><a href="{% url 'visualise' %}">Visualising our data</a>, to identify patterns and trends and thus gain a better understand database</li>
+            <li><a href="{% url 'visualise' %}">Visualising our data</a>, to identify patterns and trends</li>
         </ul>
         <p>
             If you'd like to get in touch with us about the project or this website, you can email us at <a href="mailto:linguindic@orinst.ox.ac.uk?subject=LINGUINDIC website">linguindic@orinst.ox.ac.uk</a>

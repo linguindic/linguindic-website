@@ -90,3 +90,10 @@ class TextSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Text
         fields = '__all__'
+
+
+class TextPassageSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = models.TextPassage
+        fields = '__all__'

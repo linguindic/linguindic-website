@@ -32,3 +32,8 @@
 {% if exclude != "text" %}
     {% include "researchdata/snippets/list-options-advanced-filter.html" with dataset=texts label='Text' id='text' %}
 {% endif %}
+
+<!-- Text Passage -->
+{% if exclude != "textpassage" %}
+    {% include "researchdata/snippets/list-options-advanced-filter.html" with dataset=textpassages label='Text Passage' id='textpassage' %}
+{% endif %}

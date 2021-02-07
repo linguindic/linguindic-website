@@ -206,3 +206,19 @@ class TextRetrieveAPIView(RetrieveAPIView):
     """
     queryset = models.Text.objects.all()
     serializer_class = serializers.TextSerializer
+
+
+class TextPassageListAPIView(ListAPIView):
+    """
+    Return list of all TextPassage
+    """
+    queryset = models.TextPassage.objects.all()
+    serializer_class = serializers.TextPassageSerializer
+
+
+class TextPassageRetrieveAPIView(RetrieveAPIView):
+    """
+    Return a specific TextPassage
+    """
+    queryset = models.TextPassage.objects.all()
+    serializer_class = serializers.TextPassageSerializer
