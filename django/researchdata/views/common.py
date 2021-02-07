@@ -48,7 +48,7 @@ def filter_queryset_by_m2m(request, queryset, exclude):
             text = request.get('advanced_filter_text', '')
             if text != '':
                 queryset = queryset.filter(text__in=[text])
-        
+
         if exclude != 'textpassage':
             textpassage = request.get('advanced_filter_textpassage', '')
             if textpassage != '':
@@ -119,7 +119,7 @@ def add_main_models_to_context(context, exclude):
 
         if exclude != 'text':
             context['texts'] = models.Text.objects.filter(admin_published=True)
-        
+
         if exclude != 'textpassage':
             context['textpassages'] = models.TextPassage.objects.filter(admin_published=True)
 
