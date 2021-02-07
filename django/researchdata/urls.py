@@ -114,6 +114,10 @@ urlpatterns = [
 
     # Texts
     path('api/texts/', api.TextListAPIView.as_view(), name='api-texts-list'),
-    path('api/texts/<pk>/', api.TextRetrieveAPIView.as_view(), name='api-texts-retrieve')
+    path('api/texts/<pk>/', api.TextRetrieveAPIView.as_view(), name='api-texts-retrieve'),
+
+    # Text Passages
+    path('api/textpassages/', api.TextPassageListAPIView.as_view(), name='api-textpassages-list'),
+    path('api/textpassages/<pk>/', api.TextPassageRetrieveAPIView.as_view(), name='api-textpassages-retrieve')
 
 ]
