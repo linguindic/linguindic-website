@@ -12,16 +12,16 @@
         {% include "researchdata/snippets/detail-dataitem.html" with dataitem=object.name label='Name' %}
         {% include "researchdata/snippets/detail-dataitem.html" with dataitem=object.description label='Description' %}
         {% include "researchdata/snippets/detail-dataitem.html" with dataitem=object.approximate_date_of_creation label='Approximate Date of Creation' %}
-        {% include "researchdata/snippets/detail-dataitem.html" with dataitem=object.text_group label='Text Group' %}
-        {% include "researchdata/snippets/detail-dataitem.html" with dataitem=object.text_type label='Text Type' %}
+
+        <!-- Many to One relationships -->
+        {% include "researchdata/snippets/detail-relateddatalist.html" with dataobject=object.text_group label='Text Group' itemurl='browse-texts-list' itemurlparameter='advanced_filter_sltextgroup' %}
+        {% include "researchdata/snippets/detail-relateddatalist.html" with dataobject=object.text_type label='Text Type' itemurl='browse-texts-list' itemurlparameter='advanced_filter_sltexttype' %}
+
+        <!-- One to Many relationships -->
+        {% include "researchdata/snippets/detail-relateddatalist.html" with dataset=object.textpassage_set.all label='Text Passages' itemurl='browse-textpassages-detail' %}
 
         <!-- Many to Many relationships -->
-        {% include "researchdata/snippets/detail-manytomanyitem-author.html" %}
-        {% include "researchdata/snippets/detail-manytomanyitem-linguisticfield.html" %}
-        {% include "researchdata/snippets/detail-manytomanyitem-linguisticnotion.html" %}
-        {% include "researchdata/snippets/detail-manytomanyitem-linguistictradition.html" %}
-        {% include "researchdata/snippets/detail-manytomanyitem-reference.html" %}
-        {% include "researchdata/snippets/detail-manytomanyitem-sanskritword.html" %}
+        {% include "researchdata/snippets/detail-relateddatalist-mainmodels.html" with exclude='text,textpassage,' %}
 
     </div>
 {% endblock %}

@@ -9,12 +9,12 @@
 
 <!-- Search By -->
 {% block list_options_advanced_searchby %}
-    {% include "researchdata/snippets/list-options-advanced-fields-linguistictradition.html" %}
+    {% include "researchdata/snippets/list-options-advanced-fields-mainmodels.html" with models='linguistictradition,' %}
 {% endblock %}
 
 <!-- Order By -->
 {% block list_options_advanced_orderby %}
-    {% include "researchdata/snippets/list-options-advanced-fields-linguistictradition.html" %}
+    {% include "researchdata/snippets/list-options-advanced-fields-mainmodels.html" with models='linguistictradition,' %}
 {% endblock %}
 
 <!-- Filters -->
@@ -24,6 +24,6 @@
     {% include "researchdata/snippets/list-options-advanced-filter.html" with dataset=sllinguistictraditiongroups label='Linguistic Tradition Group' id='sllinguistictraditiongroup' %}
 
     <!-- Main models -->
-    {% include "researchdata/snippets/list-options-advanced-filter-mainmodels.html" with exclude='linguistictradition' %}
+    {% include "researchdata/snippets/list-options-advanced-filter-mainmodels.html" with exclude='linguistictradition,' %}
     
 {% endblock %}

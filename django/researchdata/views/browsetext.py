@@ -66,7 +66,7 @@ class BrowseTextListView(ListView):
         # Filter
         #
 
-        # SL filters
+        # Many to One relationship filters
         # SL Text Group
         sltextgroup = self.request.GET.get('advanced_filter_sltextgroup', '')
         if sltextgroup != '':
@@ -76,7 +76,12 @@ class BrowseTextListView(ListView):
         if sltexttype != '':
             queryset = queryset.filter(text_type=sltexttype)
 
-        # M2M filters
+        # One to Many relationship filters
+        textpassage = self.request.GET.get('advanced_filter_textpassage', '')
+        if textpassage != '':
+            queryset = queryset.filter(textpassage=textpassage)
+
+        # Many to Many relationship filters
         common.filter_queryset_by_m2m(self.request.GET, queryset, 'text')
 
         # Admin published filter

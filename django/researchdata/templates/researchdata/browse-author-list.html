@@ -9,12 +9,12 @@
 
 <!-- Search By -->
 {% block list_options_advanced_searchby %}
-    {% include "researchdata/snippets/list-options-advanced-fields-author.html" %}
+    {% include "researchdata/snippets/list-options-advanced-fields-mainmodels.html" with models='author,' %}
 {% endblock %}
 
 <!-- Order By -->
 {% block list_options_advanced_orderby %}
-    {% include "researchdata/snippets/list-options-advanced-fields-author.html" %}
+    {% include "researchdata/snippets/list-options-advanced-fields-mainmodels.html" with models='author,' %}
 {% endblock %}
 
 <!-- Filters -->

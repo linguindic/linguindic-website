@@ -1,0 +1,26 @@
+<!-- Either a dataobject (single item) or dataset (multiple items to be iterated over) must be provided-->
+{% if dataset or dataobject %}
+
+    <h3>{{ label }}</h3>
+    <ul class="browse-detail-relateddatalist">
+
+        <!--
+            If a dataset (multiple data items) is provided.
+            For 'many to many' or 'one to many' relationships
+        -->
+        {% if dataset %}
+            {% for item in dataset %}
+                {% include "researchdata/snippets/detail-relateddatalist-item.html" with item=item itemurl=itemurl %}
+            {% endfor %}
+        {% endif %}
+
+        <!-- 
+            If a dataobject (single data item) is provided.
+            For 'many to one' relationship
+        -->
+        {% if dataobject %}
+            {% include "researchdata/snippets/detail-relateddatalist-item.html" with item=dataobject itemurl=itemurl %}
+        {% endif %}
+    </ul>
+
+{% endif %}

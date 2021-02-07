@@ -23,8 +23,16 @@ class SlLinguisticTraditionGroup(models.Model):
                                             on_delete=models.PROTECT, blank=True, null=True)
     meta_lastupdated_datetime = models.DateTimeField(auto_now=True, verbose_name="Last Updated")
 
-    def __str__(self):
+    @property
+    def dynamic_title(self):
         return self.name
+
+    @property
+    def dynamic_subtitle(self):
+        return "A group of linguistic traditions"
+
+    def __str__(self):
+        return self.dynamic_title
 
     class Meta:
         db_table = "{}_sl_linguistictraditiongroup".format(apps.app_name)
@@ -47,8 +55,16 @@ class SlReferencePublisher(models.Model):
                                             on_delete=models.PROTECT, blank=True, null=True)
     meta_lastupdated_datetime = models.DateTimeField(auto_now=True, verbose_name="Last Updated")
 
-    def __str__(self):
+    @property
+    def dynamic_title(self):
         return self.name
+
+    @property
+    def dynamic_subtitle(self):
+        return "A publisher"
+
+    def __str__(self):
+        return self.dynamic_title
 
     class Meta:
         db_table = "{}_sl_referencepublisher".format(apps.app_name)
@@ -71,8 +87,16 @@ class SlReferenceType(models.Model):
                                             on_delete=models.PROTECT, blank=True, null=True)
     meta_lastupdated_datetime = models.DateTimeField(auto_now=True, verbose_name="Last Updated")
 
-    def __str__(self):
+    @property
+    def dynamic_title(self):
         return self.name
+
+    @property
+    def dynamic_subtitle(self):
+        return "A type of reference"
+
+    def __str__(self):
+        return self.dynamic_title
 
     class Meta:
         db_table = "{}_sl_referencetype".format(apps.app_name)
@@ -95,8 +119,16 @@ class SlTextGroup(models.Model):
                                             on_delete=models.PROTECT, blank=True, null=True)
     meta_lastupdated_datetime = models.DateTimeField(auto_now=True, verbose_name="Last Updated")
 
-    def __str__(self):
+    @property
+    def dynamic_title(self):
         return self.name
+
+    @property
+    def dynamic_subtitle(self):
+        return "A group of texts"
+
+    def __str__(self):
+        return self.dynamic_title
 
     class Meta:
         db_table = "{}_sl_textgroup".format(apps.app_name)
@@ -119,8 +151,16 @@ class SlTextType(models.Model):
                                             on_delete=models.PROTECT, blank=True, null=True)
     meta_lastupdated_datetime = models.DateTimeField(auto_now=True, verbose_name="Last Updated")
 
-    def __str__(self):
+    @property
+    def dynamic_title(self):
         return self.name
+
+    @property
+    def dynamic_subtitle(self):
+        return "A type of text"
+
+    def __str__(self):
+        return self.dynamic_title
 
     class Meta:
         db_table = "{}_sl_texttype".format(apps.app_name)
@@ -199,7 +239,7 @@ class LinguisticField(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField(blank=True, null=True)
     # Many to many relationship fields
-    related_name = "linguistic_field"
+    related_name = "linguisticfield"
     author = models.ManyToManyField("Author", related_name=related_name, blank=True, db_table="{}_m2m_author_linguisticfield".format(apps.app_name))
     # Admin fields
     admin_notes = models.TextField(blank=True, null=True)
@@ -235,7 +275,7 @@ class LinguisticNotion(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField(blank=True, null=True)
     # Many to many relationship fields
-    related_name = "linguistic_notion"
+    related_name = "linguisticnotion"
     author = models.ManyToManyField("Author", related_name=related_name, blank=True, db_table="{}_m2m_author_linguisticnotion".format(apps.app_name))
     linguistic_field = models.ManyToManyField("LinguisticField", related_name=related_name, blank=True,
                                               db_table="{}_m2m_linguisticfield_linguisticnotion".format(apps.app_name))
@@ -277,7 +317,7 @@ class LinguisticTradition(models.Model):
     linguistic_tradition_group = models.ForeignKey(SlLinguisticTraditionGroup,
                                                    on_delete=models.SET_NULL, blank=True, null=True)
     # Many to many relationship fields
-    related_name = "linguistic_tradition"
+    related_name = "linguistictradition"
     author = models.ManyToManyField("Author", related_name=related_name, blank=True, db_table="{}_m2m_author_linguistictradition".format(apps.app_name))
     linguistic_field = models.ManyToManyField("LinguisticField", related_name=related_name, blank=True,
                                               db_table="{}_m2m_linguisticfield_linguistictradition".format(apps.app_name))
@@ -294,8 +334,16 @@ class LinguisticTradition(models.Model):
                                             on_delete=models.PROTECT, blank=True, null=True)
     meta_lastupdated_datetime = models.DateTimeField(auto_now=True, verbose_name="Last Updated")
 
-    def __str__(self):
+    @property
+    def dynamic_title(self):
         return self.name
+
+    @property
+    def dynamic_subtitle(self):
+        return "A linguistic tradition"
+
+    def __str__(self):
+        return self.dynamic_title
 
     class Meta:
         db_table = "{}_main_linguistictradition".format(apps.app_name)
@@ -379,7 +427,7 @@ class SanskritWord(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField(blank=True, null=True)
     # Many to many relationship fields
-    related_name = "sanskrit_word"
+    related_name = "sanskritword"
     author = models.ManyToManyField("Author", related_name=related_name, blank=True, db_table="{}_m2m_author_sanskritword".format(apps.app_name))
     linguistic_field = models.ManyToManyField("LinguisticField", related_name=related_name, blank=True,
                                               db_table="{}_m2m_linguisticfield_sanskritword".format(apps.app_name))
@@ -482,7 +530,7 @@ class TextPassage(models.Model):
     text = models.ForeignKey(Text, on_delete=models.PROTECT)
     text_type = models.ForeignKey(SlTextType, on_delete=models.SET_NULL, blank=True, null=True)
     # Many to many relationship fields
-    related_name = "text_passage"
+    related_name = "textpassage"
     author = models.ManyToManyField("Author", related_name=related_name, blank=True, db_table="{}_m2m_author_textpassage".format(apps.app_name))
     linguistic_field = models.ManyToManyField("LinguisticField", related_name=related_name, blank=True,
                                               db_table="{}_m2m_linguisticfield_textpassage".format(apps.app_name))

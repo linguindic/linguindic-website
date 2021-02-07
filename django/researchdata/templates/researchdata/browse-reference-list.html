@@ -9,24 +9,24 @@
 
 <!-- Search By -->
 {% block list_options_advanced_searchby %}
-    {% include "researchdata/snippets/list-options-advanced-fields-reference.html" %}
+    {% include "researchdata/snippets/list-options-advanced-fields-mainmodels.html" with models='reference,' %}
 {% endblock %}
 
 <!-- Order By -->
 {% block list_options_advanced_orderby %}
-    {% include "researchdata/snippets/list-options-advanced-fields-reference.html" %}
+    {% include "researchdata/snippets/list-options-advanced-fields-mainmodels.html" with models='reference,' %}
 {% endblock %}
 
 <!-- Filters -->
 {% block list_options_advanced_filters %}
 
-    <!-- SlReferenceType -->
-    {% include "researchdata/snippets/list-options-advanced-filter.html" with dataset=slreferencetypes label='Reference Type' id='slreferencetype' %}
-
     <!-- SlReferencePublisher -->
     {% include "researchdata/snippets/list-options-advanced-filter.html" with dataset=slreferencepublishers label='Reference Publisher' id='slreferencepublisher' %}
 
+    <!-- SlReferenceType -->
+    {% include "researchdata/snippets/list-options-advanced-filter.html" with dataset=slreferencetypes label='Reference Type' id='slreferencetype' %}
+
     <!-- Main models -->
-    {% include "researchdata/snippets/list-options-advanced-filter-mainmodels.html" with exclude='reference' %}
+    {% include "researchdata/snippets/list-options-advanced-filter-mainmodels.html" with exclude='reference,' %}
 
 {% endblock %}

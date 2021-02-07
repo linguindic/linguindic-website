@@ -22,17 +22,17 @@ def filter_queryset_by_m2m(request, queryset, exclude):
         if exclude != 'linguisticfield':
             linguisticfield = request.get('advanced_filter_linguisticfield', '')
             if linguisticfield != '':
-                queryset = queryset.filter(linguistic_field__in=[linguisticfield])
+                queryset = queryset.filter(linguisticfield__in=[linguisticfield])
 
         if exclude != 'linguisticnotion':
             linguisticnotion = request.get('advanced_filter_linguisticnotion', '')
             if linguisticnotion != '':
-                queryset = queryset.filter(linguistic_notion__in=[linguisticnotion])
+                queryset = queryset.filter(linguisticnotion__in=[linguisticnotion])
 
         if exclude != 'linguistictradition':
             linguistictradition = request.get('advanced_filter_linguistictradition', '')
             if linguistictradition != '':
-                queryset = queryset.filter(linguistic_tradition__in=[linguistictradition])
+                queryset = queryset.filter(linguistictradition__in=[linguistictradition])
 
         if exclude != 'reference':
             reference = request.get('advanced_filter_reference', '')
@@ -42,7 +42,7 @@ def filter_queryset_by_m2m(request, queryset, exclude):
         if exclude != 'sanskritword':
             sanskritword = request.get('advanced_filter_sanskritword', '')
             if sanskritword != '':
-                queryset = queryset.filter(sanskrit_word__in=[sanskritword])
+                queryset = queryset.filter(sanskritword__in=[sanskritword])
 
         if exclude != 'text':
             text = request.get('advanced_filter_text', '')
@@ -52,7 +52,7 @@ def filter_queryset_by_m2m(request, queryset, exclude):
         if exclude != 'textpassage':
             textpassage = request.get('advanced_filter_textpassage', '')
             if textpassage != '':
-                queryset = queryset.filter(text_passage__in=[textpassage])
+                queryset = queryset.filter(textpassage__in=[textpassage])
 
         # Only show results that admin approves as published
         queryset = queryset.filter(admin_published=True)

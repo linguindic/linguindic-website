@@ -62,7 +62,7 @@ class BrowseTextPassageListView(ListView):
         # Filter
         #
 
-        # SL filters
+        # Many to One relationship filters
         # Text
         text = self.request.GET.get('advanced_filter_text', '')
         if text != '':
@@ -72,7 +72,7 @@ class BrowseTextPassageListView(ListView):
         if sltexttype != '':
             queryset = queryset.filter(text_type=sltexttype)
 
-        # M2M filters
+        # Many to Many relationship filters
         common.filter_queryset_by_m2m(self.request.GET, queryset, 'text')
 
         # Admin published filter

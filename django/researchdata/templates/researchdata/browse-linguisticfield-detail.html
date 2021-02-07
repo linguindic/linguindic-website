@@ -12,14 +12,14 @@
         {% include "researchdata/snippets/detail-dataitem.html" with dataitem=object.name label='Name' %}
         {% include "researchdata/snippets/detail-dataitem.html" with dataitem=object.description label='Description' %}
 
+        <!-- Many to One relationships -->
+        <!-- None -->
+
+        <!-- One to Many relationships -->
+        <!-- None -->
+
         <!-- Many to Many relationships -->
-        {% include "researchdata/snippets/detail-manytomanyitem-author.html" %}
-        {% include "researchdata/snippets/detail-manytomanyitem-linguisticnotion.html" %}
-        {% include "researchdata/snippets/detail-manytomanyitem-linguistictradition.html" %}
-        {% include "researchdata/snippets/detail-manytomanyitem-reference.html" %}
-        {% include "researchdata/snippets/detail-manytomanyitem-sanskritword.html" %}
-        {% include "researchdata/snippets/detail-manytomanyitem-text.html" %}
-        {% include "researchdata/snippets/detail-manytomanyitem-textpassage.html" %}
+        {% include "researchdata/snippets/detail-relateddatalist-mainmodels.html" with exclude='linguisticfield,' %}
 
     </div>
 {% endblock %}

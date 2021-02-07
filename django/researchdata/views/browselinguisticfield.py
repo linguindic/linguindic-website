@@ -62,10 +62,10 @@ class BrowseLinguisticFieldListView(ListView):
         # Filter
         #
 
-        # SL filters
+        # Many to One relationship filters
         # (none)
 
-        # M2M filters
+        # Many to Many relationship filters
         common.filter_queryset_by_m2m(self.request.GET, queryset, 'linguisticfield')
 
         # Admin published filter

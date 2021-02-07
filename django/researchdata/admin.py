@@ -52,8 +52,8 @@ class AuthorAdminView(GenericAdminView):
     Set the Author section of the Django admin
     """
     list_display = ('id', 'first_name', 'last_name', 'alternative_name', 'description', 'location_most_active',
-                    'date_of_birth', 'date_of_death', 'linguistic_tradition', 'admin_published', 'meta_created_datetime')
-    list_filter = ('linguistic_tradition', 'admin_published', 'meta_created_by')
+                    'date_of_birth', 'date_of_death', 'admin_published', 'meta_created_datetime')
+    list_filter = ('admin_published', 'meta_created_by')
     search_fields = ('first_name', 'last_name', 'alternative_name', 'description', 'location_most_active', 'admin_notes')
     ordering = ('-id',)
     actions = (publish, unpublish)

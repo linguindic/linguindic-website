@@ -114,7 +114,7 @@ class BrowseReferenceListView(ListView):
         # Filter
         #
 
-        # SL filters
+        # Many to One relationship filters
         # SL Reference Type
         slreferencetype = self.request.GET.get('advanced_filter_slreferencetype', '')
         if slreferencetype != '':
@@ -124,7 +124,7 @@ class BrowseReferenceListView(ListView):
         if slreferencepublisher != '':
             queryset = queryset.filter(reference_publisher=slreferencepublisher)
 
-        # M2M filters
+        # Many to Many relationship filters
         common.filter_queryset_by_m2m(self.request.GET, queryset, 'linguisticfield')
 
         # Admin published filter

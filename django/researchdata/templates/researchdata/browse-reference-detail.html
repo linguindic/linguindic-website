@@ -27,14 +27,15 @@
         {% include "researchdata/snippets/detail-dataitem.html" with dataitem=object.last_accessed_date label='Last Accessed Date' %}
         {% include "researchdata/snippets/detail-dataitem.html" with dataitem=object.reference_publisher label='Publisher' %}
 
+        <!-- Many to One relationships -->
+        {% include "researchdata/snippets/detail-relateddatalist.html" with dataobject=object.reference_publisher label='Publisher' itemurl='browse-references-list' itemurlparameter='advanced_filter_slreferencepublisher' %}
+        {% include "researchdata/snippets/detail-relateddatalist.html" with dataobject=object.reference_type label='Reference Type' itemurl='browse-references-list' itemurlparameter='advanced_filter_slreferencetype' %}
+
+        <!-- One to Many relationships -->
+        <!-- None -->
+
         <!-- Many to Many relationships -->
-        {% include "researchdata/snippets/detail-manytomanyitem-author.html" %}
-        {% include "researchdata/snippets/detail-manytomanyitem-linguisticfield.html" %}
-        {% include "researchdata/snippets/detail-manytomanyitem-linguisticnotion.html" %}
-        {% include "researchdata/snippets/detail-manytomanyitem-linguistictradition.html" %}
-        {% include "researchdata/snippets/detail-manytomanyitem-sanskritword.html" %}
-        {% include "researchdata/snippets/detail-manytomanyitem-text.html" %}
-        {% include "researchdata/snippets/detail-manytomanyitem-textpassage.html" %}
+        {% include "researchdata/snippets/detail-relateddatalist-mainmodels.html" with exclude='reference,' %}
 
     </div>
 {% endblock %}

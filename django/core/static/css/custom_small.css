@@ -1,7 +1,4 @@
 @media (max-width: 991px) {
-    /* ---------- General ---------- */
-
-
     /* ---------- Navigation ---------- */
 
     .nav-item {
@@ -15,6 +12,7 @@
     .navbar-toggler {
         color: #8d715f;
         font-size: 1.7em;
+        padding-right: 0;
     }
 
     /* ---------- Main ---------- */
@@ -42,8 +40,6 @@
     .about-banner {
         height: 13em;
     }
-
-
 
     /* ---------- Browse ---------- */
 

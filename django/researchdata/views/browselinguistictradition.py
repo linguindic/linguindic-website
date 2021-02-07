@@ -62,13 +62,13 @@ class BrowseLinguisticTraditionListView(ListView):
         # Filter
         #
 
-        # SL filters
+        # Many to One relationship filters
         # SL Linguistic Tradition Group
         sllinguistictraditiongroup = self.request.GET.get('advanced_filter_sllinguistictraditiongroup', '')
         if sllinguistictraditiongroup != '':
-            queryset = queryset.filter(reference_type=sllinguistictraditiongroup)
+            queryset = queryset.filter(linguistic_tradition_group=sllinguistictraditiongroup)
 
-        # M2M filters
+        # Many to Many relationship filters
         common.filter_queryset_by_m2m(self.request.GET, queryset, 'linguistictradition')
 
         # Admin published filter
