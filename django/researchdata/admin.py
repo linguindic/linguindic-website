@@ -1,8 +1,6 @@
 from django.contrib import admin
 from . import models
 
-# admin.site.site_header = 'LINGUINDIC: Admin Dashboard'
-
 
 def publish(modeladmin, request, queryset):
     """
