@@ -154,6 +154,21 @@ class GenericAdminView(admin.ModelAdmin):
     search_fields = ('name', 'description', 'admin_notes')
     ordering = ('-id',)
     actions = (publish, unpublish)
+    readonly_fields = ('meta_created_by', 'meta_lastupdated_by')
+    
+
+    def save_model(self, request, obj, form, change):
+        """
+        Override default save_model, by adding values to automated fields
+        """
+
+        # Meta: created by
+        if getattr(obj, 'meta_created_by', None) is None:
+            obj.meta_created_by = request.user
+        # Meta: last updated by
+        else:
+            obj.meta_lastupdated_by = request.user
+        obj.save()
 
 
 # Main models
