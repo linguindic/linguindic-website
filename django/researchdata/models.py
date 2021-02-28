@@ -17,10 +17,10 @@ class SlLinguisticTraditionGroup(models.Model):
     admin_published = models.BooleanField(default=True)
     # Metadata fields
     meta_created_by = models.ForeignKey(User, related_name="sllinguistictraditiongroup_created_by",
-                                        on_delete=models.PROTECT, blank=True, null=True)
+                                        on_delete=models.PROTECT, blank=True, null=True, verbose_name="Created By")
     meta_created_datetime = models.DateTimeField(auto_now_add=True, verbose_name="Created")
     meta_lastupdated_by = models.ForeignKey(User, related_name="sllinguistictraditiongroup_lastupdated_by",
-                                            on_delete=models.PROTECT, blank=True, null=True)
+                                            on_delete=models.PROTECT, blank=True, null=True, verbose_name="Last Updated By")
     meta_lastupdated_datetime = models.DateTimeField(auto_now=True, verbose_name="Last Updated")
 
     @property
@@ -49,10 +49,10 @@ class SlReferencePublisher(models.Model):
     admin_published = models.BooleanField(default=True)
     # Metadata fields
     meta_created_by = models.ForeignKey(User, related_name="slreferencepublisher_created_by",
-                                        on_delete=models.PROTECT, blank=True, null=True)
+                                        on_delete=models.PROTECT, blank=True, null=True, verbose_name="Created By")
     meta_created_datetime = models.DateTimeField(auto_now_add=True, verbose_name="Created")
     meta_lastupdated_by = models.ForeignKey(User, related_name="slreferencepublisher_lastupdated_by",
-                                            on_delete=models.PROTECT, blank=True, null=True)
+                                            on_delete=models.PROTECT, blank=True, null=True, verbose_name="Last Updated By")
     meta_lastupdated_datetime = models.DateTimeField(auto_now=True, verbose_name="Last Updated")
 
     @property
@@ -81,10 +81,10 @@ class SlReferenceType(models.Model):
     admin_published = models.BooleanField(default=True)
     # Metadata fields
     meta_created_by = models.ForeignKey(User, related_name="slreferencetype_created_by",
-                                        on_delete=models.PROTECT, blank=True, null=True)
+                                        on_delete=models.PROTECT, blank=True, null=True, verbose_name="Created By")
     meta_created_datetime = models.DateTimeField(auto_now_add=True, verbose_name="Created")
     meta_lastupdated_by = models.ForeignKey(User, related_name="slreferencetype_lastupdated_by",
-                                            on_delete=models.PROTECT, blank=True, null=True)
+                                            on_delete=models.PROTECT, blank=True, null=True, verbose_name="Last Updated By")
     meta_lastupdated_datetime = models.DateTimeField(auto_now=True, verbose_name="Last Updated")
 
     @property
@@ -113,10 +113,10 @@ class SlTextGroup(models.Model):
     admin_published = models.BooleanField(default=True)
     # Metadata fields
     meta_created_by = models.ForeignKey(User, related_name="sltextgroup_created_by",
-                                        on_delete=models.PROTECT, blank=True, null=True)
+                                        on_delete=models.PROTECT, blank=True, null=True, verbose_name="Created By")
     meta_created_datetime = models.DateTimeField(auto_now_add=True, verbose_name="Created")
     meta_lastupdated_by = models.ForeignKey(User, related_name="sltextgroup_lastupdated_by",
-                                            on_delete=models.PROTECT, blank=True, null=True)
+                                            on_delete=models.PROTECT, blank=True, null=True, verbose_name="Last Updated By")
     meta_lastupdated_datetime = models.DateTimeField(auto_now=True, verbose_name="Last Updated")
 
     @property
@@ -145,10 +145,10 @@ class SlTextType(models.Model):
     admin_published = models.BooleanField(default=True)
     # Metadata fields
     meta_created_by = models.ForeignKey(User, related_name="sltexttype_created_by",
-                                        on_delete=models.PROTECT, blank=True, null=True)
+                                        on_delete=models.PROTECT, blank=True, null=True, verbose_name="Created By")
     meta_created_datetime = models.DateTimeField(auto_now_add=True, verbose_name="Created")
     meta_lastupdated_by = models.ForeignKey(User, related_name="sltexttype_lastupdated_by",
-                                            on_delete=models.PROTECT, blank=True, null=True)
+                                            on_delete=models.PROTECT, blank=True, null=True, verbose_name="Last Updated By")
     meta_lastupdated_datetime = models.DateTimeField(auto_now=True, verbose_name="Last Updated")
 
     @property
@@ -194,10 +194,10 @@ class Author(models.Model):
     admin_published = models.BooleanField(default=True)
     # Metadata fields
     meta_created_by = models.ForeignKey(User, related_name="author_created_by",
-                                        on_delete=models.PROTECT, blank=True, null=True)
+                                        on_delete=models.PROTECT, blank=True, null=True, verbose_name="Created By")
     meta_created_datetime = models.DateTimeField(auto_now_add=True, verbose_name="Created")
     meta_lastupdated_by = models.ForeignKey(User, related_name="author_lastupdated_by",
-                                            on_delete=models.PROTECT, blank=True, null=True)
+                                            on_delete=models.PROTECT, blank=True, null=True, verbose_name="Last Updated By")
     meta_lastupdated_datetime = models.DateTimeField(auto_now=True, verbose_name="Last Updated")
 
     @property
@@ -246,10 +246,10 @@ class LinguisticField(models.Model):
     admin_published = models.BooleanField(default=True)
     # Metadata fields
     meta_created_by = models.ForeignKey(User, related_name="linguisticfield_created_by",
-                                        on_delete=models.PROTECT, blank=True, null=True)
+                                        on_delete=models.PROTECT, blank=True, null=True, verbose_name="Created By")
     meta_created_datetime = models.DateTimeField(auto_now_add=True, verbose_name="Created")
     meta_lastupdated_by = models.ForeignKey(User, related_name="linguisticfield_lastupdated_by",
-                                            on_delete=models.PROTECT, blank=True, null=True)
+                                            on_delete=models.PROTECT, blank=True, null=True, verbose_name="Last Updated By")
     meta_lastupdated_datetime = models.DateTimeField(auto_now=True, verbose_name="Last Updated")
 
     @property
@@ -285,10 +285,10 @@ class LinguisticNotion(models.Model):
     admin_published = models.BooleanField(default=True)
     # Metadata fields
     meta_created_by = models.ForeignKey(User, related_name="linguisticnotion_created_by",
-                                        on_delete=models.PROTECT, blank=True, null=True)
+                                        on_delete=models.PROTECT, blank=True, null=True, verbose_name="Created By")
     meta_created_datetime = models.DateTimeField(auto_now_add=True, verbose_name="Created")
     meta_lastupdated_by = models.ForeignKey(User, related_name="linguisticnotion_lastupdated_by",
-                                            on_delete=models.PROTECT, blank=True, null=True)
+                                            on_delete=models.PROTECT, blank=True, null=True, verbose_name="Last Updated By")
     meta_lastupdated_datetime = models.DateTimeField(auto_now=True, verbose_name="Last Updated")
 
     @property
@@ -328,10 +328,10 @@ class LinguisticTradition(models.Model):
     admin_published = models.BooleanField(default=True)
     # Metadata fields
     meta_created_by = models.ForeignKey(User, related_name="linguistictradition_created_by",
-                                        on_delete=models.PROTECT, blank=True, null=True)
+                                        on_delete=models.PROTECT, blank=True, null=True, verbose_name="Created By")
     meta_created_datetime = models.DateTimeField(auto_now_add=True, verbose_name="Created")
     meta_lastupdated_by = models.ForeignKey(User, related_name="linguistictradition_lastupdated_by",
-                                            on_delete=models.PROTECT, blank=True, null=True)
+                                            on_delete=models.PROTECT, blank=True, null=True, verbose_name="Last Updated By")
     meta_lastupdated_datetime = models.DateTimeField(auto_now=True, verbose_name="Last Updated")
 
     @property
@@ -387,10 +387,10 @@ class Reference(models.Model):
     admin_published = models.BooleanField(default=True)
     # Metadata fields
     meta_created_by = models.ForeignKey(User, related_name="reference_created_by",
-                                        on_delete=models.PROTECT, blank=True, null=True)
+                                        on_delete=models.PROTECT, blank=True, null=True, verbose_name="Created By")
     meta_created_datetime = models.DateTimeField(auto_now_add=True, verbose_name="Created")
     meta_lastupdated_by = models.ForeignKey(User, related_name="reference_lastupdated_by",
-                                            on_delete=models.PROTECT, blank=True, null=True)
+                                            on_delete=models.PROTECT, blank=True, null=True, verbose_name="Last Updated By")
     meta_lastupdated_datetime = models.DateTimeField(auto_now=True, verbose_name="Last Updated")
 
     @property
@@ -444,10 +444,10 @@ class SanskritWord(models.Model):
     admin_published = models.BooleanField(default=True)
     # Metadata fields
     meta_created_by = models.ForeignKey(User, related_name="sanskritword_created_by",
-                                        on_delete=models.PROTECT, blank=True, null=True)
+                                        on_delete=models.PROTECT, blank=True, null=True, verbose_name="Created By")
     meta_created_datetime = models.DateTimeField(auto_now_add=True, verbose_name="Created")
     meta_lastupdated_by = models.ForeignKey(User, related_name="sanskritword_lastupdated_by",
-                                            on_delete=models.PROTECT, blank=True, null=True)
+                                            on_delete=models.PROTECT, blank=True, null=True, verbose_name="Last Updated By")
     meta_lastupdated_datetime = models.DateTimeField(auto_now=True, verbose_name="Last Updated")
 
     @property
@@ -495,10 +495,10 @@ class Text(models.Model):
     admin_published = models.BooleanField(default=True)
     # Metadata fields
     meta_created_by = models.ForeignKey(User, related_name="text_created_by",
-                                        on_delete=models.PROTECT, blank=True, null=True)
+                                        on_delete=models.PROTECT, blank=True, null=True, verbose_name="Created By")
     meta_created_datetime = models.DateTimeField(auto_now_add=True, verbose_name="Created")
     meta_lastupdated_by = models.ForeignKey(User, related_name="text_lastupdated_by",
-                                            on_delete=models.PROTECT, blank=True, null=True)
+                                            on_delete=models.PROTECT, blank=True, null=True, verbose_name="Last Updated By")
     meta_lastupdated_datetime = models.DateTimeField(auto_now=True, verbose_name="Last Updated")
 
     @property
@@ -551,10 +551,10 @@ class TextPassage(models.Model):
     admin_published = models.BooleanField(default=True)
     # Metadata fields
     meta_created_by = models.ForeignKey(User, related_name="textpassage_created_by",
-                                        on_delete=models.PROTECT, blank=True, null=True)
+                                        on_delete=models.PROTECT, blank=True, null=True, verbose_name="Created By")
     meta_created_datetime = models.DateTimeField(auto_now_add=True, verbose_name="Created")
     meta_lastupdated_by = models.ForeignKey(User, related_name="textpassage_lastupdated_by",
-                                            on_delete=models.PROTECT, blank=True, null=True)
+                                            on_delete=models.PROTECT, blank=True, null=True, verbose_name="Last Updated By")
     meta_lastupdated_datetime = models.DateTimeField(auto_now=True, verbose_name="Last Updated")
 
     @property

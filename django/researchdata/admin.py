@@ -154,8 +154,7 @@ class GenericAdminView(admin.ModelAdmin):
     search_fields = ('name', 'description', 'admin_notes')
     ordering = ('-id',)
     actions = (publish, unpublish)
-    readonly_fields = ('meta_created_by', 'meta_lastupdated_by')
-    
+    readonly_fields = ('meta_created_by', 'meta_created_datetime', 'meta_lastupdated_by', 'meta_lastupdated_datetime')
 
     def save_model(self, request, obj, form, change):
         """
