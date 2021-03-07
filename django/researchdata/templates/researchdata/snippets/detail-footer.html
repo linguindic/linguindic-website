@@ -1,0 +1,18 @@
+
+<div class="browse-detail-footer">
+    <div class="browse-detail-footer-dates">
+        
+        This record was created on {{ object.meta_created_datetime | date:"d M Y" }}
+        
+        {% if object.meta_created_by %}
+            by {{ object.meta_created_by.first_name | title }} {{ object.meta_created_by.last_name | title }}
+        {% endif %}
+        
+        and last updated on {{ object.meta_lastupdated_datetime | date:"d M Y" }} 
+
+        {% if object.meta_lastupdated_by %}
+            by {{ object.meta_lastupdated_by | title }}
+        {% endif %}
+
+    </div>
+</div>

@@ -3,6 +3,8 @@
 
 {% block main %}
     <div class="container" id="browse-detail">
+
+        <a class="browse-detail-linktolist" href="{% url 'browse-texts-list' %}">&lt; All texts</a>
         
         <!-- Header (e.g. title and details) -->
         {% include "researchdata/snippets/detail-header.html" %}
@@ -22,6 +24,9 @@
 
         <!-- Many to Many relationships -->
         {% include "researchdata/snippets/detail-relateddatalist-mainmodels.html" with exclude='text,textpassage,' %}
+
+        <!-- Footer (e.g. for meta data) -->
+        {% include "researchdata/snippets/detail-footer.html" %}
 
     </div>
 {% endblock %}

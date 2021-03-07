@@ -162,11 +162,11 @@ class GenericAdminView(admin.ModelAdmin):
         # Meta: created by
         if getattr(obj, 'meta_created_by', None) is None:
             obj.meta_created_by = request.user
+            obj.meta_lastupdated_by = request.user
         # Meta: last updated by
         else:
             obj.meta_lastupdated_by = request.user
         obj.save()
-
 
 # Main models
 

@@ -4,6 +4,8 @@
 {% block main %}
     <div class="container" id="browse-detail">
         
+        <a class="browse-detail-linktolist" href="{% url 'browse-linguisticfields-list' %}">&lt; All linguistic fields</a>
+
         <!-- Header (e.g. title and details) -->
         {% include "researchdata/snippets/detail-header.html" %}
 
@@ -20,6 +22,9 @@
 
         <!-- Many to Many relationships -->
         {% include "researchdata/snippets/detail-relateddatalist-mainmodels.html" with exclude='linguisticfield,' %}
+
+        <!-- Footer (e.g. for meta data) -->
+        {% include "researchdata/snippets/detail-footer.html" %}
 
     </div>
 {% endblock %}
