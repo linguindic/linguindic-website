@@ -294,7 +294,7 @@ class TextPassageAdminView(GenericAdminView):
     list_filter = ('text_type', 'admin_published', 'meta_created_by')
     search_fields = ('name', 'description', 'admin_notes')
     exclude = ('author', 'linguistic_field', 'linguistic_notion', 'linguistic_tradition',
-               'reference', 'sanskrit_word', 'text')
+               'reference', 'sanskrit_word')
     inlines = [AuthorTextPassageInline,
                LinguisticFieldTextPassageInline,
                LinguisticNotionTextPassageInline,
