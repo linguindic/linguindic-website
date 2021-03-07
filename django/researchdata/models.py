@@ -406,15 +406,15 @@ class Reference(models.Model):
     @property
     def dynamic_subtitle(self):
         try:
-            return self.dynamic_summary
+            return "A {} reference --- {}".format(self.reference_type.name, self.dynamic_summary)
         except:
-            return 1
+            return self.reference_type
 
     @property
     def dynamic_summary(self):
 
         # Book
-        if self.reference_type == SlReferenceType.objects.get(name='Book'):
+        if self.reference_type == SlReferenceType.objects.get(name='book'):
             ref = "{authors} ({year}), <em>{title}</em>. {location}: {publisher}.".format(authors=self.authors_list,
                                                                                           year=self.year,
                                                                                           title=self.title,
@@ -426,16 +426,36 @@ class Reference(models.Model):
                 ref += " {}.".format(self.url)
 
         # Paper in Edited Volume
-        # elif self.reference_type == SlReferenceType.objects.get(name='Paper in Edited Volume'):
-        #     ref = "{authors} ({year}), <em>{title}</em>. {location}: {publisher}.".format(authors=self.authors_list,
-        #                                                                                   year=self.year,
-        #                                                                                   title=self.title,
-        #                                                                                   location=self.location,
-        #                                                                                   publisher=self.publisher)
-        #     if self.public_notes:
-        #         ref += " {}.".format(self.public_notes)
-        #     if self.url:
-        #         ref += " {}.".format(self.url)
+        elif self.reference_type == SlReferenceType.objects.get(name='paper in edited volume'):
+            ref = "{authors} ({year}), '{title}'. In {editors} (ed.), <em>{book}</em>, \
+                   {page_start}-{page_end}. {location}: {publisher}.".format(authors=self.authors_list,
+                                                                             year=self.year,
+                                                                             title=self.title,
+                                                                             editors=self.editors,
+                                                                             book=self.book_title,
+                                                                             page_start=self.page_start,
+                                                                             page_end=self.page_end,
+                                                                             location=self.location,
+                                                                             publisher=self.reference_publisher)
+            if self.public_notes:
+                ref += " {}.".format(self.public_notes)
+            if self.url:
+                ref += " {}.".format(self.url)
+
+        # Journal Article
+        elif self.reference_type == SlReferenceType.objects.get(name='journal article'):
+            ref = "{authors} ({year}), '{title}'. <em>{journal}</em> {volume}".format(authors=self.authors_list,
+                                                                                      year=self.year,
+                                                                                      title=self.title,
+                                                                                      journal=self.journal_title,
+                                                                                      volume=self.volume)
+            if self.number:
+                ref += "({number})".format(self.number)
+            ref += ": {page_start}-{page_end}.".format(page_start=self.page_start, page_end=self.page_end)
+            if self.public_notes:
+                ref += " {}.".format(self.public_notes)
+            if self.url:
+                ref += " {}.".format(self.url)
 
         else:
             return "Dunno what I am"
