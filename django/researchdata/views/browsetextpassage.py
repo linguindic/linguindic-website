@@ -73,7 +73,7 @@ class BrowseTextPassageListView(ListView):
             queryset = queryset.filter(text_type=sltexttype)
 
         # Many to Many relationship filters
-        common.filter_queryset_by_m2m(self.request.GET, queryset, 'text')
+        queryset = common.filter_queryset_by_m2m(self.request.GET, queryset, 'text')
 
         # Admin published filter
         queryset = queryset.filter(admin_published=True)
@@ -82,7 +82,7 @@ class BrowseTextPassageListView(ListView):
         # Order
         #
 
-        common.order_queryset(self.request.GET, queryset, 'name')
+        queryset = common.order_queryset(self.request.GET, queryset, 'name')
 
         #
         # Return data

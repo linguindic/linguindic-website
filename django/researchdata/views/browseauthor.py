@@ -48,8 +48,7 @@ class BrowseAuthorListView(ListView):
                 Q(last_name__contains=search_val) |
                 Q(alternative_name__contains=search_val) |
                 Q(location_most_active__contains=search_val) |
-                Q(date_of_birth__contains=search_val) |
-                Q(date_of_death__contains=search_val)
+                Q(date_active__contains=search_val)
             )
 
         # If advanced search by (e.g. search by a specific field) is provided and advanced search criteria is also provided, then perform advanced search on specific fields
@@ -70,12 +69,9 @@ class BrowseAuthorListView(ListView):
             # Search only by location most active
             elif advanced_search_by == 'location_most_active':
                 queryset = queryset.filter(Q(location_most_active__contains=advanced_search_criteria))
-            # Search only by date of birth
-            elif advanced_search_by == 'date_of_birth':
-                queryset = queryset.filter(Q(date_of_birth__contains=advanced_search_criteria))
-            # Search only by date of death
-            elif advanced_search_by == 'date_of_death':
-                queryset = queryset.filter(Q(date_of_death__contains=advanced_search_criteria))
+            # Search only by date active
+            elif advanced_search_by == 'date_active':
+                queryset = queryset.filter(Q(date_active__contains=advanced_search_criteria))
 
         #
         # Filter
@@ -85,7 +81,7 @@ class BrowseAuthorListView(ListView):
         # (none)
 
         # Many to Many relationship filters
-        common.filter_queryset_by_m2m(self.request.GET, queryset, 'none')
+        queryset = common.filter_queryset_by_m2m(self.request.GET, queryset, 'none')
 
         # Admin published filter
         queryset = queryset.filter(admin_published=True)
@@ -93,13 +89,13 @@ class BrowseAuthorListView(ListView):
         #
         # Order
         #
-
-        common.order_queryset(self.request.GET, queryset, 'last_name')
+        
+        queryset = common.order_queryset(self.request.GET, queryset, 'last_name')
 
         #
         # Return data
         #
-
+        
         return queryset
 
     def get_context_data(self, **kwargs):

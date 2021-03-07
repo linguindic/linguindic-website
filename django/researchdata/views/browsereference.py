@@ -125,7 +125,7 @@ class BrowseReferenceListView(ListView):
             queryset = queryset.filter(reference_publisher=slreferencepublisher)
 
         # Many to Many relationship filters
-        common.filter_queryset_by_m2m(self.request.GET, queryset, 'linguisticfield')
+        queryset = common.filter_queryset_by_m2m(self.request.GET, queryset, 'linguisticfield')
 
         # Admin published filter
         queryset = queryset.filter(admin_published=True)
@@ -134,7 +134,7 @@ class BrowseReferenceListView(ListView):
         # Order
         #
 
-        common.order_queryset(self.request.GET, queryset, 'title')
+        queryset = common.order_queryset(self.request.GET, queryset, 'title')
 
         #
         # Return data

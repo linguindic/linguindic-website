@@ -66,7 +66,7 @@ class BrowseLinguisticNotionListView(ListView):
         # (none)
 
         # Many to Many relationship filters
-        common.filter_queryset_by_m2m(self.request.GET, queryset, 'none')
+        queryset = common.filter_queryset_by_m2m(self.request.GET, queryset, 'none')
 
         # Admin published filter
         queryset = queryset.filter(admin_published=True)
@@ -75,7 +75,7 @@ class BrowseLinguisticNotionListView(ListView):
         # Order
         #
 
-        common.order_queryset(self.request.GET, queryset, 'name')
+        queryset = common.order_queryset(self.request.GET, queryset, 'name')
 
         #
         # Return data

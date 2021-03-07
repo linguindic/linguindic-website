@@ -62,13 +62,6 @@
                                 <input type="text" id="list-options-advanced-content-search-criteria" name="advanced_search_criteria">
                             </div>
 
-                            <!-- Filter -->
-                            <div id="list-options-advanced-content-filter">
-                                <div class="list-options-advanced-content-subtitle">Filter</div>
-                                <!-- Each list page that inherits this base file will specify its own unique filters -->
-                                {% block list_options_advanced_filters %}{% endblock %}
-                            </div>
-
                             <!-- Order -->
                             <div id="list-options-advanced-content-order">
                                 <div class="list-options-advanced-content-subtitle">Order</div>
@@ -83,6 +76,13 @@
                                     <option value="">Ascending (A-Z, 0-9)</option>
                                     <option value="-">Descending (Z-A, 9-0)</option>
                                 </select>
+                            </div>
+
+                            <!-- Filter -->
+                            <div id="list-options-advanced-content-filter">
+                                <div class="list-options-advanced-content-subtitle">Filter</div>
+                                <!-- Each list page that inherits this base file will specify its own unique filters -->
+                                {% block list_options_advanced_filters %}{% endblock %}
                             </div>
 
                             <!-- Submit -->
@@ -241,6 +241,9 @@
             // Search
             setFormItemValueFromUrlParameter("list-options-advanced-content-search-by", "advanced_search_by");
             setFormItemValueFromUrlParameter("list-options-advanced-content-search-criteria", "advanced_search_criteria");
+            // Order
+            setFormItemValueFromUrlParameter("list-options-advanced-content-order-by", "advanced_order_by");
+            setFormItemValueFromUrlParameter("list-options-advanced-content-order-direction", "advanced_order_direction");
             // Filter: Main models
             setFormItemValueFromUrlParameter("list-options-advanced-content-filter-author", "advanced_filter_author");
             setFormItemValueFromUrlParameter("list-options-advanced-content-filter-linguisticfield", "advanced_filter_linguisticfield");
@@ -256,9 +259,6 @@
             setFormItemValueFromUrlParameter("list-options-advanced-content-filter-slreferencetype", "advanced_filter_slreferencetype");
             setFormItemValueFromUrlParameter("list-options-advanced-content-filter-sltextgroup", "advanced_filter_sltextgroup");
             setFormItemValueFromUrlParameter("list-options-advanced-content-filter-sltexttype", "advanced_filter_sltexttype");
-            // Order
-            setFormItemValueFromUrlParameter("list-options-advanced-content-order-by", "advanced_order_by");
-            setFormItemValueFromUrlParameter("list-options-advanced-content-order-direction", "advanced_order_direction");
 
         });
     </script>

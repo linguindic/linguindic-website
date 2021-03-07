@@ -12,7 +12,7 @@ def filter_queryset_by_m2m(request, queryset, exclude):
     """
 
     # request and queryset are mandatory
-    if request and queryset:
+    if request is not None and queryset is not None:
 
         if exclude != 'author':
             author = request.get('advanced_filter_author', '')
@@ -54,10 +54,8 @@ def filter_queryset_by_m2m(request, queryset, exclude):
             if textpassage != '':
                 queryset = queryset.filter(textpassage__in=[textpassage])
 
-        # Only show results that admin approves as published
-        queryset = queryset.filter(admin_published=True)
-
-        return queryset
+    # Only show results that admin approves as published
+    return queryset.filter(admin_published=True)
 
 
 def order_queryset(request, queryset, order_by_default):
@@ -68,15 +66,16 @@ def order_queryset(request, queryset, order_by_default):
 
     Returns an ordered Django queryset object
     """
-
+    
     # request and queryset are mandatory
-    if request and queryset:
+    if request is not None and queryset is not None:
 
         # If no order_by_default given, then set to 'id'
         if order_by_default is None:
-            order_by_default = 'id'
+            order_by_default = 'last_name'
 
         # Establish the order direction (asc/desc) and the field to order by, from the request
+        
         order = request.get('advanced_order_direction', '') + request.get('advanced_order_by', order_by_default)
 
         # If starts with a '-' then it means order descending
@@ -85,7 +84,7 @@ def order_queryset(request, queryset, order_by_default):
         else:
             queryset = queryset.order_by(Lower(order))
 
-        return queryset
+    return queryset
 
 
 def add_main_models_to_context(context, exclude):
@@ -97,7 +96,7 @@ def add_main_models_to_context(context, exclude):
     """
 
     # context is mandatory
-    if context:
+    if context is not None:
 
         if exclude != 'author':
             context['authors'] = models.Author.objects.filter(admin_published=True)

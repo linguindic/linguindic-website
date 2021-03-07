@@ -69,7 +69,7 @@ class BrowseLinguisticTraditionListView(ListView):
             queryset = queryset.filter(linguistic_tradition_group=sllinguistictraditiongroup)
 
         # Many to Many relationship filters
-        common.filter_queryset_by_m2m(self.request.GET, queryset, 'linguistictradition')
+        queryset = common.filter_queryset_by_m2m(self.request.GET, queryset, 'linguistictradition')
 
         # Admin published filter
         queryset = queryset.filter(admin_published=True)
@@ -78,7 +78,7 @@ class BrowseLinguisticTraditionListView(ListView):
         # Order
         #
 
-        common.order_queryset(self.request.GET, queryset, 'name')
+        queryset = common.order_queryset(self.request.GET, queryset, 'name')
 
         #
         # Return data

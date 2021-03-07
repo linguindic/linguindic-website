@@ -66,7 +66,7 @@ class BrowseLinguisticFieldListView(ListView):
         # (none)
 
         # Many to Many relationship filters
-        common.filter_queryset_by_m2m(self.request.GET, queryset, 'linguisticfield')
+        queryset = common.filter_queryset_by_m2m(self.request.GET, queryset, 'linguisticfield')
 
         # Admin published filter
         queryset = queryset.filter(admin_published=True)
@@ -75,7 +75,7 @@ class BrowseLinguisticFieldListView(ListView):
         # Order
         #
 
-        common.order_queryset(self.request.GET, queryset, 'name')
+        queryset = common.order_queryset(self.request.GET, queryset, 'name')
 
         #
         # Return data

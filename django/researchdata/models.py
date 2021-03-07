@@ -179,13 +179,12 @@ class Author(models.Model):
     """
     People who have authored works, including those from both modern Western and ancient Indian traditions
     """
-    first_name = models.CharField(max_length=100, blank=True, null=True)
-    last_name = models.CharField(max_length=100, blank=True, null=True)
-    alternative_name = models.CharField(max_length=100, blank=True, null=True)
+    first_name = models.CharField(max_length=255, blank=True, null=True)
+    last_name = models.CharField(max_length=255, blank=True, null=True)
+    alternative_name = models.CharField(max_length=255, blank=True, null=True)
     description = models.TextField(blank=True, null=True)
-    location_most_active = models.CharField(max_length=100, blank=True, null=True)
-    date_of_birth = models.CharField(max_length=50, blank=True, null=True)
-    date_of_death = models.CharField(max_length=50, blank=True, null=True)
+    location_most_active = models.CharField(max_length=255, blank=True, null=True)
+    date_active = models.CharField(max_length=255, blank=True, null=True)
     # Many to many relationship fields
     related_name = "author"
     author = models.ManyToManyField("self", related_name=related_name, blank=True, db_table="{}_m2m_author_author".format(apps.app_name))
@@ -218,10 +217,8 @@ class Author(models.Model):
         subtitle = "An author"
         if self.location_most_active:
             subtitle += " from {}".format(self.location_most_active)
-        if self.date_of_birth:
-            subtitle += ". Born {}".format(self.date_of_birth)
-        if self.date_of_death:
-            subtitle += ". Died {}".format(self.date_of_death)
+        if self.date_active:
+            subtitle += ". Active {}".format(self.date_active)
         return subtitle
 
     def __str__(self):
