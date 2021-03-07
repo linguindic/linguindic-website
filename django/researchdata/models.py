@@ -454,8 +454,38 @@ class Reference(models.Model):
             if self.url:
                 ref += " {}.".format(self.url)
 
+        # PhD Thesiss
+        elif self.reference_type == SlReferenceType.objects.get(name='phd thesis'):
+            ref = "{authors} ({year}), '{title}'. PhD thesis, {school}".format(authors=self.authors_list,
+                                                                               year=self.year,
+                                                                               title=self.title,
+                                                                               school=self.school)
+            if self.public_notes:
+                ref += " {}.".format(self.public_notes)
+            if self.url:
+                ref += " {}.".format(self.url)
+
+        # Edited volume
+        if self.reference_type == SlReferenceType.objects.get(name='edited volume'):
+            ref = "{editors} (ed.) ({year}), <em>{title}</em>. {location}: {publisher}.".format(editors=self.editors,
+                                                                                                year=self.year,
+                                                                                                title=self.title,
+                                                                                                location=self.location,
+                                                                                                publisher=self.reference_publisher)
+            if self.public_notes:
+                ref += " {}.".format(self.public_notes)
+            if self.url:
+                ref += " {}.".format(self.url)
+
+        # If none of above reference types
         else:
-            return "Dunno what I am"
+            ref = "{authors} ({year}), '{title}'.".format(authors=self.authors_list,
+                                                          year=self.year,
+                                                          title=self.title)
+            if self.public_notes:
+                ref += " {}.".format(self.public_notes)
+            if self.url:
+                ref += " {}.".format(self.url)
 
         return ref
 
