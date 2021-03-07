@@ -66,7 +66,7 @@ def order_queryset(request, queryset, order_by_default):
 
     Returns an ordered Django queryset object
     """
-    
+
     # request and queryset are mandatory
     if request is not None and queryset is not None:
 
@@ -75,7 +75,7 @@ def order_queryset(request, queryset, order_by_default):
             order_by_default = 'last_name'
 
         # Establish the order direction (asc/desc) and the field to order by, from the request
-        
+
         order = request.get('advanced_order_direction', '') + request.get('advanced_order_by', order_by_default)
 
         # If starts with a '-' then it means order descending

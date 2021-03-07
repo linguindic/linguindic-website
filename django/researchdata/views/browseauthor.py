@@ -89,13 +89,13 @@ class BrowseAuthorListView(ListView):
         #
         # Order
         #
-        
+
         queryset = common.order_queryset(self.request.GET, queryset, 'last_name')
 
         #
         # Return data
         #
-        
+
         return queryset
 
     def get_context_data(self, **kwargs):
