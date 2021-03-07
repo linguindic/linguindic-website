@@ -466,7 +466,7 @@ class Reference(models.Model):
                 ref += " {}.".format(self.url)
 
         # Edited volume
-        if self.reference_type == SlReferenceType.objects.get(name='edited volume'):
+        elif self.reference_type == SlReferenceType.objects.get(name='edited volume'):
             ref = "{editors} (ed.) ({year}), <em>{title}</em>. {location}: {publisher}.".format(editors=self.editors,
                                                                                                 year=self.year,
                                                                                                 title=self.title,
