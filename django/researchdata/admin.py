@@ -237,11 +237,11 @@ class ReferenceAdminView(GenericAdminView):
     """
     Set the Reference section of the Django admin
     """
-    list_display = ('id', 'title', 'subtitle', 'book_title', 'location', 'year', 'reference_type',
+    list_display = ('id', 'title', 'subtitle', 'authors_list', 'book_title', 'location', 'year', 'reference_type',
                     'reference_publisher', 'admin_published', 'meta_created_datetime')
     list_filter = ('reference_type', 'reference_publisher', 'admin_published', 'meta_created_by')
-    search_fields = ('title', 'subtitle', 'editors', 'school', 'edition', 'book_title',
-                     'journal_title', 'volume', 'number', 'location', 'year', 'url', 'admin_notes')
+    search_fields = ('title', 'subtitle', 'authors_list', 'editors', 'school', 'book_title',
+                     'journal_title', 'volume', 'number', 'location', 'year', 'url', 'public_notes', 'admin_notes')
     exclude = ('author', 'linguistic_field', 'linguistic_notion', 'linguistic_tradition')
     inlines = [AuthorReferenceInline,
                LinguisticFieldReferenceInline,

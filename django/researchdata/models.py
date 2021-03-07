@@ -352,10 +352,9 @@ class Reference(models.Model):
     """
     title = models.CharField(max_length=255, blank=True, null=True)
     subtitle = models.CharField(max_length=255, blank=True, null=True)
-    authors = models.CharField(max_length=255, blank=True, null=True)
+    authors_list = models.CharField(max_length=255, blank=True, null=True)
     editors = models.CharField(max_length=255, blank=True, null=True)
     school = models.CharField(max_length=255, blank=True, null=True)
-    edition = models.CharField(max_length=255, blank=True, null=True)
     book_title = models.CharField(max_length=255, blank=True, null=True)
     journal_title = models.CharField(max_length=255, blank=True, null=True)
     volume = models.CharField(max_length=255, blank=True, null=True)
@@ -365,6 +364,7 @@ class Reference(models.Model):
     page_start = models.CharField(max_length=255, blank=True, null=True)
     page_end = models.CharField(max_length=255, blank=True, null=True)
     url = models.TextField(blank=True, null=True)
+    public_notes = models.TextField(blank=True, null=True)
     last_accessed_date = models.CharField(max_length=255, blank=True, null=True)
     # Foreign key fields
     reference_type = models.ForeignKey(SlReferenceType, on_delete=models.SET_NULL, blank=True, null=True)
@@ -405,12 +405,42 @@ class Reference(models.Model):
 
     @property
     def dynamic_subtitle(self):
-        if self.reference_type:
-            return "A {} reference".format(str(self.reference_type).lower())
-        elif self.title:
-            return "A reference for {}".format(self.title)
+        try:
+            return self.dynamic_summary
+        except:
+            return 1
+
+    @property
+    def dynamic_summary(self):
+
+        # Book
+        if self.reference_type == SlReferenceType.objects.get(name='Book'):
+            ref = "{authors} ({year}), <em>{title}</em>. {location}: {publisher}.".format(authors=self.authors_list,
+                                                                                          year=self.year,
+                                                                                          title=self.title,
+                                                                                          location=self.location,
+                                                                                          publisher=self.reference_publisher)
+            if self.public_notes:
+                ref += " {}.".format(self.public_notes)
+            if self.url:
+                ref += " {}.".format(self.url)
+
+        # Paper in Edited Volume
+        # elif self.reference_type == SlReferenceType.objects.get(name='Paper in Edited Volume'):
+        #     ref = "{authors} ({year}), <em>{title}</em>. {location}: {publisher}.".format(authors=self.authors_list,
+        #                                                                                   year=self.year,
+        #                                                                                   title=self.title,
+        #                                                                                   location=self.location,
+        #                                                                                   publisher=self.publisher)
+        #     if self.public_notes:
+        #         ref += " {}.".format(self.public_notes)
+        #     if self.url:
+        #         ref += " {}.".format(self.url)
+
         else:
-            return "A reference"
+            return "Dunno what I am"
+
+        return ref
 
     def __str__(self):
         return self.dynamic_title

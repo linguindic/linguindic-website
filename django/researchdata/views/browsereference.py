@@ -46,9 +46,9 @@ class BrowseReferenceListView(ListView):
                 Q(id__contains=search_val) |
                 Q(title__contains=search_val) |
                 Q(subtitle__contains=search_val) |
+                Q(authors_list__contains=search_val) |
                 Q(editors__contains=search_val) |
                 Q(school__contains=search_val) |
-                Q(edition__contains=search_val) |
                 Q(book_title__contains=search_val) |
                 Q(journal_title__contains=search_val) |
                 Q(volume__contains=search_val) |
@@ -58,6 +58,7 @@ class BrowseReferenceListView(ListView):
                 Q(page_start__contains=search_val) |
                 Q(page_end__contains=search_val) |
                 Q(url__contains=search_val) |
+                Q(public_notes__contains=search_val) |
                 Q(last_accessed_date__contains=search_val)
             )
 
@@ -70,15 +71,15 @@ class BrowseReferenceListView(ListView):
             # Search only by subtitle
             elif advanced_search_by == 'subtitle':
                 queryset = queryset.filter(Q(subtitle__contains=advanced_search_criteria))
+            # Search only by authors
+            elif advanced_search_by == 'authors_list':
+                queryset = queryset.filter(Q(authors_list__contains=advanced_search_criteria))
             # Search only by editors
             elif advanced_search_by == 'editors':
                 queryset = queryset.filter(Q(editors__contains=advanced_search_criteria))
             # Search only by school
             elif advanced_search_by == 'school':
                 queryset = queryset.filter(Q(school__contains=advanced_search_criteria))
-            # Search only by edition
-            elif advanced_search_by == 'edition':
-                queryset = queryset.filter(Q(edition__contains=advanced_search_criteria))
             # Search only by book title
             elif advanced_search_by == 'book_title':
                 queryset = queryset.filter(Q(book_title__contains=advanced_search_criteria))
@@ -106,6 +107,9 @@ class BrowseReferenceListView(ListView):
             # Search only by url
             elif advanced_search_by == 'url':
                 queryset = queryset.filter(Q(url__contains=advanced_search_criteria))
+            # Search only by public_notes
+            elif advanced_search_by == 'public_notes':
+                queryset = queryset.filter(Q(public_notes__contains=advanced_search_criteria))
             # Search only by last accessed date
             elif advanced_search_by == 'last_accessed_date':
                 queryset = queryset.filter(Q(last_accessed_date__contains=advanced_search_criteria))
