@@ -405,10 +405,7 @@ class Reference(models.Model):
 
     @property
     def dynamic_subtitle(self):
-        try:
-            return "A {} reference --- {}".format(self.reference_type.name, self.dynamic_summary)
-        except:
-            return self.reference_type
+        return "A {} reference --- {}".format(self.reference_type.name, self.dynamic_summary)
 
     @property
     def dynamic_summary(self):
@@ -450,8 +447,8 @@ class Reference(models.Model):
                                                                                       journal=self.journal_title,
                                                                                       volume=self.volume)
             if self.number:
-                ref += "({number})".format(self.number)
-            ref += ": {page_start}-{page_end}.".format(page_start=self.page_start, page_end=self.page_end)
+                ref += "({})".format(self.number)
+            ref += ": {}-{}.".format(self.page_start, self.page_end)
             if self.public_notes:
                 ref += " {}.".format(self.public_notes)
             if self.url:
