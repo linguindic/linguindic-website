@@ -3,6 +3,25 @@ from django.contrib.auth.models import User
 from . import apps
 
 
+# Common functions
+
+def dynamic_citation_author(self):
+    # Use manually specified author, if given
+    if self.meta_citation_author is not None:
+        first_name = self.meta_citation_author.first_name
+        last_name = self.meta_citation_author.last_name
+    # Or use last updated by
+    elif self.meta_lastupdated_by is not None:
+        first_name = self.meta_lastupdated_by.first_name
+        last_name = self.meta_lastupdated_by.last_name
+    # Or use created by
+    else:
+        first_name = self.meta_created_by.first_name
+        last_name = self.meta_created_by.last_name
+
+    return "{}, {}".format(last_name, first_name)
+
+
 # Select List models
 
 
@@ -192,6 +211,8 @@ class Author(models.Model):
     admin_notes = models.TextField(blank=True, null=True)
     admin_published = models.BooleanField(default=True)
     # Metadata fields
+    meta_citation_author = models.ForeignKey(User, related_name="author_citation_author",
+                                             on_delete=models.PROTECT, blank=True, null=True, verbose_name="Author (in citation)")
     meta_created_by = models.ForeignKey(User, related_name="author_created_by",
                                         on_delete=models.PROTECT, blank=True, null=True, verbose_name="Created By")
     meta_created_datetime = models.DateTimeField(auto_now_add=True, verbose_name="Created")
@@ -221,6 +242,10 @@ class Author(models.Model):
             subtitle += ". Active {}".format(self.date_active)
         return subtitle
 
+    @property
+    def dynamic_citation_author(self):
+        return dynamic_citation_author(self)
+
     def __str__(self):
         return self.dynamic_title
 
@@ -242,6 +267,8 @@ class LinguisticField(models.Model):
     admin_notes = models.TextField(blank=True, null=True)
     admin_published = models.BooleanField(default=True)
     # Metadata fields
+    meta_citation_author = models.ForeignKey(User, related_name="linguisticfield_citation_author",
+                                             on_delete=models.PROTECT, blank=True, null=True, verbose_name="Author (in citation)")
     meta_created_by = models.ForeignKey(User, related_name="linguisticfield_created_by",
                                         on_delete=models.PROTECT, blank=True, null=True, verbose_name="Created By")
     meta_created_datetime = models.DateTimeField(auto_now_add=True, verbose_name="Created")
@@ -256,6 +283,10 @@ class LinguisticField(models.Model):
     @property
     def dynamic_subtitle(self):
         return "A linguistic field"
+
+    @property
+    def dynamic_citation_author(self):
+        return dynamic_citation_author(self)
 
     def __str__(self):
         return self.dynamic_title
@@ -281,6 +312,8 @@ class LinguisticNotion(models.Model):
     admin_notes = models.TextField(blank=True, null=True)
     admin_published = models.BooleanField(default=True)
     # Metadata fields
+    meta_citation_author = models.ForeignKey(User, related_name="linguisticnotion_citation_author",
+                                             on_delete=models.PROTECT, blank=True, null=True, verbose_name="Author (in citation)")
     meta_created_by = models.ForeignKey(User, related_name="linguisticnotion_created_by",
                                         on_delete=models.PROTECT, blank=True, null=True, verbose_name="Created By")
     meta_created_datetime = models.DateTimeField(auto_now_add=True, verbose_name="Created")
@@ -295,6 +328,10 @@ class LinguisticNotion(models.Model):
     @property
     def dynamic_subtitle(self):
         return "A linguistic notion"
+
+    @property
+    def dynamic_citation_author(self):
+        return dynamic_citation_author(self)
 
     def __str__(self):
         return self.dynamic_title
@@ -324,6 +361,8 @@ class LinguisticTradition(models.Model):
     admin_notes = models.TextField(blank=True, null=True)
     admin_published = models.BooleanField(default=True)
     # Metadata fields
+    meta_citation_author = models.ForeignKey(User, related_name="linguistictradition_citation_author",
+                                             on_delete=models.PROTECT, blank=True, null=True, verbose_name="Author (in citation)")
     meta_created_by = models.ForeignKey(User, related_name="linguistictradition_created_by",
                                         on_delete=models.PROTECT, blank=True, null=True, verbose_name="Created By")
     meta_created_datetime = models.DateTimeField(auto_now_add=True, verbose_name="Created")
@@ -338,6 +377,10 @@ class LinguisticTradition(models.Model):
     @property
     def dynamic_subtitle(self):
         return "A linguistic tradition"
+
+    @property
+    def dynamic_citation_author(self):
+        return dynamic_citation_author(self)
 
     def __str__(self):
         return self.dynamic_title
@@ -383,6 +426,8 @@ class Reference(models.Model):
     admin_notes = models.TextField(blank=True, null=True)
     admin_published = models.BooleanField(default=True)
     # Metadata fields
+    meta_citation_author = models.ForeignKey(User, related_name="reference_citation_author",
+                                             on_delete=models.PROTECT, blank=True, null=True, verbose_name="Author (in citation)")
     meta_created_by = models.ForeignKey(User, related_name="reference_created_by",
                                         on_delete=models.PROTECT, blank=True, null=True, verbose_name="Created By")
     meta_created_datetime = models.DateTimeField(auto_now_add=True, verbose_name="Created")
@@ -406,6 +451,10 @@ class Reference(models.Model):
     @property
     def dynamic_subtitle(self):
         return "{} --- {}".format(self.reference_type.name.title(), self.dynamic_summary)
+
+    @property
+    def dynamic_citation_author(self):
+        return dynamic_citation_author(self)
 
     @property
     def dynamic_summary(self):
@@ -523,6 +572,8 @@ class SanskritWord(models.Model):
     admin_notes = models.TextField(blank=True, null=True)
     admin_published = models.BooleanField(default=True)
     # Metadata fields
+    meta_citation_author = models.ForeignKey(User, related_name="sanskritword_citation_author",
+                                             on_delete=models.PROTECT, blank=True, null=True, verbose_name="Author (in citation)")
     meta_created_by = models.ForeignKey(User, related_name="sanskritword_created_by",
                                         on_delete=models.PROTECT, blank=True, null=True, verbose_name="Created By")
     meta_created_datetime = models.DateTimeField(auto_now_add=True, verbose_name="Created")
@@ -537,6 +588,10 @@ class SanskritWord(models.Model):
     @property
     def dynamic_subtitle(self):
         return "A word in the language of Sanskrit"
+
+    @property
+    def dynamic_citation_author(self):
+        return dynamic_citation_author(self)
 
     def __str__(self):
         return self.dynamic_title
@@ -574,6 +629,8 @@ class Text(models.Model):
     admin_notes = models.TextField(blank=True, null=True)
     admin_published = models.BooleanField(default=True)
     # Metadata fields
+    meta_citation_author = models.ForeignKey(User, related_name="text_citation_author",
+                                             on_delete=models.PROTECT, blank=True, null=True, verbose_name="Author (in citation)")
     meta_created_by = models.ForeignKey(User, related_name="text_created_by",
                                         on_delete=models.PROTECT, blank=True, null=True, verbose_name="Created By")
     meta_created_datetime = models.DateTimeField(auto_now_add=True, verbose_name="Created")
@@ -593,6 +650,10 @@ class Text(models.Model):
             return "A text of type: {}".format(self.text_type)
         else:
             return "A text"
+
+    @property
+    def dynamic_citation_author(self):
+        return dynamic_citation_author(self)
 
     def __str__(self):
         return self.dynamic_title
@@ -630,6 +691,8 @@ class TextPassage(models.Model):
     admin_notes = models.TextField(blank=True, null=True)
     admin_published = models.BooleanField(default=True)
     # Metadata fields
+    meta_citation_author = models.ForeignKey(User, related_name="textpassage_citation_author",
+                                             on_delete=models.PROTECT, blank=True, null=True, verbose_name="Author (in citation)")
     meta_created_by = models.ForeignKey(User, related_name="textpassage_created_by",
                                         on_delete=models.PROTECT, blank=True, null=True, verbose_name="Created By")
     meta_created_datetime = models.DateTimeField(auto_now_add=True, verbose_name="Created")
@@ -649,6 +712,10 @@ class TextPassage(models.Model):
             return "A passage of {} text".format(self.text_type)
         else:
             return "A passage of text"
+
+    @property
+    def dynamic_citation_author(self):
+        return dynamic_citation_author(self)
 
     def __str__(self):
         return self.dynamic_title
