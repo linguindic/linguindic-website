@@ -9,26 +9,6 @@
         <!-- Header (e.g. title and details) -->
         {% include "researchdata/snippets/detail-header.html" %}
 
-        <!-- Data items -->
-        <h3>Details</h3>
-        {% include "researchdata/snippets/detail-dataitem.html" with dataitem=object.reference_type label='Reference Type' %}
-        {% include "researchdata/snippets/detail-dataitem.html" with dataitem=object.title label='Title' %}
-        {% include "researchdata/snippets/detail-dataitem.html" with dataitem=object.subtitle label='Subtitle' %}
-        {% include "researchdata/snippets/detail-dataitem.html" with dataitem=object.authors_list label='Authors' %}
-        {% include "researchdata/snippets/detail-dataitem.html" with dataitem=object.editors label='Editors' %}
-        {% include "researchdata/snippets/detail-dataitem.html" with dataitem=object.school label='School' %}
-        {% include "researchdata/snippets/detail-dataitem.html" with dataitem=object.book_title label='Book Title' %}
-        {% include "researchdata/snippets/detail-dataitem.html" with dataitem=object.journal_title label='Journal Title' %}
-        {% include "researchdata/snippets/detail-dataitem.html" with dataitem=object.volume label='Volume' %}
-        {% include "researchdata/snippets/detail-dataitem.html" with dataitem=object.number label='Number' %}
-        {% include "researchdata/snippets/detail-dataitem.html" with dataitem=object.location label='Location' %}
-        {% include "researchdata/snippets/detail-dataitem.html" with dataitem=object.year label='Year' %}
-        {% include "researchdata/snippets/detail-dataitem.html" with dataitem=object.page_start label='Page Start' %}
-        {% include "researchdata/snippets/detail-dataitem.html" with dataitem=object.page_end label='Page End' %}
-        {% include "researchdata/snippets/detail-dataitem.html" with dataitem=object.url label='URL' %}
-        {% include "researchdata/snippets/detail-dataitem.html" with dataitem=object.last_accessed_date label='Last Accessed Date' %}
-        {% include "researchdata/snippets/detail-dataitem.html" with dataitem=object.reference_publisher label='Publisher' %}
-
         <!-- Many to One relationships -->
         {% include "researchdata/snippets/detail-relateddatalist.html" with dataobject=object.reference_publisher label='Publisher' itemurl='browse-references-list' itemurlparameter='advanced_filter_slreferencepublisher' %}
         {% include "researchdata/snippets/detail-relateddatalist.html" with dataobject=object.reference_type label='Reference Type' itemurl='browse-references-list' itemurlparameter='advanced_filter_slreferencetype' %}
