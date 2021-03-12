@@ -405,18 +405,19 @@ class Reference(models.Model):
 
     @property
     def dynamic_subtitle(self):
-        return "A {} reference --- {}".format(self.reference_type.name, self.dynamic_summary)
+        return "{} --- {}".format(self.reference_type.name.title(), self.dynamic_summary)
 
     @property
     def dynamic_summary(self):
 
         # Book
         if self.reference_type == SlReferenceType.objects.get(name='book'):
-            ref = "{authors} ({year}), <em>{title}</em>. {location}: {publisher}.".format(authors=self.authors_list,
-                                                                                          year=self.year,
-                                                                                          title=self.title,
-                                                                                          location=self.location,
-                                                                                          publisher=self.reference_publisher)
+            ref = "{authors} ({year}), <em>{title}</em>.".format(authors=self.authors_list,
+                                                                 year=self.year,
+                                                                 title=self.title)
+            if self.subtitle:
+                ref += " {}.".format(self.subtitle)
+            ref += " {}: {}.".format(self.location, self.reference_publisher)
             if self.public_notes:
                 ref += " {}.".format(self.public_notes)
             if self.url:
@@ -424,16 +425,15 @@ class Reference(models.Model):
 
         # Paper in Edited Volume
         elif self.reference_type == SlReferenceType.objects.get(name='paper in edited volume'):
-            ref = "{authors} ({year}), '{title}'. In {editors} (ed.), <em>{book}</em>, \
-                   {page_start}-{page_end}. {location}: {publisher}.".format(authors=self.authors_list,
-                                                                             year=self.year,
-                                                                             title=self.title,
-                                                                             editors=self.editors,
-                                                                             book=self.book_title,
-                                                                             page_start=self.page_start,
-                                                                             page_end=self.page_end,
-                                                                             location=self.location,
-                                                                             publisher=self.reference_publisher)
+            ref = "{authors} ({year}), '{title}'.".format(authors=self.authors_list, year=self.year, title=self.title)
+            if self.subtitle:
+                ref += " {}.".format(self.subtitle)
+            ref += " In {} (ed.), <em>{}</em>, {}-{}. {}: {}.".format(self.editors,
+                                                                      self.book_title,
+                                                                      self.page_start,
+                                                                      self.page_end,
+                                                                      self.location,
+                                                                      self.reference_publisher)
             if self.public_notes:
                 ref += " {}.".format(self.public_notes)
             if self.url:
@@ -441,11 +441,12 @@ class Reference(models.Model):
 
         # Journal Article
         elif self.reference_type == SlReferenceType.objects.get(name='journal article'):
-            ref = "{authors} ({year}), '{title}'. <em>{journal}</em> {volume}".format(authors=self.authors_list,
-                                                                                      year=self.year,
-                                                                                      title=self.title,
-                                                                                      journal=self.journal_title,
-                                                                                      volume=self.volume)
+            ref = "{authors} ({year}), '{title}'.".format(authors=self.authors_list,
+                                                          year=self.year,
+                                                          title=self.title)
+            if self.subtitle:
+                ref += " {}.".format(self.subtitle)
+            ref += " <em>{}</em> {}.".format(self.journal_title, self.volume)
             if self.number:
                 ref += "({})".format(self.number)
             ref += ": {}-{}.".format(self.page_start, self.page_end)
@@ -456,10 +457,12 @@ class Reference(models.Model):
 
         # PhD Thesiss
         elif self.reference_type == SlReferenceType.objects.get(name='phd thesis'):
-            ref = "{authors} ({year}), '{title}'. PhD thesis, {school}".format(authors=self.authors_list,
-                                                                               year=self.year,
-                                                                               title=self.title,
-                                                                               school=self.school)
+            ref = "{authors} ({year}), '{title}'.".format(authors=self.authors_list,
+                                                          year=self.year,
+                                                          title=self.title)
+            if self.subtitle:
+                ref += " {}.".format(self.subtitle)
+            ref += " PhD thesis, {}.".format(self.school)
             if self.public_notes:
                 ref += " {}.".format(self.public_notes)
             if self.url:
@@ -467,11 +470,12 @@ class Reference(models.Model):
 
         # Edited volume
         elif self.reference_type == SlReferenceType.objects.get(name='edited volume'):
-            ref = "{editors} (ed.) ({year}), <em>{title}</em>. {location}: {publisher}.".format(editors=self.editors,
-                                                                                                year=self.year,
-                                                                                                title=self.title,
-                                                                                                location=self.location,
-                                                                                                publisher=self.reference_publisher)
+            ref = "{editors} (ed.) ({year}), <em>{title}</em>.".format(editors=self.editors,
+                                                                       year=self.year,
+                                                                       title=self.title)
+            if self.subtitle:
+                ref += " {}.".format(self.subtitle)
+            ref += " {}: {}.".format(self.location, self.reference_publisher)
             if self.public_notes:
                 ref += " {}.".format(self.public_notes)
             if self.url:
@@ -482,6 +486,8 @@ class Reference(models.Model):
             ref = "{authors} ({year}), '{title}'.".format(authors=self.authors_list,
                                                           year=self.year,
                                                           title=self.title)
+            if self.subtitle:
+                ref += " {}.".format(self.subtitle)
             if self.public_notes:
                 ref += " {}.".format(self.public_notes)
             if self.url:
