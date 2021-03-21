@@ -182,6 +182,7 @@ class AuthorAdminView(GenericAdminView):
                     'date_active', 'admin_published', 'meta_created_datetime')
     list_filter = ('admin_published', 'meta_created_by')
     search_fields = ('first_name', 'last_name', 'alternative_name', 'description', 'location_most_active', 'admin_notes')
+    filter_horizontal = ('author',)
     inlines = [AuthorLinguisticFieldInline,
                AuthorLinguisticNotionInline,
                AuthorLinguisticTraditionInline,
@@ -196,6 +197,7 @@ class LinguisticFieldAdminView(GenericAdminView):
     Set the Linguistic Field section of the Django admin
     """
     exclude = ('author',)
+    filter_horizontal = ('linguistic_field',)
     inlines = [AuthorLinguisticFieldInline,
                LinguisticFieldLinguisticNotionInline,
                LinguisticFieldLinguisticTraditionInline,
@@ -210,6 +212,7 @@ class LinguisticNotionAdminView(GenericAdminView):
     Set the Linguistic Notion section of the Django admin
     """
     exclude = ('author', 'linguistic_field')
+    filter_horizontal = ('linguistic_notion',)
     inlines = [AuthorLinguisticNotionInline,
                LinguisticFieldLinguisticNotionInline,
                LinguisticNotionLinguisticTraditionInline,
@@ -227,6 +230,7 @@ class LinguisticTraditionAdminView(GenericAdminView):
     list_filter = ('linguistic_tradition_group', 'admin_published', 'meta_created_by')
     search_fields = ('name', 'description', 'admin_notes')
     exclude = ('author', 'linguistic_field', 'linguistic_notion')
+    filter_horizontal = ('linguistic_tradition',)
     inlines = [AuthorLinguisticTraditionInline,
                LinguisticFieldLinguisticTraditionInline,
                LinguisticNotionLinguisticTraditionInline,
@@ -246,6 +250,7 @@ class ReferenceAdminView(GenericAdminView):
     search_fields = ('title', 'subtitle', 'authors_list', 'editors', 'school', 'book_title',
                      'journal_title', 'volume', 'number', 'location', 'year', 'url', 'public_notes', 'admin_notes')
     exclude = ('author', 'linguistic_field', 'linguistic_notion', 'linguistic_tradition')
+    filter_horizontal = ('reference',)
     inlines = [AuthorReferenceInline,
                LinguisticFieldReferenceInline,
                LinguisticNotionReferenceInline,
@@ -261,6 +266,7 @@ class SanskritWordAdminView(GenericAdminView):
     """
     exclude = ('author', 'linguistic_field', 'linguistic_notion', 'linguistic_tradition',
                'reference')
+    filter_horizontal = ('sanskrit_word',)
     inlines = [AuthorSanskritWordInline,
                LinguisticFieldSanskritWordInline,
                LinguisticNotionSanskritWordInline,
@@ -280,6 +286,7 @@ class TextAdminView(GenericAdminView):
     search_fields = ('name', 'description', 'admin_notes')
     exclude = ('author', 'linguistic_field', 'linguistic_notion', 'linguistic_tradition',
                'reference', 'sanskrit_word')
+    filter_horizontal = ('text',)
     inlines = [AuthorTextInline,
                LinguisticFieldTextInline,
                LinguisticNotionTextInline,
@@ -298,6 +305,7 @@ class TextPassageAdminView(GenericAdminView):
     search_fields = ('name', 'description', 'admin_notes')
     exclude = ('author', 'linguistic_field', 'linguistic_notion', 'linguistic_tradition',
                'reference', 'sanskrit_word')
+    filter_horizontal = ('text_passage',)
     inlines = [AuthorTextPassageInline,
                LinguisticFieldTextPassageInline,
                LinguisticNotionTextPassageInline,
