@@ -1,27 +1,10 @@
 
 <div class="browse-detail-footer">
 
-    <!-- <div class="browse-detail-footer-dates">
-        This record was created on {{ object.meta_created_datetime | date:"d M Y" }}
-        
-        {% if object.meta_created_by %}
-            by {{ object.meta_created_by.first_name | title }} {{ object.meta_created_by.last_name | title }}
-        {% endif %}
-        
-        and last updated on {{ object.meta_lastupdated_datetime | date:"d M Y" }} 
-
-        {% if object.meta_lastupdated_by %}
-            by {{ object.meta_lastupdated_by | title }}
-        {% endif %}
-    </div> -->
-
     <div class="browse-detail-footer-cite">
         <strong><i class="fas fa-book-open"></i> Cite this page:</strong>
         <br>
         {{ object.dynamic_citation_author }} ({{ object.meta_lastupdated_datetime | date:"Y" }}). '{{ object.dynamic_title }}'. <span id="browse-detail-footer-cite-url"></span>. First published on {{ object.meta_created_datetime | date:"d M Y" }}. Last updated on {{ object.meta_lastupdated_datetime | date:"d M Y" }}.{% if object.public_notes %} {{ object.public_notes }}.{% endif %}
-
-        <!-- Shen, Yiming (2022). 'Coordination'. 
-www.linguindic.com/data/browse/linguisticnotions/6. First published on 5 May 2021. Last updated on 20 July 2022. Some note. -->
     </div>
 
     <script>
