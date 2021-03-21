@@ -96,6 +96,10 @@
                     <li class="nav-item">
                         <a class="nav-link{% if "/visualise/" in request.path %} active{% endif %}" href="{% url 'visualise' %}">Visualise</a>
                     </li>
+                    <!-- Help -->
+                    <li class="nav-item">
+                        <a class="nav-link{% if "/help/" in request.path %} active{% endif %}" href="{% url 'help' %}">Help</a>
+                    </li>
                 </ul>
             </div>
         </nav>

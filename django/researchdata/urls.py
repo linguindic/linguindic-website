@@ -9,7 +9,8 @@ from .views import (
     browsesanskritword,
     browsetext,
     browsetextpassage,
-    visualise
+    visualise,
+    helpview
 )
 
 urlpatterns = [
@@ -52,6 +53,9 @@ urlpatterns = [
 
     # Visualise
     path('visualise/', visualise.VisualiseTemplateView.as_view(), name='visualise'),
+
+    # Help
+    path('help/', helpview.HelpTemplateView.as_view(), name='help'),
 
 
     # ********
