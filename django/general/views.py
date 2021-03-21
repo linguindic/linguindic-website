@@ -43,6 +43,13 @@ class AboutOutputsTemplateView(TemplateView):
     template_name = 'general/about-outputs.html'
 
 
+class HelpTemplateView(TemplateView):
+    """
+    Class-based view to show the help template
+    """
+    template_name = 'general/help.html'
+
+
 class CookiesTemplateView(TemplateView):
     """
     Class-based view to show the cookies template

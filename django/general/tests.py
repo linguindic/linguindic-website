@@ -92,6 +92,22 @@ class TestAboutOutputsView(TestCase):
         self.assertContains(response, 'Outputs')
 
 
+class TestHelpView(TestCase):
+    """
+    Test Help View
+    """
+    def test_help_get(self):
+        """
+        Test the help page is returned
+        """
+        url = reverse('help')
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'LINGUINDIC')
+        self.assertContains(response, 'Help')
+        self.assertContains(response, 'currently under development')
+
+
 class TestCookiesView(TestCase):
     """
     Test Cookies View
