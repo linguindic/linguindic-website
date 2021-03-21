@@ -41,6 +41,7 @@ class SlLinguisticTraditionGroup(models.Model):
     meta_lastupdated_by = models.ForeignKey(User, related_name="sllinguistictraditiongroup_lastupdated_by",
                                             on_delete=models.PROTECT, blank=True, null=True, verbose_name="Last Updated By")
     meta_lastupdated_datetime = models.DateTimeField(auto_now=True, verbose_name="Last Updated")
+    meta_firstpublished_datetime = models.DateTimeField(blank=True, null=True, verbose_name="First Published")
 
     @property
     def dynamic_title(self):
@@ -73,6 +74,7 @@ class SlReferencePublisher(models.Model):
     meta_lastupdated_by = models.ForeignKey(User, related_name="slreferencepublisher_lastupdated_by",
                                             on_delete=models.PROTECT, blank=True, null=True, verbose_name="Last Updated By")
     meta_lastupdated_datetime = models.DateTimeField(auto_now=True, verbose_name="Last Updated")
+    meta_firstpublished_datetime = models.DateTimeField(blank=True, null=True, verbose_name="First Published")
 
     @property
     def dynamic_title(self):
@@ -105,6 +107,7 @@ class SlReferenceType(models.Model):
     meta_lastupdated_by = models.ForeignKey(User, related_name="slreferencetype_lastupdated_by",
                                             on_delete=models.PROTECT, blank=True, null=True, verbose_name="Last Updated By")
     meta_lastupdated_datetime = models.DateTimeField(auto_now=True, verbose_name="Last Updated")
+    meta_firstpublished_datetime = models.DateTimeField(blank=True, null=True, verbose_name="First Published")
 
     @property
     def dynamic_title(self):
@@ -137,6 +140,7 @@ class SlTextGroup(models.Model):
     meta_lastupdated_by = models.ForeignKey(User, related_name="sltextgroup_lastupdated_by",
                                             on_delete=models.PROTECT, blank=True, null=True, verbose_name="Last Updated By")
     meta_lastupdated_datetime = models.DateTimeField(auto_now=True, verbose_name="Last Updated")
+    meta_firstpublished_datetime = models.DateTimeField(blank=True, null=True, verbose_name="First Published")
 
     @property
     def dynamic_title(self):
@@ -169,6 +173,7 @@ class SlTextType(models.Model):
     meta_lastupdated_by = models.ForeignKey(User, related_name="sltexttype_lastupdated_by",
                                             on_delete=models.PROTECT, blank=True, null=True, verbose_name="Last Updated By")
     meta_lastupdated_datetime = models.DateTimeField(auto_now=True, verbose_name="Last Updated")
+    meta_firstpublished_datetime = models.DateTimeField(blank=True, null=True, verbose_name="First Published")
 
     @property
     def dynamic_title(self):
@@ -219,6 +224,7 @@ class Author(models.Model):
     meta_lastupdated_by = models.ForeignKey(User, related_name="author_lastupdated_by",
                                             on_delete=models.PROTECT, blank=True, null=True, verbose_name="Last Updated By")
     meta_lastupdated_datetime = models.DateTimeField(auto_now=True, verbose_name="Last Updated")
+    meta_firstpublished_datetime = models.DateTimeField(blank=True, null=True, verbose_name="First Published")
 
     @property
     def dynamic_title(self):
@@ -275,6 +281,7 @@ class LinguisticField(models.Model):
     meta_lastupdated_by = models.ForeignKey(User, related_name="linguisticfield_lastupdated_by",
                                             on_delete=models.PROTECT, blank=True, null=True, verbose_name="Last Updated By")
     meta_lastupdated_datetime = models.DateTimeField(auto_now=True, verbose_name="Last Updated")
+    meta_firstpublished_datetime = models.DateTimeField(blank=True, null=True, verbose_name="First Published")
 
     @property
     def dynamic_title(self):
@@ -320,6 +327,7 @@ class LinguisticNotion(models.Model):
     meta_lastupdated_by = models.ForeignKey(User, related_name="linguisticnotion_lastupdated_by",
                                             on_delete=models.PROTECT, blank=True, null=True, verbose_name="Last Updated By")
     meta_lastupdated_datetime = models.DateTimeField(auto_now=True, verbose_name="Last Updated")
+    meta_firstpublished_datetime = models.DateTimeField(blank=True, null=True, verbose_name="First Published")
 
     @property
     def dynamic_title(self):
@@ -369,6 +377,7 @@ class LinguisticTradition(models.Model):
     meta_lastupdated_by = models.ForeignKey(User, related_name="linguistictradition_lastupdated_by",
                                             on_delete=models.PROTECT, blank=True, null=True, verbose_name="Last Updated By")
     meta_lastupdated_datetime = models.DateTimeField(auto_now=True, verbose_name="Last Updated")
+    meta_firstpublished_datetime = models.DateTimeField(blank=True, null=True, verbose_name="First Published")
 
     @property
     def dynamic_title(self):
@@ -434,6 +443,7 @@ class Reference(models.Model):
     meta_lastupdated_by = models.ForeignKey(User, related_name="reference_lastupdated_by",
                                             on_delete=models.PROTECT, blank=True, null=True, verbose_name="Last Updated By")
     meta_lastupdated_datetime = models.DateTimeField(auto_now=True, verbose_name="Last Updated")
+    meta_firstpublished_datetime = models.DateTimeField(blank=True, null=True, verbose_name="First Published")
 
     @property
     def dynamic_title(self):
@@ -580,6 +590,7 @@ class SanskritWord(models.Model):
     meta_lastupdated_by = models.ForeignKey(User, related_name="sanskritword_lastupdated_by",
                                             on_delete=models.PROTECT, blank=True, null=True, verbose_name="Last Updated By")
     meta_lastupdated_datetime = models.DateTimeField(auto_now=True, verbose_name="Last Updated")
+    meta_firstpublished_datetime = models.DateTimeField(blank=True, null=True, verbose_name="First Published")
 
     @property
     def dynamic_title(self):
@@ -637,6 +648,7 @@ class Text(models.Model):
     meta_lastupdated_by = models.ForeignKey(User, related_name="text_lastupdated_by",
                                             on_delete=models.PROTECT, blank=True, null=True, verbose_name="Last Updated By")
     meta_lastupdated_datetime = models.DateTimeField(auto_now=True, verbose_name="Last Updated")
+    meta_firstpublished_datetime = models.DateTimeField(blank=True, null=True, verbose_name="First Published")
 
     @property
     def dynamic_title(self):
@@ -699,6 +711,7 @@ class TextPassage(models.Model):
     meta_lastupdated_by = models.ForeignKey(User, related_name="textpassage_lastupdated_by",
                                             on_delete=models.PROTECT, blank=True, null=True, verbose_name="Last Updated By")
     meta_lastupdated_datetime = models.DateTimeField(auto_now=True, verbose_name="Last Updated")
+    meta_firstpublished_datetime = models.DateTimeField(blank=True, null=True, verbose_name="First Published")
 
     @property
     def dynamic_title(self):

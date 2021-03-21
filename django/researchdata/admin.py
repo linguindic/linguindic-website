@@ -1,4 +1,5 @@
 from django.contrib import admin
+import datetime
 from . import models
 
 
@@ -152,7 +153,7 @@ class GenericAdminView(admin.ModelAdmin):
     search_fields = ('name', 'description', 'admin_notes')
     ordering = ('-id',)
     actions = (publish, unpublish)
-    readonly_fields = ('meta_created_by', 'meta_created_datetime', 'meta_lastupdated_by', 'meta_lastupdated_datetime')
+    readonly_fields = ('meta_created_by', 'meta_created_datetime', 'meta_lastupdated_by', 'meta_lastupdated_datetime', 'meta_firstpublished_datetime')
 
     def save_model(self, request, obj, form, change):
         """
@@ -162,10 +163,12 @@ class GenericAdminView(admin.ModelAdmin):
         # Meta: created by
         if getattr(obj, 'meta_created_by', None) is None:
             obj.meta_created_by = request.user
-            obj.meta_lastupdated_by = request.user
         # Meta: last updated by
-        else:
             obj.meta_lastupdated_by = request.user
+        # Meta: first published datetime (only set if the first time being published)
+        if getattr(obj, 'admin_published', None) == True and getattr(obj, 'meta_firstpublished_datetime', None) is None:
+            obj.meta_firstpublished_datetime = datetime.datetime.now()
+        # Save 
         obj.save()
 
 # Main models

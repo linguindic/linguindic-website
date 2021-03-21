@@ -4,7 +4,7 @@
     <div class="browse-detail-footer-cite">
         <strong><i class="fas fa-book-open"></i> Cite this page:</strong>
         <br>
-        {{ object.dynamic_citation_author }} ({{ object.meta_lastupdated_datetime | date:"Y" }}). '{{ object.dynamic_title }}'. <span id="browse-detail-footer-cite-url"></span>. First published on {{ object.meta_created_datetime | date:"d M Y" }}. Last updated on {{ object.meta_lastupdated_datetime | date:"d M Y" }}.{% if object.public_notes %} {{ object.public_notes }}.{% endif %}
+        {{ object.dynamic_citation_author }} ({{ object.meta_lastupdated_datetime | date:"Y" }}). '{{ object.dynamic_title }}'. <span id="browse-detail-footer-cite-url"></span>. First published on {{ object.meta_firstpublished_datetime | date:"d M Y" }}. Last updated on {{ object.meta_lastupdated_datetime | date:"d M Y" }}.{% if object.public_notes %} {{ object.public_notes }}.{% endif %}
     </div>
 
     <script>
