@@ -166,9 +166,9 @@ class GenericAdminView(admin.ModelAdmin):
         # Meta: last updated by
             obj.meta_lastupdated_by = request.user
         # Meta: first published datetime (only set if the first time being published)
-        if getattr(obj, 'admin_published', None) == True and getattr(obj, 'meta_firstpublished_datetime', None) is None:
+        if getattr(obj, 'admin_published', None) is True and getattr(obj, 'meta_firstpublished_datetime', None) is None:
             obj.meta_firstpublished_datetime = datetime.datetime.now()
-        # Save 
+        # Save
         obj.save()
 
 # Main models
