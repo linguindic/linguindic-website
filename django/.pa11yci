@@ -21,8 +21,7 @@
         "http://127.0.0.1:8000/database/browse/sanskritwords/",
         "http://127.0.0.1:8000/database/browse/texts/",
         "http://127.0.0.1:8000/database/browse/textpassages/",
-
-        "http://127.0.0.1:8000/database/compare/linguisticnotions/",
+        
         "http://127.0.0.1:8000/database/visualise/",
 
         "http://127.0.0.1:8000/accessibility/",

@@ -92,10 +92,6 @@
                             <a class="dropdown-item" href="{% url 'browse-textpassages-list' %}">Text Passages</a>
                         </div>
                     </li>
-                    <!-- Compare -->
-                    <li class="nav-item">
-                        <a class="nav-link{% if "/compare/" in request.path %} active{% endif %}" href="{% url 'compare-linguisticnotions' %}">Compare</a>
-                    </li>
                     <!-- Visualise -->
                     <li class="nav-item">
                         <a class="nav-link{% if "/visualise/" in request.path %} active{% endif %}" href="{% url 'visualise' %}">Visualise</a>
