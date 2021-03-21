@@ -26,8 +26,6 @@
         "http://127.0.0.1:8000/database/help/",
 
         "http://127.0.0.1:8000/accessibility/",
-        "http://127.0.0.1:8000/cookies/",
-        
-        "http://127.0.0.1:8000/BROKEN-URL/"
+        "http://127.0.0.1:8000/cookies/"
     ]
 }
