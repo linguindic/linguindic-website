@@ -1,39 +1,24 @@
-<!-- Author -->
-{% if "author," not in exclude %}
-    {% include "researchdata/snippets/detail-relateddatalist.html" with dataset=object.author.all label='Authors' itemurl='browse-authors-detail' %}
-{% endif %}
-
-<!-- Linguistic Field -->
-{% if "linguisticfield," not in exclude %}
-    {% include "researchdata/snippets/detail-relateddatalist.html" with dataset=object.linguisticfield.all label='Linguistic Fields' itemurl='browse-linguisticfields-detail' %}
-{% endif %}
+<!-- Reference -->
+{% include "researchdata/snippets/detail-relateddatalist.html" with dataset=object.reference.all label='References' itemurl='browse-references-detail' %}
 
 <!-- Linguistic Notion -->
-{% if "linguisticnotion," not in exclude %}
-    {% include "researchdata/snippets/detail-relateddatalist.html" with dataset=object.linguisticnotion.all label='Linguistic Notions' itemurl='browse-linguisticnotions-detail' %}
-{% endif %}
-
-<!-- Linguistic Tradition -->
-{% if "linguistictradition," not in exclude %}
-    {% include "researchdata/snippets/detail-relateddatalist.html" with dataset=object.linguistictradition.all label='Linguistic Traditions' itemurl='browse-linguistictraditions-detail' %}
-{% endif %}
-
-<!-- Reference -->
-{% if "reference," not in exclude %}
-    {% include "researchdata/snippets/detail-relateddatalist.html" with dataset=object.reference.all label='References' itemurl='browse-references-detail' %}
-{% endif %}
-
-<!-- Sanskrit Word -->
-{% if "sanskritword," not in exclude %}
-    {% include "researchdata/snippets/detail-relateddatalist.html" with dataset=object.sanskritword.all label='Sanskrit Words' itemurl='browse-sanskritwords-detail' %}
-{% endif %}
+{% include "researchdata/snippets/detail-relateddatalist.html" with dataset=object.linguistic_notion.all label='Linguistic Notions' itemurl='browse-linguisticnotions-detail' %}
 
 <!-- Text -->
-{% if "text," not in exclude %}
-    {% include "researchdata/snippets/detail-relateddatalist.html" with dataset=object.text.all label='Texts' itemurl='browse-texts-detail' %}
-{% endif %}
+{% include "researchdata/snippets/detail-relateddatalist.html" with dataset=object.text.all label='Texts' itemurl='browse-texts-detail' %}
+
+<!-- Author -->
+{% include "researchdata/snippets/detail-relateddatalist.html" with dataset=object.author.all label='Authors' itemurl='browse-authors-detail' %}
+
+<!-- Sanskrit Word -->
+{% include "researchdata/snippets/detail-relateddatalist.html" with dataset=object.sanskrit_word.all label='Sanskrit Words' itemurl='browse-sanskritwords-detail' %}
 
 <!-- Text Passage -->
-{% if "textpassage," not in exclude %}
-    {% include "researchdata/snippets/detail-relateddatalist.html" with dataset=object.textpassage.all label='Text Passages' itemurl='browse-textpassages-detail' %}
-{% endif %}
+{% include "researchdata/snippets/detail-relateddatalist.html" with dataset=object.text_passage.all label='Text Passages' itemurl='browse-textpassages-detail' %}
+
+<!-- Linguistic Tradition -->
+{% include "researchdata/snippets/detail-relateddatalist.html" with dataset=object.linguistic_tradition.all label='Linguistic Traditions' itemurl='browse-linguistictraditions-detail' %}
+
+<!-- Linguistic Field -->
+{% include "researchdata/snippets/detail-relateddatalist.html" with dataset=object.linguistic_field.all label='Linguistic Fields' itemurl='browse-linguisticfields-detail' %}
+

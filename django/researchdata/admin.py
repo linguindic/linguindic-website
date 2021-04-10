@@ -28,15 +28,15 @@ unpublish.short_description = "Unpublish selected items (will not appear on main
 
 
 class AuthorLinguisticFieldInline(admin.TabularInline):
-    model = models.Author.linguisticfield.through
+    model = models.Author.linguistic_field.through
 
 
 class AuthorLinguisticNotionInline(admin.TabularInline):
-    model = models.Author.linguisticnotion.through
+    model = models.Author.linguistic_notion.through
 
 
 class AuthorLinguisticTraditionInline(admin.TabularInline):
-    model = models.Author.linguistictradition.through
+    model = models.Author.linguistic_tradition.through
 
 
 class AuthorReferenceInline(admin.TabularInline):
@@ -44,7 +44,7 @@ class AuthorReferenceInline(admin.TabularInline):
 
 
 class AuthorSanskritWordInline(admin.TabularInline):
-    model = models.Author.sanskritword.through
+    model = models.Author.sanskrit_word.through
 
 
 class AuthorTextInline(admin.TabularInline):
@@ -52,15 +52,15 @@ class AuthorTextInline(admin.TabularInline):
 
 
 class AuthorTextPassageInline(admin.TabularInline):
-    model = models.Author.textpassage.through
+    model = models.Author.text_passage.through
 
 
 class LinguisticFieldLinguisticNotionInline(admin.TabularInline):
-    model = models.LinguisticField.linguisticnotion.through
+    model = models.LinguisticField.linguistic_notion.through
 
 
 class LinguisticFieldLinguisticTraditionInline(admin.TabularInline):
-    model = models.LinguisticField.linguistictradition.through
+    model = models.LinguisticField.linguistic_tradition.through
 
 
 class LinguisticFieldReferenceInline(admin.TabularInline):
@@ -68,7 +68,7 @@ class LinguisticFieldReferenceInline(admin.TabularInline):
 
 
 class LinguisticFieldSanskritWordInline(admin.TabularInline):
-    model = models.LinguisticField.sanskritword.through
+    model = models.LinguisticField.sanskrit_word.through
 
 
 class LinguisticFieldTextInline(admin.TabularInline):
@@ -76,11 +76,11 @@ class LinguisticFieldTextInline(admin.TabularInline):
 
 
 class LinguisticFieldTextPassageInline(admin.TabularInline):
-    model = models.LinguisticField.textpassage.through
+    model = models.LinguisticField.text_passage.through
 
 
 class LinguisticNotionLinguisticTraditionInline(admin.TabularInline):
-    model = models.LinguisticNotion.linguistictradition.through
+    model = models.LinguisticNotion.linguistic_tradition.through
 
 
 class LinguisticNotionReferenceInline(admin.TabularInline):
@@ -88,7 +88,7 @@ class LinguisticNotionReferenceInline(admin.TabularInline):
 
 
 class LinguisticNotionSanskritWordInline(admin.TabularInline):
-    model = models.LinguisticNotion.sanskritword.through
+    model = models.LinguisticNotion.sanskrit_word.through
 
 
 class LinguisticNotionTextInline(admin.TabularInline):
@@ -96,7 +96,7 @@ class LinguisticNotionTextInline(admin.TabularInline):
 
 
 class LinguisticNotionTextPassageInline(admin.TabularInline):
-    model = models.LinguisticNotion.textpassage.through
+    model = models.LinguisticNotion.text_passage.through
 
 
 class LinguisticTraditionReferenceInline(admin.TabularInline):
@@ -104,7 +104,7 @@ class LinguisticTraditionReferenceInline(admin.TabularInline):
 
 
 class LinguisticTraditionSanskritWordInline(admin.TabularInline):
-    model = models.LinguisticTradition.sanskritword.through
+    model = models.LinguisticTradition.sanskrit_word.through
 
 
 class LinguisticTraditionTextInline(admin.TabularInline):
@@ -112,11 +112,11 @@ class LinguisticTraditionTextInline(admin.TabularInline):
 
 
 class LinguisticTraditionTextPassageInline(admin.TabularInline):
-    model = models.LinguisticTradition.textpassage.through
+    model = models.LinguisticTradition.text_passage.through
 
 
 class ReferenceSanskritWordInline(admin.TabularInline):
-    model = models.Reference.sanskritword.through
+    model = models.Reference.sanskrit_word.through
 
 
 class ReferenceTextInline(admin.TabularInline):
@@ -124,7 +124,7 @@ class ReferenceTextInline(admin.TabularInline):
 
 
 class ReferenceTextPassageInline(admin.TabularInline):
-    model = models.Reference.textpassage.through
+    model = models.Reference.text_passage.through
 
 
 class SanskritWordTextInline(admin.TabularInline):
@@ -132,7 +132,7 @@ class SanskritWordTextInline(admin.TabularInline):
 
 
 class SanskritWordTextPassageInline(admin.TabularInline):
-    model = models.SanskritWord.textpassage.through
+    model = models.SanskritWord.text_passage.through
 
 
 # Generic Admin View

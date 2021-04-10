@@ -49,6 +49,8 @@ class SlLinguisticTraditionGroup(models.Model):
 
     @property
     def dynamic_subtitle(self):
+        if self.description:
+            return self.description
         return "A group of linguistic traditions"
 
     def __str__(self):
@@ -82,6 +84,8 @@ class SlReferencePublisher(models.Model):
 
     @property
     def dynamic_subtitle(self):
+        if self.description:
+            return self.description
         return "A publisher"
 
     def __str__(self):
@@ -111,10 +115,12 @@ class SlReferenceType(models.Model):
 
     @property
     def dynamic_title(self):
-        return self.name
+        return self.name.capitalize()
 
     @property
     def dynamic_subtitle(self):
+        if self.description:
+            return self.description
         return "A type of reference"
 
     def __str__(self):
@@ -148,6 +154,8 @@ class SlTextGroup(models.Model):
 
     @property
     def dynamic_subtitle(self):
+        if self.description:
+            return self.description
         return "A group of texts"
 
     def __str__(self):
@@ -181,6 +189,8 @@ class SlTextType(models.Model):
 
     @property
     def dynamic_subtitle(self):
+        if self.description:
+            return self.description
         return "A type of text"
 
     def __str__(self):
@@ -266,7 +276,7 @@ class LinguisticField(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField(blank=True, null=True)
     # Many to many relationship fields
-    related_name = "linguisticfield"
+    related_name = "linguistic_field"
     linguistic_field = models.ManyToManyField("self", related_name=related_name, blank=True, db_table="{}_m2m_linguisticfield_linguisticfield".format(apps.app_name))
     author = models.ManyToManyField("Author", related_name=related_name, blank=True, db_table="{}_m2m_author_linguisticfield".format(apps.app_name))
     # Admin fields
@@ -310,7 +320,7 @@ class LinguisticNotion(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField(blank=True, null=True)
     # Many to many relationship fields
-    related_name = "linguisticnotion"
+    related_name = "linguistic_notion"
     linguistic_notion = models.ManyToManyField("self", related_name=related_name, blank=True, db_table="{}_m2m_linguisticnotion_linguisticnotion".format(apps.app_name))
     author = models.ManyToManyField("Author", related_name=related_name, blank=True, db_table="{}_m2m_author_linguisticnotion".format(apps.app_name))
     linguistic_field = models.ManyToManyField("LinguisticField", related_name=related_name, blank=True,
@@ -358,7 +368,7 @@ class LinguisticTradition(models.Model):
     linguistic_tradition_group = models.ForeignKey(SlLinguisticTraditionGroup,
                                                    on_delete=models.SET_NULL, blank=True, null=True)
     # Many to many relationship fields
-    related_name = "linguistictradition"
+    related_name = "linguistic_tradition"
     linguistic_tradition = models.ManyToManyField("self", related_name=related_name, blank=True, db_table="{}_m2m_linguistictradition_linguistictradition".format(apps.app_name))
     author = models.ManyToManyField("Author", related_name=related_name, blank=True, db_table="{}_m2m_author_linguistictradition".format(apps.app_name))
     linguistic_field = models.ManyToManyField("LinguisticField", related_name=related_name, blank=True,
@@ -471,12 +481,12 @@ class Reference(models.Model):
 
         # Book
         if self.reference_type == SlReferenceType.objects.get(name='book'):
-            ref = "{authors} ({year}), <em>{title}</em>.".format(authors=self.authors_list,
+            ref = "{authors} ({year}), <em>{title}.".format(authors=self.authors_list,
                                                                  year=self.year,
                                                                  title=self.title)
             if self.subtitle:
                 ref += " {}.".format(self.subtitle)
-            ref += " {}: {}.".format(self.location, self.reference_publisher)
+            ref += "</em> {}: {}.".format(self.location, self.reference_publisher)
             if self.public_notes:
                 ref += " {}.".format(self.public_notes)
             if self.url:
@@ -484,10 +494,10 @@ class Reference(models.Model):
 
         # Paper in Edited Volume
         elif self.reference_type == SlReferenceType.objects.get(name='paper in edited volume'):
-            ref = "{authors} ({year}), '{title}'.".format(authors=self.authors_list, year=self.year, title=self.title)
+            ref = "{authors} ({year}), '{title}.".format(authors=self.authors_list, year=self.year, title=self.title)
             if self.subtitle:
                 ref += " {}.".format(self.subtitle)
-            ref += " In {} (ed.), <em>{}</em>, {}-{}. {}: {}.".format(self.editors,
+            ref += "' In {} (ed.), <em>{}</em>, {}-{}. {}: {}.".format(self.editors,
                                                                       self.book_title,
                                                                       self.page_start,
                                                                       self.page_end,
@@ -500,11 +510,11 @@ class Reference(models.Model):
 
         # Journal Article
         elif self.reference_type == SlReferenceType.objects.get(name='journal article'):
-            ref = "{authors} ({year}), '{title}'.".format(authors=self.authors_list,
+            ref = "{authors} ({year}), '{title}.".format(authors=self.authors_list,
                                                           year=self.year,
                                                           title=self.title)
             if self.subtitle:
-                ref += " {}.".format(self.subtitle)
+                ref += "' {}.".format(self.subtitle)
             ref += " <em>{}</em> {}.".format(self.journal_title, self.volume)
             if self.number:
                 ref += "({})".format(self.number)
@@ -514,14 +524,14 @@ class Reference(models.Model):
             if self.url:
                 ref += " {}.".format(self.url)
 
-        # PhD Thesiss
+        # PhD Thesis
         elif self.reference_type == SlReferenceType.objects.get(name='phd thesis'):
-            ref = "{authors} ({year}), '{title}'.".format(authors=self.authors_list,
+            ref = "{authors} ({year}), '{title}.".format(authors=self.authors_list,
                                                           year=self.year,
                                                           title=self.title)
             if self.subtitle:
                 ref += " {}.".format(self.subtitle)
-            ref += " PhD thesis, {}.".format(self.school)
+            ref += "' PhD thesis, {}.".format(self.school)
             if self.public_notes:
                 ref += " {}.".format(self.public_notes)
             if self.url:
@@ -529,12 +539,12 @@ class Reference(models.Model):
 
         # Edited volume
         elif self.reference_type == SlReferenceType.objects.get(name='edited volume'):
-            ref = "{editors} (ed.) ({year}), <em>{title}</em>.".format(editors=self.editors,
+            ref = "{editors} (ed.) ({year}), <em>{title}.".format(editors=self.editors,
                                                                        year=self.year,
                                                                        title=self.title)
             if self.subtitle:
                 ref += " {}.".format(self.subtitle)
-            ref += " {}: {}.".format(self.location, self.reference_publisher)
+            ref += "</em> {}: {}.".format(self.location, self.reference_publisher)
             if self.public_notes:
                 ref += " {}.".format(self.public_notes)
             if self.url:
@@ -542,11 +552,12 @@ class Reference(models.Model):
 
         # If none of above reference types
         else:
-            ref = "{authors} ({year}), '{title}'.".format(authors=self.authors_list,
+            ref = "{authors} ({year}), '{title}.".format(authors=self.authors_list,
                                                           year=self.year,
                                                           title=self.title)
             if self.subtitle:
                 ref += " {}.".format(self.subtitle)
+            ref += "'"
             if self.public_notes:
                 ref += " {}.".format(self.public_notes)
             if self.url:
@@ -568,7 +579,7 @@ class SanskritWord(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField(blank=True, null=True)
     # Many to many relationship fields
-    related_name = "sanskritword"
+    related_name = "sanskrit_word"
     sanskrit_word = models.ManyToManyField("self", related_name=related_name, blank=True, db_table="{}_m2m_sanskritword_sanskritword".format(apps.app_name))
     author = models.ManyToManyField("Author", related_name=related_name, blank=True, db_table="{}_m2m_author_sanskritword".format(apps.app_name))
     linguistic_field = models.ManyToManyField("LinguisticField", related_name=related_name, blank=True,
@@ -598,7 +609,7 @@ class SanskritWord(models.Model):
 
     @property
     def dynamic_subtitle(self):
-        return "A word in the language of Sanskrit"
+        return "A Sanskrit word/form"
 
     @property
     def dynamic_citation_author(self):
@@ -687,7 +698,7 @@ class TextPassage(models.Model):
     text = models.ForeignKey(Text, on_delete=models.PROTECT)
     text_type = models.ForeignKey(SlTextType, on_delete=models.SET_NULL, blank=True, null=True)
     # Many to many relationship fields
-    related_name = "textpassage"
+    related_name = "text_passage"
     text_passage = models.ManyToManyField("self", related_name=related_name, blank=True, db_table="{}_m2m_textpassage_textpassage".format(apps.app_name))
     author = models.ManyToManyField("Author", related_name=related_name, blank=True, db_table="{}_m2m_author_textpassage".format(apps.app_name))
     linguistic_field = models.ManyToManyField("LinguisticField", related_name=related_name, blank=True,
@@ -720,11 +731,9 @@ class TextPassage(models.Model):
     @property
     def dynamic_subtitle(self):
         if self.text:
-            return "A passage of text from {}".format(self.text)
-        elif self.text_type:
-            return "A passage of {} text".format(self.text_type)
+            return "From the text: {}".format(self.text)
         else:
-            return "A passage of text"
+            return "A text passage"
 
     @property
     def dynamic_citation_author(self):

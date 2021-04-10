@@ -10,8 +10,7 @@
         {% include "researchdata/snippets/detail-header.html" %}
 
         <!-- Many to One relationships -->
-        {% include "researchdata/snippets/detail-relateddatalist.html" with dataobject=object.reference_publisher label='Publisher' itemurl='browse-references-list' itemurlparameter='advanced_filter_slreferencepublisher' %}
-        {% include "researchdata/snippets/detail-relateddatalist.html" with dataobject=object.reference_type label='Reference Type' itemurl='browse-references-list' itemurlparameter='advanced_filter_slreferencetype' %}
+        <!-- There are 2 (publisher and relationship type) but John wants them hidden -->
 
         <!-- One to Many relationships -->
         <!-- None -->
