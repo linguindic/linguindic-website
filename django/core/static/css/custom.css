@@ -26,9 +26,8 @@ h1 {
 }
 
 h2 {
-    padding-top: 2em;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
+    padding-top: 2.5em;
+    letter-spacing: 0.05em;
     color: #5f3305;
     font-weight: 500;
     text-align: center;
@@ -38,10 +37,8 @@ h2 {
 
 h3 {
     padding: 2em 0 0.5em 0;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
+    font-weight: bold;
     color: #5f3305;
-    font-weight: 500;
     text-align: left;
     font-size: 1.5em;
 }
@@ -104,7 +101,7 @@ nav a:hover,
 /* ---------- Main ---------- */
 
 main {
-    padding-bottom: 4em;
+    padding-bottom: 8em;
     background: #eedac3;
 }
 
