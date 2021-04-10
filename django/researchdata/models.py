@@ -482,8 +482,8 @@ class Reference(models.Model):
         # Book
         if self.reference_type == SlReferenceType.objects.get(name='book'):
             ref = "{authors} ({year}), <em>{title}.".format(authors=self.authors_list,
-                                                                 year=self.year,
-                                                                 title=self.title)
+                                                            year=self.year,
+                                                            title=self.title)
             if self.subtitle:
                 ref += " {}.".format(self.subtitle)
             ref += "</em> {}: {}.".format(self.location, self.reference_publisher)
@@ -498,11 +498,11 @@ class Reference(models.Model):
             if self.subtitle:
                 ref += " {}.".format(self.subtitle)
             ref += "' In {} (ed.), <em>{}</em>, {}-{}. {}: {}.".format(self.editors,
-                                                                      self.book_title,
-                                                                      self.page_start,
-                                                                      self.page_end,
-                                                                      self.location,
-                                                                      self.reference_publisher)
+                                                                       self.book_title,
+                                                                       self.page_start,
+                                                                       self.page_end,
+                                                                       self.location,
+                                                                       self.reference_publisher)
             if self.public_notes:
                 ref += " {}.".format(self.public_notes)
             if self.url:
@@ -511,8 +511,8 @@ class Reference(models.Model):
         # Journal Article
         elif self.reference_type == SlReferenceType.objects.get(name='journal article'):
             ref = "{authors} ({year}), '{title}.".format(authors=self.authors_list,
-                                                          year=self.year,
-                                                          title=self.title)
+                                                         year=self.year,
+                                                         title=self.title)
             if self.subtitle:
                 ref += "' {}.".format(self.subtitle)
             ref += " <em>{}</em> {}.".format(self.journal_title, self.volume)
@@ -527,8 +527,8 @@ class Reference(models.Model):
         # PhD Thesis
         elif self.reference_type == SlReferenceType.objects.get(name='phd thesis'):
             ref = "{authors} ({year}), '{title}.".format(authors=self.authors_list,
-                                                          year=self.year,
-                                                          title=self.title)
+                                                         year=self.year,
+                                                         title=self.title)
             if self.subtitle:
                 ref += " {}.".format(self.subtitle)
             ref += "' PhD thesis, {}.".format(self.school)
@@ -540,8 +540,8 @@ class Reference(models.Model):
         # Edited volume
         elif self.reference_type == SlReferenceType.objects.get(name='edited volume'):
             ref = "{editors} (ed.) ({year}), <em>{title}.".format(editors=self.editors,
-                                                                       year=self.year,
-                                                                       title=self.title)
+                                                                  year=self.year,
+                                                                  title=self.title)
             if self.subtitle:
                 ref += " {}.".format(self.subtitle)
             ref += "</em> {}: {}.".format(self.location, self.reference_publisher)
@@ -553,8 +553,8 @@ class Reference(models.Model):
         # If none of above reference types
         else:
             ref = "{authors} ({year}), '{title}.".format(authors=self.authors_list,
-                                                          year=self.year,
-                                                          title=self.title)
+                                                         year=self.year,
+                                                         title=self.title)
             if self.subtitle:
                 ref += " {}.".format(self.subtitle)
             ref += "'"
