@@ -115,7 +115,7 @@ class SlReferenceType(models.Model):
 
     @property
     def dynamic_title(self):
-        return self.name.title() 
+        return self.name.title()
 
     @property
     def dynamic_subtitle(self):
