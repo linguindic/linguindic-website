@@ -138,7 +138,7 @@ class BrowseReferenceListView(ListView):
         # Order
         #
 
-        queryset = common.order_queryset(self.request.GET, queryset, 'title')
+        queryset = common.order_queryset(self.request.GET, queryset, 'authors_list')
 
         #
         # Return data

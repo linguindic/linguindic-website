@@ -115,7 +115,7 @@ class SlReferenceType(models.Model):
 
     @property
     def dynamic_title(self):
-        return self.name.capitalize()
+        return self.name.title() 
 
     @property
     def dynamic_subtitle(self):
@@ -457,20 +457,11 @@ class Reference(models.Model):
 
     @property
     def dynamic_title(self):
-        if self.title:
-            return self.title
-        elif self.book_title:
-            return self.book_title
-        elif self.journal_title:
-            return self.journal_title
-        elif self.url:
-            return self.url
-        else:
-            return "(Unnamed reference)"
+        return self.dynamic_summary
 
     @property
     def dynamic_subtitle(self):
-        return "{} --- {}".format(self.reference_type.name.title(), self.dynamic_summary)
+        return self.reference_type.name.title()
 
     @property
     def dynamic_citation_author(self):
