@@ -6,7 +6,9 @@
     }
 
     .nav-link {
-        margin-left: 1.5em;
+        margin-left: 0.7em;
+        margin-right: 0.7em;
+        margin-top: 0.2em;
     }
 
     /* ---------- Main ---------- */

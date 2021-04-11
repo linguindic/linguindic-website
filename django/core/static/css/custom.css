@@ -71,17 +71,18 @@ nav {
 }
 
 .navbar-nav {
-    letter-spacing: 0.15em;
+    letter-spacing: 0.1em;
+    /* border: 1px solid green; */
 }
 
 .nav-link {
     font-weight: 300;
-    font-size: 1.1em;
+    font-size: 1.05em;
 }
 
 .dropdown-item {
     font-weight: 300;
-    font-size: 1em;
+    font-size: 0.95em;
 }
 
 .dropdown-item:active {
@@ -499,6 +500,7 @@ main a {
 .browse-detail-relateddatalist-item-title {
     font-weight: bold;
     font-size: 1em;
+    letter-spacing: -0.005em;
 }
 
 .browse-detail-relateddatalist-item-details {

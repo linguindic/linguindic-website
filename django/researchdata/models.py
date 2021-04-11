@@ -22,6 +22,14 @@ def dynamic_citation_author(self):
     return "{}, {}".format(last_name, first_name)
 
 
+def description_preview(description):
+    max_len = 200
+    if len(description) > max_len:
+        return "{}...".format(description[:max_len - 3].strip())
+    else:
+        return description
+
+
 # Select List models
 
 
@@ -50,7 +58,7 @@ class SlLinguisticTraditionGroup(models.Model):
     @property
     def dynamic_subtitle(self):
         if self.description:
-            return self.description
+            return description_preview(self.description)
         return "A group of linguistic traditions"
 
     def __str__(self):
@@ -85,7 +93,7 @@ class SlReferencePublisher(models.Model):
     @property
     def dynamic_subtitle(self):
         if self.description:
-            return self.description
+            return description_preview(self.description)
         return "A publisher"
 
     def __str__(self):
@@ -120,7 +128,7 @@ class SlReferenceType(models.Model):
     @property
     def dynamic_subtitle(self):
         if self.description:
-            return self.description
+            return description_preview(self.description)
         return "A type of reference"
 
     def __str__(self):
@@ -155,7 +163,7 @@ class SlTextGroup(models.Model):
     @property
     def dynamic_subtitle(self):
         if self.description:
-            return self.description
+            return description_preview(self.description)
         return "A group of texts"
 
     def __str__(self):
@@ -190,7 +198,7 @@ class SlTextType(models.Model):
     @property
     def dynamic_subtitle(self):
         if self.description:
-            return self.description
+            return description_preview(self.description)
         return "A type of text"
 
     def __str__(self):
@@ -251,6 +259,8 @@ class Author(models.Model):
 
     @property
     def dynamic_subtitle(self):
+        if self.description:
+            return description_preview(self.description)
         subtitle = "An author"
         if self.location_most_active:
             subtitle += " from {}".format(self.location_most_active)
@@ -299,6 +309,8 @@ class LinguisticField(models.Model):
 
     @property
     def dynamic_subtitle(self):
+        if self.description:
+            return description_preview(self.description)
         return "A linguistic field"
 
     @property
@@ -345,6 +357,8 @@ class LinguisticNotion(models.Model):
 
     @property
     def dynamic_subtitle(self):
+        if self.description:
+            return description_preview(self.description)
         return "A linguistic notion"
 
     @property
@@ -395,6 +409,8 @@ class LinguisticTradition(models.Model):
 
     @property
     def dynamic_subtitle(self):
+        if self.description:
+            return description_preview(self.description)
         return "A linguistic tradition"
 
     @property
@@ -600,6 +616,8 @@ class SanskritWord(models.Model):
 
     @property
     def dynamic_subtitle(self):
+        if self.description:
+            return description_preview(self.description)
         return "A Sanskrit word/form"
 
     @property
@@ -658,12 +676,14 @@ class Text(models.Model):
 
     @property
     def dynamic_subtitle(self):
-        if self.text_group:
+        if self.description:
+            return description_preview(self.description)
+        elif self.text_group:
             return "A text from {}".format(self.text_group)
         elif self.text_type:
             return "A text of type: {}".format(self.text_type)
         else:
-            return "A text"
+            return "A piece of text"
 
     @property
     def dynamic_citation_author(self):
@@ -721,7 +741,9 @@ class TextPassage(models.Model):
 
     @property
     def dynamic_subtitle(self):
-        if self.text:
+        if self.description:
+            return description_preview(self.description)
+        elif self.text:
             return "From the text: {}".format(self.text)
         else:
             return "A text passage"
