@@ -6,15 +6,13 @@
         
         <a class="browse-detail-linktolist" href="{% url 'browse-authors-list' %}">&lt; All authors</a>
         
-        <!-- Header (e.g. title and details) -->
+        <!-- Header (e.g. title and description) -->
         {% include "researchdata/snippets/detail-header.html" %}
 
         <!-- Data items -->
-        <h3>Details</h3>
         {% include "researchdata/snippets/detail-dataitem.html" with dataitem=object.first_name label='First Name' %}
         {% include "researchdata/snippets/detail-dataitem.html" with dataitem=object.last_name label='Last Name' %}
         {% include "researchdata/snippets/detail-dataitem.html" with dataitem=object.alternative_name label='Alternative Name' %}
-        {% include "researchdata/snippets/detail-dataitem.html" with dataitem=object.description label='Description' %}
         {% include "researchdata/snippets/detail-dataitem.html" with dataitem=object.location_most_active label='Location' %}
         {% include "researchdata/snippets/detail-dataitem.html" with dataitem=object.date_active label='Date Active' %}
 

@@ -6,12 +6,11 @@
 
         <a class="browse-detail-linktolist" href="{% url 'browse-linguistictraditions-list' %}">&lt; All linguistic traditions</a>
         
-        <!-- Header (e.g. title and details) -->
+        <!-- Header (e.g. title and description) -->
         {% include "researchdata/snippets/detail-header.html" %}
 
         <!-- Data items -->
-        <h3>Details</h3>
-        {% include "researchdata/snippets/detail-dataitem.html" with dataitem=object.description label='Description' %}
+        <!-- None -->
 
         <!-- Many to One relationships -->
         {% include "researchdata/snippets/detail-relateddatalist.html" with dataobject=object.linguistic_tradition_group label='Linguistic Tradition Group' itemurl='browse-linguistictraditions-list' itemurlparameter='advanced_filter_sllinguistictraditiongroup' %}

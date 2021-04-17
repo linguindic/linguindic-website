@@ -6,12 +6,10 @@
 
         <a class="browse-detail-linktolist" href="{% url 'browse-texts-list' %}">&lt; All texts</a>
         
-        <!-- Header (e.g. title and details) -->
+        <!-- Header (e.g. title and description) -->
         {% include "researchdata/snippets/detail-header.html" %}
 
         <!-- Data items -->
-        <h3>Details</h3>
-        {% include "researchdata/snippets/detail-dataitem.html" with dataitem=object.description label='Description' %}
         {% include "researchdata/snippets/detail-dataitem.html" with dataitem=object.approximate_date_of_creation label='Approximate Date of Creation' %}
 
         <!-- Many to One relationships -->

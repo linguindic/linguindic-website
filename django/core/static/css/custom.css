@@ -447,6 +447,20 @@ main a {
     display: block;
 }
 
+.browse-detail-description {
+    margin: 2em auto 2em auto;
+}
+
+.browse-detail-description,
+.browse-detail-description p,
+.browse-detail-description ul,
+.browse-detail-description ol {
+    font-size: 1.1rem;
+    line-height: 1.5rem;
+    letter-spacing: 0.01rem;
+    font-weight: 300;
+}
+
 .browse-detail-dataitem {
     padding: 0.7em 0;
     font-size: 1.1em;
