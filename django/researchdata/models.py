@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from . import apps
+from django.urls import reverse
 
 
 # Common functions
@@ -275,6 +276,9 @@ class Author(models.Model):
     def __str__(self):
         return self.dynamic_title
 
+    def get_absolute_url(self):
+        return reverse('browse-authors-detail', args=[str(self.id)])
+
     class Meta:
         db_table = "{}_main_author".format(apps.app_name)
 
@@ -319,6 +323,9 @@ class LinguisticField(models.Model):
 
     def __str__(self):
         return self.dynamic_title
+    
+    def get_absolute_url(self):
+        return reverse('browse-linguisticfields-detail', args=[str(self.id)])
 
     class Meta:
         db_table = "{}_main_linguisticfield".format(apps.app_name)
@@ -367,6 +374,9 @@ class LinguisticNotion(models.Model):
 
     def __str__(self):
         return self.dynamic_title
+    
+    def get_absolute_url(self):
+        return reverse('browse-linguisticnotions-detail', args=[str(self.id)])
 
     class Meta:
         db_table = "{}_main_linguisticnotion".format(apps.app_name)
@@ -419,6 +429,9 @@ class LinguisticTradition(models.Model):
 
     def __str__(self):
         return self.dynamic_title
+    
+    def get_absolute_url(self):
+        return reverse('browse-linguistictraditions-detail', args=[str(self.id)])
 
     class Meta:
         db_table = "{}_main_linguistictradition".format(apps.app_name)
@@ -574,6 +587,9 @@ class Reference(models.Model):
 
     def __str__(self):
         return self.dynamic_title
+    
+    def get_absolute_url(self):
+        return reverse('browse-references-detail', args=[str(self.id)])
 
     class Meta:
         db_table = "{}_main_reference".format(apps.app_name)
@@ -626,6 +642,9 @@ class SanskritWord(models.Model):
 
     def __str__(self):
         return self.dynamic_title
+    
+    def get_absolute_url(self):
+        return reverse('browse-sanskritwords-detail', args=[str(self.id)])
 
     class Meta:
         db_table = "{}_main_sanskritword".format(apps.app_name)
@@ -691,6 +710,9 @@ class Text(models.Model):
 
     def __str__(self):
         return self.dynamic_title
+    
+    def get_absolute_url(self):
+        return reverse('browse-texts-detail', args=[str(self.id)])
 
     class Meta:
         db_table = "{}_main_text".format(apps.app_name)
@@ -754,6 +776,9 @@ class TextPassage(models.Model):
 
     def __str__(self):
         return self.dynamic_title
+    
+    def get_absolute_url(self):
+        return reverse('browse-textpassages-detail', args=[str(self.id)])
 
     class Meta:
         db_table = "{}_main_textpassage".format(apps.app_name)

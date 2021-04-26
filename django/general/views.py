@@ -62,3 +62,12 @@ class AccessibilityTemplateView(TemplateView):
     Class-based view to show the accessiblity template
     """
     template_name = 'general/accessibility.html'
+
+
+class RobotsTemplateView(TemplateView):
+    """
+    Robots: Template
+    Class-based view to show the robots.txt file
+    """
+    template_name = 'general/robots.txt'
+    content_type = 'text/plain'

@@ -11,4 +11,5 @@ urlpatterns = [
     path('help/', views.HelpTemplateView.as_view(), name='help'),
     path('cookies/', views.CookiesTemplateView.as_view(), name='cookies'),
     path('accessibility/', views.AccessibilityTemplateView.as_view(), name='accessibility'),
+    path('robots.txt', views.RobotsTemplateView.as_view(), name='robots'),
 ]
