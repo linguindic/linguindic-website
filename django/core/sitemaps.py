@@ -40,7 +40,7 @@ class AuthorListSitemap(Sitemap):
     def lastmod(self, obj):
         try:
             return models.Author.objects.order_by('-meta_created_datetime')[0].meta_created_datetime
-        except:
+        except IndexError:
             return None
 
     def location(self, obj):
@@ -72,7 +72,7 @@ class LinguisticFieldListSitemap(Sitemap):
     def lastmod(self, obj):
         try:
             return models.LinguisticField.objects.order_by('-meta_created_datetime')[0].meta_created_datetime
-        except:
+        except IndexError:
             return None
 
     def location(self, obj):
@@ -104,7 +104,7 @@ class LinguisticNotionListSitemap(Sitemap):
     def lastmod(self, obj):
         try:
             return models.LinguisticNotion.objects.order_by('-meta_created_datetime')[0].meta_created_datetime
-        except:
+        except IndexError:
             return None
 
     def location(self, obj):
@@ -136,7 +136,7 @@ class LinguisticTraditionListSitemap(Sitemap):
     def lastmod(self, obj):
         try:
             return models.LinguisticTradition.objects.order_by('-meta_created_datetime')[0].meta_created_datetime
-        except:
+        except IndexError:
             return None
 
     def location(self, obj):
@@ -168,7 +168,7 @@ class ReferenceListSitemap(Sitemap):
     def lastmod(self, obj):
         try:
             return models.Reference.objects.order_by('-meta_created_datetime')[0].meta_created_datetime
-        except:
+        except IndexError:
             return None
 
     def location(self, obj):
@@ -200,7 +200,7 @@ class SanskritWordListSitemap(Sitemap):
     def lastmod(self, obj):
         try:
             return models.SanskritWord.objects.order_by('-meta_created_datetime')[0].meta_created_datetime
-        except:
+        except IndexError:
             return None
 
     def location(self, obj):
@@ -232,7 +232,7 @@ class TextListSitemap(Sitemap):
     def lastmod(self, obj):
         try:
             return models.Text.objects.order_by('-meta_created_datetime')[0].meta_created_datetime
-        except:
+        except IndexError:
             return None
 
     def location(self, obj):
@@ -264,7 +264,7 @@ class TextPassageListSitemap(Sitemap):
     def lastmod(self, obj):
         try:
             return models.TextPassage.objects.order_by('-meta_created_datetime')[0].meta_created_datetime
-        except:
+        except IndexError:
             return None
 
     def location(self, obj):
