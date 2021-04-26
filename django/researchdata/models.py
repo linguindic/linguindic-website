@@ -323,7 +323,7 @@ class LinguisticField(models.Model):
 
     def __str__(self):
         return self.dynamic_title
-    
+
     def get_absolute_url(self):
         return reverse('browse-linguisticfields-detail', args=[str(self.id)])
 
@@ -374,7 +374,7 @@ class LinguisticNotion(models.Model):
 
     def __str__(self):
         return self.dynamic_title
-    
+
     def get_absolute_url(self):
         return reverse('browse-linguisticnotions-detail', args=[str(self.id)])
 
@@ -429,7 +429,7 @@ class LinguisticTradition(models.Model):
 
     def __str__(self):
         return self.dynamic_title
-    
+
     def get_absolute_url(self):
         return reverse('browse-linguistictraditions-detail', args=[str(self.id)])
 
@@ -587,7 +587,7 @@ class Reference(models.Model):
 
     def __str__(self):
         return self.dynamic_title
-    
+
     def get_absolute_url(self):
         return reverse('browse-references-detail', args=[str(self.id)])
 
@@ -642,7 +642,7 @@ class SanskritWord(models.Model):
 
     def __str__(self):
         return self.dynamic_title
-    
+
     def get_absolute_url(self):
         return reverse('browse-sanskritwords-detail', args=[str(self.id)])
 
@@ -710,7 +710,7 @@ class Text(models.Model):
 
     def __str__(self):
         return self.dynamic_title
-    
+
     def get_absolute_url(self):
         return reverse('browse-texts-detail', args=[str(self.id)])
 
@@ -776,7 +776,7 @@ class TextPassage(models.Model):
 
     def __str__(self):
         return self.dynamic_title
-    
+
     def get_absolute_url(self):
         return reverse('browse-textpassages-detail', args=[str(self.id)])
 
