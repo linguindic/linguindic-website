@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block main %}
+    <div class="container" id="browse-detail">
+        
+        <a class="browse-detail-linktolist" href="{% url 'browse-textpassages-list' %}">&lt; All text passages</a>
+
+        <!-- Header (e.g. title and description) -->
+        {% include "researchdata/snippets/detail-header.html" %}
+
+        <!-- Data items -->
+        <!-- None -->
+
+        <!-- Many to One relationships -->
+        {% include "researchdata/snippets/detail-relateddatalist.html" with dataobject=object.text label='Text' itemurl='browse-texts-detail' %}
+        {% include "researchdata/snippets/detail-relateddatalist.html" with dataobject=object.text_type label='Text Type' itemurl='browse-textpassages-list' itemurlparameter='advanced_filter_sltexttype' %}
+
+        <!-- One to Many relationships -->
+        <!-- None -->
+
+        <!-- Many to Many relationships -->
+        {% include "researchdata/snippets/detail-relateddatalist-mainmodels.html" with exclude='text,textpassage,' %}
+
+        <!-- Footer (e.g. for meta data) -->
+        {% include "researchdata/snippets/detail-footer.html" %}
+
+    </div>
+{% endblock %}

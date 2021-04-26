@@ -1,0 +1,26 @@
+{% extends "researchdata/browse-list-base.html" %}
+{% load static %}
+
+<!-- Title -->
+{% block list_title %}Authors{% endblock %}
+
+<!-- Link to detail -->
+{% block list_item_link %}{% url 'browse-authors-detail' object.id %}{% endblock %}
+
+<!-- Search By -->
+{% block list_options_advanced_searchby %}
+    {% include "researchdata/snippets/list-options-advanced-fields-mainmodels.html" with models='author,' %}
+{% endblock %}
+
+<!-- Order By -->
+{% block list_options_advanced_orderby %}
+    {% include "researchdata/snippets/list-options-advanced-fields-mainmodels.html" with models='author,' %}
+{% endblock %}
+
+<!-- Filters -->
+{% block list_options_advanced_filters %}
+
+    <!-- Main models -->
+    {% include "researchdata/snippets/list-options-advanced-filter-mainmodels.html" with exclude='none' %}
+
+{% endblock %}

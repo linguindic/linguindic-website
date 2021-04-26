@@ -1,0 +1,7 @@
+<label for="list-options-advanced-content-filter-{{ id }}">{{ label }}</label>
+<select id="list-options-advanced-content-filter-{{ id }}" name="advanced_filter_{{ id }}">
+    {% include 'researchdata/snippets/select-default.html' %}
+    {% for dataobject in dataset %}
+        <option value="{{ dataobject.id }}">{{ dataobject }}</option>
+    {% endfor %}
+</select>

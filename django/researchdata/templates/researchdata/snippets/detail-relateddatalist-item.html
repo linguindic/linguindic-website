@@ -1,0 +1,18 @@
+<!-- If a parameter is provided, it means show a list and filter on this parameter to show related items -->
+{% if itemurlparameter %}
+<a href="{% url itemurl %}?{{ itemurlparameter }}={{ item.id }}">
+<!-- If no parameter is provided, it means go directly to detail page of object -->
+{% else %}
+<a href="{% url itemurl item.id %}">
+{% endif %}
+
+    <li class="browse-detail-relateddatalist-item">
+        <div class="browse-detail-relateddatalist-item-title">
+            {{ item.dynamic_title | striptags }}
+        </div>
+        <div class="browse-detail-relateddatalist-item-details">
+            {{ item.dynamic_subtitle | striptags }}
+        </div>
+    </li>
+
+</a>

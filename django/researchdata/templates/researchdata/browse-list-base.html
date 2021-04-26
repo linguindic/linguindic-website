@@ -1,0 +1,266 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block main %}
+    <div class="container">
+
+
+        <!-- List Title -->
+        <h2>{% block list_title %}{% endblock %}</h2>
+
+
+        <!-- List Options -->
+
+        <div class="list-options">
+            
+            <!-- Form element has no action attribute, so that it submits to the same page -->
+            <form method="GET" class="form-group" id="list-options-search-form">
+                <!-- Search -->
+                <div class="list-options-search row">
+                    <div class="col-12">
+                        <div class="input-group">
+                            <!-- Search textbox -->
+                            <input type="text" class="form-control" name="search" title="search" id="list-options-search-input" placeholder="Search">
+                            <!-- Search button -->
+                            <div class="input-group-append">
+                                <button type="submit" value="Search" class="btn btn-primary" title="search-btn" id="list-options-search-button">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            <!-- Links -->
+            <div id="list-options-links">
+                <span id="list-options-links-advanced"><i class="fas fa-sliders-h"></i> Advanced options</span>
+                <span id="list-options-links-reset" class="reset-form"><i class="fas fa-redo"></i> Reset</span>
+            </div>
+
+            <!-- Advanced options -->
+            <div class="list-options-advanced">
+                <div id="list-options-advanced">
+                    <div id="list-options-advanced-content">
+                        <div id="list-options-advanced-content-close"><i class="fas fa-times"></i></div>
+                        <div id="list-options-advanced-content-title">Advanced Options</div>
+
+                        <!-- Form element has no action attribute, so that it submits to the same page -->
+                        <form method="GET" class="form-group" id="list-options-advanced-content-form">
+
+                            <!-- Search -->
+                            <div id="list-options-advanced-content-search">
+                                <div class="list-options-advanced-content-subtitle">Search</div>
+                                <!-- Search By --> 
+                                <label for="list-options-advanced-content-search-by">Search by</label>
+                                <select id="list-options-advanced-content-search-by" name="advanced_search_by">
+                                    {% include 'researchdata/snippets/select-default.html' %}
+                                    {% block list_options_advanced_searchby %}{% endblock %}
+                                </select>
+                                <!-- Search Criteria -->
+                                <label for="list-options-advanced-content-search-criteria">Search</label>
+                                <input type="text" id="list-options-advanced-content-search-criteria" name="advanced_search_criteria">
+                            </div>
+
+                            <!-- Order -->
+                            <div id="list-options-advanced-content-order">
+                                <div class="list-options-advanced-content-subtitle">Order</div>
+                                <!-- Order by -->
+                                <label for="list-options-advanced-content-order-by">Order by:</label>
+                                <select id="list-options-advanced-content-order-by" name="advanced_order_by">
+                                    {% block list_options_advanced_orderby %}{% endblock %}
+                                </select>
+                                <!-- Order direction -->
+                                <label for="list-options-advanced-content-order-direction">Order direction:</label>
+                                <select id="list-options-advanced-content-order-direction" name="advanced_order_direction">
+                                    <option value="">Ascending (A-Z, 0-9)</option>
+                                    <option value="-">Descending (Z-A, 9-0)</option>
+                                </select>
+                            </div>
+
+                            <!-- Filter -->
+                            <div id="list-options-advanced-content-filter">
+                                <div class="list-options-advanced-content-subtitle">Filter</div>
+                                <!-- Each list page that inherits this base file will specify its own unique filters -->
+                                {% block list_options_advanced_filters %}{% endblock %}
+                            </div>
+
+                            <!-- Submit -->
+                            <input type="submit" value="Apply Options" id="list-options-advanced-content-form-submit"> 
+
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- List Content -->
+        <div class="list-content">
+            {% for object in object_list %}
+                                
+                <a href="{% block list_item_link %}{% endblock %}" class="list-content-item">
+                    <div class="list-content-item-title">{{ object.dynamic_title | striptags }}</div>
+                    <div class="list-content-item-details">{{ object.dynamic_subtitle | striptags | slice:"250" }}</div>
+                </a>
+            
+            {% empty %} 
+
+                <div id="list-content-empty">
+                    <div id="list-content-empty-title">
+                        No records found.
+                    </div>
+                    <div id="list-content-empty-details">
+                        Try expanding your search criteria or <strong class="reset-form">resetting the search</strong> to view all items.
+                    </div>
+                </div>
+
+            {% endfor %}
+        </div>
+
+
+        <!-- List Pagination -->
+        <!-- If there's multiple pages, then show Paginator -->
+        {% if page_obj.paginator.num_pages > 1 %}
+
+            <div class="list-pagination row align-items-center">
+
+                <div class="col-xs-12 col-sm-4">
+
+                    <!-- If there's a previous page -->
+                    {% if page_obj.has_previous %}
+                        <!-- First Page -->
+                        <div class="list-pagination-action">
+                            <a class="list-pagination-action-button list-pagination-left fas fa-angle-double-left" 
+                                href="?page=1{% include 'researchdata/snippets/list-pagination-urlqueries.html' %}"><span class="hidden">First</span></a>
+                            <div class="list-pagination-action-label">First</div>
+                        </div>
+                        <!-- Previous Page -->
+                        <div class="list-pagination-action">
+                            <a class="list-pagination-action-button list-pagination-left fas fa-angle-left" 
+                                href="?page={{ page_obj.previous_page_number }}{% include 'researchdata/snippets/list-pagination-urlqueries.html' %}"><span class="hidden">Previous</span></a>
+                            <div class="list-pagination-action-label">Previous</div>
+                        </div>
+                    {% endif %}
+
+                    <!-- If there's NOT a previous page -->
+                    {% if page_obj.has_previous == False %}
+                        <!-- First Page -->
+                        <div class="list-pagination-action-disabled">
+                            <div class="list-pagination-action-button list-pagination-left fas fa-angle-double-left"></div>
+                            <div class="list-pagination-action-label">First</div>
+                        </div>
+                        <!-- Previous Page -->
+                        <div class="list-pagination-action-disabled">
+                            <div class="list-pagination-action-button list-pagination-left fas fa-angle-left"></div>
+                            <div class="list-pagination-action-label">Previous</div>
+                        </div>
+                    {% endif %}
+
+                </div>
+
+                <div class="col-xs-12 col-sm-4">
+                    <!-- Current page info -->
+                    <span class="list-pagination-current">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+                </div>
+
+                <div class="col-xs-12 col-sm-4">
+
+                    <!-- If there's a next page -->
+                    {% if page_obj.has_next %}
+                        <!-- Next Page -->
+                        <div class="list-pagination-action">
+                            <a class="list-pagination-action-button list-pagination-right fas fa-angle-right" 
+                                href="?page={{ page_obj.next_page_number }}{% include 'researchdata/snippets/list-pagination-urlqueries.html' %}"><span class="hidden">Next</span></a>
+                            <div class="list-pagination-action-label">Next</div>
+                        </div>
+                        <!-- Last Page -->
+                        <div class="list-pagination-action">
+                            <a class="list-pagination-action-button list-pagination-right fas fa-angle-double-right" 
+                                href="?page={{ page_obj.paginator.num_pages }}{% include 'researchdata/snippets/list-pagination-urlqueries.html' %}"><span class="hidden">Last</span></a>
+                            <div class="list-pagination-action-label">Last</div>
+                        </div>
+                    {% endif %}
+
+                    <!-- If there's NOT a next page -->
+                    {% if page_obj.has_next == False %}
+                        <!-- Next Page -->
+                        <div class="list-pagination-action-disabled">
+                            <div class="list-pagination-action-button list-pagination-right fas fa-angle-right"></div>
+                            <div class="list-pagination-action-label">Next</div>
+                        </div>
+
+                        <!-- Last Page -->
+                        <div class="list-pagination-action-disabled">
+                            <div class="list-pagination-action-button list-pagination-right fas fa-angle-double-right"></div>
+                            <div class="list-pagination-action-label">Last</div>
+                        </div>
+                    {% endif %}
+
+                </div>
+
+            </div>
+
+        {% endif %}
+        
+    </div>
+
+    {% comment %} JavaScript/jQuery for this page {% endcomment %}
+    <script>
+        $(document).ready(function() {
+
+            // Show advanced options
+            $('#list-options-links-advanced').on('click', function(){
+                $('#list-options-advanced').fadeIn(100);
+            });
+            // Hide advanced options
+            $('#list-options-advanced-content-close, #list-options-advanced').on('click', function(){
+                $('#list-options-advanced').fadeOut(200);
+            });
+            // Prevent it from closing when clicking popup content
+            $('#list-options-advanced-content').click(function(e) { 
+                e.stopPropagation();
+            });
+
+            // Reset form
+            $('.reset-form').on('click', function(){
+                // Go to the current URL but without any parameters (remove everything after ? in url)
+                window.location.replace(window.location.href.split('?')[0]);
+            });
+
+            // Fill form values from URL parameters
+            function setFormItemValueFromUrlParameter(formItemID, urlParameter) {
+                var value = new URL(window.location.href).searchParams.get(urlParameter);
+                if(value) document.getElementById(formItemID).value = value;
+            }
+            // Apply above function to all form fields:
+            // Search (simple)
+            setFormItemValueFromUrlParameter("list-options-search-input", "search");
+            // Advanced:
+            // Search
+            setFormItemValueFromUrlParameter("list-options-advanced-content-search-by", "advanced_search_by");
+            setFormItemValueFromUrlParameter("list-options-advanced-content-search-criteria", "advanced_search_criteria");
+            // Order
+            setFormItemValueFromUrlParameter("list-options-advanced-content-order-by", "advanced_order_by");
+            setFormItemValueFromUrlParameter("list-options-advanced-content-order-direction", "advanced_order_direction");
+            // Filter: Main models
+            setFormItemValueFromUrlParameter("list-options-advanced-content-filter-author", "advanced_filter_author");
+            setFormItemValueFromUrlParameter("list-options-advanced-content-filter-linguisticfield", "advanced_filter_linguisticfield");
+            setFormItemValueFromUrlParameter("list-options-advanced-content-filter-linguisticnotion", "advanced_filter_linguisticnotion");
+            setFormItemValueFromUrlParameter("list-options-advanced-content-filter-linguistictradition", "advanced_filter_linguistictradition");
+            setFormItemValueFromUrlParameter("list-options-advanced-content-filter-reference", "advanced_filter_reference");
+            setFormItemValueFromUrlParameter("list-options-advanced-content-filter-sanskritword", "advanced_filter_sanskritword");
+            setFormItemValueFromUrlParameter("list-options-advanced-content-filter-text", "advanced_filter_text");
+            setFormItemValueFromUrlParameter("list-options-advanced-content-filter-textpassage", "advanced_filter_textpassage");
+            // Filter: Select List models
+            setFormItemValueFromUrlParameter("list-options-advanced-content-filter-sllinguistictraditiongroup", "advanced_filter_sllinguistictraditiongroup");
+            setFormItemValueFromUrlParameter("list-options-advanced-content-filter-slreferencepublisher", "advanced_filter_slreferencepublisher");
+            setFormItemValueFromUrlParameter("list-options-advanced-content-filter-slreferencetype", "advanced_filter_slreferencetype");
+            setFormItemValueFromUrlParameter("list-options-advanced-content-filter-sltextgroup", "advanced_filter_sltextgroup");
+            setFormItemValueFromUrlParameter("list-options-advanced-content-filter-sltexttype", "advanced_filter_sltexttype");
+
+        });
+    </script>
+
+{% endblock %}

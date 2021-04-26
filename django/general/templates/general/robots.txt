@@ -1,0 +1,3 @@
+Sitemap: https://www.linguindic.com/sitemap.xml
+User-agent: *
+Disallow:

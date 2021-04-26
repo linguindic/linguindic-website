@@ -1,0 +1,32 @@
+{% comment %} 
+
+This file works out if the GET request includes certain key value pairs and, if so, returns them to be included in the url string as parameters.
+
+Each list will have some unique parameters that other lists don't. All parameters can be put in this single file, as conditional statements
+are used that will simply skip ones that aren't suitable.
+
+{% endcomment %}
+
+{% comment %} Search (simple) {% endcomment %}
+{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}
+
+{% comment %}
+Advanced Options
+{% endcomment %}
+
+{% comment %} Search {% endcomment %}
+{% if request.GET.advanced_search_by %}&advanced_search_by={{ request.GET.advanced_search_by }}{% endif %}
+{% if request.GET.advanced_search_criteria %}&advanced_search_criteria={{ request.GET.advanced_search_criteria }}{% endif %}
+
+{% comment %} Filter: Author {% endcomment %}
+{% if request.GET.advanced_filter_author %}&advanced_filter_author={{ request.GET.advanced_filter_author }}{% endif %}
+{% comment %} Filter: Linguistic Field {% endcomment %}
+{% if request.GET.advanced_filter_linguisticfield %}&advanced_filter_linguisticfield={{ request.GET.advanced_filter_linguisticfield }}{% endif %}
+{% comment %} Filter: Reference {% endcomment %}
+{% if request.GET.advanced_filter_reference %}&advanced_filter_reference={{ request.GET.advanced_filter_reference }}{% endif %}
+{% comment %} Filter: Text {% endcomment %}
+{% if request.GET.advanced_filter_text %}&advanced_filter_text={{ request.GET.advanced_filter_text }}{% endif %}
+
+{% comment %} Order {% endcomment %}
+{% if request.GET.advanced_order_by %}&advanced_order_by={{ request.GET.advanced_order_by }}{% endif %}
+{% if request.GET.advanced_order_direction %}&advanced_order_direction={{ request.GET.advanced_order_direction }}{% endif %}

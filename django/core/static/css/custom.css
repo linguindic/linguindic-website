@@ -1,0 +1,559 @@
+
+/* ---------- General ---------- */
+
+body {
+    font-family: 'Source Sans Pro', sans-serif;
+    color: #643d25;
+    margin: 0;
+    font-weight: 300;
+    background: #FFF;
+}
+
+a {
+    color: #5f3305;
+    font-weight: 500;
+}
+
+a:hover {
+    color: #705a41;
+}
+
+h1 {
+    font-size: 1em;
+    margin: 0;
+    padding: 0;
+    line-height: 1em;;
+}
+
+h2 {
+    padding-top: 2.5em;
+    color: #5f3305;
+    font-weight: 500;
+    text-align: center;
+    font-size: 1.7em;
+    margin: 1.5em 0 1em 0;
+}
+
+h3 {
+    padding: 2em 0 0.5em 0;
+    font-weight: bold;
+    color: #5f3305;
+    text-align: left;
+    font-size: 1.5em;
+}
+
+.image-circle {
+    border: 0.3rem solid rgba(255,255,255,0.6);
+    border-radius: 100%;
+    width: 13em;
+    max-width: 90%;
+    display: block;
+    margin: 1em auto;
+}
+
+
+/* ---------- Navigation ---------- */
+
+nav {
+    background: white;
+    text-transform: uppercase;
+    vertical-align: middle;
+    color: #8d715f;
+}
+
+.navbar-brand {
+    font-family: 'Alata', sans-serif;
+    display: inline-block;
+    font-size: 1.6em;
+    letter-spacing: 0.2em;
+    font-weight: 300;
+    color: #b28b01;
+}
+
+.navbar-nav {
+    letter-spacing: 0.1em;
+    /* border: 1px solid green; */
+}
+
+.nav-link {
+    font-weight: 300;
+    font-size: 1.05em;
+}
+
+.dropdown-item {
+    font-weight: 300;
+    font-size: 0.95em;
+}
+
+.dropdown-item:active {
+    background: #EEE;
+}
+
+.nav-link.active {
+    font-weight: 500;
+}
+
+nav a:hover,
+.dropdown-item:hover {
+    color: #937200;
+}
+
+/* ---------- Main ---------- */
+
+main {
+    padding-bottom: 8em;
+    background: #eedac3;
+}
+
+main p,
+main ul,
+main ol {
+    font-size: 1.2rem;
+    line-height: 2rem;
+    letter-spacing: 0.04rem;
+    font-weight: 300;
+}
+
+main a {
+    text-decoration: none;
+}
+
+/* ---------- Welcome ---------- */
+
+#welcome-banner {
+    width: 100%;
+    padding-top: 10vh;
+    background-image: url('../images/welcome/banner-bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-color: black;
+}
+
+#welcome-banner-tagline {
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 300;
+    letter-spacing: 0.2em;
+    font-size: 1.5em;
+    line-height: 2.5em;
+    color: #815f4c;
+}
+
+#welcome-banner-tagline strong {
+    color: #b28b01;
+}
+
+#welcome-banner-proceed {
+    font-size: 3em;
+	position: absolute;
+	bottom: 0.8em;
+    left: calc(50% - 40px);
+    border-radius: 100%;
+    width: 80px;
+    height: 80px;
+	text-align: center;
+	background-color: rgba(255,255,255,0.5);
+	color: white;
+	padding-top: 5px;
+    cursor: pointer;
+    line-height: 80px;
+}
+
+#welcome-banner-proceed:hover {
+    background-color: rgba(255,255,255,1);
+    color: #b28b01;
+}
+
+/* ---------- About ---------- */
+
+.about-banner {
+    width: 100%;
+}
+
+#about-banner-project {
+    background: url('../images/about/banner-bg/project.jpg');
+}
+
+#about-banner-team {
+    background: url('../images/about/banner-bg/team.jpg');
+}
+
+#about-banner-funding {
+    background: url('../images/about/banner-bg/funding.jpg');
+}
+
+#about-banner-events {
+    background: url('../images/about/banner-bg/events.jpg');
+}
+
+#about-banner-outputs {
+    background: url('../images/about/banner-bg/outputs.jpg');
+}
+
+#about-banner-project,
+#about-banner-team,
+#about-banner-funding,
+#about-banner-events,
+#about-banner-outputs {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+
+.about-team-member-role {
+    text-align: center;
+    margin: -1.3em auto 1.8em auto;
+}
+
+
+/* ---------- Browse ---------- */
+
+/* ---------- Browse: List ---------- */
+
+/* List options */
+.list-options {
+    padding: 1rem 0 3rem 0;
+}
+
+.list-options-search {
+    margin-bottom: 1em;
+}
+
+#list-options-search-input {
+    background: rgba(255, 255, 255, 0.5);
+    border: 0;
+}
+
+#list-options-search-input:hover,
+#list-options-search-input:focus {
+    background: white;
+    box-shadow: none;
+}
+
+#list-options-search-input:focus {
+    color: #b28b01;
+}
+
+#list-options-search-button {
+    background: #5f3305;
+    border: 0;
+}
+
+#list-options-search-button:hover {
+    background: #b28b01;
+}
+
+#list-options-links {
+    text-align: right;
+}
+
+#list-options-links span {
+    display: inline-block;
+}
+
+#list-options-links span:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+#list-options-links-advanced {
+    padding-right: 2em;
+}
+
+#list-options-advanced {
+    background: rgba(0, 0, 0, 0.9);
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 10000;
+    display: none;
+}
+
+#list-options-advanced-content {
+    background: white;
+    margin: 2em auto;
+    width: 30em;
+    max-width: 90%;
+    max-height: calc( 100vh - 4em);
+    border-radius: 0.8em;
+    padding: 1.5em 2em;
+    overflow-y: scroll;
+}
+
+#list-options-advanced-content-close {
+    text-align: right;
+    font-size: 1.5em;
+    padding: 0.2em;
+    cursor: pointer;
+    color: #AAA;
+}
+
+#list-options-advanced-content-title {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 1.3em;
+    color: #b28b01;
+    font-weight: bold;
+}
+
+.list-options-advanced-content-subtitle {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-top: 2em;
+    color: #b28b01;
+    text-transform: uppercase;
+}
+
+#list-options-advanced-content label {
+    margin: 1.5em 0 0.2em 0;
+    display: block;
+    font-size: 0.9em;
+}
+
+#list-options-advanced-content input,
+#list-options-advanced-content select {
+    width: 100%;
+}
+
+#list-options-advanced-content-form-submit {
+    margin: 3em auto 1em auto;
+    padding: 0.7em 0;
+    font-size: 1.1em;
+    text-transform: uppercase;
+    background: #b28b01;
+    color: white;
+    border: none;
+    border-radius: 0.5em;
+}
+
+#list-options-advanced-content-form-submit:hover {
+    background: #937200;
+}
+
+/* List content */
+.list-content-item {
+    vertical-align: top;
+    background: rgba(255,255,255,0.5);
+    border-radius: 0.5em;
+    padding: 1.5em;
+    cursor: pointer;
+    text-decoration: none;
+}
+.list-content-item:hover {
+    background: rgba(255,255,255,1);
+    text-decoration: none;
+    color: #b28b01;
+}
+
+.list-content-item-title {
+    font-weight: bold;
+    font-size: 1.3em;
+}
+
+.list-content-item-details {
+    font-size: 0.9em;
+    padding-top: 0.7em;
+}
+
+#list-content-empty {
+    text-align: center;
+}
+
+#list-content-empty-title {
+    font-weight: bold;
+    font-size: 1.5em;
+    margin: 1em auto;
+}
+
+#list-content-empty-details strong {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/* Pagination */
+.list-pagination {
+    text-align: center;
+    margin: 5em auto 2em auto;
+}
+
+.list-pagination a {
+    color: #5f3305;
+    text-decoration: none;
+}
+
+.list-pagination-action,
+.list-pagination-action-disabled {
+    display: inline-block;
+    margin: 1em;
+}
+
+.list-pagination-action-disabled {
+    visibility: hidden;
+}
+
+.list-pagination-action-button {
+    font-size: 2em;
+    width: 2em;
+    height: 1.4em;
+    padding: 0.2em 0.2em 0.2em 0.2em;
+    border-radius: 0.2em;
+}
+
+.list-pagination-right {
+    /* Right icons didn't centre properly with even padding */
+    padding: 0.2em 0.2em 0.2em 0.3em;
+}
+
+.list-pagination-action .list-pagination-action-button {
+    background: rgba(255, 255, 255, 0.5)
+}
+
+.list-pagination-action .list-pagination-action-button:hover {
+    text-decoration: none;
+    background: white;
+    color: #b28b01;
+}
+
+.list-pagination-action-label {
+    font-size: 0.7em;
+    padding-top: 0.3em;
+}
+
+.list-pagination-current {
+    font-size: 1em;
+    display: inline-block;
+    font-weight: 500;
+}
+
+.hidden {
+    display: none;
+}
+
+/* ---------- Browse: Detail ---------- */
+
+.browse-detail-linktolist {
+    float: left;
+    font-size: 1em;
+    margin-top: 1.5em;
+}
+
+.browse-detail-header-subtitle {
+    font-size: 1.1em;
+    text-align: center;
+    display: block;
+}
+
+.browse-detail-description {
+    margin: 2em auto 2em auto;
+}
+
+.browse-detail-description,
+.browse-detail-description p,
+.browse-detail-description ul,
+.browse-detail-description ol {
+    font-size: 1.1rem;
+    line-height: 1.5rem;
+    letter-spacing: 0.01rem;
+    font-weight: 300;
+}
+
+.browse-detail-dataitem {
+    padding: 0.7em 0;
+    font-size: 1.1em;
+}
+
+.browse-detail-dataitem-label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.3em;
+}
+
+.browse-detail-dataitem-value {
+    display: block;
+}
+
+.browse-detail-dataitem-value,
+.browse-detail-dataitem-value p,
+.browse-detail-dataitem-value ul,
+.browse-detail-dataitem-value ol {
+    font-size: 1.1rem;
+    line-height: 1.7rem;
+    letter-spacing: 0.04rem;
+    font-weight: 300;
+}
+
+.browse-detail-relateddatalist {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.browse-detail-relateddatalist a {
+    text-decoration: none;
+}
+
+.browse-detail-relateddatalist-item {
+    vertical-align: top;
+    background: rgba(255,255,255,0.5);
+    border-radius: 0.5em;
+    padding: 0.6em 1em;
+    cursor: pointer;
+    text-decoration: none;
+    margin-bottom: 1em;
+}
+
+.browse-detail-relateddatalist-item:hover {
+    background: rgba(255,255,255,1);
+    text-decoration: none;
+    color: #b28b01;
+}
+
+.browse-detail-relateddatalist-item-title {
+    font-weight: bold;
+    font-size: 1em;
+    letter-spacing: -0.005em;
+}
+
+.browse-detail-relateddatalist-item-details {
+    font-size: 0.8em;
+    padding: 0.2em 0;
+    line-height: 1.3em;
+    letter-spacing: 0;
+}
+
+.browse-detail-footer {
+    margin-top: 8em;
+    font-size: 0.85em;
+}
+
+
+/* ---------- Footer ---------- */
+
+footer {
+    padding: 5em 0;
+    text-align: center;
+    color: #8d715f;
+}
+
+#footer-content-text {
+    margin-top: 2em;
+}
+
+footer a:hover {
+    color: #b28b01;
+    opacity: 1;
+}
+
+/* ---------- Error Pages ---------- */
+
+.errorpage-path {
+    font-weight: bold;
+}
+
+.errorpage-code {
+    margin-top: 3em;
+    font-size: 0.8em;
+}

@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block main %}
+
+    <div id="welcome-banner">
+        <div id="welcome-banner-tagline">
+            <strong>New ideas</strong> for modern linguistics
+            <br>
+            from <strong>Ancient India</strong>
+        </div>
+        <div id="welcome-banner-proceed">
+            <i class="fas fa-angle-down"></i>
+        </div>
+    </div>
+
+    <div id="welcome-content" class="container">
+        <h2>Welcome</h2>
+        <p>
+            Welcome to the LINGUINDIC project website. LINGUINDIC is an EU-funded research project led by Dr John Lowe at the University of Oxford in the UK. The project aims to systematically explore and analyse the neglected riches of ancient Indian linguistic thought. It will also uncover lost linguistic insights and analyses, as well as build on these insights to create innovative approaches to contemporary issues in modern Western linguistics. Overall, the LINGUINDIC project will focus on ancient Indian contributions to linguistic thought in three broad areas: morphosyntax and formal language systems, semantics/pragmatics and the philosophy of language, and phonetics/phonology.
+        </p>
+        <p>
+            You can engage with the project through this website by:
+        </p>
+        <ul>
+            <li>Reading detailed information about the <a href="{% url 'about-project' %}">project</a>, our <a href="{% url 'about-team' %}">team</a>, related <a href="{% url 'about-events' %}">events</a>, and more</li>
+            <li>Browsing our database of:
+                <ul>
+                    <li><a href="{% url 'browse-authors-list' %}">Authors</a></li>
+                    <li><a href="{% url 'browse-linguisticfields-list' %}">Linguistic fields</a></li>
+                    <li><a href="{% url 'browse-linguisticnotions-list' %}">Linguistic notions</a></li>
+                    <li><a href="{% url 'browse-linguistictraditions-list' %}">Linguistic traditions</a></li>
+                    <li><a href="{% url 'browse-sanskritwords-list' %}">Sanskrit words</a></li>
+                    <li><a href="{% url 'browse-texts-list' %}">Texts</a></li>
+                </ul>
+            </li>
+            <li><a href="{% url 'browse-references-list' %}">View the references</a> of materials we've sourced during the project</li>
+            <li><a href="{% url 'visualise' %}">Visualising our data</a>, to identify patterns and trends</li>
+            <li><a href="{% url 'help' %}">Learning how to use the website</a> using our help page</li>
+        </ul>
+        <p>
+            If you'd like to get in touch with us about the project or this website, you can email us at <a href="mailto:linguindic@orinst.ox.ac.uk?subject=LINGUINDIC website">linguindic@orinst.ox.ac.uk</a>
+        </p>
+
+        <h2>A Message from the PI</h2>
+        <img class="image-circle" src="{% static 'images/about/team/john-lowe.jpg' %}" alt="John Lowe, the project Principal Investigator">
+        <p>
+            Welcome to the LINGUINDIC website! Alongside the aims stated above, one goal of the LINGUINDIC project is to draw connections between ancient Indian and modern Western linguistic thought and by so doing to make ancient Indian linguistic thought accessible and useable by modern linguists. Our database of linguistic notions presents ancient Indian linguistic analyses in the context of modern Western linguistic categories and approaches.
+        </p>
+        <p>
+            We hope that this website will serve as a valuable tool for linguists to explore linguistic analyses and concepts beyond the boundaries of their own tradition, and through that, to view linguistic phenomena in new ways and with new insights.
+        </p>
+        <p>
+            (Note: by “modern Western linguistics” we mean the modern tradition of linguistic analysis which has its roots in the “West”, i.e. Europe and America; this tradition has of course expanded well beyond the West. Similarly, by ancient Indian linguistics we mean the tradition of linguistic analysis which has its roots in ancient India, though today vyākaraṇa and related disciplines are studied and practised around the world.)
+        </p>
+    </div>
+
+    {% comment %} JavaScript/jQuery for this page {% endcomment %}
+    <script>
+        $(document).ready(function() {
+
+            // Scroll down to main welcome section when clicking on the proceed button in the welcome banner
+            $('#welcome-banner-proceed').on('click', function(){
+                $('html,body').animate({ scrollTop: $('#welcome-content').offset().top - 50 }, 800); 
+            });
+
+        });
+    </script>
+
+{% endblock %}

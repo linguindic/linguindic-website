@@ -1,0 +1,39 @@
+<!-- Author -->
+{% if "author," not in exclude %}
+    {% include "researchdata/snippets/list-options-advanced-filter.html" with dataset=authors label='Author' id='author' %}
+{% endif %}
+
+<!-- Linguistic Field -->
+{% if "linguisticfield," not in exclude %}
+    {% include "researchdata/snippets/list-options-advanced-filter.html" with dataset=linguisticfields label='Linguistic Field' id='linguisticfield' %}
+{% endif %}
+
+<!-- Linguistic Notion -->
+{% if "linguisticnotion," not in exclude %}
+    {% include "researchdata/snippets/list-options-advanced-filter.html" with dataset=linguisticnotions label='Linguistic Notion' id='linguisticnotion' %}
+{% endif %}
+
+<!-- Linguistic Tradition -->
+{% if "linguistictradition," not in exclude %}
+    {% include "researchdata/snippets/list-options-advanced-filter.html" with dataset=linguistictraditions label='Linguistic Tradition' id='linguistictradition' %}
+{% endif %}
+
+<!-- Reference -->
+{% if "reference," not in exclude %}
+    {% include "researchdata/snippets/list-options-advanced-filter.html" with dataset=references label='Reference' id='reference' %}
+{% endif %}
+
+<!-- Sanskrit Word -->
+{% if "sanskritword," not in exclude %}
+    {% include "researchdata/snippets/list-options-advanced-filter.html" with dataset=sanskritwords label='Sanskrit Word' id='sanskritword' %}
+{% endif %}
+
+<!-- Text -->
+{% if "text," not in exclude %}
+    {% include "researchdata/snippets/list-options-advanced-filter.html" with dataset=texts label='Text' id='text' %}
+{% endif %}
+
+<!-- Text Passage -->
+{% if "textpassage," not in exclude %}
+    {% include "researchdata/snippets/list-options-advanced-filter.html" with dataset=textpassages label='Text Passage' id='textpassage' %}
+{% endif %}

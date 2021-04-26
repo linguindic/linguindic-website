@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block main %}
+    <div class="container">
+        <section>
+
+            <h2>API</h2>
+            <p>
+                To support open research, this project allows you to interact with the research data via its open API (Application Programming Interface). This can make accessing and working with the data much easier than through the standard web interface for users wishing to incorporate the data in their own software.
+            </p>
+            <p>
+                The following API endpoints are available in this project:
+            </p>
+
+            <h3>Main data</h3>
+            <ul>
+                <!-- Authors -->
+                <li><a href="{% url 'api-authors-list' %}">/api/authors/</a></li>
+                <li><a href="{% url 'api-authors-retrieve' 1 %}">/api/authors/&lt;id&gt;</a></li>
+                <!-- Linguistic Fields -->
+                <li><a href="{% url 'api-linguisticfields-list' %}">/api/linguisticfields/</a></li>
+                <li><a href="{% url 'api-linguisticfields-retrieve' 1 %}">/api/linguisticfields/&lt;id&gt;</a></li>
+                <!-- Linguistic Notions -->
+                <li><a href="{% url 'api-linguisticnotions-list' %}">/api/linguisticnotions/</a></li>
+                <li><a href="{% url 'api-linguisticnotions-retrieve' 1 %}">/api/linguisticnotions/&lt;id&gt;</a></li>
+                <!-- Linguistic Traditions -->
+                <li><a href="{% url 'api-linguistictraditions-list' %}">/api/linguistictraditions/</a></li>
+                <li><a href="{% url 'api-linguistictraditions-retrieve' 1 %}">/api/linguistictraditions/&lt;id&gt;</a></li>
+                <!-- References -->
+                <li><a href="{% url 'api-references-list' %}">/api/references/</a></li>
+                <li><a href="{% url 'api-references-retrieve' 1 %}">/api/references/&lt;id&gt;</a></li>
+                <!-- Sanskrit Words -->
+                <li><a href="{% url 'api-sanskritwords-list' %}">/api/sanskritwords/</a></li>
+                <li><a href="{% url 'api-sanskritwords-retrieve' 1 %}">/api/sanskritwords/&lt;id&gt;</a></li>
+                <!-- Texts -->
+                <li><a href="{% url 'api-texts-list' %}">/api/texts/</a></li>
+                <li><a href="{% url 'api-texts-retrieve' 1 %}">/api/texts/&lt;id&gt;</a></li>
+                <!-- Text Passages -->
+                <li><a href="{% url 'api-textpassages-list' %}">/api/textpassages/</a></li>
+                <li><a href="{% url 'api-textpassages-retrieve' 1 %}">/api/textpassages/&lt;id&gt;</a></li>
+            </ul>
+
+            <h3>Select list data</h3>
+            <ul>
+                <!-- SlLinguisticTraditionGroup -->
+                <li><a href="{% url 'api-sllinguistictraditiongroups-list' %}">/api/sllinguistictraditiongroups/</a></li>
+                <li><a href="{% url 'api-sllinguistictraditiongroups-retrieve' 1 %}">/api/sllinguistictraditiongroups/&lt;id&gt;</a></li>
+
+                <!-- SlReferencePublisher -->
+                <li><a href="{% url 'api-slreferencepublishers-list' %}">/api/slreferencepublishers/</a></li>
+                <li><a href="{% url 'api-slreferencepublishers-retrieve' 1 %}">/api/slreferencepublishers/&lt;id&gt;</a></li>
+
+                <!-- SlReferenceType -->
+                <li><a href="{% url 'api-slreferencetypes-list' %}">/api/slreferencetypes/</a></li>
+                <li><a href="{% url 'api-slreferencetypes-retrieve' 1 %}">/api/slreferencetypes/&lt;id&gt;</a></li>
+
+                <!-- SlTextGroup -->
+                <li><a href="{% url 'api-sltextgroups-list' %}">/api/sltextgroups/</a></li>
+                <li><a href="{% url 'api-sltextgroups-retrieve' 1 %}">/api/sltextgroups/&lt;id&gt;</a></li>
+
+                <!-- SlTextType -->
+                <li><a href="{% url 'api-sltexttypes-list' %}">/api/sltexttypes/</a></li>
+                <li><a href="{% url 'api-sltexttypes-retrieve' 1 %}">/api/sltexttypes/&lt;id&gt;</a></li>
+            </ul>
+
+            <h3>Support</h3>
+            <p>
+                For more information about each API please visit the specific endpoint's url in your web browser.
+            </p>
+            <p>
+                For any queries using our API please contact us at <a href="linguindic@orinst.ox.ac.uk?subject=LINGUINDIC API">linguindic@orinst.ox.ac.uk</a>
+            </p>
+
+        </section>
+    </div>
+{% endblock %}

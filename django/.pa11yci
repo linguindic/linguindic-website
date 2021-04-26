@@ -1,0 +1,31 @@
+{
+    "defaults": {
+        "chromeLaunchConfig": {
+            "args": ["--no-sandbox"]
+        }
+    },
+    "urls": [
+        "http://127.0.0.1:8000/",
+        
+        "http://127.0.0.1:8000/project/about/",
+        "http://127.0.0.1:8000/project/team/",
+        "http://127.0.0.1:8000/project/funding/",
+        "http://127.0.0.1:8000/project/events/",
+        "http://127.0.0.1:8000/project/outputs/",
+
+        "http://127.0.0.1:8000/database/browse/author/",
+        "http://127.0.0.1:8000/database/browse/linguisticfields/",
+        "http://127.0.0.1:8000/database/browse/linguisticnotions/",
+        "http://127.0.0.1:8000/database/browse/linguistictraditions/",
+        "http://127.0.0.1:8000/database/browse/references/",
+        "http://127.0.0.1:8000/database/browse/sanskritwords/",
+        "http://127.0.0.1:8000/database/browse/texts/",
+        "http://127.0.0.1:8000/database/browse/textpassages/",
+        
+        "http://127.0.0.1:8000/database/visualise/",
+        "http://127.0.0.1:8000/database/help/",
+
+        "http://127.0.0.1:8000/accessibility/",
+        "http://127.0.0.1:8000/cookies/"
+    ]
+}
