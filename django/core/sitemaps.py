@@ -38,8 +38,10 @@ class AuthorListSitemap(Sitemap):
         return ['browse-authors-list']
 
     def lastmod(self, obj):
-        v = models.Author.objects.order_by('-meta_created_datetime')[0]
-        return v.meta_created_datetime
+        try:
+            return models.Author.objects.order_by('-meta_created_datetime')[0].meta_created_datetime
+        except:
+            return None
 
     def location(self, obj):
         return reverse(obj)
@@ -68,8 +70,10 @@ class LinguisticFieldListSitemap(Sitemap):
         return ['browse-linguisticfields-list']
 
     def lastmod(self, obj):
-        v = models.LinguisticField.objects.order_by('-meta_created_datetime')[0]
-        return v.meta_created_datetime
+        try:
+            return models.LinguisticField.objects.order_by('-meta_created_datetime')[0].meta_created_datetime
+        except:
+            return None
 
     def location(self, obj):
         return reverse(obj)
@@ -98,8 +102,10 @@ class LinguisticNotionListSitemap(Sitemap):
         return ['browse-linguisticnotions-list']
 
     def lastmod(self, obj):
-        v = models.LinguisticNotion.objects.order_by('-meta_created_datetime')[0]
-        return v.meta_created_datetime
+        try:
+            return models.LinguisticNotion.objects.order_by('-meta_created_datetime')[0].meta_created_datetime
+        except:
+            return None
 
     def location(self, obj):
         return reverse(obj)
@@ -128,8 +134,10 @@ class LinguisticTraditionListSitemap(Sitemap):
         return ['browse-linguistictraditions-list']
 
     def lastmod(self, obj):
-        v = models.LinguisticTradition.objects.order_by('-meta_created_datetime')[0]
-        return v.meta_created_datetime
+        try:
+            return models.LinguisticTradition.objects.order_by('-meta_created_datetime')[0].meta_created_datetime
+        except:
+            return None
 
     def location(self, obj):
         return reverse(obj)
@@ -158,8 +166,10 @@ class ReferenceListSitemap(Sitemap):
         return ['browse-references-list']
 
     def lastmod(self, obj):
-        v = models.Reference.objects.order_by('-meta_created_datetime')[0]
-        return v.meta_created_datetime
+        try:
+            return models.Reference.objects.order_by('-meta_created_datetime')[0].meta_created_datetime
+        except:
+            return None
 
     def location(self, obj):
         return reverse(obj)
@@ -188,8 +198,10 @@ class SanskritWordListSitemap(Sitemap):
         return ['browse-sanskritwords-list']
 
     def lastmod(self, obj):
-        v = models.SanskritWord.objects.order_by('-meta_created_datetime')[0]
-        return v.meta_created_datetime
+        try:
+            return models.SanskritWord.objects.order_by('-meta_created_datetime')[0].meta_created_datetime
+        except:
+            return None
 
     def location(self, obj):
         return reverse(obj)
@@ -218,8 +230,10 @@ class TextListSitemap(Sitemap):
         return ['browse-texts-list']
 
     def lastmod(self, obj):
-        v = models.Text.objects.order_by('-meta_created_datetime')[0]
-        return v.meta_created_datetime
+        try:
+            return models.Text.objects.order_by('-meta_created_datetime')[0].meta_created_datetime
+        except:
+            return None
 
     def location(self, obj):
         return reverse(obj)
@@ -248,8 +262,10 @@ class TextPassageListSitemap(Sitemap):
         return ['browse-textpassages-list']
 
     def lastmod(self, obj):
-        v = models.TextPassage.objects.order_by('-meta_created_datetime')[0]
-        return v.meta_created_datetime
+        try:
+            return models.TextPassage.objects.order_by('-meta_created_datetime')[0].meta_created_datetime
+        except:
+            return None
 
     def location(self, obj):
         return reverse(obj)
