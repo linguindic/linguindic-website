@@ -434,6 +434,12 @@ main a {
     font-weight: 500;
 }
 
+/* About Database Link */
+.list-aboutdatabaselink {
+    margin-top: 5em;
+    font-size: 0.85em;
+}
+
 .hidden {
     display: none;
 }
