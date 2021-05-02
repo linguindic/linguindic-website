@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block main %}
+
+    <div id="about-banner-database" class="about-banner"></div>
+
+    <div class="container">
+        <h2>The LINGUINDIC Database</h2>
+        <p>
+            The primary aim of our database is to present ancient Indian linguistic thought in the context of modern Western linguistic categories and approaches, and thereby to draw connections between the two.
+        </p>
+        <p>
+            In the <em>Browse</em> section of this website, you can search and browse different parts of the database. From the perspective of this project, the most important entries are the <a href="{% url 'browse-linguisticnotions-list' %}">'linguistic notion' entries</a>, which each addresses a specific object of study within modern Western linguistics, describing the corresponding ancient Indian notions and drawing connections between the two intellectual traditions. In doing this we necessarily refer to many ancient Indian <a href="{% url 'browse-authors-list' %}">authors</a>, <a href="{% url 'browse-texts-list' %}">texts</a>, <a href="{% url 'browse-linguistictraditions-list' %}">traditions of thought</a>, and <a href="{% url 'browse-sanskritwords-list' %}">Sanskrit words</a>. These are referenced and linked at the end of each entry, and also each have their own entries, providing further relevant information. These categories can also be searched and browsed separately.
+        </p>
+        <p>
+            The database is a work in progress; we aim to add new material frequently over the lifetime of the project, so please check back regularly for updates.
+        </p>
+        <p>
+            If you have any questions or comments about the LINGUINDIC database then please email us at <a href="mailto:linguindic@orinst.ox.ac.uk">linguindic@orinst.ox.ac.uk</a>.
+        </p>
+    </div>
+    
+{% endblock %}

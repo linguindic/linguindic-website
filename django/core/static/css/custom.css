@@ -175,6 +175,10 @@ main a {
     background: url('../images/about/banner-bg/project.jpg');
 }
 
+#about-banner-database {
+    background: url('../images/about/banner-bg/database.jpg');
+}
+
 #about-banner-team {
     background: url('../images/about/banner-bg/team.jpg');
 }
@@ -192,6 +196,7 @@ main a {
 }
 
 #about-banner-project,
+#about-banner-database,
 #about-banner-team,
 #about-banner-funding,
 #about-banner-events,

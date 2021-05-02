@@ -15,6 +15,13 @@ class AboutProjectTemplateView(TemplateView):
     template_name = 'general/about-project.html'
 
 
+class AboutDatabaseTemplateView(TemplateView):
+    """
+    Class-based view to show the database template
+    """
+    template_name = 'general/about-database.html'
+
+
 class AboutTeamTemplateView(TemplateView):
     """
     Class-based view to show the team template
