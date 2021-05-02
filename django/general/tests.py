@@ -32,6 +32,21 @@ class TestAboutProjectView(TestCase):
         self.assertContains(response, 'Project')
 
 
+class TestAboutDatabaseView(TestCase):
+    """
+    Test About: Database View
+    """
+    def test_about_database_get(self):
+        """
+        Test the database: about page is returned
+        """
+        url = reverse('about-database')
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'LINGUINDIC')
+        self.assertContains(response, 'Database')
+
+
 class TestAboutTeamView(TestCase):
     """
     Test About: Team View
