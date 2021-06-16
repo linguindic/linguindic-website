@@ -222,8 +222,7 @@ class Author(models.Model):
     """
     People who have authored works, including those from both modern Western and ancient Indian traditions
     """
-    first_name = models.CharField(max_length=255, blank=True, null=True)
-    last_name = models.CharField(max_length=255, blank=True, null=True)
+    name = models.CharField(max_length=255, blank=True, null=True)
     alternative_name = models.CharField(max_length=255, blank=True, null=True)
     description = models.TextField(blank=True, null=True)
     location_most_active = models.CharField(max_length=255, blank=True, null=True)
