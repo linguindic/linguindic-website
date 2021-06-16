@@ -222,8 +222,7 @@ class Author(models.Model):
     """
     People who have authored works, including those from both modern Western and ancient Indian traditions
     """
-    first_name = models.CharField(max_length=255, blank=True, null=True)
-    last_name = models.CharField(max_length=255, blank=True, null=True)
+    name = models.CharField(max_length=255, blank=True, null=True)
     alternative_name = models.CharField(max_length=255, blank=True, null=True)
     description = models.TextField(blank=True, null=True)
     location_most_active = models.CharField(max_length=255, blank=True, null=True)
@@ -247,12 +246,8 @@ class Author(models.Model):
 
     @property
     def dynamic_title(self):
-        if self.first_name and self.last_name:
-            return "{} {}".format(self.first_name, self.last_name)
-        elif self.first_name:
-            return self.first_name
-        elif self.last_name:
-            return self.last_name
+        if self.name:
+            return self.name
         elif self.alternative_name:
             return self.alternative_name
         else:
@@ -660,6 +655,8 @@ class Text(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField(blank=True, null=True)
     approximate_date_of_creation = models.CharField(max_length=200, blank=True, null=True)
+    location = models.CharField(max_length=255, blank=True, null=True)
+    author_main = models.CharField(max_length=255, blank=True, null=True, verbose_name="Main author")
     # Foreign key fields
     text_group = models.ForeignKey(SlTextGroup, on_delete=models.SET_NULL, blank=True, null=True)
     text_type = models.ForeignKey(SlTextType, on_delete=models.SET_NULL, blank=True, null=True)

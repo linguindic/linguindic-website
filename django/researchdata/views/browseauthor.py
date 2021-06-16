@@ -44,8 +44,7 @@ class BrowseAuthorListView(ListView):
 
             queryset = queryset.filter(
                 Q(id__contains=search_val) |
-                Q(first_name__contains=search_val) |
-                Q(last_name__contains=search_val) |
+                Q(name__contains=search_val) |
                 Q(alternative_name__contains=search_val) |
                 Q(location_most_active__contains=search_val) |
                 Q(date_active__contains=search_val)
@@ -54,12 +53,9 @@ class BrowseAuthorListView(ListView):
         # If advanced search by (e.g. search by a specific field) is provided and advanced search criteria is also provided, then perform advanced search on specific fields
         elif advanced_search_by != '' and advanced_search_criteria != '':
 
-            # Search only by first name
-            if advanced_search_by == 'first_name':
-                queryset = queryset.filter(Q(first_name__contains=advanced_search_criteria))
-            # Search only by last name
-            elif advanced_search_by == 'last_name':
-                queryset = queryset.filter(Q(last_name__contains=advanced_search_criteria))
+            # Search only by name
+            if advanced_search_by == 'name':
+                queryset = queryset.filter(Q(name__contains=advanced_search_criteria))
             # Search only by alternative name
             elif advanced_search_by == 'alternative_name':
                 queryset = queryset.filter(Q(alternative_name__contains=advanced_search_criteria))
@@ -90,7 +86,7 @@ class BrowseAuthorListView(ListView):
         # Order
         #
 
-        queryset = common.order_queryset(self.request.GET, queryset, 'last_name')
+        queryset = common.order_queryset(self.request.GET, queryset, 'name')
 
         #
         # Return data
