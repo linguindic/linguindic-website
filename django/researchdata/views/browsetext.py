@@ -46,7 +46,9 @@ class BrowseTextListView(ListView):
                 Q(id__contains=search_val) |
                 Q(name__contains=search_val) |
                 Q(description__contains=search_val) |
-                Q(approximate_date_of_creation__contains=search_val)
+                Q(approximate_date_of_creation__contains=search_val) |
+                Q(location__contains=search_val) |
+                Q(author_main__contains=search_val)
             )
 
         # If advanced search by (e.g. search by a specific field) is provided and advanced search criteria is also provided, then perform advanced search on specific fields
@@ -61,6 +63,12 @@ class BrowseTextListView(ListView):
             # Search only by approximate date of creation
             elif advanced_search_by == 'approximate_date_of_creation':
                 queryset = queryset.filter(Q(approximate_date_of_creation__contains=advanced_search_criteria))
+            # Search only by location
+            elif advanced_search_by == 'location':
+                queryset = queryset.filter(Q(location__contains=advanced_search_criteria))
+            # Search only by main author
+            elif advanced_search_by == 'author_main':
+                queryset = queryset.filter(Q(author_main__contains=advanced_search_criteria))
 
         #
         # Filter
