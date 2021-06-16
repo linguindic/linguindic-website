@@ -62,7 +62,7 @@ def order_queryset(request, queryset, order_by_default):
     """
     request = http request object, e.g. self.request.GET
     queryset = a Django queryset object
-    order_by_default = default field to order by, e.g. name, last_name, id, ...
+    order_by_default = default field to order by, e.g. name, name, id, ...
 
     Returns an ordered Django queryset object
     """
@@ -72,7 +72,7 @@ def order_queryset(request, queryset, order_by_default):
 
         # If no order_by_default given, then set to 'id'
         if order_by_default is None:
-            order_by_default = 'last_name'
+            order_by_default = 'name'
 
         # Establish the order direction (asc/desc) and the field to order by, from the request
 
