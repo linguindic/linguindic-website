@@ -246,12 +246,8 @@ class Author(models.Model):
 
     @property
     def dynamic_title(self):
-        if self.first_name and self.last_name:
-            return "{} {}".format(self.first_name, self.last_name)
-        elif self.first_name:
-            return self.first_name
-        elif self.last_name:
-            return self.last_name
+        if self.name:
+            return self.name
         elif self.alternative_name:
             return self.alternative_name
         else:

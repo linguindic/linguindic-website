@@ -86,7 +86,7 @@ class BrowseAuthorListView(ListView):
         # Order
         #
 
-        queryset = common.order_queryset(self.request.GET, queryset, 'last_name')
+        queryset = common.order_queryset(self.request.GET, queryset, 'name')
 
         #
         # Return data
