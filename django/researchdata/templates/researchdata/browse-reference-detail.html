@@ -21,8 +21,7 @@
         <!-- Many to Many relationships -->
         {% include "researchdata/snippets/detail-relateddatalist-mainmodels.html" with exclude='reference,' %}
 
-        <!-- Footer (e.g. for meta data) -->
-        {% include "researchdata/snippets/detail-footer.html" %}
+        <!-- Reference has no footer, at John's request (e.g. didn't want citation) -->
 
     </div>
 {% endblock %}

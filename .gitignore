@@ -6,6 +6,7 @@ resources/private/
 django/media/
 django/static/
 private_testdata*.py
+private_migrations/
 
 
 ###################### Django Templated gitignore paths  ######################
