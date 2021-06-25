@@ -12,7 +12,7 @@
         <!-- Data items -->
         {% include "researchdata/snippets/detail-dataitem.html" with dataitem=object.approximate_date_of_creation label='Approximate Date of Creation' %}
         {% include "researchdata/snippets/detail-dataitem.html" with dataitem=object.location label='Location' %}
-        {% include "researchdata/snippets/detail-dataitem.html" with dataitem=object.author_main label='Main Author' %}
+        {% include "researchdata/snippets/detail-dataitem.html" with dataitem=object.author_main label='Author' %}
 
         <!-- Many to One relationships -->
         {% include "researchdata/snippets/detail-relateddatalist.html" with dataobject=object.text_group label='Text Group' itemurl='browse-texts-list' itemurlparameter='advanced_filter_sltextgroup' %}

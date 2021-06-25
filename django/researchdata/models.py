@@ -656,7 +656,7 @@ class Text(models.Model):
     description = models.TextField(blank=True, null=True)
     approximate_date_of_creation = models.CharField(max_length=200, blank=True, null=True)
     location = models.CharField(max_length=255, blank=True, null=True)
-    author_main = models.CharField(max_length=255, blank=True, null=True, verbose_name="Main author")
+    author_main = models.CharField(max_length=255, blank=True, null=True, verbose_name="Author")
     # Foreign key fields
     text_group = models.ForeignKey(SlTextGroup, on_delete=models.SET_NULL, blank=True, null=True)
     text_type = models.ForeignKey(SlTextType, on_delete=models.SET_NULL, blank=True, null=True)
