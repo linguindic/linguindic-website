@@ -18,7 +18,12 @@ class BrowseLinguisticNotionListView(ListView):
     """
     template_name = 'researchdata/browse-linguisticnotion-list.html'
     model = models.LinguisticNotion
-    paginate_by = 30
+
+    def get_paginate_by(self, queryset):
+        """
+        Get the amount of items to paginate by from user (or 50 by default)
+        """
+        return self.request.GET.get('advanced_itemsperpage', '50')
 
     def get_queryset(self):
         """

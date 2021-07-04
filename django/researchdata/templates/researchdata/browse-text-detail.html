@@ -10,6 +10,7 @@
         {% include "researchdata/snippets/detail-header.html" %}
 
         <!-- Data items -->
+        {% include "researchdata/snippets/detail-dataitem.html" with dataitem=object.alternative_name label='Alternative Name' %}
         {% include "researchdata/snippets/detail-dataitem.html" with dataitem=object.approximate_date_of_creation label='Approximate Date of Creation' %}
         {% include "researchdata/snippets/detail-dataitem.html" with dataitem=object.location label='Location' %}
         {% include "researchdata/snippets/detail-dataitem.html" with dataitem=object.author_main label='Author' %}

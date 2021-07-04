@@ -280,10 +280,10 @@ class TextAdminView(GenericAdminView):
     """
     Set the Text section of the Django admin
     """
-    list_display = ('id', 'name', 'description', 'approximate_date_of_creation', 'location', 'author_main',
+    list_display = ('id', 'name', 'alternative_name', 'description', 'approximate_date_of_creation', 'location', 'author_main',
                     'text_group', 'text_type', 'admin_published', 'meta_created_datetime')
     list_filter = ('text_group', 'text_type', 'admin_published', 'meta_created_by')
-    search_fields = ('name', 'description', 'approximate_date_of_creation', 'location', 'author_main', 'admin_notes')
+    search_fields = ('name', 'alternative_name', 'description', 'approximate_date_of_creation', 'location', 'author_main', 'admin_notes')
     exclude = ('author', 'linguistic_field', 'linguistic_notion', 'linguistic_tradition',
                'reference', 'sanskrit_word')
     filter_horizontal = ('text',)

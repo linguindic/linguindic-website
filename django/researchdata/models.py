@@ -502,8 +502,6 @@ class Reference(models.Model):
             if self.subtitle:
                 ref += " {}.".format(self.subtitle)
             ref += "</em> {}: {}.".format(self.location, self.reference_publisher)
-            if self.public_notes:
-                ref += " {}.".format(self.public_notes)
             if self.url:
                 ref += " {}.".format(self.url)
 
@@ -518,8 +516,6 @@ class Reference(models.Model):
                                                                        self.page_end,
                                                                        self.location,
                                                                        self.reference_publisher)
-            if self.public_notes:
-                ref += " {}.".format(self.public_notes)
             if self.url:
                 ref += " {}.".format(self.url)
 
@@ -534,8 +530,6 @@ class Reference(models.Model):
             if self.number:
                 ref += "({})".format(self.number)
             ref += ": {}-{}.".format(self.page_start, self.page_end)
-            if self.public_notes:
-                ref += " {}.".format(self.public_notes)
             if self.url:
                 ref += " {}.".format(self.url)
 
@@ -547,8 +541,6 @@ class Reference(models.Model):
             if self.subtitle:
                 ref += " {}.".format(self.subtitle)
             ref += "' PhD thesis, {}.".format(self.school)
-            if self.public_notes:
-                ref += " {}.".format(self.public_notes)
             if self.url:
                 ref += " {}.".format(self.url)
 
@@ -560,8 +552,6 @@ class Reference(models.Model):
             if self.subtitle:
                 ref += " {}.".format(self.subtitle)
             ref += "</em> {}: {}.".format(self.location, self.reference_publisher)
-            if self.public_notes:
-                ref += " {}.".format(self.public_notes)
             if self.url:
                 ref += " {}.".format(self.url)
 
@@ -573,8 +563,6 @@ class Reference(models.Model):
             if self.subtitle:
                 ref += " {}.".format(self.subtitle)
             ref += "'"
-            if self.public_notes:
-                ref += " {}.".format(self.public_notes)
             if self.url:
                 ref += " {}.".format(self.url)
 
@@ -653,6 +641,7 @@ class Text(models.Model):
     rather than many-to-many like most other main tables have with one another
     """
     name = models.CharField(max_length=100)
+    alternative_name = models.CharField(max_length=255, blank=True, null=True)
     description = models.TextField(blank=True, null=True)
     approximate_date_of_creation = models.CharField(max_length=200, blank=True, null=True)
     location = models.CharField(max_length=255, blank=True, null=True)
@@ -688,7 +677,12 @@ class Text(models.Model):
 
     @property
     def dynamic_title(self):
-        return self.name
+        if self.name:
+            return self.name
+        elif self.alternative_name:
+            return self.alternative_name
+        else:
+            return '(Unnamed text)'
 
     @property
     def dynamic_subtitle(self):
