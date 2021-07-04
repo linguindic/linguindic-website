@@ -32,6 +32,13 @@
                 </div>
             </form>
 
+            <!-- Views -->
+            <div id="list-options-views">
+                View:
+                <i id="list-options-views-grid" class="fas fa-th"></i>
+                <i id="list-options-views-list" class="fas fa-bars"></i>
+            </div>
+
             <!-- Links -->
             <div id="list-options-links">
                 <span id="list-options-links-advanced"><i class="fas fa-sliders-h"></i> Advanced options</span>
@@ -213,6 +220,39 @@
     {% comment %} JavaScript/jQuery for this page {% endcomment %}
     <script>
         $(document).ready(function() {
+
+            function getCookie(name) {
+                var c_list = document.cookie.split("; "), i = 0, c, c_name, c_value;
+                for (i = 0; i < c_list.length; i++) {
+                    c = c_list[i].split('=');
+                    c_name = c[0];
+                    c_value = c[1];
+                    if (c_name === name) return c_value;
+                }
+                return null;
+            }
+
+            // Switch views: grid vs list
+            var cookieViewKey = 'linguindicListOptionsView';
+            $('#list-options-views i').on('click', function(){
+                var view = $(this).attr('id').slice(-4); // either 'grid' or 'list'
+
+                // Set the cookie
+                document.cookie = cookieViewKey + "=" + view + "; expires=Mon, 31 Dec 2050 23:59:59 GMT; path=/; Secure;";
+
+                // Set the view of the list items
+                // listview
+                if (view == 'list') $('.list-content-item').addClass('listview').removeClass('gridview');
+                // gridview
+                else $('.list-content-item').addClass('gridview').removeClass('listview');
+
+                // Toggle active state of view button
+                $('#list-options-views i').removeClass('active');
+                $('#list-options-views-' + view).addClass('active');
+            });
+            // Trigger on page load - either from cookie if exists, or default to grid view if no cookie
+            if (getCookie(cookieViewKey) !== null) $('#list-options-views-' + getCookie(cookieViewKey)).trigger('click');
+            else $('#list-options-views-grid').trigger('click');
 
             // Show advanced options
             $('#list-options-links-advanced').on('click', function(){
