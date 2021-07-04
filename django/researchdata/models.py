@@ -502,8 +502,6 @@ class Reference(models.Model):
             if self.subtitle:
                 ref += " {}.".format(self.subtitle)
             ref += "</em> {}: {}.".format(self.location, self.reference_publisher)
-            if self.public_notes:
-                ref += " {}.".format(self.public_notes)
             if self.url:
                 ref += " {}.".format(self.url)
 
@@ -518,8 +516,6 @@ class Reference(models.Model):
                                                                        self.page_end,
                                                                        self.location,
                                                                        self.reference_publisher)
-            if self.public_notes:
-                ref += " {}.".format(self.public_notes)
             if self.url:
                 ref += " {}.".format(self.url)
 
@@ -534,8 +530,6 @@ class Reference(models.Model):
             if self.number:
                 ref += "({})".format(self.number)
             ref += ": {}-{}.".format(self.page_start, self.page_end)
-            if self.public_notes:
-                ref += " {}.".format(self.public_notes)
             if self.url:
                 ref += " {}.".format(self.url)
 
@@ -547,8 +541,6 @@ class Reference(models.Model):
             if self.subtitle:
                 ref += " {}.".format(self.subtitle)
             ref += "' PhD thesis, {}.".format(self.school)
-            if self.public_notes:
-                ref += " {}.".format(self.public_notes)
             if self.url:
                 ref += " {}.".format(self.url)
 
@@ -560,8 +552,6 @@ class Reference(models.Model):
             if self.subtitle:
                 ref += " {}.".format(self.subtitle)
             ref += "</em> {}: {}.".format(self.location, self.reference_publisher)
-            if self.public_notes:
-                ref += " {}.".format(self.public_notes)
             if self.url:
                 ref += " {}.".format(self.url)
 
@@ -573,8 +563,6 @@ class Reference(models.Model):
             if self.subtitle:
                 ref += " {}.".format(self.subtitle)
             ref += "'"
-            if self.public_notes:
-                ref += " {}.".format(self.public_notes)
             if self.url:
                 ref += " {}.".format(self.url)
 
