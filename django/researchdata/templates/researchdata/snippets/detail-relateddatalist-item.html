@@ -8,10 +8,10 @@
 
     <li class="browse-detail-relateddatalist-item">
         <div class="browse-detail-relateddatalist-item-title">
-            {{ item.dynamic_title | striptags }}
+            {{ item.dynamic_title | safe }}
         </div>
         <div class="browse-detail-relateddatalist-item-details">
-            {{ item.dynamic_subtitle | striptags }}
+            {{ item.dynamic_subtitle | safe }}
         </div>
     </li>
 

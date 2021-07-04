@@ -4,13 +4,10 @@
 {% block main %}
     <div class="container">
 
-
         <!-- List Title -->
         <h2>{% block list_title %}{% endblock %}</h2>
 
-
         <!-- List Options -->
-
         <div class="list-options">
             
             <!-- Form element has no action attribute, so that it submits to the same page -->
@@ -32,6 +29,13 @@
                 </div>
             </form>
 
+            <!-- Views -->
+            <div id="list-options-views">
+                View:
+                <i id="list-options-views-grid" class="fas fa-th" title="Grid view"></i>
+                <i id="list-options-views-list" class="fas fa-bars" title="List view"></i>
+            </div>
+
             <!-- Links -->
             <div id="list-options-links">
                 <span id="list-options-links-advanced"><i class="fas fa-sliders-h"></i> Advanced options</span>
@@ -51,7 +55,7 @@
                             <!-- Search -->
                             <div id="list-options-advanced-content-search">
                                 <div class="list-options-advanced-content-subtitle">Search</div>
-                                <!-- Search By --> 
+                                <!-- Search By -->
                                 <label for="list-options-advanced-content-search-by">Search by</label>
                                 <select id="list-options-advanced-content-search-by" name="advanced_search_by">
                                     {% include 'researchdata/snippets/select-default.html' %}
@@ -60,6 +64,19 @@
                                 <!-- Search Criteria -->
                                 <label for="list-options-advanced-content-search-criteria">Search</label>
                                 <input type="text" id="list-options-advanced-content-search-criteria" name="advanced_search_criteria">
+                            </div>
+
+                            <!-- Items per page -->
+                            <div id="list-options-advanced-content-itemsperpage">
+                                <div class="list-options-advanced-content-subtitle">Items Per Page</div>
+                                <select id="list-options-advanced-content-itemsperpage-select" name="advanced_itemsperpage">
+                                    <option value="10">10</option>
+                                    <option value="25">25</option>
+                                    <option value="50" selected="selected">50</option>
+                                    <option value="75">75</option>
+                                    <option value="100">100</option>
+                                    <option value="1000000">Show all</option>
+                                </select>
                             </div>
 
                             <!-- Order -->
@@ -86,7 +103,7 @@
                             </div>
 
                             <!-- Submit -->
-                            <input type="submit" value="Apply Options" id="list-options-advanced-content-form-submit"> 
+                            <input type="submit" value="Submit" id="list-options-advanced-content-form-submit"> 
 
                         </form>
 
@@ -101,8 +118,8 @@
             {% for object in object_list %}
                                 
                 <a href="{% block list_item_link %}{% endblock %}" class="list-content-item">
-                    <div class="list-content-item-title">{{ object.dynamic_title | striptags }}</div>
-                    <div class="list-content-item-details">{{ object.dynamic_subtitle | striptags | slice:"250" }}</div>
+                    <div class="list-content-item-title">{{ object.dynamic_title | safe }}</div>
+                    <div class="list-content-item-details">{{ object.dynamic_subtitle | safe | slice:"250" }}</div>
                 </a>
             
             {% empty %} 
@@ -214,6 +231,39 @@
     <script>
         $(document).ready(function() {
 
+            function getCookie(name) {
+                var c_list = document.cookie.split("; "), i = 0, c, c_name, c_value;
+                for (i = 0; i < c_list.length; i++) {
+                    c = c_list[i].split('=');
+                    c_name = c[0];
+                    c_value = c[1];
+                    if (c_name === name) return c_value;
+                }
+                return null;
+            }
+
+            // Switch views: grid vs list
+            var cookieViewKey = 'linguindicListOptionsView';
+            $('#list-options-views i').on('click', function(){
+                var view = $(this).attr('id').slice(-4); // either 'grid' or 'list'
+
+                // Set the cookie
+                document.cookie = cookieViewKey + "=" + view + "; expires=Mon, 31 Dec 2050 23:59:59 GMT; path=/; Secure;";
+
+                // Set the view of the list items
+                // listview
+                if (view == 'list') $('.list-content-item').addClass('listview').removeClass('gridview');
+                // gridview
+                else $('.list-content-item').addClass('gridview').removeClass('listview');
+
+                // Toggle active state of view button
+                $('#list-options-views i').removeClass('active');
+                $('#list-options-views-' + view).addClass('active');
+            });
+            // Trigger on page load - either from cookie if exists, or default to grid view if no cookie
+            if (getCookie(cookieViewKey) !== null) $('#list-options-views-' + getCookie(cookieViewKey)).trigger('click');
+            else $('#list-options-views-grid').trigger('click');
+
             // Show advanced options
             $('#list-options-links-advanced').on('click', function(){
                 $('#list-options-advanced').fadeIn(100);
@@ -245,6 +295,8 @@
             // Search
             setFormItemValueFromUrlParameter("list-options-advanced-content-search-by", "advanced_search_by");
             setFormItemValueFromUrlParameter("list-options-advanced-content-search-criteria", "advanced_search_criteria");
+            // Items per page
+            setFormItemValueFromUrlParameter("list-options-advanced-content-itemsperpage-select", "advanced_itemsperpage");
             // Order
             setFormItemValueFromUrlParameter("list-options-advanced-content-order-by", "advanced_order_by");
             setFormItemValueFromUrlParameter("list-options-advanced-content-order-direction", "advanced_order_direction");

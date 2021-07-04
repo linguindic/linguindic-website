@@ -10,7 +10,7 @@
         {% include "researchdata/snippets/detail-header.html" %}
 
         <!-- Data items -->
-        <!-- None -->
+        {% include "researchdata/snippets/detail-dataitem.html" with dataitem=object.public_notes label='Notes' %}
 
         <!-- Many to One relationships -->
         <!-- There are 2 (publisher and relationship type) but John wants them hidden -->

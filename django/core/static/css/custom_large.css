@@ -48,6 +48,13 @@
         width: calc(33% - 2em);
         min-height: 10em;
     }
+
+    #list-options-views,
+    #list-options-links {
+        display: inline-block;
+        width: 49.5%;
+        margin: 0;
+    }
     
     /* ---------- Footer ---------- */
 

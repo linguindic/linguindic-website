@@ -50,6 +50,14 @@
         display: block;
         width: 100%;
     }
+
+    #list-options-views,
+    #list-options-links {
+        display: block;
+        width: 100%;
+        margin: 1em 0;
+        text-align: left;
+    }
     
     /* ---------- Footer ---------- */
 
