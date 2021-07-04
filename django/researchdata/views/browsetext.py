@@ -45,6 +45,7 @@ class BrowseTextListView(ListView):
             queryset = queryset.filter(
                 Q(id__contains=search_val) |
                 Q(name__contains=search_val) |
+                Q(alternative_name__contains=search_val) |
                 Q(description__contains=search_val) |
                 Q(approximate_date_of_creation__contains=search_val) |
                 Q(location__contains=search_val) |
@@ -57,6 +58,9 @@ class BrowseTextListView(ListView):
             # Search only by name
             if advanced_search_by == 'name':
                 queryset = queryset.filter(Q(name__contains=advanced_search_criteria))
+            # Search only by alternative name
+            elif advanced_search_by == 'alternative_name':
+                queryset = queryset.filter(Q(alternative_name__contains=advanced_search_criteria))
             # Search only by description
             elif advanced_search_by == 'description':
                 queryset = queryset.filter(Q(description__contains=advanced_search_criteria))
