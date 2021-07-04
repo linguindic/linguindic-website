@@ -67,9 +67,9 @@
                             </div>
 
                             <!-- Items per page -->
-                            <div id="list-options-advanced-content-filter">
+                            <div id="list-options-advanced-content-itemsperpage">
                                 <div class="list-options-advanced-content-subtitle">Items Per Page</div>
-                                <select id="list-options-advanced-content-order-direction" name="advanced_itemsperpage">
+                                <select id="list-options-advanced-content-itemsperpage-select" name="advanced_itemsperpage">
                                     <option value="10">10</option>
                                     <option value="25">25</option>
                                     <option value="50" selected="selected">50</option>
@@ -295,6 +295,8 @@
             // Search
             setFormItemValueFromUrlParameter("list-options-advanced-content-search-by", "advanced_search_by");
             setFormItemValueFromUrlParameter("list-options-advanced-content-search-criteria", "advanced_search_criteria");
+            // Items per page
+            setFormItemValueFromUrlParameter("list-options-advanced-content-itemsperpage-select", "advanced_itemsperpage");
             // Order
             setFormItemValueFromUrlParameter("list-options-advanced-content-order-by", "advanced_order_by");
             setFormItemValueFromUrlParameter("list-options-advanced-content-order-direction", "advanced_order_direction");
