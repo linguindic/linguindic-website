@@ -51,7 +51,7 @@
                             <!-- Search -->
                             <div id="list-options-advanced-content-search">
                                 <div class="list-options-advanced-content-subtitle">Search</div>
-                                <!-- Search By --> 
+                                <!-- Search By -->
                                 <label for="list-options-advanced-content-search-by">Search by</label>
                                 <select id="list-options-advanced-content-search-by" name="advanced_search_by">
                                     {% include 'researchdata/snippets/select-default.html' %}
@@ -101,8 +101,8 @@
             {% for object in object_list %}
                                 
                 <a href="{% block list_item_link %}{% endblock %}" class="list-content-item">
-                    <div class="list-content-item-title">{{ object.dynamic_title | striptags }}</div>
-                    <div class="list-content-item-details">{{ object.dynamic_subtitle | striptags | slice:"250" }}</div>
+                    <div class="list-content-item-title">{{ object.dynamic_title | safe }}</div>
+                    <div class="list-content-item-details">{{ object.dynamic_subtitle | safe | slice:"250" }}</div>
                 </a>
             
             {% empty %} 
