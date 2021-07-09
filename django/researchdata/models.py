@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models.functions import Upper
 from . import apps
 from django.urls import reverse
 
@@ -276,6 +277,7 @@ class Author(models.Model):
 
     class Meta:
         db_table = "{}_main_author".format(apps.app_name)
+        ordering = [Upper('name'), Upper('alternative_name'), 'id']
 
 
 class LinguisticField(models.Model):
@@ -324,6 +326,7 @@ class LinguisticField(models.Model):
 
     class Meta:
         db_table = "{}_main_linguisticfield".format(apps.app_name)
+        ordering = [Upper('name'), Upper('description'), 'id']
 
 
 class LinguisticNotion(models.Model):
@@ -375,6 +378,7 @@ class LinguisticNotion(models.Model):
 
     class Meta:
         db_table = "{}_main_linguisticnotion".format(apps.app_name)
+        ordering = [Upper('name'), Upper('description'), 'id']
 
 
 class LinguisticTradition(models.Model):
@@ -430,6 +434,7 @@ class LinguisticTradition(models.Model):
 
     class Meta:
         db_table = "{}_main_linguistictradition".format(apps.app_name)
+        ordering = [Upper('name'), Upper('description'), 'id']
 
 
 class Reference(models.Model):
@@ -576,6 +581,10 @@ class Reference(models.Model):
 
     class Meta:
         db_table = "{}_main_reference".format(apps.app_name)
+        ordering = [Upper('reference_type__name'),
+                    Upper('authors_list'),
+                    Upper('editors'),
+                    Upper('title'), 'id']
 
 
 class SanskritWord(models.Model):
@@ -631,6 +640,7 @@ class SanskritWord(models.Model):
 
     class Meta:
         db_table = "{}_main_sanskritword".format(apps.app_name)
+        ordering = [Upper('name'), Upper('description'), 'id']
 
 
 class Text(models.Model):
@@ -707,6 +717,7 @@ class Text(models.Model):
 
     class Meta:
         db_table = "{}_main_text".format(apps.app_name)
+        ordering = [Upper('name'), Upper('alternative_name'), 'id']
 
 
 class TextPassage(models.Model):
@@ -773,3 +784,4 @@ class TextPassage(models.Model):
 
     class Meta:
         db_table = "{}_main_textpassage".format(apps.app_name)
+        ordering = [Upper('name'), Upper('description'), 'id']
