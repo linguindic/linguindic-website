@@ -17,8 +17,8 @@ SECRET_KEY = ''
 DEBUG = True/False
 
 # Set static file storage.
-# In a live, use ManifestStaticFilesStorage with DEBUG set to False
-# In other environments, use StaticFilesStorage
+# In live, use ManifestStaticFilesStorage with DEBUG set to False
+# In other environments, use StaticFilesStorage with DEBUG set to True
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'/'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
 
 # Set to ['*'] if in development, or specific IP addresses and domains if in production
