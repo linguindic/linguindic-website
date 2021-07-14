@@ -361,6 +361,8 @@ main a {
 /* List content */
 .list-content-item {
     visibility: hidden;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
 }
 
 .list-content-item.gridview {
