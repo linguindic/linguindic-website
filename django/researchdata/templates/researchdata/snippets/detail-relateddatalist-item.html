@@ -11,7 +11,7 @@
             {{ item.dynamic_title | safe }}
         </div>
         <div class="browse-detail-relateddatalist-item-details">
-            {{ item.dynamic_subtitle | safe }}
+            {{ item.dynamic_subtitle | striptags }}
         </div>
     </li>
 
