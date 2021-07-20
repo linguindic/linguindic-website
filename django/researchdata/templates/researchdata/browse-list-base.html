@@ -119,7 +119,7 @@
                                 
                 <a href="{% block list_item_link %}{% endblock %}" class="list-content-item">
                     <div class="list-content-item-title">{{ object.dynamic_title | safe }}</div>
-                    <div class="list-content-item-details">{{ object.dynamic_subtitle | safe | slice:"250" }}</div>
+                    <div class="list-content-item-details">{{ object.dynamic_subtitle | striptags | slice:"250" }}</div>
                 </a>
             
             {% empty %} 

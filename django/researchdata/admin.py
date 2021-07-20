@@ -148,7 +148,8 @@ class GenericAdminView(admin.ModelAdmin):
     Or if you don't need to customise it just register a model, e.g.:
     admin.site.register([model name], GenericAdminView)
     """
-    list_display = ('id', 'name', 'description', 'admin_published', 'meta_created_datetime')
+    list_display = ('id', 'name', 'dynamic_subtitle', 'admin_published', 'meta_created_datetime')
+    list_display_links = ('id', 'name')
     list_filter = ('admin_published', 'meta_created_by')
     search_fields = ('name', 'description', 'admin_notes')
     ordering = ('-id',)
@@ -178,7 +179,7 @@ class AuthorAdminView(GenericAdminView):
     """
     Set the Author section of the Django admin
     """
-    list_display = ('id', 'name', 'alternative_name', 'description', 'location_most_active',
+    list_display = ('id', 'name', 'alternative_name', 'dynamic_subtitle', 'location_most_active',
                     'date_active', 'admin_published', 'meta_created_datetime')
     list_filter = ('admin_published', 'meta_created_by')
     search_fields = ('name', 'alternative_name', 'description', 'location_most_active', 'admin_notes')
@@ -226,7 +227,7 @@ class LinguisticTraditionAdminView(GenericAdminView):
     """
     Set the Linguistic Tradition section of the Django admin
     """
-    list_display = ('id', 'name', 'description', 'linguistic_tradition_group', 'admin_published', 'meta_created_datetime')
+    list_display = ('id', 'name', 'dynamic_subtitle', 'linguistic_tradition_group', 'admin_published', 'meta_created_datetime')
     list_filter = ('linguistic_tradition_group', 'admin_published', 'meta_created_by')
     search_fields = ('name', 'description', 'admin_notes')
     exclude = ('author', 'linguistic_field', 'linguistic_notion')
@@ -246,6 +247,7 @@ class ReferenceAdminView(GenericAdminView):
     """
     list_display = ('id', 'title', 'subtitle', 'authors_list', 'book_title', 'location', 'year', 'reference_type',
                     'reference_publisher', 'admin_published', 'meta_created_datetime')
+    list_display_links = ('id',)
     list_filter = ('reference_type', 'reference_publisher', 'admin_published', 'meta_created_by')
     search_fields = ('title', 'subtitle', 'authors_list', 'editors', 'school', 'book_title',
                      'journal_title', 'volume', 'number', 'location', 'year', 'url', 'public_notes', 'admin_notes')
@@ -280,7 +282,7 @@ class TextAdminView(GenericAdminView):
     """
     Set the Text section of the Django admin
     """
-    list_display = ('id', 'name', 'alternative_name', 'description', 'approximate_date_of_creation', 'location', 'author_main',
+    list_display = ('id', 'name', 'alternative_name', 'dynamic_subtitle', 'approximate_date_of_creation', 'location', 'author_main',
                     'text_group', 'text_type', 'admin_published', 'meta_created_datetime')
     list_filter = ('text_group', 'text_type', 'admin_published', 'meta_created_by')
     search_fields = ('name', 'alternative_name', 'description', 'approximate_date_of_creation', 'location', 'author_main', 'admin_notes')
@@ -299,7 +301,7 @@ class TextPassageAdminView(GenericAdminView):
     """
     Set the Text section of the Django admin
     """
-    list_display = ('id', 'name', 'description', 'text', 'text_type',
+    list_display = ('id', 'name', 'dynamic_subtitle', 'text', 'text_type',
                     'admin_published', 'meta_created_datetime')
     list_filter = ('text_type', 'admin_published', 'meta_created_by')
     search_fields = ('name', 'description', 'admin_notes')
