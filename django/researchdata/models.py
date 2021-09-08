@@ -526,23 +526,23 @@ class Reference(models.Model):
 
         # Journal Article
         elif self.reference_type == SlReferenceType.objects.get(name='journal article'):
-            ref = "{authors} ({year}), '{title}.".format(authors=self.authors_list,
-                                                         year=self.year,
-                                                         title=self.title)
+            ref = "{authors} ({year}), '{title}'.".format(authors=self.authors_list,
+                                                          year=self.year,
+                                                          title=self.title)
             if self.subtitle:
-                ref += "' {}.".format(self.subtitle)
-            ref += " <em>{}</em> {}.".format(self.journal_title, self.volume)
+                ref += " {}.".format(self.subtitle)
+            ref += " <em>{}</em> {}".format(self.journal_title, self.volume)
             if self.number:
-                ref += "({})".format(self.number)
+                ref += " ({})".format(self.number)
             ref += ": {}-{}.".format(self.page_start, self.page_end)
             if self.url:
                 ref += " {}.".format(self.url)
 
         # PhD Thesis
         elif self.reference_type == SlReferenceType.objects.get(name='phd thesis'):
-            ref = "{authors} ({year}), '{title}.".format(authors=self.authors_list,
-                                                         year=self.year,
-                                                         title=self.title)
+            ref = "{authors} ({year}), '{title}'.".format(authors=self.authors_list,
+                                                          year=self.year,
+                                                          title=self.title)
             if self.subtitle:
                 ref += " {}.".format(self.subtitle)
             ref += "' PhD thesis, {}.".format(self.school)
@@ -560,16 +560,25 @@ class Reference(models.Model):
             if self.url:
                 ref += " {}.".format(self.url)
 
+        # Miscellaneous Author (year), title. Public notes.
+        elif self.reference_type == SlReferenceType.objects.get(name='miscellaneous'):
+            ref = "{authors} ({year}), {title}.".format(authors=self.authors_list,
+                                                        year=self.year,
+                                                        title=self.title)
+            if self.public_notes:
+                ref += " {}.".format(self.public_notes)
+
         # If none of above reference types
         else:
-            ref = "{authors} ({year}), '{title}.".format(authors=self.authors_list,
-                                                         year=self.year,
-                                                         title=self.title)
+            ref = "{authors} ({year}), '{title}'.".format(authors=self.authors_list,
+                                                          year=self.year,
+                                                          title=self.title)
             if self.subtitle:
                 ref += " {}.".format(self.subtitle)
-            ref += "'"
             if self.url:
                 ref += " {}.".format(self.url)
+            if self.public_notes:
+                ref += " {}.".format(self.public_notes)
 
         return ref
 

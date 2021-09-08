@@ -247,7 +247,7 @@ class ReferenceAdminView(GenericAdminView):
     """
     list_display = ('id', 'title', 'subtitle', 'authors_list', 'book_title', 'location', 'year', 'reference_type',
                     'reference_publisher', 'admin_published', 'meta_created_datetime')
-    list_display_links = ('id',)
+    list_display_links = ('id', 'title')
     list_filter = ('reference_type', 'reference_publisher', 'admin_published', 'meta_created_by')
     search_fields = ('title', 'subtitle', 'authors_list', 'editors', 'school', 'book_title',
                      'journal_title', 'volume', 'number', 'location', 'year', 'url', 'public_notes', 'admin_notes')
