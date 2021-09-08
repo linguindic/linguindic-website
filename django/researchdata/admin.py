@@ -152,7 +152,7 @@ class GenericAdminView(admin.ModelAdmin):
     list_display_links = ('id', 'name')
     list_filter = ('admin_published', 'meta_created_by')
     search_fields = ('name', 'description', 'admin_notes')
-    ordering = ('-id',)
+    ordering = ('name', 'id',)
     actions = (publish, unpublish)
     readonly_fields = ('meta_created_by', 'meta_created_datetime', 'meta_lastupdated_by', 'meta_lastupdated_datetime', 'meta_firstpublished_datetime')
 
@@ -247,11 +247,12 @@ class ReferenceAdminView(GenericAdminView):
     """
     list_display = ('id', 'title', 'subtitle', 'authors_list', 'book_title', 'location', 'year', 'reference_type',
                     'reference_publisher', 'admin_published', 'meta_created_datetime')
-    list_display_links = ('id',)
+    list_display_links = ('id', 'title')
     list_filter = ('reference_type', 'reference_publisher', 'admin_published', 'meta_created_by')
     search_fields = ('title', 'subtitle', 'authors_list', 'editors', 'school', 'book_title',
                      'journal_title', 'volume', 'number', 'location', 'year', 'url', 'public_notes', 'admin_notes')
     exclude = ('author', 'linguistic_field', 'linguistic_notion', 'linguistic_tradition')
+    ordering = ('title',)
     filter_horizontal = ('reference',)
     inlines = [AuthorReferenceInline,
                LinguisticFieldReferenceInline,
