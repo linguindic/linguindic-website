@@ -1,6 +1,7 @@
 from django.contrib import admin
 import datetime
 from . import models
+from django.db.models.functions import Upper
 
 
 def publish(modeladmin, request, queryset):
@@ -152,7 +153,7 @@ class GenericAdminView(admin.ModelAdmin):
     list_display_links = ('id', 'name')
     list_filter = ('admin_published', 'meta_created_by')
     search_fields = ('name', 'description', 'admin_notes')
-    ordering = ('name', 'id',)
+    ordering = (Upper('name'), 'id',)
     actions = (publish, unpublish)
     readonly_fields = ('meta_created_by', 'meta_created_datetime', 'meta_lastupdated_by', 'meta_lastupdated_datetime', 'meta_firstpublished_datetime')
 
@@ -252,7 +253,7 @@ class ReferenceAdminView(GenericAdminView):
     search_fields = ('title', 'subtitle', 'authors_list', 'editors', 'school', 'book_title',
                      'journal_title', 'volume', 'number', 'location', 'year', 'url', 'public_notes', 'admin_notes')
     exclude = ('author', 'linguistic_field', 'linguistic_notion', 'linguistic_tradition')
-    ordering = ('title',)
+    ordering = (Upper('authors_list'), 'year', Upper('title'), 'id')
     filter_horizontal = ('reference',)
     inlines = [AuthorReferenceInline,
                LinguisticFieldReferenceInline,

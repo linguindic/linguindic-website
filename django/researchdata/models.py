@@ -590,10 +590,11 @@ class Reference(models.Model):
 
     class Meta:
         db_table = "{}_main_reference".format(apps.app_name)
-        ordering = [Upper('reference_type__name'),
-                    Upper('authors_list'),
-                    Upper('editors'),
-                    Upper('title'), 'id']
+        ordering = [Upper('authors_list'),
+                    'year',
+                    Upper('title'),
+                    Upper('reference_type__name'),
+                    'id']
 
 
 class SanskritWord(models.Model):
