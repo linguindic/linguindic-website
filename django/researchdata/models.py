@@ -526,12 +526,12 @@ class Reference(models.Model):
 
         # Journal Article
         elif self.reference_type == SlReferenceType.objects.get(name='journal article'):
-            ref = "{authors} ({year}), '{title}'.".format(authors=self.authors_list,
+            ref = "{authors} ({year}), '{title}.".format(authors=self.authors_list,
                                                           year=self.year,
                                                           title=self.title)
             if self.subtitle:
                 ref += " {}.".format(self.subtitle)
-            ref += " <em>{}</em> {}".format(self.journal_title, self.volume)
+            ref += "' <em>{}</em> {}".format(self.journal_title, self.volume)
             if self.number:
                 ref += " ({})".format(self.number)
             ref += ": {}-{}.".format(self.page_start, self.page_end)
@@ -540,7 +540,7 @@ class Reference(models.Model):
 
         # PhD Thesis
         elif self.reference_type == SlReferenceType.objects.get(name='phd thesis'):
-            ref = "{authors} ({year}), '{title}'.".format(authors=self.authors_list,
+            ref = "{authors} ({year}), '{title}.".format(authors=self.authors_list,
                                                           year=self.year,
                                                           title=self.title)
             if self.subtitle:
@@ -570,11 +570,12 @@ class Reference(models.Model):
 
         # If none of above reference types
         else:
-            ref = "{authors} ({year}), '{title}'.".format(authors=self.authors_list,
+            ref = "{authors} ({year}), '{title}.".format(authors=self.authors_list,
                                                           year=self.year,
                                                           title=self.title)
             if self.subtitle:
                 ref += " {}.".format(self.subtitle)
+            ref += "'"
             if self.url:
                 ref += " {}.".format(self.url)
             if self.public_notes:
