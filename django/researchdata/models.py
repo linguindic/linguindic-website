@@ -527,8 +527,8 @@ class Reference(models.Model):
         # Journal Article
         elif self.reference_type == SlReferenceType.objects.get(name='journal article'):
             ref = "{authors} ({year}), '{title}.".format(authors=self.authors_list,
-                                                          year=self.year,
-                                                          title=self.title)
+                                                         year=self.year,
+                                                         title=self.title)
             if self.subtitle:
                 ref += " {}.".format(self.subtitle)
             ref += "' <em>{}</em> {}".format(self.journal_title, self.volume)
@@ -541,8 +541,8 @@ class Reference(models.Model):
         # PhD Thesis
         elif self.reference_type == SlReferenceType.objects.get(name='phd thesis'):
             ref = "{authors} ({year}), '{title}.".format(authors=self.authors_list,
-                                                          year=self.year,
-                                                          title=self.title)
+                                                         year=self.year,
+                                                         title=self.title)
             if self.subtitle:
                 ref += " {}.".format(self.subtitle)
             ref += "' PhD thesis, {}.".format(self.school)
@@ -571,8 +571,8 @@ class Reference(models.Model):
         # If none of above reference types
         else:
             ref = "{authors} ({year}), '{title}.".format(authors=self.authors_list,
-                                                          year=self.year,
-                                                          title=self.title)
+                                                         year=self.year,
+                                                         title=self.title)
             if self.subtitle:
                 ref += " {}.".format(self.subtitle)
             ref += "'"
