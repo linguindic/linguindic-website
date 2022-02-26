@@ -497,6 +497,12 @@ main a {
     margin-top: 1.5em;
 }
 
+.browse-detail-viewinadmindashboard {
+    float: right;
+    font-size: 0.9em;
+    margin-top: 1.7em;
+}
+
 .browse-detail-header-subtitle {
     font-size: 1.1em;
     text-align: center;

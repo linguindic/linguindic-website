@@ -3,9 +3,12 @@
 
 {% block main %}
     <div class="container" id="browse-detail">
-        
-        <a class="browse-detail-linktolist" href="{% url 'browse-authors-list' %}">&lt; All authors</a>
-        
+
+        <!-- Links -->
+        {% url 'browse-authors-list' as list_url %}
+        {% url 'admin:researchdata_author_change' object.id as dashboard_url %}
+        {% include "researchdata/snippets/detail-links.html" with list_url=list_url list_name='authors' dashboard_url=dashboard_url %}
+
         <!-- Header (e.g. title and description) -->
         {% include "researchdata/snippets/detail-header.html" %}
 
