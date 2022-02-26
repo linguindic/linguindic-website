@@ -3,8 +3,11 @@
 
 {% block main %}
     <div class="container" id="browse-detail">
-        
-        <a class="browse-detail-linktolist" href="{% url 'browse-linguisticnotions-list' %}">&lt; All linguistic notions</a>
+
+        <!-- Links -->
+        {% url 'browse-linguisticnotions-list' as list_url %}
+        {% url 'admin:researchdata_linguisticnotion_change' object.id as dashboard_url %}
+        {% include "researchdata/snippets/detail-links.html" with list_url=list_url list_name='linguistic notions' dashboard_url=dashboard_url %}
 
         <!-- Header (e.g. title and description) -->
         {% include "researchdata/snippets/detail-header.html" %}

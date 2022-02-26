@@ -99,6 +99,12 @@
                     <li class="nav-item">
                         <a class="nav-link{% if "/help/" in request.path %} active{% endif %}" href="{% url 'help' %}">Help</a>
                     </li>
+                    {% if user.is_staff %}
+                        <!-- Admin Dashboard -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'admin:index' %}">Admin</a>
+                        </li>
+                    {% endif %}
                 </ul>
             </div>
         </nav>

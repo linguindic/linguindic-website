@@ -1,0 +1,7 @@
+<a class="browse-detail-linktolist" href="{{ list_url }}">&lt; All {{ list_name }}</a>
+
+{% if user.is_staff %}
+    <a href="{{ dashboard_url }}" class="browse-detail-viewinadmindashboard" target="_blank">
+        View in Admin Dashboard <i class="fas fa-external-link-alt"></i>
+    </a>
+{% endif %}
