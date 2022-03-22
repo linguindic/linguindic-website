@@ -11,14 +11,15 @@ This dir is used to help you convert a Word doc of a Linguistic Notion into the 
     - Copy word doc content into: https://wordhtml.com/
     - Paste output into a new .html file in VS Code
     - Make suitable adjustments:
-        - Remove empty <p> elements
-        - Convert quote tags, e.g. &rsquo; and &lsquo; simply to '
+        - Remove empty <p> elements, e.g. <p>&nbsp;</p>
+        - Remove unwanted &nbsp;
+        - Convert quote tags, regex find & replace on: &rsquo;|&lsquo;|’|‘  --> '
         - Convert section headers to <h3> (may be marked up as <u> as underlined in the Word doc)
-        - Separate footnotes at bottom with: <br><hr><br>
-        - Ensure footnotes set up and linking properly, e.g. <a href="#_ftn1" name="_ftnref1">[1]</a>
+        - Footnotes
+            - Ensure footnotes set up and linking properly, e.g. <a href="#_ftn1" name="_ftnref1">[1]</a>
+            - Add <hr> separator between footnotes and main content
         - Diagrams and examples
-            - If simple examples, just wrap in <p><span class="example">(1) example text here</span></p>
-            - Remember to add the number if there is one, as HTML converter tends to change it to <ul> bullet point
+            - If simple examples, just wrap in <div class="example"><label>(1)</label> example text here</div>
             - If more complicated, convert to images:
                 - Screenshot in Word, edit in Photoshop
                 - PNG format with transparent backgrounds
@@ -26,7 +27,7 @@ This dir is used to help you convert a Word doc of a Linguistic Notion into the 
                 - Sample html for image (note class and style): <img src="/static/images/researchdata/linguistic_notions/relative_clauses_1.png" alt="Relative clauses diagram"  class="example" style="width: 70%">
                 - Ensure font-size of image roughly matches the rest of the page (not too big/small)
     - Add a new Linguistic Notion db entry in the admin dashboard:
-        - Name to be capitalised, e.g. "Periphrasis"
+        - Name to start with upper case, e.g. "Argument structure"
         - Paste the HTML into the description
         - Check output on public facing part of website
         - Update "Author (in citation)" to John, otherwise will default to me as the creator

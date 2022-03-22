@@ -2,7 +2,7 @@
 /* ---------- General ---------- */
 
 body {
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: sans-serif;
     color: #643d25;
     margin: 0;
     font-weight: 300;
@@ -42,6 +42,10 @@ h3 {
     font-size: 1.5em;
 }
 
+hr {
+    margin: 3em 1em;
+}
+
 .image-circle {
     border: 0.3rem solid rgba(255,255,255,0.6);
     border-radius: 100%;
@@ -49,6 +53,29 @@ h3 {
     max-width: 90%;
     display: block;
     margin: 1em auto;
+}
+
+table {
+    display: block;
+    margin: 1em 0;
+}
+
+table td,
+table th {
+    border: 1px solid #5f3305;
+    padding: 0.2em 0.5em;
+}
+
+table.no-borders td,
+table.no-borders th {
+    border: none;
+    padding: 0.2em 1.5em 0.2em 0;
+}
+
+table th {
+    background: #5f3305;
+    color: #eedac3;
+    text-align: center;
 }
 
 
@@ -524,7 +551,16 @@ main a {
 }
 
 .browse-detail-description .example {
-    margin-left: 2em;
+    margin: 2em;
+}
+
+.browse-detail-description .example label {
+    display: block;
+}
+
+.browse-detail-description .example table {
+    display: block;
+    margin-top: 0;
 }
 
 .browse-detail-description img {
