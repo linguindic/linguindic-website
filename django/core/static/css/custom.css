@@ -573,7 +573,7 @@ main a {
 
 .browse-detail-description .example .content table {
     display: block;
-    margin-top: 0;
+    margin-top: -0.2em;
 }
 
 .browse-detail-description img {
