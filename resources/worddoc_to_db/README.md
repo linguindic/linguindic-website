@@ -19,7 +19,7 @@ This dir is used to help you convert a Word doc of a Linguistic Notion into the 
             - Ensure footnotes set up and linking properly, e.g. <a href="#_ftn1" name="_ftnref1">[1]</a>
             - Add <hr> separator between footnotes and main content
         - Diagrams and examples
-            - If simple examples, just wrap in <div class="example"><label>(1)</label> example text here</div>
+            - If simple examples, just wrap in <div class="example"><label>(1)</label><div class="content">example content here</div></div>
             - If more complicated, convert to images:
                 - Screenshot in Word, edit in Photoshop
                 - PNG format with transparent backgrounds
