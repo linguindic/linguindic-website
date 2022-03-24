@@ -46,6 +46,10 @@ hr {
     margin: 3em 1em;
 }
 
+strong {
+    font-weight: 600;
+}
+
 .image-circle {
     border: 0.3rem solid rgba(255,255,255,0.6);
     border-radius: 100%;
@@ -99,7 +103,6 @@ nav {
 
 .navbar-nav {
     letter-spacing: 0.1em;
-    /* border: 1px solid green; */
 }
 
 .nav-link {
@@ -551,14 +554,24 @@ main a {
 }
 
 .browse-detail-description .example {
-    margin: 2em;
+    margin: 1em;
+    max-width: 100%;
+    overflow-x: auto;
 }
 
 .browse-detail-description .example label {
-    display: block;
+    display: inline-block;
+    width: 2em;
+    vertical-align: top;
 }
 
-.browse-detail-description .example table {
+.browse-detail-description .example .content {
+    display: inline-block;
+    width: calc(100% - 2.5em);
+    vertical-align: top;
+}
+
+.browse-detail-description .example .content table {
     display: block;
     margin-top: 0;
 }
