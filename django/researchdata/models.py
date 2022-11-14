@@ -7,21 +7,25 @@ from django.urls import reverse
 
 # Common functions
 
-def dynamic_citation_author(self):
-    # Use manually specified author, if given
-    if self.meta_citation_author is not None:
-        first_name = self.meta_citation_author.first_name
-        last_name = self.meta_citation_author.last_name
-    # Or use last updated by
-    elif self.meta_lastupdated_by is not None:
-        first_name = self.meta_lastupdated_by.first_name
-        last_name = self.meta_lastupdated_by.last_name
-    # Or use created by
-    else:
-        first_name = self.meta_created_by.first_name
-        last_name = self.meta_created_by.last_name
+def dynamic_citation_authors(self):
 
-    return "{}, {}".format(last_name, first_name)
+    # Build the list of authors
+    authors = []
+
+    # Get first/main author (as manually specified or from automated fields)
+    if self.meta_citation_author:
+        authors.append(self.meta_citation_author)
+    elif self.meta_lastupdated_by:
+        authors.append(self.meta_lastupdated_by)
+    elif self.meta_created_by:
+        authors.append(self.meta_created_by)
+
+    # Get additional authors
+    for author in self.meta_citation_additional_authors.all().order_by('last_name', 'first_name', 'id'):
+        authors.append(author)
+
+    # Build string of authors to be used in the citation
+    return "; ".join([f"{author.last_name}, {author.first_name}" for author in authors])
 
 
 def description_preview(description):
@@ -236,7 +240,10 @@ class Author(models.Model):
     admin_published = models.BooleanField(default=True)
     # Metadata fields
     meta_citation_author = models.ForeignKey(User, related_name="author_citation_author",
-                                             on_delete=models.PROTECT, blank=True, null=True, verbose_name="Author (in citation)")
+                                             on_delete=models.PROTECT, blank=True, null=True, verbose_name="Main author in citation")
+    meta_citation_additional_authors = models.ManyToManyField(User, blank=True,
+                                                              verbose_name="Additional authors in citation",
+                                                              help_text="Appears after the main author in citation, in alphabetical order by surname.")
     meta_created_by = models.ForeignKey(User, related_name="author_created_by",
                                         on_delete=models.PROTECT, blank=True, null=True, verbose_name="Created By")
     meta_created_datetime = models.DateTimeField(auto_now_add=True, verbose_name="Created")
@@ -266,8 +273,8 @@ class Author(models.Model):
         return subtitle
 
     @property
-    def dynamic_citation_author(self):
-        return dynamic_citation_author(self)
+    def dynamic_citation_authors(self):
+        return dynamic_citation_authors(self)
 
     def __str__(self):
         return self.dynamic_title
@@ -295,7 +302,10 @@ class LinguisticField(models.Model):
     admin_published = models.BooleanField(default=True)
     # Metadata fields
     meta_citation_author = models.ForeignKey(User, related_name="linguisticfield_citation_author",
-                                             on_delete=models.PROTECT, blank=True, null=True, verbose_name="Author (in citation)")
+                                             on_delete=models.PROTECT, blank=True, null=True, verbose_name="Main author in citation")
+    meta_citation_additional_authors = models.ManyToManyField(User, blank=True,
+                                                              verbose_name="Additional authors in citation",
+                                                              help_text="Appears after the main author in citation, in alphabetical order by surname.")
     meta_created_by = models.ForeignKey(User, related_name="linguisticfield_created_by",
                                         on_delete=models.PROTECT, blank=True, null=True, verbose_name="Created By")
     meta_created_datetime = models.DateTimeField(auto_now_add=True, verbose_name="Created")
@@ -315,8 +325,8 @@ class LinguisticField(models.Model):
         return "A linguistic field"
 
     @property
-    def dynamic_citation_author(self):
-        return dynamic_citation_author(self)
+    def dynamic_citation_authors(self):
+        return dynamic_citation_authors(self)
 
     def __str__(self):
         return self.dynamic_title
@@ -347,7 +357,10 @@ class LinguisticNotion(models.Model):
     admin_published = models.BooleanField(default=True)
     # Metadata fields
     meta_citation_author = models.ForeignKey(User, related_name="linguisticnotion_citation_author",
-                                             on_delete=models.PROTECT, blank=True, null=True, verbose_name="Author (in citation)")
+                                             on_delete=models.PROTECT, blank=True, null=True, verbose_name="Main author in citation")
+    meta_citation_additional_authors = models.ManyToManyField(User, blank=True,
+                                                              verbose_name="Additional authors in citation",
+                                                              help_text="Appears after the main author in citation, in alphabetical order by surname.")
     meta_created_by = models.ForeignKey(User, related_name="linguisticnotion_created_by",
                                         on_delete=models.PROTECT, blank=True, null=True, verbose_name="Created By")
     meta_created_datetime = models.DateTimeField(auto_now_add=True, verbose_name="Created")
@@ -367,8 +380,8 @@ class LinguisticNotion(models.Model):
         return "A linguistic notion"
 
     @property
-    def dynamic_citation_author(self):
-        return dynamic_citation_author(self)
+    def dynamic_citation_authors(self):
+        return dynamic_citation_authors(self)
 
     def __str__(self):
         return self.dynamic_title
@@ -403,7 +416,10 @@ class LinguisticTradition(models.Model):
     admin_published = models.BooleanField(default=True)
     # Metadata fields
     meta_citation_author = models.ForeignKey(User, related_name="linguistictradition_citation_author",
-                                             on_delete=models.PROTECT, blank=True, null=True, verbose_name="Author (in citation)")
+                                             on_delete=models.PROTECT, blank=True, null=True, verbose_name="Main author in citation")
+    meta_citation_additional_authors = models.ManyToManyField(User, blank=True,
+                                                              verbose_name="Additional authors in citation",
+                                                              help_text="Appears after the main author in citation, in alphabetical order by surname.")
     meta_created_by = models.ForeignKey(User, related_name="linguistictradition_created_by",
                                         on_delete=models.PROTECT, blank=True, null=True, verbose_name="Created By")
     meta_created_datetime = models.DateTimeField(auto_now_add=True, verbose_name="Created")
@@ -423,8 +439,8 @@ class LinguisticTradition(models.Model):
         return "A linguistic tradition"
 
     @property
-    def dynamic_citation_author(self):
-        return dynamic_citation_author(self)
+    def dynamic_citation_authors(self):
+        return dynamic_citation_authors(self)
 
     def __str__(self):
         return self.dynamic_title
@@ -475,7 +491,10 @@ class Reference(models.Model):
     admin_published = models.BooleanField(default=True)
     # Metadata fields
     meta_citation_author = models.ForeignKey(User, related_name="reference_citation_author",
-                                             on_delete=models.PROTECT, blank=True, null=True, verbose_name="Author (in citation)")
+                                             on_delete=models.PROTECT, blank=True, null=True, verbose_name="Main author in citation")
+    meta_citation_additional_authors = models.ManyToManyField(User, blank=True,
+                                                              verbose_name="Additional authors in citation",
+                                                              help_text="Appears after the main author in citation, in alphabetical order by surname.")
     meta_created_by = models.ForeignKey(User, related_name="reference_created_by",
                                         on_delete=models.PROTECT, blank=True, null=True, verbose_name="Created By")
     meta_created_datetime = models.DateTimeField(auto_now_add=True, verbose_name="Created")
@@ -493,8 +512,8 @@ class Reference(models.Model):
         return self.reference_type.name.title()
 
     @property
-    def dynamic_citation_author(self):
-        return dynamic_citation_author(self)
+    def dynamic_citation_authors(self):
+        return dynamic_citation_authors(self)
 
     @property
     def dynamic_summary(self):
@@ -620,7 +639,10 @@ class SanskritWord(models.Model):
     admin_published = models.BooleanField(default=True)
     # Metadata fields
     meta_citation_author = models.ForeignKey(User, related_name="sanskritword_citation_author",
-                                             on_delete=models.PROTECT, blank=True, null=True, verbose_name="Author (in citation)")
+                                             on_delete=models.PROTECT, blank=True, null=True, verbose_name="Main author in citation")
+    meta_citation_additional_authors = models.ManyToManyField(User, blank=True,
+                                                              verbose_name="Additional authors in citation",
+                                                              help_text="Appears after the main author in citation, in alphabetical order by surname.")
     meta_created_by = models.ForeignKey(User, related_name="sanskritword_created_by",
                                         on_delete=models.PROTECT, blank=True, null=True, verbose_name="Created By")
     meta_created_datetime = models.DateTimeField(auto_now_add=True, verbose_name="Created")
@@ -640,8 +662,8 @@ class SanskritWord(models.Model):
         return "A Sanskrit word/form"
 
     @property
-    def dynamic_citation_author(self):
-        return dynamic_citation_author(self)
+    def dynamic_citation_authors(self):
+        return dynamic_citation_authors(self)
 
     def __str__(self):
         return self.dynamic_title
@@ -687,7 +709,10 @@ class Text(models.Model):
     admin_published = models.BooleanField(default=True)
     # Metadata fields
     meta_citation_author = models.ForeignKey(User, related_name="text_citation_author",
-                                             on_delete=models.PROTECT, blank=True, null=True, verbose_name="Author (in citation)")
+                                             on_delete=models.PROTECT, blank=True, null=True, verbose_name="Main author in citation")
+    meta_citation_additional_authors = models.ManyToManyField(User, blank=True,
+                                                              verbose_name="Additional authors in citation",
+                                                              help_text="Appears after the main author in citation, in alphabetical order by surname.")
     meta_created_by = models.ForeignKey(User, related_name="text_created_by",
                                         on_delete=models.PROTECT, blank=True, null=True, verbose_name="Created By")
     meta_created_datetime = models.DateTimeField(auto_now_add=True, verbose_name="Created")
@@ -717,8 +742,8 @@ class Text(models.Model):
             return "A piece of text"
 
     @property
-    def dynamic_citation_author(self):
-        return dynamic_citation_author(self)
+    def dynamic_citation_authors(self):
+        return dynamic_citation_authors(self)
 
     def __str__(self):
         return self.dynamic_title
@@ -761,7 +786,10 @@ class TextPassage(models.Model):
     admin_published = models.BooleanField(default=True)
     # Metadata fields
     meta_citation_author = models.ForeignKey(User, related_name="textpassage_citation_author",
-                                             on_delete=models.PROTECT, blank=True, null=True, verbose_name="Author (in citation)")
+                                             on_delete=models.PROTECT, blank=True, null=True, verbose_name="Main author in citation")
+    meta_citation_additional_authors = models.ManyToManyField(User, blank=True,
+                                                              verbose_name="Additional authors in citation",
+                                                              help_text="Appears after the main author in citation, in alphabetical order by surname.")
     meta_created_by = models.ForeignKey(User, related_name="textpassage_created_by",
                                         on_delete=models.PROTECT, blank=True, null=True, verbose_name="Created By")
     meta_created_datetime = models.DateTimeField(auto_now_add=True, verbose_name="Created")
@@ -784,8 +812,8 @@ class TextPassage(models.Model):
             return "A text passage"
 
     @property
-    def dynamic_citation_author(self):
-        return dynamic_citation_author(self)
+    def dynamic_citation_authors(self):
+        return dynamic_citation_authors(self)
 
     def __str__(self):
         return self.dynamic_title
