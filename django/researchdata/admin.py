@@ -184,7 +184,7 @@ class AuthorAdminView(GenericAdminView):
                     'date_active', 'admin_published', 'meta_created_datetime')
     list_filter = ('admin_published', 'meta_created_by')
     search_fields = ('name', 'alternative_name', 'description', 'location_most_active', 'admin_notes')
-    filter_horizontal = ('author',)
+    filter_horizontal = ('author', 'meta_citation_additional_authors')
     inlines = [AuthorLinguisticFieldInline,
                AuthorLinguisticNotionInline,
                AuthorLinguisticTraditionInline,
@@ -199,7 +199,7 @@ class LinguisticFieldAdminView(GenericAdminView):
     Set the Linguistic Field section of the Django admin
     """
     exclude = ('author',)
-    filter_horizontal = ('linguistic_field',)
+    filter_horizontal = ('linguistic_field', 'meta_citation_additional_authors')
     inlines = [AuthorLinguisticFieldInline,
                LinguisticFieldLinguisticNotionInline,
                LinguisticFieldLinguisticTraditionInline,
@@ -214,7 +214,7 @@ class LinguisticNotionAdminView(GenericAdminView):
     Set the Linguistic Notion section of the Django admin
     """
     exclude = ('author', 'linguistic_field')
-    filter_horizontal = ('linguistic_notion',)
+    filter_horizontal = ('linguistic_notion', 'meta_citation_additional_authors')
     inlines = [AuthorLinguisticNotionInline,
                LinguisticFieldLinguisticNotionInline,
                LinguisticNotionLinguisticTraditionInline,
@@ -232,7 +232,7 @@ class LinguisticTraditionAdminView(GenericAdminView):
     list_filter = ('linguistic_tradition_group', 'admin_published', 'meta_created_by')
     search_fields = ('name', 'description', 'admin_notes')
     exclude = ('author', 'linguistic_field', 'linguistic_notion')
-    filter_horizontal = ('linguistic_tradition',)
+    filter_horizontal = ('linguistic_tradition', 'meta_citation_additional_authors')
     inlines = [AuthorLinguisticTraditionInline,
                LinguisticFieldLinguisticTraditionInline,
                LinguisticNotionLinguisticTraditionInline,
@@ -254,7 +254,7 @@ class ReferenceAdminView(GenericAdminView):
                      'journal_title', 'volume', 'number', 'location', 'year', 'url', 'public_notes', 'admin_notes')
     exclude = ('author', 'linguistic_field', 'linguistic_notion', 'linguistic_tradition')
     ordering = (Upper('authors_list'), 'year', Upper('title'), 'id')
-    filter_horizontal = ('reference',)
+    filter_horizontal = ('reference', 'meta_citation_additional_authors')
     inlines = [AuthorReferenceInline,
                LinguisticFieldReferenceInline,
                LinguisticNotionReferenceInline,
@@ -270,7 +270,7 @@ class SanskritWordAdminView(GenericAdminView):
     """
     exclude = ('author', 'linguistic_field', 'linguistic_notion', 'linguistic_tradition',
                'reference')
-    filter_horizontal = ('sanskrit_word',)
+    filter_horizontal = ('sanskrit_word', 'meta_citation_additional_authors')
     inlines = [AuthorSanskritWordInline,
                LinguisticFieldSanskritWordInline,
                LinguisticNotionSanskritWordInline,
@@ -290,7 +290,7 @@ class TextAdminView(GenericAdminView):
     search_fields = ('name', 'alternative_name', 'description', 'approximate_date_of_creation', 'location', 'author_main', 'admin_notes')
     exclude = ('author', 'linguistic_field', 'linguistic_notion', 'linguistic_tradition',
                'reference', 'sanskrit_word')
-    filter_horizontal = ('text',)
+    filter_horizontal = ('text', 'meta_citation_additional_authors')
     inlines = [AuthorTextInline,
                LinguisticFieldTextInline,
                LinguisticNotionTextInline,
@@ -309,7 +309,7 @@ class TextPassageAdminView(GenericAdminView):
     search_fields = ('name', 'description', 'admin_notes')
     exclude = ('author', 'linguistic_field', 'linguistic_notion', 'linguistic_tradition',
                'reference', 'sanskrit_word')
-    filter_horizontal = ('text_passage',)
+    filter_horizontal = ('text_passage', 'meta_citation_additional_authors')
     inlines = [AuthorTextPassageInline,
                LinguisticFieldTextPassageInline,
                LinguisticNotionTextPassageInline,
