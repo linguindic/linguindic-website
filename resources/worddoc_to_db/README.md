@@ -14,7 +14,7 @@ This dir is used to help you convert a Word doc of a Linguistic Notion into the 
         - Remove empty <p> elements, e.g. <p>&nbsp;</p>
         - Remove unwanted &nbsp;
         - Convert quote tags, regex find & replace on: &rsquo;|&lsquo;|’|‘  --> '
-        - Convert section headers to <h3> (may be marked up as <u> as underlined in the Word doc)
+        - Convert section headers to <h3> (may be marked up as <u> as underlined or <p> in the Word doc) and add . after numbers, e.g. "1. Header Text"
         - Footnotes
             - Ensure footnotes set up and linking properly, e.g. <a href="#_ftn1" name="_ftnref1">[1]</a>
             - Add <hr> separator between footnotes and main content
