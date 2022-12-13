@@ -37,13 +37,12 @@ urlpatterns = [
 
     # General app's urls
     path('', include('general.urls')),
-
     # Research Data app's urls
     path('data/', include('researchdata.urls')),
-
-    # Include Django admin urls
+    # Django admin urls
     path('dashboard/', admin.site.urls),
-
+    # Debug Toolbar
+    path('__debug__/', include('debug_toolbar.urls')),
     # Sitemap
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps},
          name='django.contrib.sitemaps.views.sitemap')

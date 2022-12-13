@@ -519,7 +519,7 @@ class Reference(models.Model):
     def dynamic_summary(self):
 
         # Book
-        if self.reference_type == SlReferenceType.objects.get(name='book'):
+        if self.reference_type.name == 'book':
             ref = "{authors} ({year}), <em>{title}.".format(authors=self.authors_list,
                                                             year=self.year,
                                                             title=self.title)
@@ -530,7 +530,7 @@ class Reference(models.Model):
                 ref += " {}.".format(self.url)
 
         # Paper in Edited Volume
-        elif self.reference_type == SlReferenceType.objects.get(name='paper in edited volume'):
+        elif self.reference_type.name == 'paper in edited volume':
             ref = "{authors} ({year}), '{title}.".format(authors=self.authors_list, year=self.year, title=self.title)
             if self.subtitle:
                 ref += " {}.".format(self.subtitle)
@@ -544,7 +544,7 @@ class Reference(models.Model):
                 ref += " {}.".format(self.url)
 
         # Journal Article
-        elif self.reference_type == SlReferenceType.objects.get(name='journal article'):
+        elif self.reference_type.name == 'journal article':
             ref = "{authors} ({year}), '{title}.".format(authors=self.authors_list,
                                                          year=self.year,
                                                          title=self.title)
@@ -558,7 +558,7 @@ class Reference(models.Model):
                 ref += " {}.".format(self.url)
 
         # PhD Thesis
-        elif self.reference_type == SlReferenceType.objects.get(name='phd thesis'):
+        elif self.reference_type.name == 'phd thesis':
             ref = "{authors} ({year}), '{title}.".format(authors=self.authors_list,
                                                          year=self.year,
                                                          title=self.title)
@@ -569,7 +569,7 @@ class Reference(models.Model):
                 ref += " {}.".format(self.url)
 
         # Edited volume
-        elif self.reference_type == SlReferenceType.objects.get(name='edited volume'):
+        elif self.reference_type.name == 'edited volume':
             ref = "{editors} (ed.) ({year}), <em>{title}.".format(editors=self.editors,
                                                                   year=self.year,
                                                                   title=self.title)
@@ -580,7 +580,7 @@ class Reference(models.Model):
                 ref += " {}.".format(self.url)
 
         # Miscellaneous Author (year), title. Public notes.
-        elif self.reference_type == SlReferenceType.objects.get(name='miscellaneous'):
+        elif self.reference_type.name == 'miscellaneous':
             ref = "{authors} ({year}), {title}.".format(authors=self.authors_list,
                                                         year=self.year,
                                                         title=self.title)
