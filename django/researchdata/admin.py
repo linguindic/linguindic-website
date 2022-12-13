@@ -30,110 +30,137 @@ unpublish.short_description = "Unpublish selected items (will not appear on main
 
 class AuthorLinguisticFieldInline(admin.TabularInline):
     model = models.Author.linguistic_field.through
+    autocomplete_fields = ('author', 'linguisticfield')
 
 
 class AuthorLinguisticNotionInline(admin.TabularInline):
     model = models.Author.linguistic_notion.through
+    autocomplete_fields = ('author', 'linguisticnotion')
 
 
 class AuthorLinguisticTraditionInline(admin.TabularInline):
     model = models.Author.linguistic_tradition.through
+    autocomplete_fields = ('author', 'linguistictradition')
 
 
 class AuthorReferenceInline(admin.TabularInline):
     model = models.Author.reference.through
+    autocomplete_fields = ('author', 'reference')
 
 
 class AuthorSanskritWordInline(admin.TabularInline):
     model = models.Author.sanskrit_word.through
+    autocomplete_fields = ('author', 'sanskritword')
 
 
 class AuthorTextInline(admin.TabularInline):
     model = models.Author.text.through
+    autocomplete_fields = ('author', 'text')
 
 
 class AuthorTextPassageInline(admin.TabularInline):
     model = models.Author.text_passage.through
+    autocomplete_fields = ('author', 'textpassage')
 
 
 class LinguisticFieldLinguisticNotionInline(admin.TabularInline):
     model = models.LinguisticField.linguistic_notion.through
+    autocomplete_fields = ('linguisticfield', 'linguisticnotion')
 
 
 class LinguisticFieldLinguisticTraditionInline(admin.TabularInline):
     model = models.LinguisticField.linguistic_tradition.through
+    autocomplete_fields = ('linguisticfield', 'linguistictradition')
 
 
 class LinguisticFieldReferenceInline(admin.TabularInline):
     model = models.LinguisticField.reference.through
+    autocomplete_fields = ('linguisticfield', 'reference')
 
 
 class LinguisticFieldSanskritWordInline(admin.TabularInline):
     model = models.LinguisticField.sanskrit_word.through
+    autocomplete_fields = ('linguisticfield', 'sanskritword')
 
 
 class LinguisticFieldTextInline(admin.TabularInline):
     model = models.LinguisticField.text.through
+    autocomplete_fields = ('linguisticfield', 'text')
 
 
 class LinguisticFieldTextPassageInline(admin.TabularInline):
     model = models.LinguisticField.text_passage.through
+    autocomplete_fields = ('linguisticfield', 'textpassage')
 
 
 class LinguisticNotionLinguisticTraditionInline(admin.TabularInline):
     model = models.LinguisticNotion.linguistic_tradition.through
+    autocomplete_fields = ('linguisticnotion', 'linguistictradition')
 
 
 class LinguisticNotionReferenceInline(admin.TabularInline):
     model = models.LinguisticNotion.reference.through
+    autocomplete_fields = ('linguisticnotion', 'reference')
 
 
 class LinguisticNotionSanskritWordInline(admin.TabularInline):
     model = models.LinguisticNotion.sanskrit_word.through
+    autocomplete_fields = ('linguisticnotion', 'sanskritword')
 
 
 class LinguisticNotionTextInline(admin.TabularInline):
     model = models.LinguisticNotion.text.through
+    autocomplete_fields = ('linguisticnotion', 'text')
 
 
 class LinguisticNotionTextPassageInline(admin.TabularInline):
     model = models.LinguisticNotion.text_passage.through
+    autocomplete_fields = ('linguisticnotion', 'textpassage')
 
 
 class LinguisticTraditionReferenceInline(admin.TabularInline):
     model = models.LinguisticTradition.reference.through
+    autocomplete_fields = ('linguistictradition', 'reference')
 
 
 class LinguisticTraditionSanskritWordInline(admin.TabularInline):
     model = models.LinguisticTradition.sanskrit_word.through
+    autocomplete_fields = ('linguistictradition', 'sanskritword')
 
 
 class LinguisticTraditionTextInline(admin.TabularInline):
     model = models.LinguisticTradition.text.through
+    autocomplete_fields = ('linguistictradition', 'text')
 
 
 class LinguisticTraditionTextPassageInline(admin.TabularInline):
     model = models.LinguisticTradition.text_passage.through
+    autocomplete_fields = ('linguistictradition', 'textpassage')
 
 
 class ReferenceSanskritWordInline(admin.TabularInline):
     model = models.Reference.sanskrit_word.through
+    autocomplete_fields = ('reference', 'sanskritword')
 
 
 class ReferenceTextInline(admin.TabularInline):
     model = models.Reference.text.through
+    autocomplete_fields = ('reference', 'text')
 
 
 class ReferenceTextPassageInline(admin.TabularInline):
     model = models.Reference.text_passage.through
+    autocomplete_fields = ('reference', 'textpassage')
 
 
 class SanskritWordTextInline(admin.TabularInline):
     model = models.SanskritWord.text.through
+    autocomplete_fields = ('sanskritword', 'text')
 
 
 class SanskritWordTextPassageInline(admin.TabularInline):
     model = models.SanskritWord.text_passage.through
+    autocomplete_fields = ('sanskritword', 'textpassage')
 
 
 # Generic Admin View

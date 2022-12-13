@@ -14,12 +14,27 @@ This dir is used to help you convert a Word doc of a Linguistic Notion into the 
         - Remove empty <p> elements, e.g. <p>&nbsp;</p>
         - Remove unwanted &nbsp;
         - Convert quote tags, regex find & replace on: &rsquo;|&lsquo;|’|‘  --> '
-        - Convert section headers to <h3> (may be marked up as <u> as underlined in the Word doc)
+        - Convert &ndash; to -
+        - Add links to related data, e.g. <a href="/data/browse/linguisticnotions/4/">'Argument structure'</a>
+        - Convert section headers to <h3> (may be marked up as <u> as underlined or <p> in the Word doc) and add . after numbers, e.g. "1. Header Text"
         - Footnotes
             - Ensure footnotes set up and linking properly, e.g. <a href="#_ftn1" name="_ftnref1">[1]</a>
             - Add <hr> separator between footnotes and main content
         - Diagrams and examples
             - If simple examples, just wrap in <div class="example"><label>(1)</label><div class="content">example content here</div></div>
+            - If needing to align in a grid then use table within the example container, e.g. <div class="example"><label>(6)</label><div class="content">
+                <table class="no-borders">
+                    <tr>
+                        <td>devadattaḥ</td>
+                        <td>paraśunā</td>
+                        <td>chinatti.</td>
+                    </tr>
+                    <tr>
+                        <td>D.NOM</td>
+                        <td>axe.INSTR.SG</td>
+                        <td>cut.PRES.3SG</td>
+                    </tr>
+                </table></div></div>
             - If more complicated, convert to images:
                 - Screenshot in Word, edit in Photoshop
                 - PNG format with transparent backgrounds
