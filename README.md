@@ -10,7 +10,7 @@ The purpose of the website is to promote the project and to share its research d
 The people directly involved in the development of this website are:
 
 - [John Lowe, LINGUINDIC project PI](http://users.ox.ac.uk/~shug1472/)
-- [Mike Allaway, LINGUINDIC website and database developer](https://www.orinst.ox.ac.uk/people/michael-allaway)
+- [Mike Allaway, LINGUINDIC website and database developer](https://www.ames.ox.ac.uk/people/michael-allaway)
 
 To get in touch with us about this website or the research project, please email us at: <linguindic@orinst.ox.ac.uk>
 
