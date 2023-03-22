@@ -16,7 +16,7 @@ This dir is used to help you convert a Word doc of a Linguistic Notion into the 
         - Convert quote tags, regex find & replace on: &rsquo;|&lsquo;|’|‘  --> '
         - Convert &ndash; to -
         - Add links to related data, e.g. <a href="/data/browse/linguisticnotions/4/">'Argument structure'</a>
-        - Convert section headers to <h3> (may be marked up as <u> as underlined or <p> in the Word doc) and add . after numbers, e.g. "1. Header Text"
+        - Convert section headers to <h3> (may be marked up as <u> as underlined or <p> in the Word doc) and add . after numbers, e.g. "<h3>1. Header Text</h3>"
         - Footnotes
             - Ensure footnotes set up and linking properly, e.g. <a href="#_ftn1" name="_ftnref1">[1]</a>
             - Add <hr> separator between footnotes and main content
