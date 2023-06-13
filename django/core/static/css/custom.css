@@ -236,12 +236,18 @@ main a {
     background-position: center;
 }
 
-
 .about-team-member-role {
     text-align: center;
     margin: -1.3em auto 1.8em auto;
 }
 
+#about-outputs ul {
+    padding-left: 1em;
+}
+
+#about-outputs li {
+    margin: 1.5em 0;
+}
 
 /* ---------- Browse ---------- */
 
