@@ -1,13 +1,17 @@
 @media (min-width: 992px) {
     /* ---------- Navigation ---------- */
 
+    .navbar {
+        padding-right: 3em;
+    }
+
     .navbar-brand {
         padding-left: 0.3em;
     }
 
     .nav-link {
-        margin-left: 0.7em;
-        margin-right: 0.7em;
+        margin-left: 1em;
+        margin-right: 1em;
         margin-top: 0.2em;
     }
 

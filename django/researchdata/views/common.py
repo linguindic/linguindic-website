@@ -111,7 +111,8 @@ def add_main_models_to_context(context, exclude):
             context['linguistictraditions'] = models.LinguisticTradition.objects.filter(admin_published=True)
 
         if exclude != 'reference':
-            context['references'] = models.Reference.objects.filter(admin_published=True)
+            context['references'] = models.Reference.objects.filter(admin_published=True).select_related('reference_type',
+            'reference_publisher')
 
         if exclude != 'sanskritword':
             context['sanskritwords'] = models.SanskritWord.objects.filter(admin_published=True)
