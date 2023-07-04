@@ -128,6 +128,10 @@ nav a:hover,
     color: #937200;
 }
 
+nav hr {
+    margin: 0.5em 0;
+}
+
 /* ---------- Main ---------- */
 
 main {
@@ -247,6 +251,16 @@ main a {
 
 #about-outputs li {
     margin: 1.5em 0;
+}
+
+#about-database-link {
+    display: block;
+    width: fit-content;
+    margin: 3em auto;
+    padding: 0.6em 1.3em 0.4em 1.3em;
+    border-radius: 0.2em;
+    background: #643d25;
+    color: #eedac3;
 }
 
 /* ---------- Browse ---------- */
