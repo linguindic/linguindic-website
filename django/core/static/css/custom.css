@@ -574,7 +574,7 @@ main a {
 }
 
 .browse-detail-description .example {
-    margin: 1em;
+    margin: 2em;
     max-width: 100%;
     overflow-x: auto;
 }
@@ -593,7 +593,7 @@ main a {
 
 .browse-detail-description .example .content table {
     display: block;
-    margin-top: -0.2em;
+    margin: 0;
 }
 
 .browse-detail-description img {
