@@ -19,6 +19,9 @@ DEBUG = True/False
 # Set to ['*'] if in development, or specific IP addresses and domains if in production
 ALLOWED_HOSTS = ['*']/['linguindic.com']
 
+# Used for Django Debug Toolbar (comment out to hide DDT)
+INTERNAL_IPS = ["127.0.0.1"]
+
 # Set the database name below
 DATABASES = {
     'default': {

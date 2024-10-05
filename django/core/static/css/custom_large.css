@@ -2,7 +2,7 @@
     /* ---------- Navigation ---------- */
 
     .navbar {
-        padding-right: 3em;
+        /* padding-right: 1em; */
     }
 
     .navbar-brand {
@@ -40,6 +40,15 @@
     .about-banner {
         height: 35em;
         max-height: 60vh;
+    }
+
+    /* ---------- Conference ---------- */
+
+    .conference-keynotespeakers-photo {
+        float: left;
+        display: block;
+        margin: 0 1em 1em 0;
+        width: 15em;
     }
 
     /* ---------- Browse ---------- */

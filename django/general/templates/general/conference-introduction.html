@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block main %}
+
+    <div class="container">
+        {% include 'general/snippets/conference-header.html' %}
+
+        <h3>Introduction</h3>
+        <p>
+            An extensive and highly sophisticated linguistic tradition flourished in ancient India between c. 500 BC and 1700 AD. Pāṇini’s grammar the <em>Aṣṭadhyāyī</em> is often recognized by generative linguists as the earliest generative grammar ever developed, more than 2000 years before Chomsky. Yet beyond this recognition, modern Western linguistics has very little knowledge of the millennia of linguistic insights and analyses developed in India. The LINGUINDIC conference aims to bring together experts in modern linguistics and the ancient Indian linguistic tradition to explore and develop interfaces between the traditions, and to enable deeper understanding and innovation in both fields.
+        </p>
+        <p>
+            We welcome work on ancient Indian contributions to linguistic thought (broadly conceived, including Pāṇinian and non-Pāṇinian <em>vyākaraṇa, nirvacana, śikṣā, nirukta, mīmāṃsā, nyāyā,</em> etc.), and/or modern linguistic analyses (in any field of linguistics) of phenomena in ancient Indian languages (e.g. Sanskrit, Tamil, Pali, Prakrit, Apabhraṃśa). We particularly welcome work that interfaces the two; for example, work that explores the relevance of ancient Indian linguistic analyses for modern linguistics, or work that offers a modern linguistic take on a topic originally analysed by the ancient Indian linguistic tradition. 
+        </p>
+        <p>
+            The conference will feature three keynote speakers, all of whom have worked at the interface of the ancient Indian and modern Western linguistic traditions: Madhav M. Deshpande, Paul Kiparsky, and Amba Kulkarni.
+        </p>
+        <p>
+            The conference will be held at Wolfson College, Oxford on 12–14 June 2025.
+        </p>
+        <p>
+            This conference is funded as part of the LINGUINDIC project (ERC, Horizon 2020 grant no. 851990). For more information see the <a href="{% url 'about-project' %}">LINGUINDIC Project</a> page.
+        </p>
+    </div>
+
+{% endblock %}

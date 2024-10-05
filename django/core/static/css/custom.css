@@ -42,6 +42,14 @@ h3 {
     font-size: 1.5em;
 }
 
+h4 {
+    padding: 1.5em 0 0.3em 0;
+    font-weight: bold;
+    color: #5f3305;
+    text-align: left;
+    font-size: 1.3em;
+}
+
 hr {
     margin: 3em 1em;
 }
@@ -277,6 +285,35 @@ main a {
     border-radius: 0.2em;
     background: #643d25;
     color: #eedac3;
+}
+
+/* ---------- Conference ---------- */
+
+#conference-header-keyinfo p {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+#conference-header-nav {
+    text-align: center;
+    font-size: 1.1em;
+}
+
+#conference-header-nav a {
+    display: inline-block;
+    background: #643d25;
+    color: #eedac3;
+    padding: 0.25em 1.3em 0.15em 1.3em;
+    margin: 0.3em;
+    border-radius: 0.3em;
+    color: #eedac3;
+    opacity: 0.9;
+}
+
+#conference-header-nav a:hover {
+    text-decoration: none;
+    opacity: 1;
 }
 
 /* ---------- Browse ---------- */

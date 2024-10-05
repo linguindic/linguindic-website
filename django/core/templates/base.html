@@ -60,6 +60,10 @@
                     <li class="nav-item">
                         <a class="nav-link{% if request.path == "/" %} active{% endif %}" href="{% url 'welcome' %}">Welcome</a>
                     </li>
+                    <!-- Conference -->
+                    <li class="nav-item">
+                        <a class="nav-link{% if "/conference/" in request.path %} active{% endif %}" href="{% url 'conference-introduction' %}">Conference</a>
+                    </li>
                     <!-- Database -->
                     <li class="nav-item">
                         <a class="nav-link{% if "/about/database/" in request.path %} active{% endif %}" href="{% url 'about-database' %}">Database</a>
