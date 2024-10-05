@@ -127,3 +127,14 @@ except ImportError:
 # Ensure required content from local_settings.py are supplied
 if(SECRET_KEY is None):  # NOQA
     sys.exit('Missing SECRET_KEY in local_settings.py')
+
+# Storages
+# Default STORAGES from Django documentation
+# See: https://docs.djangoproject.com/en/4.2/ref/settings/#std-setting-STORAGES
+STORAGES = {
+    "default": {"BACKEND": "django.core.files.storage.FileSystemStorage"},
+    "staticfiles": {"BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage"},
+}
+# Use ManifestStaticFilesStorage when not in debug mode
+if not DEBUG:  # NOQA
+    STORAGES['staticfiles'] = {"BACKEND": "django.contrib.staticfiles.storage.ManifestStaticFilesStorage"}
