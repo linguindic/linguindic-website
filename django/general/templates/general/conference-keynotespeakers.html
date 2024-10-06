@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block main %}
+
+    <div class="container">
+        {% include 'general/snippets/conference-header.html' %}
+
+        <h3>Keynote Speakers</h3>
+        <p>
+            The <em>LINGUINDIC Conference: Modern Linguistics and Ancient India</em> is proud to announce our keynote speakers: 
+        </p>
+
+        <h4>Madhav M. Deshpande</h4>
+        <img src="{% static 'images/conference/madhav.jpg' %}" class="conference-keynotespeakers-photo" alt="Madhav M. Deshpande">
+        <p>
+            Madhav M. Deshpande is emeritus Professor of South Asian Literature and Linguistics in the Department of Asian Languages and Cultures (with a joint appointment in the Department of Linguistics), University of Michigan. Professor Deshpande earned his B.A. (1966) and M.A. (1968) in Sanskrit from the University of Pune, and his doctorate (1972) in Oriental Studies from the University of Pennsylvania. He joined the University of Michigan in 1972. Professor Deshpande’s academic expertise includes: the Sanskrit grammatical tradition, historical linguistics and sociolinguistics of Indo-Aryan languages, and the religious and philosophical traditions of India. His extensive work in the Sanskrit grammatical tradition, informed by his parallel expertise in modern linguistics, has rendered him one of the most influential and important contemporary scholars in the field. Besides his academic work on Sanskrit, he is a recognized modern Sanskrit poet. His daily Krishna verses in Sanskrit, English and Marathi have now exceeded 2500, and will be published in the near future.
+        </p>
+
+        <h4>Paul Kiparsky</h4>
+        <img src="{% static 'images/conference/paul.jpg' %}" class="conference-keynotespeakers-photo" alt="Paul Kiparsky">
+        <p>
+            Paul Kiparsky is emeritus Bass Professor in the School of Humanities and Sciences, Stanford University. Professor Kiparsky received his PhD in 1965 from MIT, where he taught for two decades before moving to Stanford in 1984. Professor Kiparsky has published seminal work across a range of linguistic fields, including phonology, morphology, historical linguistics, syntax, semantics, as well as poetics and metrics. Alongside this, Professor Kiparsky has been one of the leading scholars of Pāṇini’s grammar the Aṣṭādhyāyī, uncovering aspects of the grammar’s workings which had been lost for millennia, and revealing how Pāṇini anticipated many important developments in modern linguistics.
+        </p>
+
+        <h4>Amba Kulkarni</h4>
+        <img src="{% static 'images/conference/amba.jpg' %}" class="conference-keynotespeakers-photo" alt="Amba Kulkarni">
+        <p>
+            Amba Kulkarni is Professor and Head of the Department of Sanskrit Studies, University of Hyderabad, where she has worked since 2006, building on an extensive earlier career in NLP, programming, and mathematics. Professor Kulkarni’s work has focused on machine translation and the development of computational tools for the analysis of Sanskrit, crucially using Sanskrit grammatical concepts and theories. Her recent work includes computational analyses of ancient Indian theories of logic (<em>nyāya</em>) and metrics (<em>chandas</em>). Professor Kulkarni’s extensive and innovative work has made her the leading figure in the field of NLP applied to Sanskrit.
+        </p>
+
+    </div>
+
+{% endblock %}

@@ -50,6 +50,48 @@ class AboutOutputsTemplateView(TemplateView):
     template_name = 'general/about-outputs.html'
 
 
+class ConferenceIntroductionTemplateView(TemplateView):
+    """
+    Class-based view to show the conference introduction template
+    """
+    template_name = 'general/conference-introduction.html'
+
+
+class ConferenceCallForPapersTemplateView(TemplateView):
+    """
+    Class-based view to show the call for papers template
+    """
+    template_name = 'general/conference-callforpapers.html'
+
+
+class ConferenceKeynoteSpeakersTemplateView(TemplateView):
+    """
+    Class-based view to show the keynote speakers template
+    """
+    template_name = 'general/conference-keynotespeakers.html'
+
+
+class ConferenceProgramTemplateView(TemplateView):
+    """
+    Class-based view to show the program template
+    """
+    template_name = 'general/conference-program.html'
+
+
+class ConferenceAccommodationTemplateView(TemplateView):
+    """
+    Class-based view to show the accommodation template
+    """
+    template_name = 'general/conference-accommodation.html'
+
+
+class ConferenceContactTemplateView(TemplateView):
+    """
+    Class-based view to show the contact template
+    """
+    template_name = 'general/conference-contact.html'
+
+
 class HelpTemplateView(TemplateView):
     """
     Class-based view to show the help template

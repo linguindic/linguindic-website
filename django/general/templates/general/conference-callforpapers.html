@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block main %}
+
+    <div class="container">
+        {% include 'general/snippets/conference-header.html' %}
+
+        <h3>Call for Papers</h3>
+        
+
+        <p>
+            “The LINGUINDIC Conference: Modern Linguistics and Ancient India” will take place on 12–14 June 2025 at Wolfson College, University of Oxford, UK. We invite submission of abstracts in any subject related to Ancient Indian languages and linguistics, addressing, but not limited to, the following topics:
+        </p>
+        <ul>
+            <li>
+                Ancient Indian contributions to linguistic thought (broadly conceived, including e.g. Pāṇinian vyākaraṇa, non-Pāṇinian vyākaraṇa, nirvacana, śikṣā, nirukta, Mīmāṃsā, Nyāya, etc.).
+            </li>
+            <li>
+                Modern linguistic analyses (in any field of linguistics) of phenomena in ancient Indian languages (Sanskrit, Tamil, Pali, Prakrit), for example compounding (samāsa), case (kāraka), etc.
+            </li>
+            <li>
+                Work that interfaces modern linguistics and the ancient Indian linguistic traditions;
+            </li>
+            <li>
+                for example, work that explores the relevance of ancient Indian linguistic analyses for modern linguistics,
+            </li>
+            <li>
+                or work that offers a modern linguistic take on a topic originally analysed by the ancient Indian linguistic tradition.
+            </li>
+        </ul>
+
+        <p>
+            Presentations will last 20 minutes, with an additional 10 mins for discussion.
+        </p>
+
+        <h4>Abstract Submission Guidelines</h4>
+        <p>
+            Anonymized abstracts in PDF format should be sent to <a href="mailto:linguindic@ames.ox.ac.uk">linguindic@ames.ox.ac.uk</a> by the 31 January 2025. Abstracts should be no more than 1 page excluding tables/figures and references.
+        </p>
+ 
+        <h4>Important Dates</h4>
+        <p>
+            Abstract submission deadline: <strong>31 January 2025</strong>
+            <br>
+            Notification of acceptance: <strong>28 February 2025</strong>
+        </p>
+        <p>
+            For further updates please visit the conference website: <a href="{% url 'conference-introduction' %}">https://{{ request.get_host }}{% url 'conference-introduction' %}</a>. For any queries please write to <a href="mailto:linguindic@ames.ox.ac.uk">linguindic@ames.ox.ac.uk</a>
+        </p>
+
+        <h4>Organizing Committee</h4>
+        <p>
+            John Lowe
+            <br>
+            Adriana Molina-Muñoz
+            <br>
+            Yiming Shen
+            <br>
+            Jim Benson
+        </p>
+
+        <h4>Administrative Support</h4>
+        <p>
+            Diana Rodriguez-Perez
+        </p>
+
+    </div>
+
+{% endblock %}
