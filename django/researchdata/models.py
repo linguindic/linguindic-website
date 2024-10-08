@@ -234,7 +234,7 @@ class Author(models.Model):
     date_active = models.CharField(max_length=255, blank=True, null=True)
     # Many to many relationship fields
     related_name = "author"
-    author = models.ManyToManyField("self", related_name=related_name, blank=True, db_table="{}_m2m_author_author".format(apps.app_name))
+    author = models.ManyToManyField("self", blank=True, db_table="{}_m2m_author_author".format(apps.app_name))
     # Admin fields
     admin_notes = models.TextField(blank=True, null=True)
     admin_published = models.BooleanField(default=True)
@@ -295,7 +295,7 @@ class LinguisticField(models.Model):
     description = models.TextField(blank=True, null=True)
     # Many to many relationship fields
     related_name = "linguistic_field"
-    linguistic_field = models.ManyToManyField("self", related_name=related_name, blank=True, db_table="{}_m2m_linguisticfield_linguisticfield".format(apps.app_name))
+    linguistic_field = models.ManyToManyField("self", blank=True, db_table="{}_m2m_linguisticfield_linguisticfield".format(apps.app_name))
     author = models.ManyToManyField("Author", related_name=related_name, blank=True, db_table="{}_m2m_author_linguisticfield".format(apps.app_name))
     # Admin fields
     admin_notes = models.TextField(blank=True, null=True)
@@ -348,7 +348,7 @@ class LinguisticNotion(models.Model):
     description = models.TextField(blank=True, null=True)
     # Many to many relationship fields
     related_name = "linguistic_notion"
-    linguistic_notion = models.ManyToManyField("self", related_name=related_name, blank=True, db_table="{}_m2m_linguisticnotion_linguisticnotion".format(apps.app_name))
+    linguistic_notion = models.ManyToManyField("self", blank=True, db_table="{}_m2m_linguisticnotion_linguisticnotion".format(apps.app_name))
     author = models.ManyToManyField("Author", related_name=related_name, blank=True, db_table="{}_m2m_author_linguisticnotion".format(apps.app_name))
     linguistic_field = models.ManyToManyField("LinguisticField", related_name=related_name, blank=True,
                                               db_table="{}_m2m_linguisticfield_linguisticnotion".format(apps.app_name))
@@ -405,7 +405,7 @@ class LinguisticTradition(models.Model):
                                                    on_delete=models.SET_NULL, blank=True, null=True)
     # Many to many relationship fields
     related_name = "linguistic_tradition"
-    linguistic_tradition = models.ManyToManyField("self", related_name=related_name, blank=True, db_table="{}_m2m_linguistictradition_linguistictradition".format(apps.app_name))
+    linguistic_tradition = models.ManyToManyField("self", blank=True, db_table="{}_m2m_linguistictradition_linguistictradition".format(apps.app_name))
     author = models.ManyToManyField("Author", related_name=related_name, blank=True, db_table="{}_m2m_author_linguistictradition".format(apps.app_name))
     linguistic_field = models.ManyToManyField("LinguisticField", related_name=related_name, blank=True,
                                               db_table="{}_m2m_linguisticfield_linguistictradition".format(apps.app_name))
@@ -478,7 +478,7 @@ class Reference(models.Model):
     reference_publisher = models.ForeignKey(SlReferencePublisher, on_delete=models.SET_NULL, blank=True, null=True)
     # Many to many relationship fields
     related_name = "reference"
-    reference = models.ManyToManyField("self", related_name=related_name, blank=True, db_table="{}_m2m_reference_reference".format(apps.app_name))
+    reference = models.ManyToManyField("self", blank=True, db_table="{}_m2m_reference_reference".format(apps.app_name))
     author = models.ManyToManyField("Author", related_name=related_name, blank=True, db_table="{}_m2m_author_reference".format(apps.app_name))
     linguistic_field = models.ManyToManyField("LinguisticField", related_name=related_name, blank=True,
                                               db_table="{}_m2m_linguisticfield_reference".format(apps.app_name))
@@ -625,7 +625,7 @@ class SanskritWord(models.Model):
     description = models.TextField(blank=True, null=True)
     # Many to many relationship fields
     related_name = "sanskrit_word"
-    sanskrit_word = models.ManyToManyField("self", related_name=related_name, blank=True, db_table="{}_m2m_sanskritword_sanskritword".format(apps.app_name))
+    sanskrit_word = models.ManyToManyField("self", blank=True, db_table="{}_m2m_sanskritword_sanskritword".format(apps.app_name))
     author = models.ManyToManyField("Author", related_name=related_name, blank=True, db_table="{}_m2m_author_sanskritword".format(apps.app_name))
     linguistic_field = models.ManyToManyField("LinguisticField", related_name=related_name, blank=True,
                                               db_table="{}_m2m_linguisticfield_sanskritword".format(apps.app_name))
@@ -694,7 +694,7 @@ class Text(models.Model):
     text_type = models.ForeignKey(SlTextType, on_delete=models.SET_NULL, blank=True, null=True)
     # Many to many relationship fields
     related_name = "text"
-    text = models.ManyToManyField("self", related_name=related_name, blank=True, db_table="{}_m2m_text_text".format(apps.app_name))
+    text = models.ManyToManyField("self", blank=True, db_table="{}_m2m_text_text".format(apps.app_name))
     author = models.ManyToManyField("Author", related_name=related_name, blank=True, db_table="{}_m2m_author_text".format(apps.app_name))
     linguistic_field = models.ManyToManyField("LinguisticField", related_name=related_name, blank=True,
                                               db_table="{}_m2m_linguisticfield_text".format(apps.app_name))
@@ -770,7 +770,7 @@ class TextPassage(models.Model):
     text_type = models.ForeignKey(SlTextType, on_delete=models.SET_NULL, blank=True, null=True)
     # Many to many relationship fields
     related_name = "text_passage"
-    text_passage = models.ManyToManyField("self", related_name=related_name, blank=True, db_table="{}_m2m_textpassage_textpassage".format(apps.app_name))
+    text_passage = models.ManyToManyField("self", blank=True, db_table="{}_m2m_textpassage_textpassage".format(apps.app_name))
     author = models.ManyToManyField("Author", related_name=related_name, blank=True, db_table="{}_m2m_author_textpassage".format(apps.app_name))
     linguistic_field = models.ManyToManyField("LinguisticField", related_name=related_name, blank=True,
                                               db_table="{}_m2m_linguisticfield_textpassage".format(apps.app_name))
