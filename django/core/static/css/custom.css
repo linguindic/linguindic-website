@@ -316,6 +316,11 @@ main a {
     opacity: 1;
 }
 
+#conference-body h3 {
+    text-align: center;
+    margin-top: 2em;
+}
+
 /* ---------- Browse ---------- */
 
 /* ---------- Browse: List ---------- */
