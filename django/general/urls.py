@@ -12,9 +12,10 @@ urlpatterns = [
     path('about/outputs/', views.AboutOutputsTemplateView.as_view(), name='about-outputs'),
 
     path('conference/', views.ConferenceIntroductionTemplateView.as_view(), name='conference-introduction'),
+    path('conference/registration/', views.ConferenceRegistrationTemplateView.as_view(), name='conference-registration'),
     path('conference/callforpapers/', views.ConferenceCallForPapersTemplateView.as_view(), name='conference-callforpapers'),
     path('conference/keynotespeakers/', views.ConferenceKeynoteSpeakersTemplateView.as_view(), name='conference-keynotespeakers'),
-    path('conference/program/', views.ConferenceProgramTemplateView.as_view(), name='conference-program'),
+    path('conference/programme/', views.ConferenceProgrammeTemplateView.as_view(), name='conference-programme'),
     path('conference/accommodation/', views.ConferenceAccommodationTemplateView.as_view(), name='conference-accommodation'),
     path('conference/contact/', views.ConferenceContactTemplateView.as_view(), name='conference-contact'),
 

@@ -304,7 +304,7 @@ main a {
     display: inline-block;
     background: #643d25;
     color: #eedac3;
-    padding: 0.25em 1.3em 0.15em 1.3em;
+    padding: 0.25em 0.8em 0.15em 0.8em;
     margin: 0.3em;
     border-radius: 0.3em;
     color: #eedac3;
@@ -319,6 +319,12 @@ main a {
 #conference-body h3 {
     text-align: center;
     margin-top: 2em;
+}
+
+#conference-body table,
+#conference-body ul li {
+    font-size: 1.1rem;
+    letter-spacing: initial;
 }
 
 /* ---------- Browse ---------- */

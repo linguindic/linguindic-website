@@ -1,0 +1,390 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block main %}
+
+    <div class="container" id="conference-body">
+        {% include 'general/snippets/conference-header.html' %}
+
+        <h3>Programme</h3>
+
+        <p>
+            Please see the conference programme below or <a href="{% static 'documents/conference_2025_programme/LINGUINDIC_Conference_Programme.pdf' %}" target="_blank">download a PDF version</a>
+        </p>
+
+        <h4>Location</h4>
+
+        <p>
+            Wolfson College, University of Oxford
+            <br>
+            Leonard Wolfson Auditorium (all talks)
+            <br>
+            The Buttery (refreshments and poster session)
+        </p>
+
+        <h4>Thursday, 12 June</h4>
+
+        <table>
+            <tbody>
+                <tr>
+                    <td width="150pt">9.00 – 9.30</td>
+                    <td>Registration and refreshments</td>
+                </tr>
+                <tr>
+                    <td>9.30 – 10.00</td>
+                    <td>Welcome and Introduction</td>
+                </tr>
+                <tr>
+                    <td>10.00 – 11.00</td>
+                    <td>
+                        KEYNOTE LECTURE
+                        <br>
+                        <em><a href="{% static 'documents/conference_2025_programme/abstracts/keynote_abstract_amba_kulkarni.pdf' %}" target="_blank">Analysis of Sanskrit compounds: Constituency or dependency?</a></em>
+                        <br>
+                        Amba Kulkarni (University of Hyderabad)
+                    </td>
+                </tr>
+                <tr>
+                    <td>11.00 – 11.30</td>
+                    <td>Coffee Break</td>
+                </tr>
+                <tr>
+                    <td>11.30 – 12.00</td>
+                    <td>
+                        <em><a href="{% static 'documents/conference_2025_programme/abstracts/factors_of_disambiguation.pdf' %}" target="_blank">A 5th–century grammar of contextual meaning: Bhartṛhari on factors of disambiguation</a></em>
+                        <br>
+                        Hugo David (École française d’Extrême–Orient)
+                    </td>
+                </tr>
+                <tr>
+                    <td>12.00 – 12.30</td>
+                    <td>
+                        <em><a href="{% static 'documents/conference_2025_programme/abstracts/words_denoting_universals.pdf' %}" target="_blank">Words denoting universals: Addressing particular cases in Bhartṛhari’s Jātisamuddeśa</a></em>
+                        <br>
+                        Marco Ferrante (Austrian Academy of Sciences)
+                    </td>
+                </tr>
+  
+                <tr>
+                    <td>12.30 – 13.00</td>
+                    <td>
+                        <em><a href="{% static 'documents/conference_2025_programme/abstracts/grammatica_notabiliora_as_intertextual_markers.pdf' %}" target="_blank">Grammatica notabiliora as stylistic markers. On the borrowing of an uncommon treatment of Aṣṭādhyāyī 3.1.61 – 2 from earlier works into Gaṅgādevī’s Madhurāvijaya</a></em>
+                        <br>
+                        Tancredi Padova
+                    </td>
+                </tr>
+                <tr>
+                    <td>13.00 – 14.00</td>
+                    <td>Lunch</td>
+                </tr>
+                <tr>
+                    <td>14.00 – 14.30</td>
+                    <td>
+                        <em>Pāṇinian Lexical–Functional Grammar</em>
+                        <br>
+                        John Lowe (University of Oxford)
+                    </td>
+                </tr>
+                <tr>
+                    <td>14.30 – 15.00</td>
+                    <td>
+                        <em><a href="{% static 'documents/conference_2025_programme/abstracts/semantic_etymologizing_and_symbolic_reference.pdf' %}" target="_blank">Semantic etymologizing and symbolic reference</a></em>
+                        <br>
+                        Johannes Bronkhorst (University of Lausanne)
+                    </td>
+                </tr>
+                <tr>
+                    <td>15.00 – 15.30</td>
+                    <td>
+                        <em><a href="{% static 'documents/conference_2025_programme/abstracts/locative_alternation_at_the_crossroads.pdf' %}" target="_blank">Locative alternation at the crossroads of Panini’s grammar and formal syntax </a></em>
+                        <br>
+                        Davide Mocci (University of Cagliari & University of Genoa)
+                    </td>
+                </tr>
+                <tr>
+                    <td>15.30 – 16.00</td>
+                    <td>Coffee Break</td>
+                </tr>
+                <tr>
+                    <td>16.00 – 16.30</td>
+                    <td>
+                        <em><a href="{% static 'documents/conference_2025_programme/abstracts/sanskrit_relative_correlatives_redux.pdf' %}" target="_blank">Sanskrit relative–correlatives redux</a></em>
+                        <br>
+                        Hans H. Hock (University of Illinois at U–C)
+                    </td>
+                </tr>
+                <tr>
+                    <td>16.30 – 17.00</td>
+                    <td>
+                        <em>Full reduplication in Sanskrit</em>
+                        <br>
+                        Adriana Molina–Muñoz (University of Oxford) 
+                    </td>
+                </tr>
+                <tr>
+                    <td>18.30 – 21.00</td>
+                    <td>Conference Dinner</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h4>Friday, 13 June</h4>
+
+        <table>
+            <tbody>
+                <tr>
+                    <td width="150pt">9.00 – 9.30</td>
+                    <td>Arrival and refreshments</td>
+                </tr>
+                <tr>
+                    <td>9.30 – 10.30</td>
+                    <td>
+                        KEYNOTE LECTURE
+                        <br>
+                        <em><a href="{% static 'documents/conference_2025_programme/abstracts/keynote_abstract_madhav_deshpande.pdf' %}" target="_blank">My journey: From Pāṇini to linguistics, and back</a></em>
+                        <br>
+                        Madhav Deshpande (University of Michigan)
+                    </td>
+                </tr>
+                <tr>
+                    <td>10.30 – 11.00</td>
+                    <td>Coffee Break</td>
+                </tr>
+                <tr>
+                    <td>11.00 – 12.00</td>
+                    <td>Poster Session
+                        <ul>
+                            <li>
+                                <em><a href="{% static 'documents/conference_2025_programme/abstracts/places_of_articulation_of_sanskrit_sounds.pdf' %}" target="_blank">Traditional perspectives on the places of articulation of Sanskrit sounds according to the Āpiśaliśikṣā and its newly discovered commentary</a></em>
+                                <br>
+                                Francisca Aguilera (Yogic Studies) and Deepro Chakraborty (University of Alberta)
+                            </li>
+                            <li>
+                                <em><a href="{% static 'documents/conference_2025_programme/abstracts/polysemy_of_verb.pdf' %}" target="_blank">A systematic treatment to the polysemy of verb d̪a (to give) in Sanskrit</a></em>
+                                <br>
+                                Mugdha Chandrakant Date (Research Institute Pune) and Dipesh Vinod Katira (CoEIKS, IIT Kharagpur)
+                            </li>
+                            <li>
+                                <em>Phenomenological investigation into Bhartrihari’s concept of pratibhā: A possibility or a fantasy?</em>
+                                <br>
+                                Jayashree Aanand Gajjam and Suditi Mandal (IIT Kharagpur)
+                            </li>
+                            <li>
+                                <em><a href="{% static 'documents/conference_2025_programme/abstracts/phonetic_apparatus.pdf' %}" target="_blank">Pāṇiniya Śikṣā’s phonetic apparatus and its applications for modern languages</a></em>
+                                <br>
+                                Tushar Gandhi (University of Delhi)
+                            </li>
+                            <li>
+                                <em><a href="{% static 'documents/conference_2025_programme/abstracts/poetic_astonishment.pdf' %}" target="_blank">Some insights from the Vyākaraṇa explanation of the concept of alaṅkāra in understanding ‘Poetic astonishment’</a></em>
+                                <br>
+                                Bhakti Jadhav and Malhar Kulkarni (IIT Bombay)
+                            </li>
+                            <li>
+                                <em>Mathematical modeling of ayādi sandhi as a function</a></em>
+                                <br>
+                                Jyoti Janava and Malhar Kulkarni (IIT Bombay)
+                            </li>
+                            <li>
+                                <em><a href="{% static 'documents/conference_2025_programme/abstracts/sentences_in_commentary.pdf' %}" target="_blank">Śābdabodha of sentences in commentary</a></em>
+                                <br>
+                                Shruti Kanitkar, Kondi Aniruddha Ramamurthy and Malhar Kulkarni (IIT Bombay)
+                            </li>
+                            <li>
+                                <em><a href="{% static 'documents/conference_2025_programme/abstracts/mapping_the_genitive_case.pdf' %}" target="_blank">Mapping the genitive case: Unveiling 100+ semantic relations in Sanskrit syntax</a></em>
+                                <br>
+                                Tapas Khanra and Malhar Kulkarni (IIT Bombay)
+                            </li>
+                            <li>
+                                <em><a href="{% static 'documents/conference_2025_programme/abstracts/bridging_linguistics.pdf' %}" target="_blank">Bridging linguistics: Sanskrit and modern theories on word meaning acquisition</a></em>
+                                <br>
+                                Rahul Kumar (University of Delhi)
+                            </li>
+                            <li>
+                                <em><a href="{% static 'documents/conference_2025_programme/abstracts/primary_secondary_sanskrit_compounds.pdf' %}" target="_blank">On the distinction between ‘primary’ and ‘secondary’ Sanskrit compounds </a></em>
+                                <br>
+                                Christophe Vielle (University of Louvain)
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>12.00 – 12.30</td>
+                    <td>
+                        <em>What it means to give happiness or fear: Sampradāna reinterpreted by Sanskrit grammarians and New Naiyāyikas</em>
+                        <br>
+                        Radha Blinderman (Harvard University)
+                    </td>
+                </tr>
+                <tr>
+                    <td>12.30 – 13.00</td>
+                    <td>
+                        <em><a href="{% static 'documents/conference_2025_programme/abstracts/salekar_and_kulkarni.pdf' %}" target="_blank">Niyamasūtra with special reference to Krādi–niyama</a></em>
+                        <br>
+                        Priyanka Salekar and Malhar Kulkarni (IIT Bombay)
+                    </td>
+                </tr>
+                <tr>
+                    <td>13.00 – 14.00</td>
+                    <td>Lunch</td>
+                </tr>
+                <tr>
+                    <td>
+                        14.00 – 15.00
+                    </td>
+                    <td>
+                        KEYNOTE LECTURE
+                        <br>
+                        <em><a href="{% static 'documents/conference_2025_programme/abstracts/keynote_abstract_paul_kiparsky.pdf' %}" target="_blank">On the construction of the Aṣṭādhyāyī</a></em>
+                        <br>
+                        Paul Kiparsky (Stanford University)
+                    </td>
+                </tr>
+                <tr>
+                    <td>15.00 – 15.30</td>
+                    <td>Coffee Break</td>
+                </tr>
+                <tr>
+                    <td>15.30 – 16.00</td>
+                    <td>
+                        <em><a href="{% static 'documents/conference_2025_programme/abstracts/modern_perspectives_on_syllabification.pdf' %}" target="_blank">The Ṛgvedic syllable: Insights from the Ṛgvedaprātiśākhya and modern perspectives on syllabification</a></em>
+                        <br>
+                        Anustup Bhattacharyya and Malhar Kulkarni (IIT Bombay)
+                    </td>
+                </tr>
+                <tr>
+                    <td>16.00 – 16.30</td>
+                    <td>
+                        <em><a href="{% static 'documents/conference_2025_programme/abstracts/closer_sandhi_in_vedic_as_an_indicator_of_prosodic_boundaries.pdf' %}" target="_blank">So–called "closer" sandhis in Vedic as indicators of prosodic boundaries</a></em>
+                        <br>
+                        Simon Fries (University of Oxford)
+                    </td>
+                </tr>
+                <tr>
+                    <td>16.30 – 17.00</td>
+                    <td>
+                        <em><a href="{% static 'documents/conference_2025_programme/abstracts/compendium_of_jagaddhara.pdf' %}" target="_blank">Introducing Bhaṭṭa Jagaddhara's Varṇaśikṣāsaṅkṣepa, a medieval Sanskrit compendium on phonetics</a></em>
+                        <br>
+                        Deepro Chakraborty (University of Alberta)
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h4>Saturday, 14 June</h4>
+
+        <table>
+            <tbody>
+                <tr>
+                    <td width="150pt">9.00 – 9.30</td>
+                    <td>Arrival and refreshments</td>
+                </tr>
+                <tr>
+                    <td>9.30 – 10.30</td>
+                    <td>
+                        KEYNOTE LECTURE
+                        <br>
+                        <em><a href="{% static 'documents/conference_2025_programme/abstracts/keynote_abstract_malhar_kulkarni.pdf' %}" target="_blank">asti kaścit ((vāg)(vi))–śeṣaḥ?
+                        <br>
+                        (Is there anything (specific) remaining (to be said)?)</a></em>
+                        <br>
+                        Malhar Kulkarni (IIT Bombay)
+                    </td>
+                </tr>
+                <tr>
+                    <td>10.30 – 10.55</td>
+                    <td>Coffee Break</td>
+                </tr>
+                <tr>
+                    <td>10.55 – 11.25</td>
+                    <td>
+                        <em><a href="{% static 'documents/conference_2025_programme/abstracts/cognitive_process_behind_two_types_of_negation_in_the_sanskrit_grammatical_tradition.pdf' %}" target="_blank">Towards a unified interpretation of the cognitive process behind two types of negation in the Sanskrit grammatical tradition</a></em>
+                        <br>
+                        Małgorzata Sulich–Cowley
+                    </td>
+                </tr>
+                <tr>
+                    <td>11.25 – 11.55</td>
+                    <td>
+                        <em>Fundamentals for the study of the Bhūṣaṇa and Bhūṣaṇasāra</em>
+                        <br>
+                        Yiming Shen (University of Oxford)
+                    </td>
+                </tr>
+                <tr>
+                    <td>11.55 – 12.05</td>
+                    <td>Short break</td>
+                </tr>
+                <tr>
+                    <td>12.05 – 12.35</td>
+                    <td>
+                        <em><a href="{% static 'documents/conference_2025_programme/abstracts/function_of_reduplication.pdf' %}" target="_blank">On the function of reduplication in the Sanskrit 3rd class presents</a></em>
+                        <br>
+                        Giovanni Luigi Fabbri (Sapienza Università di Roma)
+                    </td>
+                </tr>
+                <tr>
+                    <td>12.35 – 13.05</td>
+                    <td>
+                        <em><a href="{% static 'documents/conference_2025_programme/abstracts/word_formations_in_the_sanskrit_grammars.pdf' %}" target="_blank">The treatment of word–formation in the Sanskrit grammars published by European scholars between the Baroque and Franz Bopp</a></em>
+                        <br>
+                        Luca Alfieri (University Guglielmo Marconi)
+                    </td>
+                </tr>
+                <tr>
+                    <td>13.05 – 14.00</td>
+                    <td>Lunch</td>
+                </tr>
+                <tr>
+                    <td>14.00 – 14.30</td>
+                    <td>
+                        <em><a href="{% static 'documents/conference_2025_programme/abstracts/mediativity_in_classical_sanskrit.pdf' %}" target="_blank">Mediativity in Classical Sanskrit: A new approach to the particle kila</a></em>
+                        <br>
+                        Felix Eckert (LMU München)   
+                    </td>
+                </tr>
+                <tr>
+                    <td>14.30 – 15.00</td>
+                    <td>
+                        <em>“Don’t (do) worry”: Support verbs and phraseological templates in Epic Sanskrit</em>
+                        <br>
+                        Alex Roy (University of California, Los Angeles)
+                    </td>
+                </tr>
+                <tr>
+                    <td>15.00 – 15.30</td>
+                    <td>
+                        <em><a href="{% static 'documents/conference_2025_programme/abstracts/new_perspectives.pdf' %}" target="_blank">New perspectives from Pāṇini’s dhātu–: Towards a R̥gvedic derivational path for –ti– and –tu– suffixes</a></em>
+                        <br>
+                        Leonardo Montessi (University Guglielmo Marconi)
+                    </td>
+                </tr>
+                <tr>
+                    <td>15.30 – 16.00</td>
+                    <td>Coffee Break</td>
+                </tr>
+                <tr>
+                    <td>16.00 – 16.30</td>
+                    <td>
+                        <em><a href="{% static 'documents/conference_2025_programme/abstracts/terminology_traps.pdf' %}" target="_blank">Terminological traps and how to deal with them</a></em>
+                        <br>
+                        Małgorzata Wielińska–Soltwedel (Polish Academy of Sciences)
+                    </td>
+                </tr>
+                <tr>
+                    <td>16.30 – 17.00</td>
+                    <td>
+                        <em><a href="{% static 'documents/conference_2025_programme/abstracts/type_logical_grammar_and_classical_sanskrit.pdf' %}" target="_blank">Type logical grammar and classical Sanskrit</a></em>
+                        <br>
+                        Brendan Gillon (McGill University)
+                    </td>
+                </tr>
+                <tr>
+                    <td>17.00</td>
+                    <td>Conference ends</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}

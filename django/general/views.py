@@ -57,6 +57,13 @@ class ConferenceIntroductionTemplateView(TemplateView):
     template_name = 'general/conference-introduction.html'
 
 
+class ConferenceRegistrationTemplateView(TemplateView):
+    """
+    Class-based view to show the conference registration template
+    """
+    template_name = 'general/conference-registration.html'
+
+
 class ConferenceCallForPapersTemplateView(TemplateView):
     """
     Class-based view to show the call for papers template
@@ -71,11 +78,11 @@ class ConferenceKeynoteSpeakersTemplateView(TemplateView):
     template_name = 'general/conference-keynotespeakers.html'
 
 
-class ConferenceProgramTemplateView(TemplateView):
+class ConferenceProgrammeTemplateView(TemplateView):
     """
-    Class-based view to show the program template
+    Class-based view to show the programme template
     """
-    template_name = 'general/conference-program.html'
+    template_name = 'general/conference-programme.html'
 
 
 class ConferenceAccommodationTemplateView(TemplateView):
